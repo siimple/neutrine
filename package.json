@@ -1,0 +1,22 @@
+{
+  "name": "siimple-elements",
+  "description": "A collection of React UI components that implements the siimple style specification",
+  "version": "0.0.1",
+  "author": "Josemi Juanes <josemijuanes@gmail.com>",
+  "license": "MIT",
+  "homepage": "http://siimple.juanes.xyz/",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/siimple/siimple-elements.git"
+  },
+  "keywords": [ "siimple", "elements", "components", "ui", "design", "react" ],
+  "dependencies":
+  {
+
+  },
+  "devDependencies":
+  {
+
+  }
+}
