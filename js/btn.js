@@ -4,6 +4,7 @@ export default class SiimpleBtn extends React.Component
   //Constructor
   constructor(props)
   {
+    //Call super
     super(props);
 
     //Set the state
