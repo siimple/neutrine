@@ -8,7 +8,7 @@ export default class SiimpleBtn extends React.Component
     super(props);
 
     //Set the state
-    this.state = { color: null, disabled: false, text: null };
+    this.state = { color: null, disabled: false };
 
     //Parse the properties
     if(typeof this.props.color === 'string'){ this.state.color = this.props.color; }
