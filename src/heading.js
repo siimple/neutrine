@@ -11,7 +11,11 @@ export default class SiimpleHeading extends React.Component
     this.state = { type: '1' };
 
     //Parse the heading type value
-    if(typeof this.props.type === 'string'){ this.state.type = this.props.type; }
+    if(typeof this.props.type === 'string')
+    {
+      //Save the heading type
+      this.state.type = this.props.type;
+    }
   }
 
   //Render the heading element
