@@ -8,16 +8,21 @@ export default class SiimpleAlert extends React.Component
     super(props);
 
     //Initialize the state object
-    this.state = { color: null, text: null, closeBtn: false };
+    this.state = { color: null, closeBtn: false };
 
     //Parse the color property
-    if(typeof this.props.color === 'string'){ this.state.color = this.props.color.trim(); }
-
-    //Parse the text property
-    if(typeof this.props.text === 'string'){ this.state.text = this.props.text.trim(); }
+    if(typeof this.props.color === 'string')
+    {
+      //Save the alert color value
+      this.state.color = this.props.color.trim();
+    }
 
     //Parse the close button property
-    if(typeof this.props.closeBtn === 'boolean'){ this.state.closeBtn = this.props.closeBtn; }
+    if(typeof this.props.closeBtn === 'boolean')
+    {
+      //Save the alert close button visibility value
+      this.state.closeBtn = this.props.closeBtn;
+    }
   }
 
   //Render the alert component
@@ -39,20 +44,17 @@ export default class SiimpleAlert extends React.Component
       className.push('siimple-alert--'  + this.state.color);
     }
 
-    //Initialize the constructor arguments
-    var args = [ 'div', { className: className.join(' ') }];
+    //Initialize the child elements list
+    var children = [ e('span', { key: 0 }, this.props.children) ];
 
     //Check the close button
     if(this.state.closeBtn === true)
     {
       //Append the close button div
-      args.push(e('div', { className: 'siimple-close' }));
+      children.push(e('div', { className: 'siimple-close', key: 1 }));
     }
 
-    //Add the alert text
-    args.push(e('span', {}, this.state.text));
-
     //Create the alert element
-    return e.apply(null, args);
+    return e('div', { className: className.join(' ') }, children);
   }
 }
