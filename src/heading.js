@@ -21,7 +21,10 @@ export default class SiimpleHeading extends React.Component
   //Render the heading element
   render()
   {
+    //Create element alias
+    var el = React.createElement;
+
     //Return the heading element
-    return React.createElement('div', { className: 'siimple-h' + this.state.type }, this.props.children);
+    return el('div', { className: 'siimple-h' + this.state.type }, this.props.children);
   }
 }
