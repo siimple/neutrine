@@ -11,10 +11,18 @@ export default class SiimpleBtn extends React.Component
     this.state = { color: null, disabled: false };
 
     //Parse the properties
-    if(typeof this.props.color === 'string'){ this.state.color = this.props.color; }
+    if(typeof this.props.color === 'string')
+    {
+      //Save the button color
+      this.state.color = this.props.color;
+    }
 
     //Parse the disabled property
-    if(typeof this.props.disabled === 'boolean'){ this.state.disabled = this.props.disabled; }
+    if(typeof this.props.disabled === 'boolean')
+    {
+      //Save the disabled option
+      this.state.disabled = this.props.disabled;
+    }
   }
 
   //Render the button
