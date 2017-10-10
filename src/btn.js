@@ -30,10 +30,18 @@ export default class SiimpleBtn extends React.Component
     var list = [ 'siimple-btn' ];
 
     //Add the button color
-    if(typeof this.state.color === 'string'){ list.push('siimple-btn--' + this.state.color); }
+    if(typeof this.state.color === 'string')
+    {
+      //Add button color class
+      list.push('siimple-btn--' + this.state.color);
+    }
 
     //Add the button disabled option
-    if(this.state.disabled === true){ list.push('siimple-btn--disabled'); }
+    if(this.state.disabled === true)
+    {
+      //Add button disabled class
+      list.push('siimple-btn--disabled');
+    }
 
     //Return the button element
     return e('div', { className: list.join(' '), onClick: self.props.onClick }, this.props.children);
