@@ -46,6 +46,6 @@ export default class SiimpleSpinner extends React.Component
     }
 
     //Return the element
-    return React.createElement('div', { classNames: class_list.join(' ') }, null);
+    return React.createElement('div', { className: class_list.join(' ') }, null);
   }
 }
