@@ -14,6 +14,7 @@ export default class SiimpleTip extends React.Component
     this.componentWillReceiveProps(props);
   }
 
+  //Parse new props
   componentWillReceiveProps(props)
   {
     //Parse the color property
