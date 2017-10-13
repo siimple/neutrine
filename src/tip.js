@@ -48,17 +48,20 @@ export default class SiimpleTip extends React.Component
     if(typeof this.state.color === 'string')
     {
       //Append the color class
-      class_list.push('siimple-tip--' + this.state.color);
+      class_list.push('siimple-tip--' + this.state.color.toLowerCase().trim());
     }
 
     //Add the tip icon
     if(typeof this.state.icon === 'string')
     {
+      //Parse the icon value
+      var icon_value = this.state.icon.toLowerCase().trim();
+
       //Check if this icon exists
-      if(this._icons.indexOf(this.state.icon.toLowerCase().trim()) !== -1)
+      if(this._icons.indexOf(icon_value) !== -1)
       {
         //Append the icon class
-        class_list.push('siimple-tip--' + this.state.icon);
+        class_list.push('siimple-tip--' + icon_value);
       }
     }
 
