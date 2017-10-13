@@ -1,6 +1,9 @@
 //Tip class
 export default class SiimpleTip extends React.Component
 {
+  //Available icons
+  private available_icons = [ 'exclamation', 'question', 'hearth' ];
+
   //Constructor
   constructor(props)
   {
@@ -51,8 +54,12 @@ export default class SiimpleTip extends React.Component
     //Add the tip icon
     if(typeof this.state.icon === 'string')
     {
-      //Append the icon class
-      class_list.push('siimple-tip--' + this.state.icon);
+      //Check if this icon exists
+      if(this.available_icons.indexOf(this.state.icon.toLowerCase().trim()) !== -1)
+      {
+        //Append the icon class
+        class_list.push('siimple-tip--' + this.state.icon);
+      }
     }
 
     //Return the element
