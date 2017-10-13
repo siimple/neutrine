@@ -38,9 +38,6 @@ export default class SiimpleBtn extends React.Component
     //Save this
     var self = this;
 
-    //Create element alias
-    var e = React.createElement;
-
     //Initialize the list of classes
     var class_list = [ 'siimple-btn' ];
 
@@ -59,6 +56,6 @@ export default class SiimpleBtn extends React.Component
     }
 
     //Return the button element
-    return e('div', { className: class_list.join(' '), onClick: self.props.onClick }, this.props.children);
+    return React.createElement('div', { className: class_list.join(' '), onClick: self.props.onClick }, this.props.children);
   }
 }
