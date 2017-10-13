@@ -1,0 +1,9 @@
+{
+  "name": "siimple-elements",
+  "version": "0.0.1",
+  "dependencies":
+  {
+    "siimple": "siimple/siimple#master",
+    "siimple-colors": "siimple/siimple-colors#master"
+  }
+}
