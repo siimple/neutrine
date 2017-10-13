@@ -38,9 +38,6 @@ export default class SiimpleTip extends React.Component
   //Render the tip element
   render()
   {
-    //Create element alias
-    var el = React.createElement;
-
     //Initialize the tip class list
     var class_list = [ 'siimple-tip' ];
 
@@ -66,6 +63,6 @@ export default class SiimpleTip extends React.Component
     }
 
     //Return the element
-    return el('div', { className: class_list.join(' ') }, this.props.children);
+    return React.createElement('div', { className: class_list.join(' ') }, this.props.children);
   }
 }
