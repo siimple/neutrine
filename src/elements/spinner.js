@@ -1,3 +1,5 @@
+import h from '../hyperscript.js';
+
 //Spinner class
 export default class SiimpleSpinner extends React.Component
 {
@@ -46,6 +48,6 @@ export default class SiimpleSpinner extends React.Component
     }
 
     //Return the element
-    return React.createElement('div', { className: class_list.join(' ') }, null);
+    return h.div({ className: class_list.join(' ') }, null);
   }
 }
