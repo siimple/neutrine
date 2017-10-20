@@ -1,3 +1,5 @@
+import h from '../hyperscript.js';
+
 //Alert component
 export default class SiimpleAlert extends React.Component
 {
@@ -46,16 +48,16 @@ export default class SiimpleAlert extends React.Component
     }
 
     //Initialize the child elements list
-    var children = [ React.createElement('span', { key: 0 }, this.props.children) ];
+    var children = [ h.span({}, this.props.children) ];
 
     //Check the close button
     if(this.state.closeBtn === true)
     {
       //Append the close button div
-      children.push(React.createElement('div', { className: 'siimple-close', key: 1 }));
+      children.push(h.div({ className: 'siimple-close' }, null));
     }
 
     //Create the alert element
-    return React.createElement('div', { className: class_list.join(' ') }, children);
+    return h.div({ className: class_list.join(' ') }, children);
   }
 }
