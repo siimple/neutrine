@@ -1,4 +1,4 @@
-import el from './element.js';
+import h from './hyperscript.js';
 
 //Heading class
 export default class SiimpleHeading extends React.Component
@@ -34,6 +34,6 @@ export default class SiimpleHeading extends React.Component
     var class_name = (typeof this.state.type === 'string') ? 'siimple-h' + this.state.type.trim() : null;
 
     //Return the heading element
-    return el.div({ className: class_name }, this.props.children);
+    return h.div({ className: class_name }, this.props.children);
   }
 }
