@@ -47,15 +47,14 @@ export default class SiimpleAlert extends React.Component
       class_list.push('siimple-alert--'  + this.state.color.toLowerCase().trim());
     }
 
-    //Initialize the child elements list
-    var children = [ h.span({}, this.props.children) ];
+    //Initialize the blose button properties
+    var close_props = { className: 'siimple-close', style: null };
 
-    //Check the close button
-    if(this.state.closeBtn === true)
-    {
-      //Append the close button div
-      children.push(h.div({ className: 'siimple-close' }, null));
-    }
+    //Check if the close button is enabled
+    if(this.state.closeBtn === false){ close_props.style = 'display: none !important;'; }
+
+    //Initialize the child elements list
+    var children = [ h.span({}, this.props.children), h.div(close_props, null) ];
 
     //Create the alert element
     return h.div({ className: class_list.join(' ') }, children);
