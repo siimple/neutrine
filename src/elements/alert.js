@@ -51,7 +51,7 @@ export default class SiimpleAlert extends React.Component
     var close_props = { className: 'siimple-close', style: null };
 
     //Check if the close button is enabled
-    if(this.state.closeBtn === false){ close_props.style = 'display: none !important;'; }
+    if(this.state.closeBtn === false){ close_props.style = { display: 'none' }; }
 
     //Initialize the child elements list
     var children = [ h.span({}, this.props.children), h.div(close_props, null) ];
