@@ -1,4 +1,4 @@
-import h from './hyperscript.js';
+import h from '../hyperscript.js';
 
 //Heading class
 export default class SiimpleHeading extends React.Component
