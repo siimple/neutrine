@@ -1,3 +1,5 @@
+import h from '../hyperscript.js';
+
 //Button class
 export default class SiimpleBtn extends React.Component
 {
@@ -56,6 +58,6 @@ export default class SiimpleBtn extends React.Component
     }
 
     //Return the button element
-    return React.createElement('div', { className: class_list.join(' '), onClick: self.props.onClick }, this.props.children);
+    return h.div({ className: class_list.join(' '), onClick: self.props.onClick }, this.props.children);
   }
 }
