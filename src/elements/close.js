@@ -18,7 +18,7 @@ export default class SiimpleClose extends SiimpleComponent
   handleClick(e)
   {
     //Check if the onclick prop is defined
-    if(typeof this.props.onCLick === 'function')
+    if(typeof this.props.onClick === 'function')
     {
       //Call the onclick method
       return this.props.onClick.call(null, e);
