@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "dependencies":
   {
-    "siimple": "siimple/siimple#master",
-    "siimple-colors": "siimple/siimple-colors#master"
+    "siimple": "siimple/siimple#master"
   }
 }
