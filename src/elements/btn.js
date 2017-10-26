@@ -14,6 +14,9 @@ export default class SiimpleBtn extends React.Component
 
     //Parse props
     this.componentWillReceiveProps(props);
+
+    //Bind the handle click method
+    this.handleClick = this.handleClick.bind(this);
   }
 
   //Parse new props
@@ -31,6 +34,17 @@ export default class SiimpleBtn extends React.Component
     {
       //Save the disabled option
       this.state.disabled = props.disabled;
+    }
+  }
+
+  //Handle click method
+  handleClick(e)
+  {
+    //Check if the onclick property is defined and is a function
+    if(typeof this.props.onClick === 'function')
+    {
+      //Call the onclick method
+      return this.props.onClick.call(null, e);
     }
   }
 
@@ -58,6 +72,6 @@ export default class SiimpleBtn extends React.Component
     }
 
     //Return the button element
-    return h.div({ className: class_list.join(' '), onClick: self.props.onClick }, this.props.children);
+    return h.div({ className: class_list.join(' '), onClick: self.handleClick }, this.props.children);
   }
 }
