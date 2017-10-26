@@ -1,7 +1,8 @@
+import SiimpleComponent from '../index.js';
 import h from '../hyperscript.js';
 
 //Button class
-export default class SiimpleBtn extends React.Component
+export default class SiimpleBtn extends SiimpleComponent
 {
   //Constructor
   constructor(props)
