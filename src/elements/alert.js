@@ -1,7 +1,9 @@
 import h from '../hyperscript.js';
+import SiimpleComponent from '../index.js';
+import SiimpleClose from './close.js';
 
 //Alert component
-export default class SiimpleAlert extends React.Component
+export default class SiimpleAlert extends SiimpleComponent
 {
   //Constructor
   constructor(props)
@@ -9,29 +11,15 @@ export default class SiimpleAlert extends React.Component
     //Call super
     super(props);
 
-    //Initialize the state object
-    this.state = { color: null, closeBtn: false };
-
-    //Parse the properties
-    this.componentWillReceiveProps(props);
+    //Bind the handle close method
+    this.handleClose = this.handleClose.bind(this);
   }
 
-  //Parse new properties
-  componentWillReceiveProps(props)
+  //Handle close button event
+  handleClose(e)
   {
-    //Parse the color property
-    if(typeof props.color !== 'undefined' && props.color !== this.state.color)
-    {
-      //Save the alert color value
-      this.state.color = props.color;
-    }
-
-    //Parse the close button property
-    if(typeof props.closeBtn === 'boolean' && props.closeBtn !== this.state.closeBtn)
-    {
-      //Save the alert close button visibility value
-      this.state.closeBtn = props.closeBtn;
-    }
+    //Display in logs
+    console.log('Close button clicked');
   }
 
   //Render the alert component
@@ -41,22 +29,26 @@ export default class SiimpleAlert extends React.Component
     var class_list = [ 'siimple-alert' ];
 
     //Check the color
-    if(typeof this.state.color === 'string')
+    if(typeof this.props.color === 'string')
     {
       //Add the alert color
-      class_list.push('siimple-alert--'  + this.state.color.toLowerCase().trim());
+      class_list.push('siimple-alert--'  + this.props.color.toLowerCase().trim());
     }
 
-    //Initialize the blose button properties
-    var close_props = { className: 'siimple-close', style: null };
+    //Initialize the child elements list
+    var children = [ h.span({}, this.props.children) ];
 
     //Check if the close button is enabled
-    if(this.state.closeBtn === false){ close_props.style = { display: 'none' }; }
-
-    //Initialize the child elements list
-    var children = [ h.span({}, this.props.children), h.div(close_props, null) ];
+    if(this.props.closeButton === true)
+    {
+      //Add the close button element
+      children.push(h(SiimpleClose, { onClick: this.handleClose }));
+    }
 
     //Create the alert element
     return h.div({ className: class_list.join(' ') }, children);
   }
 }
+
+//Alert default props
+SiimpleAlert.defaultProps = { color: 'blue', closeButton: false };
