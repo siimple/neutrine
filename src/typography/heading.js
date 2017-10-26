@@ -9,31 +9,27 @@ export default class SiimpleHeading extends React.Component
     //Call super
     super(props);
 
-    //Initialize the state object
-    this.state = { type: '1' };
-
     //Parse the initial properties
     this.componentWillReceiveProps(props);
-  }
-
-  //Parse new props
-  componentWillReceiveProps(props)
-  {
-    //Parse the heading type value
-    if(typeof props.type !== 'undefined' && props.type !== this.state.type)
-    {
-      //Save the heading type
-      this.state.type = props.type;
-    }
   }
 
   //Render the heading element
   render()
   {
-    //Get the header class
-    var class_name = (typeof this.state.type === 'string') ? 'siimple-h' + this.state.type.trim() : null;
+    //Initialize the header class
+    var class_name = null;
+
+    //Check the header type
+    if(typeof this.props.type === 'string' && this.props.type.charAt(0).toLowerCase() === 'h' && this.props.type.length === 2)
+    {
+      //Add the heading class
+      class_name = 'siimple-' + this.props.type.toLowerCase().trim(); 
+    }
 
     //Return the heading element
     return h.div({ className: class_name }, this.props.children);
   }
 }
+
+//Default heading props
+SiimpleHeading.defaultProps = { type: 'h1' };
