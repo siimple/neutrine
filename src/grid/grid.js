@@ -33,6 +33,6 @@ export class SiimpleGridRow extends SiimpleComponent
   render()
   {
     //Return the grid element
-    return h.div({ className: 'siimple-grid-row' }, this props.children);
+    return h.div({ className: 'siimple-grid-row' }, this.props.children);
   }
 }
