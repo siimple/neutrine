@@ -8,9 +8,6 @@ export default class SiimpleHeading extends React.Component
   {
     //Call super
     super(props);
-
-    //Parse the initial properties
-    this.componentWillReceiveProps(props);
   }
 
   //Render the heading element
@@ -23,7 +20,7 @@ export default class SiimpleHeading extends React.Component
     if(typeof this.props.type === 'string' && this.props.type.charAt(0).toLowerCase() === 'h' && this.props.type.length === 2)
     {
       //Add the heading class
-      class_name = 'siimple-' + this.props.type.toLowerCase().trim(); 
+      class_name = 'siimple-' + this.props.type.toLowerCase().trim();
     }
 
     //Return the heading element
