@@ -4,13 +4,6 @@ import h from '../hyperscript.js';
 //Grid class
 export class SiimpleGrid extends SiimpleComponent
 {
-  //Constructor
-  constructor(props)
-  {
-    //Call super
-    super(props);
-  }
-
   //Render method
   render()
   {
@@ -22,13 +15,6 @@ export class SiimpleGrid extends SiimpleComponent
 //Grid row class
 export class SiimpleGridRow extends SiimpleComponent
 {
-  //Constructor
-  constructor(props)
-  {
-    //Call super
-    super(props);
-  }
-
   //Render grid row
   render()
   {
