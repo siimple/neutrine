@@ -18,8 +18,12 @@ export default class SiimpleAlert extends SiimpleComponent
   //Handle close button event
   handleClose(e)
   {
-    //Display in logs
-    console.log('Close button clicked');
+    //Check if the close button handler is defined
+    if(typeof this.props.closeHandler === 'function')
+    {
+      //Call the close handler method
+      return this.props.closeHandler.call(null, e);
+    }
   }
 
   //Render the alert component
@@ -39,7 +43,7 @@ export default class SiimpleAlert extends SiimpleComponent
     var children = [ h.span({}, this.props.children) ];
 
     //Check if the close button is enabled
-    if(this.props.closeButton === true)
+    if(this.props.closeVisible === true)
     {
       //Add the close button element
       children.push(h(SiimpleClose, { onClick: this.handleClose }));
@@ -51,4 +55,4 @@ export default class SiimpleAlert extends SiimpleComponent
 }
 
 //Alert default props
-SiimpleAlert.defaultProps = { color: 'blue', closeButton: false };
+SiimpleAlert.defaultProps = { color: 'blue', closeVisible: false, closeHandler: null };
