@@ -1,61 +1,33 @@
+import h from '../hyperscript.js';
+import SiimpleComponent from '../index.js';
+
 //Tip class
-export default class SiimpleTip extends React.Component
+export default class SiimpleTip extends SiimpleComponent
 {
-  //Constructor
-  constructor(props)
-  {
-    //Call super
-    super(props);
-
-    //Set the state
-    this.state = { color: null, icon: null };
-
-    //Available icons
-    this._icons = [ 'exclamation', 'question', 'hearth' ];
-
-    //Update props
-    this.componentWillReceiveProps(props);
-  }
-
-  //Parse new props
-  componentWillReceiveProps(props)
-  {
-    //Parse the color property
-    if(typeof props.color !== 'undefined' && props.color !== this.state.color)
-    {
-      //Change the color state value
-      this.state.color = props.color;
-    }
-
-    //Parse the icon property
-    if(typeof props.icon !== 'undefined' && props.icon !== this.state.icon)
-    {
-      //Save the icon state value
-      this.state.icon = props.icon;
-    }
-  }
-
   //Render the tip element
   render()
   {
     //Initialize the tip class list
     var class_list = [ 'siimple-tip' ];
 
+    //Initialize the available icons
+    var icons = [ 'exclamation', 'question', 'hearth' ];
+
     //Add the tip color
-    if(typeof this.state.color === 'string')
+    if(typeof this.props.color === 'string')
     {
       //Append the color class
-      class_list.push('siimple-tip--' + this.state.color.toLowerCase().trim());
+      class_list.push('siimple-tip--' + this.props.color.toLowerCase().trim());
     }
 
     //Add the tip icon
-    if(typeof this.state.icon === 'string')
+    if(typeof this.props.icon === 'string')
     {
       //Parse the icon value
-      var icon_value = this.state.icon.toLowerCase().trim();
+      var icon_value = this.props.icon.toLowerCase().trim();
 
       //Check if this icon exists
-      if(this._icons.indexOf(icon_value) !== -1)
+      if(icons.indexOf(icon_value) !== -1)
       {
         //Append the icon class
         class_list.push('siimple-tip--' + icon_value);
@@ -63,6 +35,9 @@ export default class SiimpleTip extends React.Component
     }
 
     //Return the element
-    return React.createElement('div', { className: class_list.join(' ') }, this.props.children);
+    return h.div({ className: class_list.join(' ') }, this.props.children);
   }
 }
+
+//Initialize the tip element default props
+SiimpleTip.defaultProps = { color: 'blue', icon: null };
