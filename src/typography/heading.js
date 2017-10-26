@@ -3,13 +3,6 @@ import h from '../hyperscript.js';
 //Heading class
 export default class SiimpleHeading extends React.Component
 {
-  //Constructor
-  constructor(props)
-  {
-    //Call super
-    super(props);
-  }
-
   //Render the heading element
   render()
   {
