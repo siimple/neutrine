@@ -9,32 +9,8 @@ export default class SiimpleBtn extends React.Component
     //Call super
     super(props);
 
-    //Set the state
-    this.state = { color: null, disabled: false };
-
-    //Parse props
-    this.componentWillReceiveProps(props);
-
     //Bind the handle click method
     this.handleClick = this.handleClick.bind(this);
-  }
-
-  //Parse new props
-  componentWillReceiveProps(props)
-  {
-    //Parse the properties
-    if(typeof props.color !== 'undefined' && props.color !== this.state.color)
-    {
-      //Save the button color
-      this.state.color = props.color;
-    }
-
-    //Parse the disabled property
-    if(typeof props.disabled === 'boolean' && props.disabled !== this.state.disabled)
-    {
-      //Save the disabled option
-      this.state.disabled = props.disabled;
-    }
   }
 
   //Handle click method
@@ -58,14 +34,14 @@ export default class SiimpleBtn extends React.Component
     var class_list = [ 'siimple-btn' ];
 
     //Add the button color
-    if(typeof this.state.color === 'string')
+    if(typeof this.props.color === 'string')
     {
       //Add button color class
-      class_list.push('siimple-btn--' + this.state.color.toLowerCase().trim());
+      class_list.push('siimple-btn--' + this.props.color.toLowerCase().trim());
     }
 
     //Add the button disabled option
-    if(this.state.disabled === true)
+    if(this.props.disabled === true)
     {
       //Add button disabled class
       class_list.push('siimple-btn--disabled');
@@ -75,3 +51,6 @@ export default class SiimpleBtn extends React.Component
     return h.div({ className: class_list.join(' '), onClick: self.handleClick }, this.props.children);
   }
 }
+
+//Default properties values
+SiimpleBtn.defaultProps = { color: 'blue', disabled: false };
