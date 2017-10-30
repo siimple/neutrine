@@ -4,5 +4,10 @@
   "dependencies":
   {
     "siimple": "siimple/siimple#master"
+  },
+  "devDependencies":
+  {
+    "plume": "siimple/plume#master",
+    "kofi": "jmjuanes/kofi#master"
   }
 }
