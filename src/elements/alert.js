@@ -50,7 +50,7 @@ export default class SiimpleAlert extends SiimpleComponent
     }
 
     //Create the alert element
-    return h.div({ className: class_list.join(' ') }, children);
+    return h.div({ className: class_list }, children);
   }
 }
 
