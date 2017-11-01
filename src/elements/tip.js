@@ -35,7 +35,7 @@ export default class SiimpleTip extends SiimpleComponent
     }
 
     //Return the element
-    return h.div({ className: class_list.join(' ') }, this.props.children);
+    return h.div({ className: class_list }, this.props.children);
   }
 }
 
