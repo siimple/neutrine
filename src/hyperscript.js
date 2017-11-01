@@ -16,6 +16,17 @@ var hyperscript = function(tag, props, children)
   //Check the children list
   if(Array.isArray(children) === false){ children = [ children ]; }
 
+  //Parse the props
+  if(typeof props === 'object' && props !== null)
+  {
+    //Parse the className property
+    if(typeof props.className === 'object' && Array.isArray(props.className) === true)
+    {
+      //Join all the classnames
+      props.className = props.className.join(' ');
+    }
+  }
+
   //Create the element
   var args = [ tag, props ].concat(children);
 
