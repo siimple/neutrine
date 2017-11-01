@@ -25,7 +25,7 @@ export default class SiimpleSpinner extends SiimpleComponent
     }
 
     //Return the element
-    return h.div({ className: class_list.join(' ') }, null);
+    return h.div({ className: class_list }, null);
   }
 }
 
