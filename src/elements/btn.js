@@ -49,7 +49,7 @@ export default class SiimpleBtn extends SiimpleComponent
     }
 
     //Return the button element
-    return h.div({ className: class_list.join(' '), onClick: self.handleClick }, this.props.children);
+    return h.div({ className: class_list, onClick: self.handleClick }, this.props.children);
   }
 }
 
