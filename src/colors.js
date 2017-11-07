@@ -1,6 +1,9 @@
 //Colors object
 var colors = {};
 
+//List of available colors
+colors.list = ['navy', 'green', 'teal', 'blue', 'purple', 'pink', 'red', 'orange', 'yellow', 'grey', 'white'];
+
 //Navy palette
 colors.navy = [ '#3f465a', '#495169', '#57607c', '#697496', '#8790ab', '#ffffff' ];
 
@@ -40,8 +43,15 @@ colors.get = function(key, index)
   //Check the index value
   if(typeof index !== 'number'){ index = 2; }
 
+  //Check if this color exists
+  if(colors.list.indexOf(key.toLowerCase()) === -1)
+  {
+    //Set the first color in the list
+    key = colors[0];
+  }
+
   //Return the color
-  return colors[key][index];
+  return colors[key.toLowerCase()][index];
 };
 
 //Export the color object 
