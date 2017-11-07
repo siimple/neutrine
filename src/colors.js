@@ -34,5 +34,15 @@ colors.grey = [ '#c3d7ef', '#d7e4f4', '#ebf2fa', '#f0f5fb', '#f1f4f9', '#57607c'
 //White palette
 colors.white = [ '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#57607c' ];
 
+//Get a color by name
+colors.get = function(key, index)
+{
+  //Check the index value
+  if(typeof index !== 'number'){ index = 2; }
+
+  //Return the color
+  return colors[key][index];
+};
+
 //Export the color object 
 export default colors;
