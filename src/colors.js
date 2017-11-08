@@ -54,5 +54,18 @@ colors.get = function(key, index)
   return colors[key.toLowerCase()][index];
 };
 
+//Get a random color
+colors.random = function()
+{
+  //Get a random index
+  var index = Math.floor(colors.list.length * Math.random());
+
+  //Get the random color name
+  var color = colors.list[index];
+
+  //Return the base color
+  return colors[color][2];
+};
+
 //Export the color object 
 export default colors;
