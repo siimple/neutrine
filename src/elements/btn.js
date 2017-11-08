@@ -54,4 +54,4 @@ export default class SiimpleBtn extends SiimpleComponent
 }
 
 //Default properties values
-SiimpleBtn.defaultProps = { color: 'blue', disabled: false };
+SiimpleBtn.defaultProps = { color: 'blue', disabled: false, onClick: null };
