@@ -45,3 +45,13 @@ export class SiimpleFormTitle extends SiimpleComponent
   }
 }
 
+//Form detail component
+export class SiimpleFormDetail extends SiimpleComponent
+{
+  //Render the form detail element
+  render()
+  {
+    //Return a form detail element
+    return h.div({ className: 'siimple-form-detail' }, this.props.children);
+  }
+}
