@@ -1,5 +1,6 @@
 //Import dependencies
 var express = require('express');
+var path = require('path');
 var rollupMiddleware = require('rollup-middleware');
 
 //Rollup plugins
@@ -18,7 +19,10 @@ options.generate.format = 'es';
 app.use(rollupMiddleware(options));
 
 //Serve static files
-app.use(express.static(process.cwd()));
+app.use(express.static(path.join(process.cwd(), './examples/')));
+
+//Map the bower components folder
+app.use('/bower_components', express.static(path.join(process.cwd(), './bower_components/')));
 
 //Run the server
 app.listen(5000, function()
