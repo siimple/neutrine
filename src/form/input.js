@@ -1,6 +1,9 @@
 import h from '../hyperscript.js';
 import SiimpleComponent from '../index.js';
 
+//Initialize the input types list
+var inputTypes = ['text', 'password', 'email', 'date'];
+
 //Input component
 export default class SiimpleInput extends SiimpleComponent
 {
@@ -17,9 +20,6 @@ export default class SiimpleInput extends SiimpleComponent
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
   }
-
-  //Initialize the input types list
-  static types = ['text', 'password', 'email', 'date'];
 
   //Handle the input change event
   handleChange(e)
@@ -61,7 +61,7 @@ export default class SiimpleInput extends SiimpleComponent
     input_props.className = [ 'siimple-input' ];
 
     //Add the input type
-    if(this.types.indexOf(this.props.type.toLowerCase()) !== -1)
+    if(inputTypes.indexOf(this.props.type.toLowerCase()) !== -1)
     {
       //Save the input type
       input_props.type = this.props.type.toLowerCase();
