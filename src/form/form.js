@@ -34,3 +34,14 @@ export class SiimpleFormRule extends SiimpleComponent
   }
 }
 
+//Form title component
+export class SiimpleFormTitle extends SiimpleComponent
+{
+  //Render the form title element
+  render()
+  {
+    //Return a form title element
+    return h.div({ className: 'siimple-form-title' }, this.props.children);
+  }
+}
+
