@@ -5,8 +5,7 @@
   "author": "Josemi Juanes <josemijuanes@gmail.com>",
   "license": "MIT",
   "homepage": "http://siimple.juanes.xyz/",
-  "repository":
-  {
+  "repository": {
     "type": "git",
     "url": "https://github.com/siimple/siimple-elements.git"
   },
@@ -24,18 +23,12 @@
     "gulp": "^3.9.1",
     "gulp-better-rollup": "^1.1.1",
     "gulp-rename": "^1.2.2",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-bower-resolve": "^0.5.0",
+    "rollup-plugin-includepaths": "^0.2.2",
     "rollup-plugin-uglify": "^2.0.1",
     "express": "^4.16.2",
     "rollup-middleware": "^0.1.1"
   },
-  "peerDependencies":
-  {
-    "bower": "^1.8.2"
-  },
-  "scripts":
-  {
+  "scripts": {
     "dev": "node ./scripts/dev.js"
   }
 }
