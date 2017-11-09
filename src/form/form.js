@@ -23,3 +23,14 @@ export class SiimpleFormGroup extends SiimpleComponent
   }
 }
 
+//Form rule component
+export class SiimpleFormRule extends SiimpleComponent
+{
+  //Render the form rule element
+  render()
+  {
+    //Return a rule elemenet
+    return h.div({ className: 'siimple-form-rule' });
+  }
+}
+
