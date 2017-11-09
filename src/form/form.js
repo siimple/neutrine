@@ -66,3 +66,14 @@ export class SiimpleFormLabel extends SiimpleComponent
     return h.div({ className: 'siimple-form-label' }, this.props.children);
   }
 }
+
+//Form helper component
+export class SiimpleFormHelper extends SiimpleComponent
+{
+  //Render the form helper element
+  render()
+  {
+    //Return a form helper element
+    return h.div({ className: 'siimple-form-helper' }, this.props.children);
+  }
+}
