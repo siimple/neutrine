@@ -25,13 +25,23 @@ export default class SiimpleSwitch extends SiimpleComponent
   handleChange(e)
   {
     //Call the change listener
-    this.props.onChange.call(null, e.nativeEvent, this.ref.checkbox.checked);
+    this.props.onChange.call(null, e.nativeEvent, this.ref.input.checked);
   }
 
   //Get or set the switch state
   checked(is_checked)
   {
-
+    //Check the is checked value
+    if(typeof is_checked === 'boolean')
+    {
+      //Set the checked value
+      this.ref.input.checked = is_checked;
+    }
+    else
+    {
+      //Return if checkbox is checked
+      return this.ref.input.checked;
+    }
   }
 
   //Render the switch element
