@@ -25,7 +25,7 @@ export default class SiimpleInput extends SiimpleComponent
   handleChange(e)
   {
     //Call the change listener
-    this.props.onChange.call(null, e.nativeEvent);
+    this.props.onChange.call(null, e.nativeEvent, this.value());
   }
 
   //Handle the input key press event
