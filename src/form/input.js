@@ -24,9 +24,6 @@ export default class SiimpleInput extends SiimpleComponent
   //Handle the input change event
   handleChange(e)
   {
-    //Check the change listener
-    if(typeof this.props.onChange !== 'function'){ return; }
-
     //Call the change listener
     this.props.onChange.call(null, e.nativeEvent);
   }
@@ -34,9 +31,6 @@ export default class SiimpleInput extends SiimpleComponent
   //Handle the input key press event
   handleKeyUp(e)
   {
-    //Check the key up listener
-    if(typeof this.props.onKeyUp !== 'function'){ return; }
-
     //Call the key up listener
     this.props.onKeyUp.call(null, e.nativeEvent);
   }
@@ -99,6 +93,12 @@ export default class SiimpleInput extends SiimpleComponent
       //Add the placeholder attribute
       input_props.placeholder = this.props.placeholder;
     }
+
+    //Check the on change listener
+    if(typeof this.props.onChange === 'function'){ input_props.onChange = self.handleChange; }
+
+    //Check the on key up listener
+    if(typeof this.props.onKeyUp === 'function'){ input_props.onKeyUp = self.handleKeyUp; } 
 
     //Check the name attribute
     if(typeof this.props.name === 'string'){ input_props.name = this.props.name; }
