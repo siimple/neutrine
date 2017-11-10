@@ -1,3 +1,6 @@
+//Html elements
+var html_elements = ['div', 'span', 'button', 'b', 'i', 'a'];
+
 //Hyperscript method
 var hyperscript = function(tag, props, children)
 {
@@ -35,7 +38,7 @@ var hyperscript = function(tag, props, children)
 };
 
 //Create an element alias
-['div', 'span', 'button', 'b', 'i'].forEach(function(tag)
+html_elements.forEach(function(tag)
 {
   //Register the element alias function
   hyperscript[tag] = function()
