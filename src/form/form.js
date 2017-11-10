@@ -52,7 +52,7 @@ export class SiimpleFormField extends SiimpleComponent
     if(typeof this.props.children !== 'undefined')
     {
       //Append the children array
-      children.concat(this.props.children);
+      children = children.concat(this.props.children);
     }
 
     //Check the helper prop
