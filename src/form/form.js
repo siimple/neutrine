@@ -7,73 +7,65 @@ export class SiimpleForm extends SiimpleComponent
   //Render a simple form element
   render()
   {
+    //Initialize the new list of childrens
+    var children = [];
+
+    //Check the title property
+    if(typeof this.props.title === 'string')
+    {
+      //Append the title element
+      children.push(h.div({ className: 'siimple-form-title' }, this.props.title));
+    }
+
+    //Check the detail property
+    if(typeof this.props.detail === 'string')
+    {
+      //Append the detail element
+      children.push(h.div({ className: 'siimple-form-detail' }, this.props.detail));
+    }
+
     //Return a form element
-    return h.div({ className: 'siimple-form' }, this.props.children);
+    return h.div({ className: 'siimple-form' }, children, this.props.children);
   }
 }
 
-//Form grup component
-export class SiimpleFormGroup extends SiimpleComponent
+//Form default props
+SiimpleForm.defaultProps = { title: null, detail: null };
+
+//Form field default props
+export class SiimpleFormField extends SiimpleComponent
 {
-  //Render the form group component
+  //Render the form field element
   render()
   {
-    //Return a group component
-    return h.div({ className: 'siimple-form-group' }, this.props.children);
+    //Initialize the form field children
+    var children = [];
+
+    //Check the label prop
+    if(typeof this.props.label === 'string')
+    {
+      //Append the label text
+      children.push(h.div({ className: 'siimple-form-field-label' }, this.props.label));
+    }
+
+    //Append the children
+    if(typeof this.props.children !== 'undefined')
+    {
+      //Append the children array
+      children.concat(this.props.children);
+    }
+
+    //Check the helper prop
+    if(typeof this.props.helper === 'string')
+    {
+      //Append the helper text
+      children.push(h.div({ className: 'siimple-form-field-helper' }, this.props.helper));
+    }
+
+    //Render the field element
+    return h.div({ className: 'siimple-form-field' }, children);
   }
 }
 
-//Form rule component
-export class SiimpleFormRule extends SiimpleComponent
-{
-  //Render the form rule element
-  render()
-  {
-    //Return a rule elemenet
-    return h.div({ className: 'siimple-form-rule' });
-  }
-}
-
-//Form title component
-export class SiimpleFormTitle extends SiimpleComponent
-{
-  //Render the form title element
-  render()
-  {
-    //Return a form title element
-    return h.div({ className: 'siimple-form-title' }, this.props.children);
-  }
-}
-
-//Form detail component
-export class SiimpleFormDetail extends SiimpleComponent
-{
-  //Render the form detail element
-  render()
-  {
-    //Return a form detail element
-    return h.div({ className: 'siimple-form-detail' }, this.props.children);
-  }
-}
-
-//Form label component
-export class SiimpleFormLabel extends SiimpleComponent
-{
-  //Render the form label element
-  render()
-  {
-    //Return a form label element
-    return h.div({ className: 'siimple-form-label' }, this.props.children);
-  }
-}
-
-//Form helper component
-export class SiimpleFormHelper extends SiimpleComponent
-{
-  //Render the form helper element
-  render()
-  {
-    //Return a form helper element
-    return h.div({ className: 'siimple-form-helper' }, this.props.children);
-  }
-}
+//Form field default props
+SiimpleFormField.defaultProps = { label: null, helper: null };
