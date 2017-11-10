@@ -67,6 +67,16 @@ export default class SiimpleInput extends SiimpleComponent
     this.ref.input.value = this.props.value;
   }
 
+  //Component did update
+  componentDidUpdate()
+  {
+    //Check the value property
+    if(this.props.value === null){ return; }
+
+    //Change the value
+    this.ref.input.value = this.props.value;
+  }
+
   //Render the input element
   render()
   {
