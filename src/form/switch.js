@@ -56,7 +56,7 @@ export default class SiimpleSwitch extends SiimpleComponent
     children.push(h('input', input_props));
 
     //Append a label element
-    children.push(h('label', { for: this.state.id }));
+    children.push(h('label', { htmlFor: this.state.id }));
 
     //Append an empty div element
     children.push(h.div({}, null));
