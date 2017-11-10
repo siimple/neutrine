@@ -21,14 +21,23 @@ export default class SiimpleSelect extends SiimpleComponent
   handleChange(e)
   {
     //Call the change listener
-    this.props.onChange.call(null, e.nativeEvent);
+    this.props.onChange.call(null, e.nativeEvent, this.value());
   }
 
-  //Get the actual value
-  value()
+  //Get or set the actual value
+  value(value)
   {
-    //Return the actual value
-    return this.ref.select.value;
+    //Check the provided value
+    if(typeof value !== 'undefined')
+    {
+      //Set the current value
+      this.ref.input.value = value;
+    }
+    else
+    {
+      //Return the input current value
+      return this.ref.input.value;
+    }
   }
 
   //Render the element
