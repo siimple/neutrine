@@ -24,6 +24,13 @@ export default class SiimpleSelect extends SiimpleComponent
     this.props.onChange.call(null, e.nativeEvent);
   }
 
+  //Get the actual value
+  value()
+  {
+    //Return the actual value
+    return this.ref.select.value;
+  }
+
   //Render the element
   render()
   {
@@ -32,6 +39,9 @@ export default class SiimpleSelect extends SiimpleComponent
 
     //Initialize the select props
     var select_props = { className: [ 'siimple-select' ] };
+
+    //Add the reference function
+    select_props.ref = function(s){ self.ref.select = s; };
 
     //Check the disabled property
     if(typeof this.props.disabled === true)
