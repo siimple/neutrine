@@ -41,11 +41,20 @@ export default class SiimpleInput extends SiimpleComponent
     this.props.onKeyUp.call(null, e.nativeEvent);
   }
 
-  //Get the current value
-  value()
+  //Get or set the current value
+  value(value)
   {
-    //Return the input current value
-    return this.ref.input.value;
+    //Check the provided value
+    if(typeof value !== 'undefined')
+    {
+      //Set the current value
+      this.ref.input.value = value;
+    }
+    else
+    {
+      //Return the input current value
+      return this.ref.input.value;
+    }
   }
 
   //Render the input element
