@@ -41,40 +41,11 @@ export default class SiimpleInput extends SiimpleComponent
     this.props.onKeyUp.call(null, e.nativeEvent);
   }
 
-  //Get or set the current value
-  value(value)
+  //Get the current value
+  value()
   {
-    //Check the provided value
-    if(typeof value !== 'undefined')
-    {
-      //Set the current value
-      this.ref.input.value = value;
-    }
-    else
-    {
-      //Return the input current value
-      return this.ref.input.value;
-    }
-  }
-
-  //Component did mount
-  componentDidMount()
-  {
-    //Check the value property
-    if(this.props.value === null){ return; }
-
-    //Change the value
-    this.ref.input.value = this.props.value;
-  }
-
-  //Component did update
-  componentDidUpdate()
-  {
-    //Check the value property
-    if(this.props.value === null){ return; }
-
-    //Change the value
-    this.ref.input.value = this.props.value;
+    //Return the input current value
+    return this.ref.input.value;
   }
 
   //Render the input element
@@ -124,10 +95,10 @@ export default class SiimpleInput extends SiimpleComponent
     if(typeof this.props.name === 'string'){ input_props.name = this.props.name; }
 
     //Check the value attribute
-    //if(typeof this.props.value === 'string'){ input_props.value = this.props.value; }
+    if(typeof this.props.value === 'string'){ input_props.defaultValue = this.props.value; }
 
     //Return the input element
-    return h('input', input_props, null);
+    return h('input', input_props);
   }
 }
 
