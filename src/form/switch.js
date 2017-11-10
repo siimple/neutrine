@@ -1,0 +1,70 @@
+import h from '../hyperscript.js';
+import * as utils from '../utils.js';
+import SiimpleComponent from '../index.js';
+
+//Switch component
+export default class SiimpleSwitch extends SiimpleComponent
+{
+  //Constructor
+  constructor(props)
+  {
+    //Call super method
+    super(props);
+
+    //Initialize the state
+    this.state = { id: utils.unique() };
+
+    //Initialize the referenced elements object
+    this.ref = {};
+
+    //Bind handlers
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  //Handle the switch change
+  handleChange(e)
+  {
+    //Call the change listener
+    this.props.onChange.call(null, e.nativeEvent, this.ref.checkbox.checked);
+  }
+
+  //Get or set the switch state
+  checked(is_checked)
+  {
+
+  }
+
+  //Render the switch element
+  render()
+  {
+    //Save this
+    var self = this;
+
+    //Initialize the switch children
+    var children = [];
+
+    //Initialize the input element props
+    var input_props = { type: 'checkbox', defaultChecked: this.props.checked, name: this.props.name };
+
+    //Add the input id
+    input_props.id = this.state.id;
+
+    //Add the on change listener
+    if(typeof this.props.onChange === 'function'){ input_props.onChange = self.handleChange; }
+
+    //Append the input
+    children.push(h('input', input_props));
+
+    //Append a label element
+    children.push(h('label', { for: this.state.id }));
+
+    //Append an empty div element
+    children.push(h.div({}, null));
+
+    //Return the switch element
+    return h.div({ className: 'siimple-switch' }, children);
+  }
+}
+
+//Switch default props
+SiimpleSwitch.defaultProps = { name: null, checked: true, onChange: null };
