@@ -10,14 +10,34 @@ var hyperscript = function(tag, props, children)
     //Initialize an empty children object
     children = [];
   }
-  else if(arguments.length !== 3)
+  else if(arguments.length < 2)
   {
     //Throw error and exit
-    throw new Error('Expected 3 arguments in hyperscript constructor');
+    throw new Error('Expected at least 2 arguments in hyperscript constructor');
   }
 
   //Check the children list
   if(Array.isArray(children) === false){ children = [ children ]; }
+
+  //Check the arguments length
+  if(arguments.length > 3)
+  {
+    //For each argument in the list
+    for(var i = 3; i < arguments.length; i++)
+    {
+      //Check the argument type
+      if(typeof arguments[i] === 'object' && Array.isArray(arguments[i]) === true)
+      {
+        //Concatenate to the children array
+        children = children.concat(arguments[i]);
+      }
+      else
+      {
+        //Append to the children array
+        children.push(arguments[i]);
+      }
+    }
+  }
 
   //Parse the props
   if(typeof props === 'object' && props !== null)
