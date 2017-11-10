@@ -50,6 +50,9 @@ export default class SiimpleSelect extends SiimpleComponent
     //Check the default value
     if(typeof this.props.value === 'string'){ select_props.defaultValue = this.props.value; }
 
+    //Register the change listener
+    if(typeof this.props.onChange === 'function'){ select_props.onChange = self.handleChange; }
+
     //Initialize the select children
     var select_children = [];
 
