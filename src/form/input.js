@@ -58,7 +58,7 @@ export default class SiimpleInput extends SiimpleComponent
     var self = this;
 
     //Input props
-    var input_props = { type: 'text', onChange: self.handleChange, onKeyUp: self.handleKeyUp };
+    var input_props = { type: 'text', name: this.props.name };
 
     //Initialize the input class list
     input_props.className = [ 'siimple-input' ];
