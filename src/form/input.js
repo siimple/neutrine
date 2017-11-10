@@ -98,7 +98,7 @@ export default class SiimpleInput extends SiimpleComponent
     if(typeof this.props.onChange === 'function'){ input_props.onChange = self.handleChange; }
 
     //Check the on key up listener
-    if(typeof this.props.onKeyUp === 'function'){ input_props.onKeyUp = self.handleKeyUp; } 
+    if(typeof this.props.onKeyUp === 'function'){ input_props.onKeyUp = self.handleKeyUp; }
 
     //Check the name attribute
     if(typeof this.props.name === 'string'){ input_props.name = this.props.name; }
