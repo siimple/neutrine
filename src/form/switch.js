@@ -46,6 +46,9 @@ export default class SiimpleSwitch extends SiimpleComponent
     //Initialize the input element props
     var input_props = { type: 'checkbox', defaultChecked: this.props.checked, name: this.props.name };
 
+    //Add the input reference
+    input_props.ref = function(i){ self.ref.input = i; };
+
     //Add the input id
     input_props.id = this.state.id;
 
