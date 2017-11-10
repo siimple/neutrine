@@ -38,7 +38,7 @@ export default class SiimpleSelect extends SiimpleComponent
     var self = this;
 
     //Initialize the select props
-    var select_props = { className: [ 'siimple-select' ] };
+    var select_props = { className: [ 'siimple-select' ], name: this.props.name };
 
     //Add the reference function
     select_props.ref = function(s){ self.ref.select = s; };
