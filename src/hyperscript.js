@@ -31,7 +31,7 @@ var hyperscript = function(tag, props, children)
         //Concatenate to the children array
         children = children.concat(arguments[i]);
       }
-      else
+      else if(typeof arguments[i] !== 'undefined');
       {
         //Append to the children array
         children.push(arguments[i]);
