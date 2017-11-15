@@ -2,8 +2,7 @@ import h from '../hyperscript.js';
 import colors from '../colors.js';
 import SiimpleComponent from '../index.js';
 
-//Navbar sizes
-var navbar_sizes = ['small', 'large', 'fluid'];
+import sizes from './sizes.js';
 
 //Navbar default class
 export class SiimpleNavbar extends SiimpleComponent
@@ -25,7 +24,7 @@ export class SiimpleNavbar extends SiimpleComponent
     }
 
     //Check the size
-    if(typeof props.size === 'string' && navbar_sizes.indexOf(props.size.toLowerCase()) !== -1)
+    if(typeof props.size === 'string' && sizes.indexOf(props.size.toLowerCase()) !== -1)
     {
       //Add the size class
       class_list.push('siimple-navbar--' + props.size.toLowerCase());
