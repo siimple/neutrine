@@ -38,3 +38,54 @@ export class SiimpleNavbar extends SiimpleComponent
 
 //Navbar default props
 SiimpleNavbar.defaultProps = { color: null, size: null };
+
+//Navbar title element
+export class SiimpleNavbarTitle extends SiimpleComponent
+{
+  //Constructor
+  constructor(props)
+  {
+    //Call the super method
+    super(props);
+
+    //Bind the handle click
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  //Handle the title click event
+  handleClick(e)
+  {
+    //Check the onclick listener
+    if(typeof this.props.onClick === 'function')
+    {
+      //Call the onclick listener
+      this.props.onClick.call(null, e);
+    }
+  }
+
+  //Render the navbar title element
+  render()
+  {
+    //Save this
+    var self = this;
+
+    //Save the props
+    var props = this.props;
+
+    //Init the title class list
+    var class_list = [ 'siimple-navbar-title' ];
+
+    //Check the color
+    if(typeof props.color === 'string' && colors.list.indexOf(props.color.toLowerCase()) !== -1)
+    {
+      //Add the color class
+      class_list.push('siimple-navbar--' + props.color.toLowerCase());
+    }
+
+    //Render the navbar title
+    return h.div({ className: class_list, onClick: self.handleClick }, props.children);
+  }
+}
+
+//Navbar title default props
+SiimpleNavbar.defaultProps = { color: null, onClick: null };
