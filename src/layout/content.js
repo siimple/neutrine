@@ -19,7 +19,7 @@ export default class SiimpleContent extends SiimpleComponent
       //Add the size class
       class_list.push('siimple-content--' + this.props.size.toLowerCase());
     }
-    
+
     //Render the content div
     return h.div({ className: class_list }, this.props.children);
   }
