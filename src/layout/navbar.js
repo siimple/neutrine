@@ -66,26 +66,10 @@ export class SiimpleNavbarTitle extends SiimpleComponent
   //Render the navbar title element
   render()
   {
-    //Save this
-    var self = this;
-
-    //Save the props
-    var props = this.props;
-
-    //Init the title class list
-    var class_list = [ 'siimple-navbar-title' ];
-
-    //Check the color
-    if(typeof props.color === 'string' && colors.list.indexOf(props.color.toLowerCase()) !== -1)
-    {
-      //Add the color class
-      class_list.push('siimple-navbar--' + props.color.toLowerCase());
-    }
-
     //Render the navbar title
-    return h.div({ className: class_list, onClick: self.handleClick }, props.children);
+    return h.div({ className: 'siimple-navbar-title', onClick: this.handleClick }, this.props.children);
   }
 }
 
 //Navbar title default props
-SiimpleNavbarTitle.defaultProps = { color: null, onClick: null };
+SiimpleNavbarTitle.defaultProps = { onClick: null };
