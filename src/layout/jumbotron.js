@@ -26,11 +26,35 @@ export class SiimpleJumbotron extends SiimpleComponent
       //Add the jumbotron size class
       class_list.push('siimple-jumbotron--' + this.props.size.toLowerCase());
     }
+
+    //Initialize the jumbotron children array
+    var children = [];
+
+    //Check the title property
+    if(typeof this.props.title === 'string')
+    {
+      //Add the title element
+      children.push(h.div({ className: 'siimple-jumbotron-title' }, this.props.title));
+    }
+
+    //Check the subtitle property
+    if(typeof this.props.subtitle === 'string')
+    {
+      //Add the subtitle element
+      children.push(h.div({ className: 'siimple-jumbotron-subtitle' }, this.props.title));
+    }
     
+    //Check the detail property
+    if(typeof this.props.detail === 'string')
+    {
+      //Add the detail element
+      children.push(h.div({ className: 'siimple-jumbotron-detail' }, this.props.detail));
+    }
+
     //Return the parent div
-    return h.div({ className: class_list, style: this.props.style }, this.props.children);
+    return h.div({ className: class_list, style: this.props.style }, children, this.props.children);
   }
 }
 
 //Jumbotron default props
-SiimpleJumbotron.defaultProps = { color: null, size: null, style: {} };
+SiimpleJumbotron.defaultProps = { color: null, size: null, style: {}, title: null, subtitle: null, detail: null };
