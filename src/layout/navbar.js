@@ -88,4 +88,4 @@ export class SiimpleNavbarTitle extends SiimpleComponent
 }
 
 //Navbar title default props
-SiimpleNavbar.defaultProps = { color: null, onClick: null };
+SiimpleNavbarTitle.defaultProps = { color: null, onClick: null };
