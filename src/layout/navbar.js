@@ -66,8 +66,11 @@ export class SiimpleNavbarTitle extends SiimpleComponent
   //Render the navbar title element
   render()
   {
+    //Initialize the title element props
+    var props = { className: 'siimple-navbar-title', style: { align: 'left' }, onClick: this.handleClick };
+
     //Render the navbar title
-    return h.div({ className: 'siimple-navbar-title', onClick: this.handleClick }, this.props.children);
+    return h.div(props, this.props.children);
   }
 }
 
