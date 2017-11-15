@@ -20,9 +20,9 @@ export default class SiimpleContent extends SiimpleComponent
     }
 
     //Render the content div
-    return h.div({ className: class_list }, this.props.children);
+    return h.div({ className: class_list, style: this.props.style }, this.props.children);
   }
 }
 
 //Default props
-SiimpleContent.defaultProps = { size: null };
+SiimpleContent.defaultProps = { size: null, style: {} };
