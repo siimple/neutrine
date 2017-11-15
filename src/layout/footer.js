@@ -2,8 +2,7 @@ import h from '../hyperscript.js';
 import colors from '../colors.js';
 import SiimpleComponent from '../index.js';
 
-//Footer sizes
-var footer_sizes = ['small', 'large', 'fluid'];
+import sizes from './sizes.js';
 
 //Footer layout component
 export default class SiimpleFooter extends SiimpleComponent
@@ -22,7 +21,7 @@ export default class SiimpleFooter extends SiimpleComponent
     }
 
     //Check the content size
-    if(typeof this.props.size === 'string' && footer_sizes.indexOf(this.props.size.toLowerCase()) !== -1)
+    if(typeof this.props.size === 'string' && sizes.indexOf(this.props.size.toLowerCase()) !== -1)
     {
       //Add the size class
       class_list.push('siimple-footer--' + this.props.size.toLowerCase());
