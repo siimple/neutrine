@@ -32,7 +32,7 @@ export class SiimpleNavbar extends SiimpleComponent
     }
 
     //Render the navbar
-    return h.div({ className: class_list }, this.props.children);
+    return h.div({ className: class_list }, props.children);
   }
 }
 
