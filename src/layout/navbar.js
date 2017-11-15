@@ -76,3 +76,41 @@ export class SiimpleNavbarTitle extends SiimpleComponent
 
 //Navbar title default props
 SiimpleNavbarTitle.defaultProps = { onClick: null };
+
+//Navbar link element
+export class SiimpleNavbarLink extends SiimpleComponent
+{
+  //Constructor
+  constructor(props)
+  {
+    //Call the super method
+    super(props);
+
+    //Bind the handle click
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  //Handle the link click event
+  handleClick(e)
+  {
+    //Check the onclick listener
+    if(typeof this.props.onClick === 'function')
+    {
+      //Call the onclick listener
+      this.props.onClick.call(null, e);
+    }
+  }
+
+  //Render the navbar title element
+  render()
+  {
+    //Initialize the link element props
+    var props = { className: 'siimple-navbar-link', style: { align: 'right' }, onClick: this.handleClick };
+
+    //Render the navbar link
+    return h.div(props, this.props.children);
+  }
+}
+
+//Navbar link default props
+SiimpleNavbarLink.defaultProps = { onClick: null };
