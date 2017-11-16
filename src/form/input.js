@@ -106,6 +106,24 @@ export default class SiimpleInput extends SiimpleComponent
     //Check the value attribute
     if(typeof this.props.value === 'string'){ input_props.defaultValue = this.props.value; }
 
+    //Check the input type
+    if(this.props.type === 'number')
+    {
+      //Check the max attribute
+      if(typeof this.props.max === 'string' || typeof this.props.max === 'number')
+      {
+        //Add the max value
+        input_props.max = this.props.max.toString();
+      }
+
+      //Check the min attribute
+      if(typeof this.props.min === 'string' || typeof this.props.min === 'number')
+      {
+        //Add the min value
+        input_props.min = this.props.min.toString();
+      }
+    }
+
     //Return the input element
     return h('input', input_props);
   }
@@ -115,3 +133,5 @@ export default class SiimpleInput extends SiimpleComponent
 SiimpleInput.defaultProps = { type: 'text', placeholder: '', value: null, fluid: false, disabled: false, style: null };
 SiimpleInput.defaultProps.onChange = null; //Change listener
 SiimpleInput.defaultProps.onKeyUp = null; //Key press listener
+SiimpleInput.defaultProps.max = null; //Max value for input type number
+SiimpleInput.defaultProps.min = null; //Min value for input type number
