@@ -43,7 +43,7 @@ export class SiimpleJumbotron extends SiimpleComponent
       //Add the subtitle element
       children.push(h.div({ className: 'siimple-jumbotron-subtitle' }, this.props.title));
     }
-    
+
     //Check the detail property
     if(typeof this.props.detail === 'string')
     {
