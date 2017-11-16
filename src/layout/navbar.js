@@ -66,7 +66,7 @@ export class SiimpleNavbarTitle extends SiimpleComponent
   render()
   {
     //Initialize the title element props
-    var props = { className: 'siimple-navbar-title', style: { align: 'left' }, onClick: this.handleClick };
+    var props = { className: 'siimple-navbar-title', style: { float: 'left' }, onClick: this.handleClick };
 
     //Render the navbar title
     return h.div(props, this.props.children);
@@ -104,7 +104,7 @@ export class SiimpleNavbarLink extends SiimpleComponent
   render()
   {
     //Initialize the link element props
-    var props = { className: 'siimple-navbar-link', style: { align: 'right' }, onClick: this.handleClick };
+    var props = { className: 'siimple-navbar-link', style: { float: 'right' }, onClick: this.handleClick };
 
     //Render the navbar link
     return h.div(props, this.props.children);
