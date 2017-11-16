@@ -29,33 +29,35 @@ export class SiimpleGridCol extends SiimpleComponent
   //Render the grid column
   render()
   {
-    //Save this
-    var self = this;
-
     //Initialize the columns class list
     var class_list = [ 'siimple-grid-col' ];
 
-    //Check the sizes property
-    if(typeof this.props.sizes === 'object' && this.props.sizes !== null)
+    //Check the default size
+    if(typeof this.props.size === 'number')
     {
-      //Parse all the keys
-      Object.keys(this.props.sizes).forEach(function(key)
-      {
-        //Check the kwy
-        if(['default', 'sm', 'md', 'lg' ].indexOf(key) === -1){ return; }
+      //Add the default column size
+      class_list.push('siimple-grid-col--' + this.props.size);
+    }
 
-        //Check for default key
-        if(key === 'default')
-        {
-          //Add the default column size
-          class_list.push('siimple-grid-col--' + self.props.sizes.default);
-        }
-        else
-        {
-          //Add the column size
-          class_list.push('siimple-grid-col-' + key + '--' + self.props.sizes[key]);
-        }
-      });
+    //Check the large column size
+    if(typeof this.props.large === 'number')
+    {
+      //Add the column size for large screens
+      class_list.push('siimple-grid-col-lg--' + this.props.large);
+    }
+
+    //check the medium column size
+    if(typeof this.props.medium === 'number')
+    {
+      //Add the column size for medium screens
+      class_list.push('siimple-grid-col-md--' + this.props.medium);
+    }
+
+    //Check the small column size
+    if(typeof this.props.small === 'number')
+    {
+      //Add the column size for small screens
+      class_list.push('siimple-grid-col-sm--' + this.props.medium);
     }
 
     //Return the column element
@@ -64,4 +66,4 @@ export class SiimpleGridCol extends SiimpleComponent
 }
 
 //Column default props
-SiimpleGridCol.defaultProps = { sizes: {} };
+SiimpleGridCol.defaultProps = { size: null, large: null, medium: null, small: null };
