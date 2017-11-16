@@ -2,7 +2,7 @@ import h from '../hyperscript.js';
 import SiimpleComponent from '../index.js';
 
 //Initialize the input types list
-var inputTypes = ['text', 'password', 'email', 'date'];
+var inputTypes = ['text', 'password', 'email', 'date', 'number'];
 
 //Input component
 export default class SiimpleInput extends SiimpleComponent
