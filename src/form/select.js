@@ -53,14 +53,14 @@ export default class SiimpleSelect extends SiimpleComponent
     select_props.ref = function(s){ self.ref.select = s; };
 
     //Check the disabled property
-    if(typeof this.props.disabled === true)
+    if(this.props.disabled === true)
     {
       //Add the disabled class
       select_props.className.push('siimple-select--disabled');
     }
 
     //Check the fluid property
-    if(typeof this.props.fluid === true)
+    if(this.props.fluid === true)
     {
       //Add the fluid class
       select_props.className.push('siimple-select--fluid');
