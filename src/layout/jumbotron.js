@@ -41,7 +41,7 @@ export default class SiimpleJumbotron extends SiimpleComponent
     if(typeof this.props.subtitle === 'string')
     {
       //Add the subtitle element
-      children.push(h.div({ className: 'siimple-jumbotron-subtitle' }, this.props.title));
+      children.push(h.div({ className: 'siimple-jumbotron-subtitle' }, this.props.subtitle));
     }
 
     //Check the detail property
