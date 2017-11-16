@@ -58,7 +58,7 @@ export default class SiimpleInput extends SiimpleComponent
     var self = this;
 
     //Input props
-    var input_props = { type: 'text', name: this.props.name };
+    var input_props = { type: 'text', name: this.props.name, style: this.props.style };
 
     //Initialize the input class list
     input_props.className = [ 'siimple-input' ];
@@ -112,6 +112,6 @@ export default class SiimpleInput extends SiimpleComponent
 }
 
 //Input default props
-SiimpleInput.defaultProps = { type: 'text', placeholder: '', value: null, fluid: false, disabled: false };
+SiimpleInput.defaultProps = { type: 'text', placeholder: '', value: null, fluid: false, disabled: false, style: null };
 SiimpleInput.defaultProps.onChange = null; //Change listener
 SiimpleInput.defaultProps.onKeyUp = null; //Key press listener
