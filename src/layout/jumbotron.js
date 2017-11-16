@@ -5,7 +5,7 @@ import SiimpleComponent from '../index.js';
 import sizes from './sizes.js';
 
 //Jumbotron base component
-export class SiimpleJumbotron extends SiimpleComponent
+export default class SiimpleJumbotron extends SiimpleComponent
 {
   //Render the jumbotron component
   render()
