@@ -1,3 +1,5 @@
+import React from 'react';
+
 //Html elements
 var html_elements = ['div', 'span', 'button', 'b', 'i', 'a'];
 
