@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React from 'react';
 
 //Element default class
 export default class SiimpleComponent extends React.Component
