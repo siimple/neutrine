@@ -1,3 +1,5 @@
+import { Component } from 'react';
+
 //Element default class
 export default class SiimpleComponent extends React.Component
 {
