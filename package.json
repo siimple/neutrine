@@ -22,13 +22,6 @@
     "react-dom": "^16.1.1"
   },
   "devDependencies": {
-    "express": "^4.16.2",
-    "gulp": "^3.9.1",
-    "gulp-better-rollup": "^1.1.1",
-    "gulp-rename": "^1.2.2",
-    "rollup-middleware": "^0.1.1",
-    "rollup-plugin-includepaths": "^0.2.2",
-    "rollup-plugin-uglify": "^2.0.1",
     "webpack": "^3.8.1"
   },
   "scripts": {
