@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "author": "Josemi Juanes <josemijuanes@gmail.com>",
   "license": "MIT",
-  "homepage": "http://siimple.juanes.xyz/",
+  "homepage": "https://www.siimple.xyz/",
   "repository": {
     "type": "git",
     "url": "https://github.com/siimple/siimple-elements.git"
@@ -17,15 +17,19 @@
     "design",
     "react"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1"
+  },
   "devDependencies": {
+    "express": "^4.16.2",
     "gulp": "^3.9.1",
     "gulp-better-rollup": "^1.1.1",
     "gulp-rename": "^1.2.2",
+    "rollup-middleware": "^0.1.1",
     "rollup-plugin-includepaths": "^0.2.2",
     "rollup-plugin-uglify": "^2.0.1",
-    "express": "^4.16.2",
-    "rollup-middleware": "^0.1.1"
+    "webpack": "^3.8.1"
   },
   "scripts": {
     "dev": "node ./scripts/dev.js"
