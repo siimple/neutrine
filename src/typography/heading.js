@@ -1,7 +1,8 @@
 import h from '../hyperscript.js';
+import SiimpleComponent from '../index.js';
 
 //Heading class
-export default class SiimpleHeading extends React.Component
+export default class SiimpleHeading extends SiimpleComponent
 {
   //Render the heading element
   render()
