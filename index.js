@@ -20,7 +20,7 @@ import { SiimpleNavbar, SiimpleNavbarTitle, SiimpleNavbarLink } from './src/layo
 
 import SiimpleHeading from './src/typography/heading.js';
 
-export default {
+export {
   SiimpleAlert,
   SiimpleBtn,
   SiimpleClose,
