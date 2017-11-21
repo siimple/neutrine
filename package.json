@@ -17,6 +17,7 @@
     "design",
     "react"
   ],
+  "main": "./index.js",
   "dependencies": {
     "react": "^16.1.1",
     "react-dom": "^16.1.1"
