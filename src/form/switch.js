@@ -1,5 +1,6 @@
+import { string } from 'kofi-utils';
+
 import h from '../hyperscript.js';
-import * as utils from '../utils.js';
 import SiimpleComponent from '../index.js';
 
 //Switch component
@@ -12,7 +13,7 @@ export default class SiimpleSwitch extends SiimpleComponent
     super(props);
 
     //Initialize the state
-    this.state = { id: utils.unique() };
+    this.state = { id: string.unique() };
 
     //Initialize the referenced elements object
     this.ref = {};
