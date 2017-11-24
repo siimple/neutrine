@@ -17,6 +17,7 @@ import SiimpleContent from './src/layout/content.js';
 import SiimpleFooter from './src/layout/footer.js';
 import SiimpleJumbotron from './src/layout/jumbotron.js';
 import { SiimpleNavbar, SiimpleNavbarTitle, SiimpleNavbarLink } from './src/layout/navbar.js';
+import SiimpleTabs from './src/layout/tabs.js';
 
 import SiimpleHeading from './src/typography/heading.js';
 
@@ -42,5 +43,6 @@ export {
   SiimpleNavbar,
   SiimpleNavbarTitle,
   SiimpleNavbarLink,
+  SiimpleTabs,
   SiimpleHeading
 }
