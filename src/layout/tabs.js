@@ -12,7 +12,7 @@ export default class SiimpleTabs extends SiimpleComponent
     super(props);
 
     //Initialize the state with the selected tab
-    this.state = { selected: 0 };
+    //this.state = { selected: 0 };
 
     //Bind handlers
     this.handleClick = this.handleClick.bind(this);
@@ -52,7 +52,7 @@ export default class SiimpleTabs extends SiimpleComponent
   select(index)
   {
     //Change the state
-    this.setState({ selected: index });
+    //this.setState({ selected: index });
   }
 
   //Render the tabs element
@@ -91,7 +91,8 @@ export default class SiimpleTabs extends SiimpleComponent
       tab_props.dataset = { index: index };
 
       //Check if this tab is selected
-      if(self.state.selected === index)
+      //if(self.state.selected === index)
+      if(self.props.selected !== null && self.props.selected === index)
       {
         //Add the selected class
         tab_props.className.push('siimple-tabs-tab--selected');
@@ -107,4 +108,4 @@ export default class SiimpleTabs extends SiimpleComponent
 }
 
 //Tabs default props
-SiimpleTabs.defaultProps = { tabs: [], boxed: true, color: 'navy', onClick: null };
+SiimpleTabs.defaultProps = { tabs: [], boxed: true, color: 'navy', onClick: null, selected: null };
