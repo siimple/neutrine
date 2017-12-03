@@ -4,7 +4,8 @@ import SiimpleClose from './src/elements/close.js';
 import SiimpleSpinner from './src/elements/spinner.js';
 import SiimpleTip from './src/elements/tip.js';
 
-import { SiimpleForm, SiimpleFormField } from './src/form/form.js';
+import SiimpleForm from './src/form/form.js';
+import SiimpleFormField from './src/form/field.js';
 import SiimpleInput from './src/form/input.js';
 import SiimpleLabel from './src/form/label.js';
 import SiimpleSelect from './src/form/select.js';
