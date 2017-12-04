@@ -21,6 +21,7 @@ import { SiimpleNavbar, SiimpleNavbarTitle, SiimpleNavbarLink } from './src/layo
 import SiimpleTabs from './src/layout/tabs.js';
 
 import SiimpleHeading from './src/typography/heading.js';
+import SiimpleParagraph from './src/typography/paragraph.js';
 
 export {
   SiimpleAlert,
@@ -45,5 +46,6 @@ export {
   SiimpleNavbarTitle,
   SiimpleNavbarLink,
   SiimpleTabs,
-  SiimpleHeading
+  SiimpleHeading,
+  SiimpleParagraph
 }
