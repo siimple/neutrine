@@ -2,7 +2,7 @@ import h from '../hyperscript.js';
 import SiimpleComponent from '../index.js';
 
 //Form component
-export class SiimpleForm extends SiimpleComponent
+export default class SiimpleForm extends SiimpleComponent
 {
   //Render a simple form element
   render()
