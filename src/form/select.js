@@ -31,12 +31,12 @@ export default class SiimpleSelect extends SiimpleComponent
     if(typeof value !== 'undefined')
     {
       //Set the current value
-      this.ref.input.value = value;
+      this.ref.select.value = value;
     }
     else
     {
       //Return the input current value
-      return this.ref.input.value;
+      return this.ref.select.value;
     }
   }
 
