@@ -35,9 +35,9 @@ export default class SiimpleTip extends SiimpleComponent
     }
 
     //Return the element
-    return h.div({ className: class_list }, this.props.children);
+    return h('div', { className: class_list, style: this.props.style }, this.props.children);
   }
 }
 
 //Initialize the tip element default props
-SiimpleTip.defaultProps = { color: 'blue', icon: null };
+SiimpleTip.defaultProps = { color: 'blue', icon: null, style: null };
