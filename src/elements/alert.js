@@ -5,30 +5,12 @@ import SiimpleClose from './close.js';
 //Alert component
 export default class SiimpleAlert extends SiimpleComponent
 {
-  //Constructor
-  constructor(props)
-  {
-    //Call super
-    super(props);
-
-    //Bind the handle close method
-    this.handleClose = this.handleClose.bind(this);
-  }
-
-  //Handle close button event
-  handleClose(e)
-  {
-    //Check if the close button handler is defined
-    if(typeof this.props.onClose === 'function')
-    {
-      //Call the close handler method
-      return this.props.onClose.call(null, e);
-    }
-  }
-
   //Render the alert component
   render()
   {
+    //Save this
+    var self = this;
+
     //Initialize the list with the element classes
     var class_list = [ 'siimple-alert' ];
 
@@ -40,13 +22,13 @@ export default class SiimpleAlert extends SiimpleComponent
     }
 
     //Initialize the child elements list
-    var children = [ h.span({}, this.props.children) ];
+    var children = [ h('span', {}, this.props.children) ];
 
     //Check if the close button is enabled
     if(this.props.showCloseButton === true)
     {
       //Add the close button element
-      children.push(h(SiimpleClose, { onClick: self.props.handleClose }));
+      children.push(h(SiimpleClose, { onClick: self.props.onClose }));
     }
 
     //Create the alert element
