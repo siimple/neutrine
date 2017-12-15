@@ -25,9 +25,9 @@ export default class SiimpleSpinner extends SiimpleComponent
     }
 
     //Return the element
-    return h.div({ className: class_list }, null);
+    return h('div', { className: class_list, style: this.props.style }, null);
   }
 }
 
 //Spinner default props
-SiimpleSpinner.defaultProps = { color: 'blue', size: null };
+SiimpleSpinner.defaultProps = { color: 'blue', size: null, style: null };
