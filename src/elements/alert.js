@@ -46,13 +46,13 @@ export default class SiimpleAlert extends SiimpleComponent
     if(this.props.showCloseButton === true)
     {
       //Add the close button element
-      children.push(h(SiimpleClose, { onClick: this.handleClose }));
+      children.push(h(SiimpleClose, { onClick: self.props.handleClose }));
     }
 
     //Create the alert element
-    return h.div({ className: class_list }, children);
+    return h('div', { className: class_list, style: this.props.style }, children);
   }
 }
 
 //Alert default props
-SiimpleAlert.defaultProps = { color: 'blue', showCloseButton: false, onClose: null };
+SiimpleAlert.defaultProps = { color: 'blue', showCloseButton: false, onClose: null, style: null };
