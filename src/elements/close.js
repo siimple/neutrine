@@ -32,3 +32,6 @@ export default class SiimpleClose extends SiimpleComponent
     return h.div({ className: 'siimple-close', onClick: this.handleClick }, null);
   }
 }
+
+//Default props
+SiimpleClose.defaultProps = { style: null, onClick: null };
