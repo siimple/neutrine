@@ -4,27 +4,6 @@ import h from '../hyperscript.js';
 //Button class
 export default class SiimpleBtn extends SiimpleComponent
 {
-  //Constructor
-  constructor(props)
-  {
-    //Call super
-    super(props);
-
-    //Bind the handle click method
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  //Handle click method
-  handleClick(e)
-  {
-    //Check if the onclick property is defined and is a function
-    if(typeof this.props.onClick === 'function')
-    {
-      //Call the onclick method
-      return this.props.onClick.call(null, e);
-    }
-  }
-
   //Render the button
   render()
   {
@@ -32,7 +11,7 @@ export default class SiimpleBtn extends SiimpleComponent
     var self = this;
 
     //Initialize the button props
-    var btn_props = { onClick: self.handleClick, style: this.props.style };
+    var btn_props = { onClick: self.props.onClick, style: self.props.style };
 
     //Initialize the list of classes
     btn_props.className = [ 'siimple-btn' ];
