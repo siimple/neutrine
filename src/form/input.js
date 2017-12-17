@@ -36,13 +36,13 @@ export default class SiimpleInput extends SiimpleComponent
   }
 
   //Get or set the current value
-  value(value)
+  value(val)
   {
     //Check the provided value
-    if(typeof value !== 'undefined')
+    if(typeof val !== 'undefined')
     {
       //Set the current value
-      this.ref.input.value = value;
+      this.ref.input.value = val;
     }
     else
     {
