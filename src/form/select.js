@@ -25,13 +25,13 @@ export default class SiimpleSelect extends SiimpleComponent
   }
 
   //Get or set the actual value
-  value(value)
+  value(val)
   {
     //Check the provided value
-    if(typeof value !== 'undefined')
+    if(typeof val !== 'undefined')
     {
       //Set the current value
-      this.ref.select.value = value;
+      this.ref.select.value = val;
     }
     else
     {
