@@ -47,7 +47,7 @@ colors.get = function(key, index)
   if(colors.list.indexOf(key.toLowerCase()) === -1)
   {
     //Set the first color in the list
-    key = colors[0];
+    key = colors.list[0];
   }
 
   //Return the color
