@@ -25,10 +25,10 @@ export default class SiimpleAlert extends SiimpleComponent
     var children = [ h('span', {}, this.props.children) ];
 
     //Check if the close button is enabled
-    if(this.props.showCloseButton === true)
+    if(this.props.showClose === true)
     {
       //Add the close button element
-      children.push(h(SiimpleClose, { onClick: self.props.onClose }));
+      children.push(h(SiimpleClose, { onClick: self.props.onCloseClick }));
     }
 
     //Create the alert element
@@ -37,4 +37,4 @@ export default class SiimpleAlert extends SiimpleComponent
 }
 
 //Alert default props
-SiimpleAlert.defaultProps = { color: 'blue', showCloseButton: false, onClose: null, style: null };
+SiimpleAlert.defaultProps = { color: 'blue', showClose: false, onCloseClick: null, style: null };
