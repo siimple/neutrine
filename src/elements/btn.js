@@ -41,7 +41,7 @@ export default class SiimpleBtn extends SiimpleComponent
     if(typeof this.props.style === 'object' && this.props.style !== null)
     {
       //Assign the new styles
-      btn_props.style = Object.assign(btn_props, this.props.style);
+      btn_props.style = Object.assign(btn_props.style, this.props.style);
     }
 
     //Return the button element
