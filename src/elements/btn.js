@@ -34,7 +34,7 @@ export default class SiimpleBtn extends SiimpleComponent
     if(this.props.fluid === true)
     {
       //Change the button style
-      btn_props.style = { width: '100%', marginLeft: '0px', marginRight: '0px' };
+      btn_props.style = { width: '100%', paddingLeft: '0px', paddingRight: '0px' };
     }
 
     //Check the custom styles
