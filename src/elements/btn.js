@@ -11,7 +11,7 @@ export default class SiimpleBtn extends SiimpleComponent
     var self = this;
 
     //Initialize the button props
-    var btn_props = { onClick: self.props.onClick, style: self.props.style };
+    var btn_props = { onClick: self.props.onClick, style: {} };
 
     //Initialize the list of classes
     btn_props.className = [ 'siimple-btn' ];
@@ -30,10 +30,24 @@ export default class SiimpleBtn extends SiimpleComponent
       btn_props.className.push('siimple-btn--disabled');
     }
 
+    //Check the fluid property
+    if(this.props.fluid === true)
+    {
+      //Change the button style
+      btn_props.style = { width: '100%', marginLeft: '0px', marginRight: '0px' };
+    }
+
+    //Check the custom styles
+    if(typeof this.props.style === 'object' && this.props.style !== null)
+    {
+      //Assign the new styles
+      btn_props.style = Object.assign(btn_props, this.props.style);
+    }
+
     //Return the button element
     return h('div', btn_props, this.props.children);
   }
 }
 
 //Default properties values
-SiimpleBtn.defaultProps = { color: 'blue', disabled: false, onClick: null, style: null };
+SiimpleBtn.defaultProps = { color: 'blue', disabled: false, onClick: null, style: null, fluid: false };
