@@ -1,2 +1,2 @@
 //Export the layout sizes
-export default [ 'small', 'large', 'fluid' ];
+export default [ 'small', 'medium', 'large', 'fluid' ];
