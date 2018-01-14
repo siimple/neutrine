@@ -36,7 +36,7 @@ export {
   SiimpleLabel,
   SiimpleSelect,
   SiimpleSwitch,
-  
+
   SiimpleGrid,
   SiimpleGridRow,
   SiimpleGridCol,
