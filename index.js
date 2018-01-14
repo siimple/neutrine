@@ -14,6 +14,7 @@ import SiimpleSwitch from './src/form/switch.js';
 import { SiimpleGrid, SiimpleGridRow, SiimpleGridCol } from './src/grid/grid.js';
 
 import SiimpleBox from './src/layout/box.js';
+import { SiimpleBreadcrumb, SiimpleBreadcrumbCrumb } from './src/layout/breadcrumb.js';
 import SiimpleContent from './src/layout/content.js';
 import SiimpleFooter from './src/layout/footer.js';
 import SiimpleJumbotron from './src/layout/jumbotron.js';
@@ -39,6 +40,8 @@ export {
   SiimpleGridRow,
   SiimpleGridCol,
   SiimpleBox,
+  SiimpleBreadcrumb,
+  SiimpleBreadcrumbCrumb,
   SiimpleContent,
   SiimpleFooter,
   SiimpleJumbotron,
