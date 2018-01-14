@@ -19,10 +19,11 @@ export class SiimpleBreadcrumbCrumb extends SiimpleComponent
 {
   render()
   {
-    //Return the breadcrumb item
-    return h('div', { className: 'siimple-breadcrumb-crumb', style: this.props.style }, this.props.children);
+    var self = this;
+    var crumb_props = { className: 'siimple-breadcrumb-crumb', style: this.props.style, onClick: self.props.onClick };
+    return h('div', crumb_props, this.props.children);
   }
 }
 
 //Breadcrumb crumb default props
-SiimpleBreadcrumbCrumb.defaultProps = { style: null };
+SiimpleBreadcrumbCrumb.defaultProps = { style: null, onClick: null };
