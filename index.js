@@ -36,9 +36,11 @@ export {
   SiimpleLabel,
   SiimpleSelect,
   SiimpleSwitch,
+  
   SiimpleGrid,
   SiimpleGridRow,
   SiimpleGridCol,
+
   SiimpleBox,
   SiimpleBreadcrumb,
   SiimpleBreadcrumbCrumb,
@@ -49,6 +51,7 @@ export {
   SiimpleNavbarTitle,
   SiimpleNavbarLink,
   SiimpleTabs,
+
   SiimpleHeading,
   SiimpleParagraph
 }
