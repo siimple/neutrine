@@ -14,12 +14,16 @@ SiimpleMenu.defaultProps = {style: null};
 //Menu group component
 export class SiimpleMenuGroup extends SiimpleComponent {
     render() {
-        return h('div', {className: 'siimple-menu-group', style: this.props.style}, this.props.children);
+        return h('div', {
+            className: 'siimple-menu-group',
+            style: this.props.style,
+            onClick: this.props.onClick
+        }, this.props.children);
     }
 }
 
 //Menu group default props
-SiimpleMenuGroup.defaultProps = {style: null};
+SiimpleMenuGroup.defaultProps = {style: null, onClick: null};
 
 //Menu item
 export class SiimpleMenuItem extends SiimpleComponent {
@@ -28,9 +32,13 @@ export class SiimpleMenuItem extends SiimpleComponent {
         if (this.props.selected === true) {
             classList.push('siimple-menu-item--selected');
         }
-        return h('div', {className: classList, style: this.props.style}, this.props.children);
+        return h('div', {
+            className: classList,
+            style: this.props.style,
+            onClick: this.props.onClick
+        }, this.props.children);
     }
 }
 
 //Menu item default props
-SiimpleMenuItem.defaultProps = {style: null};
+SiimpleMenuItem.defaultProps = {style: null, onClick: null};
