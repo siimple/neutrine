@@ -2,6 +2,13 @@ import SiimpleAlert from './src/elements/alert.js';
 import SiimpleBtn from './src/elements/btn.js';
 import SiimpleClose from './src/elements/close.js';
 import SiimpleSpinner from './src/elements/spinner.js';
+import {
+    SiimpleTable,
+    SiimpleTableHeader,
+    SiimpleTableBody,
+    SiimpleTableRow,
+    SiimpleTableCell
+} from './src/elements/table.js';
 import SiimpleTip from './src/elements/tip.js';
 
 import SiimpleForm from './src/form/form.js';
@@ -30,7 +37,13 @@ export {
     SiimpleBtn,
     SiimpleClose,
     SiimpleSpinner,
+    SiimpleTable,
+    SiimpleTableHeader,
+    SiimpleTableBody,
+    SiimpleTableRow,
+    SiimpleTableCell,
     SiimpleTip,
+
     SiimpleForm,
     SiimpleFormField,
     SiimpleInput,
