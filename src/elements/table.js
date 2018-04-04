@@ -1,6 +1,8 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
 
+import "siimple/scss/elements/_table.scss";
+
 //Export main table component
 export class Table extends React.Component {
     render() {

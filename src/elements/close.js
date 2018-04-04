@@ -1,6 +1,8 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
 
+import "siimple/scss/elements/_close.scss";
+
 //Close button class
 export default class Close extends React.Component {
     render() {

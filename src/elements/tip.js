@@ -1,6 +1,8 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
 
+import "siimple/scss/elements/_tip.scss";
+
 //Tip class
 export default class Tip extends React.Component {
     render() {

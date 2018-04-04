@@ -1,6 +1,8 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
 
+import "siimple/css/elements/_btn.scss";
+
 //Button component
 export default class Btn extends React.Component {
     render() {

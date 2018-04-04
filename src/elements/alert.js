@@ -2,7 +2,7 @@ import React from "react";
 import {hyperscript as h} from "neutrine-utils";
 import Close from "./close.js";
 
-import "siimple/css/elements/_alert.scss";
+import "siimple/scss/elements/_alert.scss";
 
 //Alert component
 export class Alert extends React.Component {

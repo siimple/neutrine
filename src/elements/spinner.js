@@ -1,6 +1,8 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
 
+import "siimple/scss/elements/_spinner.scss";
+
 //Spinner class
 export default class Spinner extends React.Component {
     render() {
