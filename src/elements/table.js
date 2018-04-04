@@ -1,64 +1,71 @@
-import h from '../hyperscript.js';
-import SiimpleComponent from '../index.js';
+import React from "react";
+import {hyperscript as h} from "neutrine-utils";
 
 //Export main table component
-export class SiimpleTable extends SiimpleComponent {
+export class Table extends React.Component {
     render() {
-        let classList = ['siimple-table'];
-
+        let classList = ["siimple-table"];
+        //Check the striped property
         if (this.props.striped === true) {
-            classList.push('siimple-table--striped');
+            classList.push("siimple-table--striped");
         }
+        //Check the border property
         if (this.props.border === true) {
-            classList.push('siimple-table--border');
+            classList.push("siimple-table--border");
         }
+        //Check the hover property
         if (this.props.hover === true) {
-            classList.push('siimple-table--hover');
+            classList.push("siimple-table--hover");
         }
-
-        return h('div', {className: classList, style: this.props.style}, this.props.children);
+        return h("div", {className: classList, style: this.props.style}, this.props.children);
     }
 }
 
 //Table default properties
-SiimpleTable.defaultProps = {style: null, striped: false, border: false, hover: false};
+Table.defaultProps = {
+    style: null, 
+    striped: false, 
+    border: false, 
+    hover: false
+};
 
 //Export table header component
-export class SiimpleTableHeader extends SiimpleComponent {
+export class TableHeader extends React.Component {
     render() {
-        return h('div', {className: 'siimple-table-header', style: this.props.style}, this.props.children);
+        return h("div", {className: "siimple-table-header", style: this.props.style}, this.props.children);
     }
 }
 
 //Table header default props
-SiimpleTableHeader.defaultProps = {style: null};
+TableHeader.defaultProps = {style: null};
 
 //Export table body component
-export class SiimpleTableBody extends SiimpleComponent {
+export class TableBody extends React.Component {
     render() {
-        return h('div', {className: 'siimple-table-body', style: this.props.style}, this.props.children);
+        return h("div", {className: "siimple-table-body", style: this.props.style}, this.props.children);
     }
 }
 
 //Table body default props
-SiimpleTableBody.defaultProps = {style: null};
+TableBody.defaultProps = {style: null};
 
 //Export table row component
-export class SiimpleTableRow extends SiimpleComponent {
+export class TableRow extends React.Component {
     render() {
-        return h('div', {className: 'siimple-table-row', style: this.props.style}, this.props.children);
+        return h("div", {className: "siimple-table-row", style: this.props.style}, this.props.children);
     }
 }
 
 //Table row default props
-SiimpleTableRow.defaultProps = {style: null};
+TableRow.defaultProps = {style: null};
 
 //Export table cell component
-export class SiimpleTableCell extends SiimpleComponent {
+export class TableCell extends React.Component {
     render() {
-        return h('div', {className: 'siimple-table-cell', style: this.props.style}, this.props.children);
+        return h("div", {className: "siimple-table-cell", style: this.props.style}, this.props.children);
     }
 }
 
 //Table cell default props
-SiimpleTableCell.defaultProps = {style: null};
+TableCell.defaultProps = {style: null};
+
