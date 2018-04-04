@@ -12,7 +12,7 @@ export class Alert extends React.Component {
         let children = [h("span", {}, this.props.children)];
         //Check the alert color property
         if (typeof this.props.color === "string") {
-            class_list.push("siimple-alert--"  + this.props.color.toLowerCase().trim());
+            classList.push("siimple-alert--"  + this.props.color.toLowerCase().trim());
         }
         //Check if the close button is enabled
         if (this.props.showClose === true) {
