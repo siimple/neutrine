@@ -1,74 +1,74 @@
-import SiimpleAlert from './src/elements/alert.js';
-import SiimpleBtn from './src/elements/btn.js';
-import SiimpleClose from './src/elements/close.js';
-import SiimpleSpinner from './src/elements/spinner.js';
+import Alert from "./src/elements/alert.js";
+import Btn from "./src/elements/btn.js";
+import Close from "./src/elements/close.js";
+import Spinner from "./src/elements/spinner.js";
 import {
-    SiimpleTable,
-    SiimpleTableHeader,
-    SiimpleTableBody,
-    SiimpleTableRow,
-    SiimpleTableCell
-} from './src/elements/table.js';
-import SiimpleTip from './src/elements/tip.js';
+    Table,
+    TableHeader,
+    TableBody,
+    TableRow,
+    TableCell
+} from "./src/elements/table.js";
+import Tip from "./src/elements/tip.js";
 
-import SiimpleForm from './src/form/form.js';
-import SiimpleFormField from './src/form/field.js';
-import SiimpleInput from './src/form/input.js';
-import SiimpleLabel from './src/form/label.js';
-import SiimpleSelect from './src/form/select.js';
-import SiimpleSwitch from './src/form/switch.js';
+import Form from "./src/form/form.js";
+import FormField from "./src/form/field.js";
+import Input from "./src/form/input.js";
+import Label from "./src/form/label.js";
+import Select from "./src/form/select.js";
+import Switch from "./src/form/switch.js";
 
-import {SiimpleGrid, SiimpleGridRow, SiimpleGridCol} from './src/grid/grid.js';
+import {Grid, GridRow, GridCol} from "./src/grid/grid.js";
 
-import SiimpleBox from './src/layout/box.js';
-import {SiimpleBreadcrumb, SiimpleBreadcrumbCrumb} from './src/layout/breadcrumb.js';
-import SiimpleContent from './src/layout/content.js';
-import SiimpleFooter from './src/layout/footer.js';
-import SiimpleJumbotron from './src/layout/jumbotron.js';
-import {SiimpleMenu, SiimpleMenuGroup, SiimpleMenuItem} from './src/layout/menu.js';
-import {SiimpleNavbar, SiimpleNavbarTitle, SiimpleNavbarLink} from './src/layout/navbar.js';
-import SiimpleTabs from './src/layout/tabs.js';
+import Box from "./src/layout/box.js";
+import {Breadcrumb, BreadcrumbCrumb} from "./src/layout/breadcrumb.js";
+import Content from "./src/layout/content.js";
+import Footer from "./src/layout/footer.js";
+import Jumbotron from "./src/layout/jumbotron.js";
+import {Menu, MenuGroup, MenuItem} from "./src/layout/menu.js";
+import {Navbar, NavbarTitle, NavbarLink} from "./src/layout/navbar.js";
+import Tabs from "./src/layout/tabs.js";
 
-import SiimpleHeading from './src/typography/heading.js';
-import SiimpleParagraph from './src/typography/paragraph.js';
+import Heading from "./src/typography/heading.js";
+import Paragraph from "./src/typography/paragraph.js";
 
 export {
-    SiimpleAlert,
-    SiimpleBtn,
-    SiimpleClose,
-    SiimpleSpinner,
-    SiimpleTable,
-    SiimpleTableHeader,
-    SiimpleTableBody,
-    SiimpleTableRow,
-    SiimpleTableCell,
-    SiimpleTip,
+    Alert,
+    Btn,
+    Close,
+    Spinner,
+    Table,
+    TableHeader,
+    TableBody,
+    TableRow,
+    TableCell,
+    Tip,
 
-    SiimpleForm,
-    SiimpleFormField,
-    SiimpleInput,
-    SiimpleLabel,
-    SiimpleSelect,
-    SiimpleSwitch,
+    Form,
+    FormField,
+    Input,
+    Label,
+    Select,
+    Switch,
 
-    SiimpleGrid,
-    SiimpleGridRow,
-    SiimpleGridCol,
+    Grid,
+    GridRow,
+    GridCol,
 
-    SiimpleBox,
-    SiimpleBreadcrumb,
-    SiimpleBreadcrumbCrumb,
-    SiimpleContent,
-    SiimpleFooter,
-    SiimpleJumbotron,
-    SiimpleMenu,
-    SiimpleMenuGroup,
-    SiimpleMenuItem,
-    SiimpleNavbar,
-    SiimpleNavbarTitle,
-    SiimpleNavbarLink,
-    SiimpleTabs,
+    Box,
+    Breadcrumb,
+    BreadcrumbCrumb,
+    Content,
+    Footer,
+    Jumbotron,
+    Menu,
+    MenuGroup,
+    MenuItem,
+    Navbar,
+    NavbarTitle,
+    NavbarLink,
+    Tabs,
 
-    SiimpleHeading,
-    SiimpleParagraph
+    Heading,
+    Paragraph
 }
