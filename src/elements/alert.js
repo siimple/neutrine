@@ -23,7 +23,7 @@ export class Alert extends React.Component {
 }
 
 //Alert default props
-SiimpleAlert.defaultProps = { 
+Alert.defaultProps = { 
     color: "blue", 
     showClose: false, 
     onCloseClick: null, 
