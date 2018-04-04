@@ -1,22 +1,15 @@
-import h from '../hyperscript.js';
-import SiimpleComponent from '../index.js';
+import React from "react";
+import {hyperscript as h} from "neutrine-utils";
 
 //Close button class
-export default class SiimpleClose extends SiimpleComponent
-{
-  //Render the close button component
-  render()
-  {
-    //Save this
-    var self = this;
-
-    //Initialize the class list
-    var class_list = [ 'siimple-close' ];
-
-    //Render the close button
-    return h('div', { className: class_list, onClick: self.props.onClick, style: self.props.style });
-  }
+export default class Close extends React.Component {
+    render() {
+        var self = this;
+        var class_list = [ 'siimple-close' ];
+        return h('div', { className: class_list, onClick: self.props.onClick, style: self.props.style });
+    }
 }
 
 //Default props
-SiimpleClose.defaultProps = { size: null, style: null, onClick: null };
+Close.defaultProps = { size: null, style: null, onClick: null };
+
