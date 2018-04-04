@@ -1,11 +1,11 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
-import SiimpleClose from "./close.js";
+import Close from "./close.js";
 
 import "siimple/css/elements/_alert.scss";
 
 //Alert component
-export default class SiimpleAlert extends React.Component {
+export class Alert extends React.Component {
     render() {
         let self = this;
         //Initialize the list with the element classes
@@ -18,7 +18,7 @@ export default class SiimpleAlert extends React.Component {
         let children = [h("span", {}, this.props.children)];
         //Check if the close button is enabled
         if (this.props.showClose === true) {
-            children.push(h(SiimpleClose, {onClick: self.props.onCloseClick}));
+            children.push(h(Close, {onClick: self.props.onCloseClick}));
         }
         //Return the alert
         return h("div", {className: classList, style: this.props.style}, children);
@@ -32,4 +32,11 @@ SiimpleAlert.defaultProps = {
     onCloseClick: null, 
     style: null 
 };
+
+//Alert title component 
+export class AlertTitle extends React.Component {
+    render() {
+        return h("div", {className: "siimple-alert-title"}, this.props.children);
+    }
+}
 
