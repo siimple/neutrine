@@ -1,12 +1,10 @@
 let path = require("path");
-let ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-//Compile the plugin to extract the compiled css text into an external file
-let extractSass = new ExtractTextPlugin({ filename:"bundle.test.css" });
+let MiniCssExtract = require("mini-css-extract-plugin");
 
 //Export the webpack configuration
 module.exports = {
     "entry": "./test/index.js",
+    "mode": "development",
     "output": {
         "path": path.resolve(__dirname, "./test/"),
         "filename": "bundle.test.js"
@@ -21,18 +19,18 @@ module.exports = {
         "rules": [
             {
                 "test": /\.scss$/,
-                "use": extractSass.extract({
-                    "fallback": "style-loader",
-                    "use": [
-                        {"loader": "css-loader"},
-                        {
-                            "loader": "sass-loader",
-                            "options": {"includePaths": ["./bower_components/"]}
-                        }
-                    ]
-                })
+                "use": [
+                    MiniCssExtract.loader,
+                    {loader: "css-loader"},
+                    {
+                        "loader": "sass-loader",
+                        "options": {"includePaths": ["./node_modules/"]}
+                    }
+                ]
             }
         ]
     },
-    "plugins": [extractSass]
+    "plugins": [
+        new MiniCssExtract({filename: "bundle.test.css"})
+    ]
 };
