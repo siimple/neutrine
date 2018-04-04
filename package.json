@@ -1,31 +1,39 @@
 {
-  "name": "siimple-components",
-  "description": "A collection of React UI components that implements the siimple style specification",
-  "version": "0.0.1",
-  "author": "Josemi Juanes <josemijuanes@gmail.com>",
-  "license": "MIT",
-  "homepage": "https://www.siimple.xyz/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/siimple/siimple-components.git"
-  },
-  "keywords": [
-    "siimple",
-    "elements",
-    "components",
-    "ui",
-    "design",
-    "react"
-  ],
-  "main": "./index.js",
-  "dependencies": {
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1"
-  },
-  "devDependencies": {
-    "webpack": "^3.8.1"
-  },
-  "scripts": {
-    "dev": "node ./scripts/dev.js"
-  }
+    "name": "neutrine",
+    "description": "A collection of React UI components that implements the siimple style specification",
+    "version": "0.0.0",
+    "author": "Josemi Juanes <josemijuanes@gmail.com>",
+    "license": "MIT",
+    "homepage": "https://www.siimple.xyz/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/siimple/neutrine.git"
+    },
+    "keywords": [
+        "siimple",
+        "elements",
+        "components",
+        "ui",
+        "design",
+        "react"
+    ],
+    "main": "./index.js",
+    "dependencies": {
+        "react": "^16.3.0",
+        "react-dom": "^16.3.0",
+        "siimple": "^3.1.0-beta",
+        "siimple-colors": "^1.0.0-beta"
+    },
+    "devDependencies": {
+        "webpack": "^4.4.1", 
+        "webpack-cli": "^2.0.13",
+        "mini-css-extract-plugin": "^0.4.0",
+        "sass-loader": "^6.0.7",
+        "css-loader": "^0.28.11",
+        "style-loader": "^0.20.3",
+        "node-sass": "^4.8.3"
+    },
+    "scripts": {
+        "test": "./node_modules/.bin/webpack --config webpack.test.config.js"
+    }
 }
