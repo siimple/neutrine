@@ -20,7 +20,7 @@ export default class Progress extends React.Component {
             }
         }
         let content = h("span", {style: {width: this.props.completed + "%"}}, this.props.children);
-        return h("div", {className: classList}, content):
+        return h("div", {className: classList}, content);
     }
 }
 
