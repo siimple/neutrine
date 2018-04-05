@@ -1,84 +1,81 @@
-import { string } from 'kofi-utils';
+import React from "react";
+import {hyperscript as h} from "neutrine-utils";
 
-import h from '../hyperscript.js';
-import SiimpleComponent from '../index.js';
+import "siimple/scss/form/_switch.scss";
+
+//Generate a random ID
+let randomID = function () {
+    return Math.random().toString(36).slice(2, 9) + Date.now().toString(36); 
+};
 
 //Switch component
-export default class SiimpleSwitch extends SiimpleComponent
-{
-  //Constructor
-  constructor(props)
-  {
-    //Call super method
-    super(props);
-
-    //Initialize the state
-    this.state = { id: string.unique() };
-
-    //Initialize the referenced elements object
-    this.ref = {};
-
-    //Bind handlers
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  //Handle the switch change
-  handleChange(e)
-  {
-    //Call the change listener
-    this.props.onChange.call(null, e.nativeEvent, this.ref.input.checked);
-  }
-
-  //Get or set the switch state
-  checked(is_checked)
-  {
-    //Check the is checked value
-    if(typeof is_checked === 'boolean')
-    {
-      //Set the checked value
-      this.ref.input.checked = is_checked;
+export default class Switch extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: randomID() 
+        };
+        //Initialize the referenced elements object
+        this.ref = {};
+        //Bind handlers
+        this.handleChange = this.handleChange.bind(this);
     }
-    else
-    {
-      //Return if checkbox is checked
-      return this.ref.input.checked;
+
+    //Handle the switch change
+    handleChange(e) {
+        if (typeof this.props.onChange === "function") {
+            this.props.onChange.call(null, e.nativeEvent, this.ref.input.checked); 
+        }
     }
-  }
 
-  //Render the switch element
-  render()
-  {
-    //Save this
-    var self = this;
+    //Get or set the switch state
+    checked(isChecked) {
+        //Check the is checked value
+        if (typeof isChecked === "boolean") {
+            //Set the checked value
+            this.ref.input.checked = isChecked;
+        } else {
+            //Return if checkbox is checked
+            return this.ref.input.checked;
+        }
+    }
 
-    //Initialize the switch children
-    var children = [];
+    //Render the input element 
+    renderInput() {
 
-    //Initialize the input element props
-    var input_props = { type: 'checkbox', defaultChecked: this.props.checked, name: this.props.name };
+        return h("input", props, null);
+    }
 
-    //Add the input reference
-    input_props.ref = function(i){ self.ref.input = i; };
-
-    //Add the input id
-    input_props.id = this.state.id;
-
-    //Add the on change listener
-    if(typeof this.props.onChange === 'function'){ input_props.onChange = self.handleChange; }
-
-    //Append the input
-    children.push(h('input', input_props));
-
-    //Append a label element
-    children.push(h('label', { htmlFor: this.state.id }));
-
-    //Append an empty div element
-    children.push(h.div({}, null));
-
-    //Return the switch element
-    return h.div({ className: 'siimple-switch' }, children);
-  }
+    //Render the switch element
+    render() {
+        let self = this;
+        //Input default props
+        let inputProps = {
+            id: this.state.id,
+            type: "checkbox",
+            defaultChecked: this.props.checked,
+            name: this.props.name,
+            ref: function (i) {
+                self.ref.input = i;
+            },
+            onChange: self.handleChange
+        };
+        //Switch children content
+        let children = [
+            h("input", inputProps, null),
+            h("label", {htmlFor: this.state.id}, null),
+            h("div", {}, null)
+        ];
+        //Return the switch element
+        return h("div", {className: "siimple-switch", style: this.props.style}, children);
+    }
 }
 
 //Switch default props
-SiimpleSwitch.defaultProps = { name: null, checked: true, onChange: null };
+Switch.defaultProps = {
+    name: null, 
+    checked: true, 
+    onChange: null,
+    style: null
+};
+
