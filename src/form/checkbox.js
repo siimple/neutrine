@@ -1,19 +1,15 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
+import {uniqueId} from "kofi";
 
 import "siimple/scss/form/_checkbox.scss";
-
-//Generate a random ID
-let randomID = function () {
-    return Math.random().toString(36).slice(2, 9) + Date.now().toString(36); 
-};
 
 //Checkbox component 
 export default class Checkbox extends React.Component {
      constructor(props) {
         super(props);
         this.state = {
-            id: randomID() 
+            id: uniqueId() 
         };
         //Initialize the referenced elements object
         this.ref = {};
