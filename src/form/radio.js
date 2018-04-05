@@ -1,22 +1,17 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
+import {uniqueId} from "kofi";
 
 import "siimple/scss/form/_radio.scss";
 
-//Generate a random ID
-let randomID = function () {
-    return Math.random().toString(36).slice(2, 9) + Date.now().toString(36); 
-};
-
 //Radio component 
 export default class Radio extends React.Component {
-     constructor(props) {
+    constructor(props) {
         super(props);
-        this.state = {
-            id: randomID() 
-        };
+        //Internal ID
+        this.id = uniqueId();
         //Initialize the referenced elements object
-        this.ref = {};
+        this.ref = null;
         //Bind handlers
         this.handleChange = this.handleChange.bind(this);
     }
@@ -24,19 +19,18 @@ export default class Radio extends React.Component {
     //Handle the radio change
     handleChange(e) {
         if (typeof this.props.onChange === "function") {
-            this.props.onChange.call(null, e.nativeEvent, this.ref.input.checked); 
+            this.props.onChange.call(null, e.nativeEvent, this.ref.checked); 
         }
     }
 
     //Get or set the radio state
     checked(isChecked) {
-        //Check the is checked value
         if (typeof isChecked === "boolean") {
             //Set the checked value
-            this.ref.input.checked = isChecked;
+            this.ref.checked = isChecked;
         } else {
             //Return if radio is checked
-            return this.ref.input.checked;
+            return this.ref.checked;
         }
     }
 
@@ -45,19 +39,19 @@ export default class Radio extends React.Component {
         let self = this;
         //Input default props
         let inputProps = {
-            id: this.state.id,
+            id: this.id,
             type: "radio",
             defaultChecked: this.props.checked,
             name: this.props.name,
             ref: function (i) {
-                self.ref.input = i;
+                self.ref = i;
             },
             onChange: self.handleChange
         };
         //Switch children content
         let children = [
             h("input", inputProps, null),
-            h("label", {htmlFor: this.state.id}, null)
+            h("label", {htmlFor: this.id}, null)
         ];
         //Return the radio element
         return h("div", {className: "siimple-radio", style: this.props.style}, children);
