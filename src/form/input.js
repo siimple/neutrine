@@ -1,5 +1,5 @@
 import React from "react";
-import {hyperscript ad h} from "neutrine-utils";
+import {hyperscript as h} from "neutrine-utils";
 import {omit} from "kofi";
 
 import "siimple/scss/form/_input.scss";
