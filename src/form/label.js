@@ -1,16 +1,15 @@
-import h from '../hyperscript.js';
-import SiimpleComponent from '../index.js';
+import React from "react";
+import {hyperscript as h} from "neutrine-utils";
+
+import "siimple/scss/form/_label.scss";
 
 //Label component
-export default class SiimpleLabel extends SiimpleComponent
-{
-  //Render the label element
-  render()
-  {
-    //Return the label element
-    return h('label', { className: 'siimple-label' }, this.props.text);
+export default class Label extends React.Component {
+  render() {
+    return h("label", {className: "siimple-label", style: this.props.style}, this.props.children);
   }
 }
 
 //Label default props
-SiimpleLabel.defaultProps = { text: '' };
+Label.defaultProps = {style: null};
+
