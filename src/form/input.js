@@ -8,16 +8,12 @@ import "siimple/scss/form/_input.scss";
 export default class Input extends React.Component {
     render() {
         //Clone the input props
-        let props = omit(this.props, ["fluid", "disabled", "children"]);
+        let props = omit(this.props, ["fluid", "children"]);
         //Initialize the input style
         props.className = ["siimple-input"];
         //Check the fluid property
         if (this.props.fluid === true) {
             props.className.push("siimple-input--fluid");
-        }
-        //Check the disabled property
-        if (this.props.disabled === true) {
-            props.className.push("siimple-input--disabled");
         }
         return h("input", props);
     }
@@ -26,7 +22,6 @@ export default class Input extends React.Component {
 //Input default props
 Input.defaultProps = {
     fluid: false, 
-    disabled: false, 
     style: null
 };
 
