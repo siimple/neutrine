@@ -6,9 +6,19 @@ import "siimple/scss/elements/_list.scss";
 //List component 
 export class List extends React.Component {
     render () {
-        return h("div", {className: "siimple-list"}, this.props.children);
+        let classList = ["siimple-list"];
+        //Check the hover prop
+        if (this.props.hover === true) {
+            classList.push("siimple-list--hover");
+        }
+        return h("div", {className: classList}, this.props.children);
     }
 }
+
+//List default props 
+List.defaultProps = {
+    hover: false
+};
 
 //List item component 
 export class ListItem extends React.Component {
