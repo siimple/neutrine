@@ -57,8 +57,7 @@ export default class Checkbox extends React.Component {
         //Switch children content
         let children = [
             h("input", inputProps, null),
-            h("label", {htmlFor: this.state.id}, null),
-            h("div", {}, null)
+            h("label", {htmlFor: this.state.id}, null)
         ];
         //Return the checkbox element
         return h("div", {className: "siimple-checkbox", style: this.props.style}, children);
