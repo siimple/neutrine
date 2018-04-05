@@ -40,12 +40,6 @@ export default class Switch extends React.Component {
         }
     }
 
-    //Render the input element 
-    renderInput() {
-
-        return h("input", props, null);
-    }
-
     //Render the switch element
     render() {
         let self = this;
