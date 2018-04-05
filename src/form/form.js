@@ -1,33 +1,58 @@
-import h from '../hyperscript.js';
-import SiimpleComponent from '../index.js';
+import React from "react";
+import {hyperscript as h} from "neutrine-utils";
+
+import "siimple/scss/form/_form.scss";
 
 //Form component
-export default class SiimpleForm extends SiimpleComponent
-{
-  //Render a simple form element
-  render()
-  {
-    //Initialize the new list of childrens
-    var children = [];
-
-    //Check the title property
-    if(typeof this.props.title === 'string')
-    {
-      //Append the title element
-      children.push(h.div({ className: 'siimple-form-title' }, this.props.title));
+export class Form extends React.Component {
+    render() {
+        let children = [];
+        //Check the title property
+        if (typeof this.props.title === "string") {
+            children.push(h(FormTitle, {}, this.props.title));
+        } 
+        //Check the detail property
+        if (typeof this.props.detail === "string") {
+            children.push(h(FormDetail, {}, this.props.detail));
+        }
+        return h("div", {className: "siimple-form"}, children, this.props.children);
     }
-
-    //Check the detail property
-    if(typeof this.props.detail === 'string')
-    {
-      //Append the detail element
-      children.push(h.div({ className: 'siimple-form-detail' }, this.props.detail));
-    }
-
-    //Return a form element
-    return h.div({ className: 'siimple-form' }, children, this.props.children);
-  }
 }
 
 //Form default props
-SiimpleForm.defaultProps = { title: null, detail: null };
+Form.defaultProps = {
+    title: null,
+    detail: null,
+    style: null 
+};
+
+//Form title component
+export class FormTitle extends React.Component {
+    render() {
+        return h("div", {className: "siimple-form-title", style: this.props.style}, this.props.children);
+    }
+}
+
+//Form title default props 
+FormTitle.defaultProps = {style: null};
+
+//Form detail component 
+export class FormDetail extends React.Component {
+    render() {
+        return h("div", {className: "siimple-form-detail", style: this.props.style}, this.props.children);
+    }
+}
+
+//Form detail default props 
+FormDetail.defaultProps = {style: null};
+
+//Form rule component 
+export class FormRule extends React.Component {
+    render() {
+        return h("div", {className: "siimple-form-rule", style: this.props.style});
+    }
+}
+
+//Form rule default props 
+FormRule.defaultProps = {style: null};
+
