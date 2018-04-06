@@ -8,7 +8,7 @@ import "siimple/scss/layout/_tabs.scss";
 export class Tabs extends React.Component {
     render() {
         //Initialize the tabs class list
-        let classList = ["siimple-tabs"];
+        let classList = concat(["siimple-tabs"], this.props.className);
         //Check the boxed attribute
         if (this.props.boxed === true) {
             classList.push("siimple-tabs--boxed");
@@ -18,7 +18,7 @@ export class Tabs extends React.Component {
             classList.push("siimple-tabs--" + this.props.color);
         }
         //Return the tabs element
-        return h("div", props, this.props.children);
+        return h("div", {className: classList, style: this.props.style} , this.props.children);
     }
 }
 
