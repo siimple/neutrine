@@ -5,7 +5,7 @@ import {omit} from "kofi";
 import "siimple/scss/layout/_menu.scss";
 
 //Menu component
-export class Menu extends Component {
+export class Menu extends React.Component {
     render() {
         return h("div", {className: "siimple-menu", style: this.props.style}, this.props.children);
     }
@@ -15,7 +15,7 @@ export class Menu extends Component {
 Menu.defaultProps = {style: null};
 
 //Menu group component
-export class MenuGroup extends Component {
+export class MenuGroup extends React.Component {
     render() {
         //Clone the properties 
         let props = omit(this.props, ["children", "className"]);
@@ -29,7 +29,7 @@ export class MenuGroup extends Component {
 MenuGroup.defaultProps = {style: null};
 
 //Menu item
-export class MenuItem extends Component {
+export class MenuItem extends React.Component {
     render() {
         //Clone the properties 
         let props = omit(this.props, ["selected", "children", "className"]);
