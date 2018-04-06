@@ -1,6 +1,6 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
-import {uniqueId} from "kofi";
+import {omit, uniqueId} from "kofi";
 
 import "siimple/scss/form/_radio.scss";
 
@@ -8,50 +8,18 @@ import "siimple/scss/form/_radio.scss";
 export default class Radio extends React.Component {
     constructor(props) {
         super(props);
-        //Internal ID
         this.id = uniqueId();
-        //Initialize the referenced elements object
-        this.ref = null;
-        //Bind handlers
-        this.handleChange = this.handleChange.bind(this);
     }
-
-    //Handle the radio change
-    handleChange(e) {
-        if (typeof this.props.onChange === "function") {
-            this.props.onChange.call(null, e.nativeEvent, this.ref.checked); 
-        }
-    }
-
-    //Get or set the radio state
-    checked(isChecked) {
-        if (typeof isChecked === "boolean") {
-            //Set the checked value
-            this.ref.checked = isChecked;
-        } else {
-            //Return if radio is checked
-            return this.ref.checked;
-        }
-    }
-
-    //Render the radio element
+    
     render() {
-        let self = this;
-        //Input default props
-        let inputProps = {
-            id: this.id,
-            type: "radio",
-            defaultChecked: this.props.checked,
-            name: this.props.name,
-            ref: function (i) {
-                self.ref = i;
-            },
-            onChange: self.handleChange
-        };
+        //Switch input default props
+        let inputProps = omit(this.props, ["style", "id"]);
+        //Parse the switch internal ID
+        inputProps.id = (typeof this.props.id === "string") ? this.props.id : this.id;
         //Switch children content
         let children = [
             h("input", inputProps, null),
-            h("label", {htmlFor: this.id}, null)
+            h("label", {htmlFor: inputProps.id}, null)
         ];
         //Return the radio element
         return h("div", {className: "siimple-radio", style: this.props.style}, children);
@@ -59,10 +27,5 @@ export default class Radio extends React.Component {
 }
 
 //Radio component default props
-Radio.defaultProps = {
-    name: null, 
-    checked: true, 
-    onChange: null,
-    style: null
-};
+Radio.defaultProps = {style: null};
 
