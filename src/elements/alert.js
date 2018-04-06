@@ -9,7 +9,6 @@ export class Alert extends React.Component {
     render() {
         //Clone the alert props 
         let props = omit(this.props, ["children", "className", "color"]);
-        //Initialize the class list
         props.className = [ "siimple-alert" ];
         //Check the alert color property
         if (typeof this.props.color === "string") {
@@ -28,7 +27,7 @@ Alert.defaultProps = {
 //Alert title component 
 export class AlertTitle extends React.Component {
     render() {
-        //Return the alret title element
+        //Return the alert title element
         return h("div", {className: "siimple-alert-title", style: this.props.style}, this.props.children);
     }
 }
