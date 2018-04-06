@@ -3,7 +3,7 @@ import {hyperscript as h} from "neutrine-utils";
 
 import "siimple/scss/typography/_tag.scss";
 
-//Export bagde component 
+//Export tag component 
 export default class Tag extends React.Component {
     render() {
         //Initialize the tag class list 
