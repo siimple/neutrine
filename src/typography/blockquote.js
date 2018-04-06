@@ -3,7 +3,7 @@ import {hyperscript as h} from "neutrine-utils";
 
 import "siimple/scss/typography/_blockquote.scss";
 
-//Export bagde component 
+//Export blockquote component 
 export default class Blockquote extends React.Component {
     render() {
         //Return the blockquote element
