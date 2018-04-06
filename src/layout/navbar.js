@@ -18,7 +18,7 @@ export class Navbar extends React.Component {
             classList.push("siimple-navbar--" + this.props.size.toLowerCase());
         }
         //Render the navbar
-        return h("div", {className: classList, style: this.props.style}, props.children);
+        return h("div", {className: classList, style: this.props.style}, this.props.children);
     }
 }
 
