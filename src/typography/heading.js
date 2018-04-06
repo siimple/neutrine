@@ -1,26 +1,29 @@
-import h from '../hyperscript.js';
-import SiimpleComponent from '../index.js';
+import React from "react";
+import {hyperscript as h} from "neutrine-utils";
+import {concat, omit} from "kofi";
+
+import "siimple/scss/typography/_heading.scss";
 
 //Heading class
-export default class SiimpleHeading extends SiimpleComponent
-{
-  //Render the heading element
-  render()
-  {
-    //Initialize the header class
-    var class_name = null;
-
-    //Check the header type
-    if(typeof this.props.type === 'string' && this.props.type.charAt(0).toLowerCase() === 'h' && this.props.type.length === 2)
-    {
-      //Add the heading class
-      class_name = 'siimple-' + this.props.type.toLowerCase().trim();
+export default class Heading extends React.Component {
+    render() {
+        //Initialize the header props
+        let props = omit(this.props, ["children", "type", "className"]);
+        //Initialize the header class names
+        props.className = concat([], this.props.className);
+        //Check the header type
+        if (typeof this.props.type === "string" && this.props.type.charAt(0).toLowerCase() === "h" && this.props.type.length === 2) {
+            props.className.push("siimple-" + this.props.type.toLowerCase().trim());
+        }
+        //Return the heading element
+        return h("div", props, this.props.children);
     }
-
-    //Return the heading element
-    return h.div({ className: class_name }, this.props.children);
-  }
 }
 
 //Default heading props
-SiimpleHeading.defaultProps = { type: 'h1' };
+Heading.defaultProps = {
+    type: "h1",
+    style: null,
+    className: []
+};
+
