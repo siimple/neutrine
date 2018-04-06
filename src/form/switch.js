@@ -1,6 +1,6 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
-import {uniqueId} from "kofi";
+import {omit, uniqueId} from "kofi";
 
 import "siimple/scss/form/_switch.scss";
 
@@ -8,50 +8,18 @@ import "siimple/scss/form/_switch.scss";
 export default class Switch extends React.Component {
     constructor(props) {
         super(props);
-        //Internal ID
         this.id = uniqueId();
-        //Initialize the referenced elements object
-        this.ref = null;
-        //Bind handlers
-        this.handleChange = this.handleChange.bind(this);
     }
 
-    //Handle the switch change
-    handleChange(e) {
-        if (typeof this.props.onChange === "function") {
-            this.props.onChange.call(null, e.nativeEvent, this.ref.checked); 
-        }
-    }
-
-    //Get or set the switch state
-    checked(isChecked) {
-        if (typeof isChecked === "boolean") {
-            //Set the checked value
-            this.ref.checked = isChecked;
-        } else {
-            //Return if checkbox is checked
-            return this.ref.checked;
-        }
-    }
-
-    //Render the switch element
     render() {
-        let self = this;
         //Input default props
-        let inputProps = {
-            id: this.id,
-            type: "checkbox",
-            defaultChecked: this.props.checked,
-            name: this.props.name,
-            ref: function (i) {
-                self.ref = i;
-            },
-            onChange: self.handleChange
-        };
+        let inputProps = omit(this.props, ["style", "id"]);
+        //Parse the switch id
+        inputProps.id = (typeof this.props.id === "string") ? this.props.id : this.id;
         //Switch children content
         let children = [
             h("input", inputProps, null),
-            h("label", {htmlFor: this.id}, null),
+            h("label", {htmlFor: inputProps.id}, null),
             h("div", {}, null)
         ];
         //Return the switch element
@@ -60,10 +28,5 @@ export default class Switch extends React.Component {
 }
 
 //Switch default props
-Switch.defaultProps = {
-    name: null, 
-    checked: true, 
-    onChange: null,
-    style: null
-};
+Switch.defaultProps = {style: null};
 
