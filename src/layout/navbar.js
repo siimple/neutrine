@@ -1,115 +1,83 @@
-import h from '../hyperscript.js';
-import colors from '../colors.js';
-import SiimpleComponent from '../index.js';
+import React from "react";
+import {hyperscript as h} from "neutrine-utils";
+import {concat, omit} from "kofi";
 
-import sizes from './sizes.js';
+import "siimple/scss/layout/_navbar.scss";
 
 //Navbar default class
-export class SiimpleNavbar extends SiimpleComponent
-{
-  //Render the navbar element
-  render()
-  {
-    //Save the props
-    var props = this.props;
-
-    //Initialize the class list
-    var class_list = [ 'siimple-navbar' ];
-
-    //Check the color
-    if(typeof props.color === 'string' && colors.list.indexOf(props.color.toLowerCase()) !== -1)
-    {
-      //Add the color class
-      class_list.push('siimple-navbar--' + props.color.toLowerCase());
+export class Navbar extends React.Component {
+    render() {
+        //Initialize the class list
+        let classList = concat(["siimple-navbar"], this.props.className);
+        //Check the color
+        if (typeof this.props.color === "string") {
+            classList.push("siimple-navbar--" + this.props.color.toLowerCase());
+        }
+        //Check the size
+        if (typeof this.props.size === "string") {
+            classList.push("siimple-navbar--" + this.props.size.toLowerCase());
+        }
+        //Render the navbar
+        return h("div", {className: classList, style: this.props.style}, props.children);
     }
-
-    //Check the size
-    if(typeof props.size === 'string' && sizes.indexOf(props.size.toLowerCase()) !== -1)
-    {
-      //Add the size class
-      class_list.push('siimple-navbar--' + props.size.toLowerCase());
-    }
-
-    //Render the navbar
-    return h.div({ className: class_list }, props.children);
-  }
 }
 
 //Navbar default props
-SiimpleNavbar.defaultProps = { color: null, size: null };
+Navbar.defaultProps = {
+    color: null, 
+    size: null,
+    style: null,
+    className: []
+};
 
 //Navbar title element
-export class SiimpleNavbarTitle extends SiimpleComponent
-{
-  //Constructor
-  constructor(props)
-  {
-    //Call the super method
-    super(props);
-
-    //Bind the handle click
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  //Handle the title click event
-  handleClick(e)
-  {
-    //Check the onclick listener
-    if(typeof this.props.onClick === 'function')
-    {
-      //Call the onclick listener
-      this.props.onClick.call(null, e);
+export class NavbarTitle extends React.Component {
+    render() {
+        //Initialize the title element props
+        let props = omit(this.props, ["className", "children"]);
+        props.className = concat(["siimple-navbar-title"], this.props.className);
+        //Render the navbar title
+        return h("div", props, this.props.children);
     }
-  }
-
-  //Render the navbar title element
-  render()
-  {
-    //Initialize the title element props
-    var props = { className: 'siimple-navbar-title', style: { float: 'left' }, onClick: this.handleClick };
-
-    //Render the navbar title
-    return h.div(props, this.props.children);
-  }
 }
 
 //Navbar title default props
-SiimpleNavbarTitle.defaultProps = { onClick: null };
+NavbarTitle.defaultProps = {
+    style: null,
+    className: []
+};
 
-//Navbar link element
-export class SiimpleNavbarLink extends SiimpleComponent
-{
-  //Constructor
-  constructor(props)
-  {
-    //Call the super method
-    super(props);
-
-    //Bind the handle click
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  //Handle the link click event
-  handleClick(e)
-  {
-    //Check the onclick listener
-    if(typeof this.props.onClick === 'function')
-    {
-      //Call the onclick listener
-      this.props.onClick.call(null, e);
+//Navbar subtitle class
+export class NavbarSubtitle extends React.Component {
+    render() {
+        //Clone the subtitle props 
+        let props = omit(this.props, ["className", "children"]);
+        props.className = concat(["siimple-navbar-subtitle"], this.props.className);
+        //Return the navbar subtitle element
+        return h("div", props, this.props.children);
     }
-  }
-
-  //Render the navbar title element
-  render()
-  {
-    //Initialize the link element props
-    var props = { className: 'siimple-navbar-link', style: { float: 'right' }, onClick: this.handleClick };
-
-    //Render the navbar link
-    return h.div(props, this.props.children);
-  }
 }
 
-//Navbar link default props
-SiimpleNavbarLink.defaultProps = { onClick: null };
+//Navbar subtitle default props 
+NavbarSubtitle.defaultProps = {
+    style: null,
+    className: []
+};
+
+//Navbar item element
+export class NavbarItem extends React.Component {
+    render() {
+        //Clone the navbar item props
+        let props = omit(this.props, ["children", "className"]);
+        props.className = concat(["siimple-navbar-item"], this.props.className);
+        //Render the navbar link
+        return h("div", props, this.props.children);
+    }
+}
+
+//Navbar item default props
+NavbarItem.defaultProps = {
+    style: null, 
+    className: []
+};
+
