@@ -14,7 +14,7 @@ export default class Radio extends React.Component {
     render() {
         //Switch input default props
         let inputProps = omit(this.props, ["style", "id"]);
-        //Parse the switch internal ID
+        inputProps.type = "radio";
         inputProps.id = (typeof this.props.id === "string") ? this.props.id : this.id;
         //Switch children content
         let children = [
