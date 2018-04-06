@@ -14,15 +14,14 @@ export default class Checkbox extends React.Component {
     
     //Render the checkbox element
     render() {
-        let self = this;
         //Input default props
-        let props = omit(this.props, ["style", "id"]);
+        let inputProps = omit(this.props, ["style", "id"]);
         //Add the checkbox id
-        props.id = (typeof this.props.id === "string") ? this.props.id : this.id;
+        inputProps.id = (typeof this.props.id === "string") ? this.props.id : this.id;
         //Switch children content
         let children = [
-            h("input", props, null),
-            h("label", {htmlFor: props.id}, null)
+            h("input", inputProps, null),
+            h("label", {htmlFor: inputProps.id}, null)
         ];
         //Return the checkbox element
         return h("div", {className: "siimple-checkbox", style: this.props.style}, children);
