@@ -1,13 +1,16 @@
-import h from '../hyperscript.js';
-import SiimpleComponent from '../index.js';
+import React from "react";
+import {hyperscript as h} from "neutrine-utils";
+
+import "siimple/scss/typography/_paragraph.scss";
 
 //Paragraph component
-export default class SiimpleParagraph extends SiimpleComponent
-{
-  //Render the paragraph component
-  render()
-  {
+export default class Paragraph extends React.Component {
+  render() {
     //Return a div with the paragraph class
-    return h.div({ className: 'siimple-paragraph' }, this.props.children);
+    return h("div", {className: "siimple-paragraph", style: this.props.style}, this.props.children);
   }
 }
+
+//Paragraph default props
+Paragraph.defaultProps = {style: null};
+
