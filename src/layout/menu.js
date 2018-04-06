@@ -1,44 +1,47 @@
-import h from '../hyperscript.js';
-import SiimpleComponent from '../index.js';
+import React from "react";
+import {hyperscript as h} from "neutrine-utils";
+import {omit} from "kofi";
+
+import "siimple/scss/layout/_menu.scss";
 
 //Menu component
-export class SiimpleMenu extends SiimpleComponent {
+export class Menu extends Component {
     render() {
-        return h('div', {className: 'siimple-menu', style: this.props.style}, this.props.children);
+        return h("div", {className: "siimple-menu", style: this.props.style}, this.props.children);
     }
 }
 
 //Main menu props
-SiimpleMenu.defaultProps = {style: null};
+Menu.defaultProps = {style: null};
 
 //Menu group component
-export class SiimpleMenuGroup extends SiimpleComponent {
+export class MenuGroup extends Component {
     render() {
-        return h('div', {
-            className: 'siimple-menu-group',
-            style: this.props.style,
-            onClick: this.props.onClick
-        }, this.props.children);
+        //Clone the properties 
+        let props = omit(this.props, ["children", "className"]);
+        props.className = "siimple-menu-group";
+        //Return the menu group element
+        return h("div", props, this.props.children);
     }
 }
 
 //Menu group default props
-SiimpleMenuGroup.defaultProps = {style: null, onClick: null};
+MenuGroup.defaultProps = {style: null};
 
 //Menu item
-export class SiimpleMenuItem extends SiimpleComponent {
+export class MenuItem extends Component {
     render() {
-        let classList = ['siimple-menu-item'];
+        //Clone the properties 
+        let props = omit(this.props, ["selected", "children", "className"]);
+        propsclassName = ["siimple-menu-item"];
+        //Check the selected attribute
         if (this.props.selected === true) {
-            classList.push('siimple-menu-item--selected');
+            classList.push("siimple-menu-item--selected");
         }
-        return h('div', {
-            className: classList,
-            style: this.props.style,
-            onClick: this.props.onClick
-        }, this.props.children);
+        //Return the menu item element
+        return h("div", props, this.props.children);
     }
 }
 
 //Menu item default props
-SiimpleMenuItem.defaultProps = {style: null, onClick: null};
+MenuItem.defaultProps = {style: null};
