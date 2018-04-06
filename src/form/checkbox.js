@@ -1,6 +1,6 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
-import {uniqueId} from "kofi";
+import {omit, uniqueId} from "kofi";
 
 import "siimple/scss/form/_checkbox.scss";
 
@@ -10,48 +10,19 @@ export default class Checkbox extends React.Component {
         super(props);
         //Generate a unique id for the checkbox
         this.id = uniqueId();
-        //Initialize the referenced elements object
-        this.ref = null;
-        //Bind handlers
-        this.handleChange = this.handleChange.bind(this);
     }
-
-    //Handle the checkbox change
-    handleChange(e) {
-        if (typeof this.props.onChange === "function") {
-            this.props.onChange.call(null, e.nativeEvent, this.ref.checked); 
-        }
-    }
-
-    //Get or set the checkbox state
-    checked(isChecked) {
-        if (typeof isChecked === "boolean") {
-            //Set the checked value
-            this.ref.checked = isChecked;
-        } else {
-            //Return if checkbox is checked
-            return this.ref.checked;
-        }
-    }
-
+    
     //Render the checkbox element
     render() {
         let self = this;
         //Input default props
-        let inputProps = {
-            id: this.id,
-            type: "checkbox",
-            defaultChecked: this.props.checked,
-            name: this.props.name,
-            ref: function (i) {
-                self.ref = i;
-            },
-            onChange: self.handleChange
-        };
+        let props = omit(this.props, ["style", "id"]);
+        //Add the checkbox id
+        props.id = (typeof this.props.id === "string") ? this.props.id : this.id;
         //Switch children content
         let children = [
-            h("input", inputProps, null),
-            h("label", {htmlFor: this.id}, null)
+            h("input", props, null),
+            h("label", {htmlFor: props.id}, null)
         ];
         //Return the checkbox element
         return h("div", {className: "siimple-checkbox", style: this.props.style}, children);
@@ -59,10 +30,5 @@ export default class Checkbox extends React.Component {
 }
 
 //Checkbox default props 
-Checkbox.defaultProps = {
-    name: null, 
-    checked: true, 
-    onChange: null,
-    style: null
-};
+Checkbox.defaultProps = {style: null};
 
