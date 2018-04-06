@@ -28,7 +28,11 @@ Alert.defaultProps = {
 //Alert title component 
 export class AlertTitle extends React.Component {
     render() {
-        return h("div", {className: "siimple-alert-title"}, this.props.children);
+        //Return the alret title element
+        return h("div", {className: "siimple-alert-title", style: this.props.style}, this.props.children);
     }
 }
+
+//Alert title default props 
+AlertTitle.defaultProps = {style: null};
 
