@@ -1,32 +1,27 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
-import Close from "./close.js";
+import {omit} from "kofi";
 
 import "siimple/scss/elements/_alert.scss";
 
 //Alert component
 export class Alert extends React.Component {
     render() {
-        let self = this;
-        let classList = [ "siimple-alert" ];
-        let children = [h("span", {}, this.props.children)];
+        //Clone the alert props 
+        let props = omit(this.props, ["children", "className", "color"]);
+        //Initialize the class list
+        props.className = [ "siimple-alert" ];
         //Check the alert color property
         if (typeof this.props.color === "string") {
-            classList.push("siimple-alert--"  + this.props.color.toLowerCase().trim());
+            props.className.push("siimple-alert--"  + this.props.color.toLowerCase().trim());
         }
-        //Check if the close button is enabled
-        if (this.props.showClose === true) {
-            children.push(h(Close, {onClick: self.props.onCloseClick}));
-        }
-        return h("div", {className: classList, style: this.props.style}, children);
+        return h("div", props, this.props.children);
     }
 }
 
 //Alert default props
 Alert.defaultProps = { 
     color: "blue", 
-    showClose: false, 
-    onCloseClick: null, 
     style: null 
 };
 
