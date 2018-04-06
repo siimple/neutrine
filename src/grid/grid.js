@@ -1,6 +1,8 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
 
+import "siimple/scss/grid/_grid.scss";
+
 //Grid class
 export class Grid extends React.Component {
     render() {
