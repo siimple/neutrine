@@ -14,7 +14,7 @@ export default class Switch extends React.Component {
     render() {
         //Input default props
         let inputProps = omit(this.props, ["style", "id"]);
-        //Parse the switch id
+        inputProps.type = "checkbox";
         inputProps.id = (typeof this.props.id === "string") ? this.props.id : this.id;
         //Switch children content
         let children = [
