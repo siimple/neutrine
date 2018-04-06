@@ -16,7 +16,7 @@ export default class Checkbox extends React.Component {
     render() {
         //Input default props
         let inputProps = omit(this.props, ["style", "id"]);
-        //Add the checkbox id
+        inputProps.type = "checkbox";
         inputProps.id = (typeof this.props.id === "string") ? this.props.id : this.id;
         //Switch children content
         let children = [
