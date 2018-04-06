@@ -1,6 +1,6 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import {concat, omit} from "kofi";
 
 import "siimple/scss/layout/_menu.scss";
 
@@ -33,10 +33,10 @@ export class MenuItem extends React.Component {
     render() {
         //Clone the properties 
         let props = omit(this.props, ["selected", "children", "className"]);
-        propsclassName = ["siimple-menu-item"];
+        props.className = concat(["siimple-menu-item"], this.props.className);
         //Check the selected attribute
         if (this.props.selected === true) {
-            classList.push("siimple-menu-item--selected");
+            props.className.push("siimple-menu-item--selected");
         }
         //Return the menu item element
         return h("div", props, this.props.children);
@@ -44,4 +44,7 @@ export class MenuItem extends React.Component {
 }
 
 //Menu item default props
-MenuItem.defaultProps = {style: null};
+MenuItem.defaultProps = {
+    style: null,
+    className: []
+};
