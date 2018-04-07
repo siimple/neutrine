@@ -1,71 +1,88 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
+import {concat, omit} from "kofi";
 
 import "siimple/scss/elements/_card.scss";
 
 //Card base component
 export class Card extends React.Component {
     render() {
-        let props = this.props;
-        return h("div", {className: "siimple-card", style: props.style}, props.children);
+        //Initialize the card props
+        let props = omit(this.props, ["children", "className"]);
+        props.className = concat(["siimple-card"], this.props.className);
+        //Return the card element
+        return h("div", props, props.children);
     }
 }
 
 //Card base default props 
-Card.defaultProps = {style: null};
+Card.defaultProps = {};
 
 //Card header component 
 export class CardHeader extends React.Component {
     render() {
-        let props = this.props;
-        return h("div", {className: "siimple-card-header", style: props.style}, props.children);
+        //Initialize the card header props
+        let props = omit(this.props, ["children", "className"]);
+        props.className = concat(["siimple-card-header"], this.props.className);
+        return h("div", props, props.children);
     }
 }
 
 //Card header default props 
-CardHeader.defaultProps = {style: null};
+CardHeader.defaultProps = {};
 
 //Card body component 
 export class CardBody extends React.Component {
     render() {
-        let props = this.props;
-        return h("div", {className: "siimple-card-body", style: props.style}, props.children);
+        //Initialize the card body props
+        let props = omit(this.props, ["children", "className"]);
+        props.className = concat("siimple-card-body"], this.props.className);
+        return h("div", props, props.children);
     }
 }
 
 //Card body default props 
-CardBody.defaultProps = {style: null};
+CardBody.defaultProps = {};
 
 //Card footer component 
 export class CardFooter extends React.Component {
     render() {
-        let props = this.props;
-        return h("div", {className: "siimple-card-footer", style: props.style}, props.children);
+        //Initialize the card footer props
+        let props = omit(this.props, ["children", "className"]); 
+        props.className = concat(["siimple-card-footer"], this.props.className);
+        //Return the card footer element
+        return h("div", props, props.children);
     }
 }
 
 //Card footer default props
-CardFooter.defaultProps = {style: null};
+CardFooter.defaultProps = {};
 
 //Card title component 
 export class CardTitle extends React.Component {
     render() {
-        let props = this.props;
-        return h("div", {className: "siimple-card-title", style: props.style}, props.children);
+        //Initialize the card title props
+        let props = omit(this.props, ["children", "className"]);
+        props.className = concat(["siimple-card-title"], this.props.className);
+        //Return the card title element
+        return h("div", props, props.children);
     }
 }
 
 //Card title default props 
-CardTitle.defaultProps = {style: null};
+CardTitle.defaultProps = {};
 
 //Card subtitle component
 export class CardSubtitle extends React.Component {
     render() {
-        let props = this.props;
-        return h("div", {className: "siimple-card-subtitle", style: props.style}, props.children);
+        //Initialize the card subtitle props
+        let props = omit(this.props, ["children", "className"]);
+        props.className = concat(["siimple-card-subtitle"], this.props.className);
+        //Return the card subtitle element
+        return h("div", props, props.children);
     }
 }
 
 //Card subtitle default props 
-CardSubtitle.defaultProps = {style: null};
+CardSubtitle.defaultProps = {};
 
