@@ -1,10 +1,13 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
+import {concat, omit} from "kofi";
 
 import "siimple/scss/elements/_progress.scss";
 
+//Progress component
 export default class Progress extends React.Component {
     render() {
+        let props = omit(this.props, ["children", "className", "color", "completed", "striped", "velocity"]);
         let classList = ["siimple-progress"];
         //Check the color property
         if (typeof this.props.color === "string") {
@@ -20,7 +23,8 @@ export default class Progress extends React.Component {
             }
         }
         let content = h("span", {style: {width: this.props.completed + "%"}}, this.props.children);
-        return h("div", {className: classList}, content);
+        props.className = concat(classList, this.props.className);
+        return h("div", props, content);
     }
 }
 
