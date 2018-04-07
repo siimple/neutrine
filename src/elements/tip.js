@@ -1,11 +1,13 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
+import {classNames, hyperscript as h} from "neutrine-utils";
+import {omit} from "kofi";
 
 import "siimple/scss/elements/_tip.scss";
 
 //Tip class
 export default class Tip extends React.Component {
     render() {
+        let props = omit(this.props, ["children", "className", "color", "icon"]);
         let classList = ["siimple-tip"];
         //Add the tip color
         if (typeof this.props.color === "string") {
@@ -15,15 +17,16 @@ export default class Tip extends React.Component {
         if (typeof this.props.icon === "string") {
             classList.push("siimple-tip--" + this.props.icon.toLowerCase().trim());
         }
+        //Generate the class names
+        props.className = classNames(classList, this.props.className);
         //Return the tip element
-        return h("div", {className: classList, style: this.props.style}, this.props.children);
+        return h("div", props, this.props.children);
     }
 }
 
 //Initialize the tip element default props
 Tip.defaultProps = { 
     color: "blue", 
-    icon: null, 
-    style: null
+    icon: null
 };
 
