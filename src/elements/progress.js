@@ -1,6 +1,6 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
-import {concat, omit} from "kofi";
+import {classNames, hyperscript as h} from "neutrine-utils";
+import {omit} from "kofi";
 
 import "siimple/scss/elements/_progress.scss";
 
@@ -23,7 +23,7 @@ export default class Progress extends React.Component {
             }
         }
         let content = h("span", {style: {width: this.props.completed + "%"}}, this.props.children);
-        props.className = concat(classList, this.props.className);
+        props.className = classNames(classList, this.props.className);
         return h("div", props, content);
     }
 }
