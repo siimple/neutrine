@@ -10,13 +10,13 @@ export class Alert extends React.Component {
         //Clone the alert props 
         let props = omit(this.props, ["children", "className", "color"]);
         //Initialize the class list
-        props.className = ["siimple-alert"];
+        let className = ["siimple-alert"];
         //Check the alert color property
         if (typeof this.props.color === "string") {
-            props.className.push("siimple-alert--"  + this.props.color.toLowerCase().trim());
+            className.push("siimple-alert--"  + this.props.color.toLowerCase().trim());
         }
         //Append the provided class list 
-        props.className = concat(props.className, this.props.className);
+        props.className = concat(className, this.props.className);
         return h("div", props, this.props.children);
     }
 }
