@@ -1,11 +1,13 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
+import {classNames, hyperscript as h} from "neutrine-utils";
+import {omit} from "kofi";
 
 import "siimple/scss/elements/_table.scss";
 
 //Export main table component
 export class Table extends React.Component {
     render() {
+        let props = omit(this.props, ["children", "className", "striped", "border", "hover"]);
         let classList = ["siimple-table"];
         //Check the striped property
         if (this.props.striped === true) {
@@ -19,13 +21,13 @@ export class Table extends React.Component {
         if (this.props.hover === true) {
             classList.push("siimple-table--hover");
         }
-        return h("div", {className: classList, style: this.props.style}, this.props.children);
+        props.className = classNames(classList, this.props.className);
+        return h("div", props, this.props.children);
     }
 }
 
 //Table default properties
 Table.defaultProps = {
-    style: null, 
     striped: false, 
     border: false, 
     hover: false
@@ -34,40 +36,48 @@ Table.defaultProps = {
 //Export table header component
 export class TableHeader extends React.Component {
     render() {
-        return h("div", {className: "siimple-table-header", style: this.props.style}, this.props.children);
+        let props = omit(this.props, ["children", "className"]);
+        props.className = classNames("siimple-table-header", this.props.className);
+        return h("div", props, this.props.children);
     }
 }
 
 //Table header default props
-TableHeader.defaultProps = {style: null};
+TableHeader.defaultProps = {};
 
 //Export table body component
 export class TableBody extends React.Component {
     render() {
+        let props = omit(this.props, ["children", "className"]);
+        props.className = classNames("siimple-table-body", this.props.className);
         return h("div", {className: "siimple-table-body", style: this.props.style}, this.props.children);
     }
 }
 
 //Table body default props
-TableBody.defaultProps = {style: null};
+TableBody.defaultProps = {};
 
 //Export table row component
 export class TableRow extends React.Component {
     render() {
-        return h("div", {className: "siimple-table-row", style: this.props.style}, this.props.children);
+        let props = omit(this.props, ["children", "className"]);
+        props.className = classNames("siimple-table-row", this.props.className); 
+        return h("div", props, this.props.children);
     }
 }
 
 //Table row default props
-TableRow.defaultProps = {style: null};
+TableRow.defaultProps = {};
 
 //Export table cell component
 export class TableCell extends React.Component {
     render() {
-        return h("div", {className: "siimple-table-cell", style: this.props.style}, this.props.children);
+        let props = omit(this.props, ["children", "className"]);
+        props.className = classNames("siimple-table-cell", this.props.className);
+        return h("div", props, this.props.children);
     }
 }
 
 //Table cell default props
-TableCell.defaultProps = {style: null};
+TableCell.defaultProps = {};
 
