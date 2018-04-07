@@ -1,31 +1,37 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
+import {classNames, hyperscript as h} from "neutrine-utils";
+import {omit} from "kofi";
 
 import "siimple/scss/grid/_grid.scss";
 
 //Grid class
 export class Grid extends React.Component {
     render() {
-        return h("div", {className: "siimple-grid", style: this.props.style}, this.props.children);
+        let props = omit(this.props, ["className", "children"]);
+        props.className = classNames("siimple-grid", this.props.className);
+        return h("div", props, this.props.children);
     }
 }
 
 //Grid default props
-Grid.defaultProps = {style: null};
+Grid.defaultProps = {};
 
 //Grid row class
 export class GridRow extends React.Component {
     render() {
-        return h("div", {className: "siimple-grid-row", style: this.props.style}, this.props.children);
+        let props = omit(this.props, ["children", "className"]);
+        props.className = classNames("siimple-grid-row", this.props.className);
+        return h("div", props, this.props.children);
     }
 }
 
 //Grid row default props
-GridRow.defaultProps = {style: null};
+GridRow.defaultProps = {};
 
 //Grid column class
 export class GridCol extends React.Component {
     render() {
+        let props = omit(this.props, ["children", "className", "size", "large", "medium", "small"]);
         let classList = ["siimple-grid-col"];
         //Check the column size
         if (typeof this.props.size === "number") {
@@ -40,7 +46,8 @@ export class GridCol extends React.Component {
         if (typeof this.props.small === "number") {
             classList.push("siimple-grid-col-sm--" + this.props.medium);
         }
-        return h("div", {className: classList, style: this.props.style}, this.props.children);
+        props.className = classNames(classList, this.props.className);
+        return h("div", props, this.props.children);
     }
 }
 
@@ -49,7 +56,6 @@ GridCol.defaultProps = {
     size: null, 
     large: null, 
     medium: null, 
-    small: null, 
-    style: null
+    small: null
 };
 
