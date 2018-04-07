@@ -1,6 +1,6 @@
 import React from "react";
 import {hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import {concat, omit} from "kofi";
 
 import "siimple/scss/elements/_alert.scss";
 
@@ -9,29 +9,35 @@ export class Alert extends React.Component {
     render() {
         //Clone the alert props 
         let props = omit(this.props, ["children", "className", "color"]);
-        props.className = [ "siimple-alert" ];
+        //Initialize the class list
+        props.className = ["siimple-alert"];
         //Check the alert color property
         if (typeof this.props.color === "string") {
             props.className.push("siimple-alert--"  + this.props.color.toLowerCase().trim());
         }
+        //Append the provided class list 
+        props.className = concat(props.className, this.props.className);
         return h("div", props, this.props.children);
     }
 }
 
 //Alert default props
 Alert.defaultProps = { 
-    color: "blue", 
-    style: null 
+    color: "blue" 
 };
 
 //Alert title component 
 export class AlertTitle extends React.Component {
     render() {
+        //Initialize the element props 
+        let props = omit(this.props, ["children", "className"]);
+        //Initialize the class names list
+        props.className = concat(["siimple-alert-title"], this.props.className);
         //Return the alert title element
-        return h("div", {className: "siimple-alert-title", style: this.props.style}, this.props.children);
+        return h("div", props, this.props.children);
     }
 }
 
 //Alert title default props 
-AlertTitle.defaultProps = {style: null};
+AlertTitle.defaultProps = {};
 
