@@ -1,6 +1,6 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
-import {concat, omit}, from "kofi";
+import {classNames, hyperscript as h} from "neutrine-utils";
+import {omit}, from "kofi";
 
 import "siimple/scss/elements/_spinner.scss";
 
@@ -17,7 +17,7 @@ export default class Spinner extends React.Component {
         if (typeof this.props.size === "string") {
             classList.push("siimple-spinner--" + this.props.size);
         }
-        props.className = concat(classList, this.props.className);
+        props.className = classNames(classList, this.props.className);
         //Return the spinner element
         return h("div", props, null);
     }
