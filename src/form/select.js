@@ -13,7 +13,7 @@ export default class Select extends React.Component {
         let classList = ["siimple-select"];
         //Check the fluid property
         if (this.props.fluid === true) {
-            props.className.push("siimple-select--fluid");
+            classList.push("siimple-select--fluid");
         }
         //Save the className
         props.className = classNames(classList, this.props.className);
