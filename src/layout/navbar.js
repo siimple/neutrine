@@ -1,14 +1,16 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
-import {concat, omit} from "kofi";
+import {classNames, hyperscript as h} from "neutrine-utils";
+import {omit} from "kofi";
 
 import "siimple/scss/layout/_navbar.scss";
 
 //Navbar default class
 export class Navbar extends React.Component {
     render() {
+        //Clone the navbar props 
+        let props = omit(this.props, ["children", "className", "color", "size"]);
         //Initialize the class list
-        let classList = concat(["siimple-navbar"], this.props.className);
+        let classList = ["siimple-navbar"];
         //Check the color
         if (typeof this.props.color === "string") {
             classList.push("siimple-navbar--" + this.props.color.toLowerCase());
@@ -17,8 +19,10 @@ export class Navbar extends React.Component {
         if (typeof this.props.size === "string") {
             classList.push("siimple-navbar--" + this.props.size.toLowerCase());
         }
+        //Generate the navbar classname
+        props.className = classNames(classList, this.props.className);
         //Render the navbar
-        return h("div", {className: classList, style: this.props.style}, this.props.children);
+        return h("div", props, this.props.children);
     }
 }
 
@@ -26,8 +30,7 @@ export class Navbar extends React.Component {
 Navbar.defaultProps = {
     color: null, 
     size: null,
-    style: null,
-    className: []
+    style: null
 };
 
 //Navbar title element
@@ -35,7 +38,7 @@ export class NavbarTitle extends React.Component {
     render() {
         //Initialize the title element props
         let props = omit(this.props, ["className", "children"]);
-        props.className = concat(["siimple-navbar-title"], this.props.className);
+        props.className = classNames("siimple-navbar-title", this.props.className);
         //Render the navbar title
         return h("div", props, this.props.children);
     }
@@ -43,8 +46,7 @@ export class NavbarTitle extends React.Component {
 
 //Navbar title default props
 NavbarTitle.defaultProps = {
-    style: null,
-    className: []
+    style: null
 };
 
 //Navbar subtitle class
@@ -52,7 +54,7 @@ export class NavbarSubtitle extends React.Component {
     render() {
         //Clone the subtitle props 
         let props = omit(this.props, ["className", "children"]);
-        props.className = concat(["siimple-navbar-subtitle"], this.props.className);
+        props.className = classNames("siimple-navbar-subtitle", this.props.className);
         //Return the navbar subtitle element
         return h("div", props, this.props.children);
     }
@@ -60,8 +62,7 @@ export class NavbarSubtitle extends React.Component {
 
 //Navbar subtitle default props 
 NavbarSubtitle.defaultProps = {
-    style: null,
-    className: []
+    style: null
 };
 
 //Navbar item element
@@ -69,7 +70,7 @@ export class NavbarItem extends React.Component {
     render() {
         //Clone the navbar item props
         let props = omit(this.props, ["children", "className"]);
-        props.className = concat(["siimple-navbar-item"], this.props.className);
+        props.className = classNames("siimple-navbar-item", this.props.className);
         //Render the navbar link
         return h("div", props, this.props.children);
     }
@@ -77,7 +78,6 @@ export class NavbarItem extends React.Component {
 
 //Navbar item default props
 NavbarItem.defaultProps = {
-    style: null, 
-    className: []
+    style: null
 };
 
