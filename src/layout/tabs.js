@@ -1,14 +1,16 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
-import {concat, omit} from "kofi";
+import {classNames, hyperscript as h} from "neutrine-utils";
+import {omit} from "kofi";
 
 import "siimple/scss/layout/_tabs.scss";
 
 //Export tabs component
 export class Tabs extends React.Component {
     render() {
+        //Clone the tabs props 
+        let props = omit(this.props, ["children", "className", "boxed", "color"]);
         //Initialize the tabs class list
-        let classList = concat(["siimple-tabs"], this.props.className);
+        let classList = ["siimple-tabs"];
         //Check the boxed attribute
         if (this.props.boxed === true) {
             classList.push("siimple-tabs--boxed");
@@ -17,8 +19,10 @@ export class Tabs extends React.Component {
         if (typeof this.props.color === "string") {
             classList.push("siimple-tabs--" + this.props.color);
         }
+        //Generate the classname
+        props.className = classNames(classList, this.props.className);
         //Return the tabs element
-        return h("div", {className: classList, style: this.props.style} , this.props.children);
+        return h("div", props, this.props.children);
     }
 }
 
@@ -26,8 +30,7 @@ export class Tabs extends React.Component {
 Tabs.defaultProps = {
     boxed: true, 
     color: null,
-    style: null, 
-    className: []
+    style: null
 };
 
 //Tabs item component 
@@ -35,11 +38,14 @@ export class TabsItem extends React.Component {
     render() {
         //Extend the tabs item properties
         let props = omit(this.props, ["children", "selected", "className"]);
-        props.className = concat(["siimple-tabs-item"], this.props.className);
+        //Initialize the tabs item class list
+        let classList = ["siimple-tabs-item"];
         //Check the selected attribute 
         if (this.props.selected === true) {
-            props.className.push("siimple-tabs-item--selected");
+            classList.push("siimple-tabs-item--selected");
         }
+        //Generate the tabs item classname
+        props.className = classNames(classList, this.props.className);
         //Return the tab item
         return h("div", props, this.props.children);
     }
@@ -48,7 +54,6 @@ export class TabsItem extends React.Component {
 //Tabs item default props 
 TabsItem.defaultProps = {
     selected: false,
-    style: null,
-    className: []
+    style: null
 };
 
