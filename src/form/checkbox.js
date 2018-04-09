@@ -1,5 +1,5 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
+import {classNames, hyperscript as h} from "neutrine-utils";
 import {omit, uniqueId} from "kofi";
 
 import "siimple/scss/form/_checkbox.scss";
@@ -15,16 +15,18 @@ export default class Checkbox extends React.Component {
     //Render the checkbox element
     render() {
         //Input default props
-        let inputProps = omit(this.props, ["style", "id"]);
+        let inputProps = omit(this.props, ["cbildren", "className", "style", "id"]);
         inputProps.type = "checkbox";
         inputProps.id = (typeof this.props.id === "string") ? this.props.id : this.id;
-        //Switch children content
+        //Checkbox children content
         let children = [
             h("input", inputProps, null),
             h("label", {htmlFor: inputProps.id}, null)
         ];
+        //Chebox class name
+        let className = classNames("siimple-checkbox", this.props.className);
         //Return the checkbox element
-        return h("div", {className: "siimple-checkbox", style: this.props.style}, children);
+        return h("div", {className: className, style: this.props.style}, children);
     }   
 }
 
