@@ -1,5 +1,5 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
+import {classNames, hyperscript as h} from "neutrine-utils";
 import {omit} from "kofi";
 
 import "siimple/scss/form/_input.scss";
@@ -8,20 +8,22 @@ import "siimple/scss/form/_input.scss";
 export default class Input extends React.Component {
     render() {
         //Clone the input props
-        let props = omit(this.props, ["fluid", "children"]);
-        //Initialize the input style
-        props.className = ["siimple-input"];
+        let props = omit(this.props, ["fluid", "children", "className"]);
+        //Initialize the input class list
+        let classList = ["siimple-input"];
         //Check the fluid property
         if (this.props.fluid === true) {
-            props.className.push("siimple-input--fluid");
+            classList.push("siimple-input--fluid");
         }
+        //Generate the input class name
+        props.className = classNames(classList, this.props.className);
+        //Return the input element
         return h("input", props);
     }
 }
 
 //Input default props
 Input.defaultProps = {
-    fluid: false, 
-    style: null
+    fluid: false 
 };
 
