@@ -11,7 +11,7 @@ import Tip from "./src/elements/tip.js";
 
 //Form
 import Checkbox from "./src/form/checkbox.js";
-import Field from "./src/form/field.js";
+import {Field, FieldLabel, FieldHelper} from "./src/form/field.js";
 import {Form, FormTitle, FormDetail, FormRule} from "./src/form/form.js";
 import Input from "./src/form/input.js";
 import Label from "./src/form/label.js";
@@ -68,6 +68,8 @@ export {
     
     Checkbox,
     Field,
+    FieldLabel,
+    FieldHelper,
     Form,
     FormTitle,
     FormDetail,
