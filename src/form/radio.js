@@ -1,5 +1,5 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
+import {classNames, hyperscript as h} from "neutrine-utils";
 import {omit, uniqueId} from "kofi";
 
 import "siimple/scss/form/_radio.scss";
@@ -13,7 +13,7 @@ export default class Radio extends React.Component {
     
     render() {
         //Switch input default props
-        let inputProps = omit(this.props, ["style", "id"]);
+        let inputProps = omit(this.props, ["children", "className", "style", "id"]);
         inputProps.type = "radio";
         inputProps.id = (typeof this.props.id === "string") ? this.props.id : this.id;
         //Switch children content
@@ -21,11 +21,15 @@ export default class Radio extends React.Component {
             h("input", inputProps, null),
             h("label", {htmlFor: inputProps.id}, null)
         ];
+        //Radio class name
+        let className = classNames("siimple-radio", this.props.className);
         //Return the radio element
-        return h("div", {className: "siimple-radio", style: this.props.style}, children);
+        return h("div", {className: className, style: this.props.style}, children);
     } 
 }
 
 //Radio component default props
-Radio.defaultProps = {style: null};
+Radio.defaultProps = {
+    style: null
+};
 
