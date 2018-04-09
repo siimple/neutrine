@@ -1,6 +1,6 @@
 import React from "react";
 import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit}, from "kofi";
+import {omit} from "kofi";
 
 import "siimple/scss/elements/_spinner.scss";
 
