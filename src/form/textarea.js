@@ -1,5 +1,5 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
+import {classNames, hyperscript as h} from "neutrine-utils";
 import {omit} from "kofi";
 
 import "siimple/scss/form/_textarea.scss";
@@ -8,13 +8,15 @@ import "siimple/scss/form/_textarea.scss";
 export default class Textarea extends React.Component {
     render() {
         //Extend the props 
-        let props = omit(this.props, ["fluid", "children"]);
-        //Add the textarea class 
-        props.className = ["siimple-textarea"];
+        let props = omit(this.props, ["fluid", "children", "className"]);
+        //Initialize the textarea class list 
+        let classList = ["siimple-textarea"];
         //Check the fluid attribute
         if (this.props.fluid === true) {
-            props.className.push("siimple-textarea--fluid");
+            classList.push("siimple-textarea--fluid");
         }
+        //Generate the textare className
+        props.className = classNames(classList, this.props.className);
         return h("textarea", props, this.props.children);
     }
 }
