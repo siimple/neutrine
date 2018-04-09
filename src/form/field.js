@@ -1,31 +1,48 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
+import {classNames, hyperscript as h} from "neutrine-utils";
+import {omit} from "kofi"
 
 import "siimple/scss/form/_field.scss";
 
 //Form field component
-export default class Field extends React.Component {
+export class Field extends React.Component {
     render() {
-        let children = [];
-        //Check the label prop
-        if (typeof this.props.label === "string") {
-            children.push(h("div", {className: "siimple-form-field-label"}, this.props.label));
-        }
-        //Append the children
-        if (typeof this.props.children !== "undefined") {
-            children = children.concat(this.props.children);
-        }
-        //Check the helper prop
-        if (typeof this.props.helper === "string") {
-            children.push(h("div", {className: "siimple-form-field-helper"}, this.props.helper));
-        }
-        return h("div", {className: "siimple-form-field", style: this.props.style}, children);
+        //Field props 
+        let props = omit(this.pros, ["children", "className"]);
+        props.className = classNames("siimple-field", this.props.className);
+        //Return the field element
+        return h("div", props, this.props.children);
     }
 }
 
 //Form field default props
-Field.defaultProps = { 
-    label: null, 
-    helper: null,
-    style: null
-};
+Field.defaultProps = {};
+
+//Field label component 
+export class FieldLabel extends React.Component {
+    render() {
+        //Field label props 
+        let props = omit(this.props, ["children", "className"]);
+        props.className = classNames("siimple-field-label", this.props.className);
+        //Return the field label element 
+        return h("div", props, this.props.children);
+    }
+}
+
+//Field label default props 
+FieldLabel.defaultProps = {};
+
+//Field helper component
+export class FieldHelper extends React.Component {
+    render() {
+        //Field helper props
+        let props = omit(this.props, ["children", "className"]);
+        props.className = classNames("siimple-field-helper", this.props.className);
+        //Return the field helper element
+        return h("div", props, this.props.children);
+    }
+}
+
+//Field helper default props
+FieldHelper.defaultProps = {};
+
