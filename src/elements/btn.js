@@ -25,7 +25,7 @@ export default class Btn extends React.Component {
             classList.push("siimple-btn--fluid");
         }
         //Append the provided class names
-        props.className = classNames(className, this.props.className);
+        props.className = classNames(classList, this.props.className);
         //Return the button element
         return h("div", props, this.props.children);
     }
