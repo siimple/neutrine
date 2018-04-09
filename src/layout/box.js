@@ -1,6 +1,6 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
-import {concat, omit} from "kofi";
+import {classNames, hyperscript as h} from "neutrine-utils";
+import {omit} from "kofi";
 
 import "siimple/scss/layout/_box.scss";
 
@@ -9,11 +9,13 @@ export class Box extends React.Component {
     render() {
         //Clone the box props 
         let props = omit(this.props, ["children", "className", "color"]);
-        props.className = concat(["siimple-box"], this.props.className);
+        let classList = ["siimple-box"];
         //Check the box color property
         if (typeof this.props.color === "string") {
-            props.className.push("siimple-box--" + this.props.color.toLowerCase());
+            classList.push("siimple-box--" + this.props.color.toLowerCase());
         }
+        //Save the box className
+        props.className = classNames(classList, this.props.className);
         //Return the box component
         return h("div", props, this.props.children);
     }
@@ -21,53 +23,54 @@ export class Box extends React.Component {
 
 //Default props
 Box.defaultProps = {
-    color: null, 
-    style: null,
-    className: []
+    color: null
 };
 
 //Box title
 export class BoxTitle extends React.Component {
     render() {
+        //Initialize the box title props
         let props = omit(this.props, ["children", "className"]);
-        props.className = concat(["siimple-box-title"], this.props.className);
+        props.className = classNames("siimple-box-title", this.props.className);
+        //Return the box title element
         return h("div", props, this.props.children);
     }
 }
 
 //Box title default props 
 BoxTitle.defaultProps = {
-    style: null,
-    className: []
+    style: null
 };
 
 //Box subtitle 
 export class BoxSubtitle extends React.Component {
     render() {
+        //Initialize the box subtitle props
         let props = omit(this.props, ["children", "className"]);
-        props.className = concat(["siimple-box-subtitle"], this.props.className);
+        props.className = classNames("siimple-box-subtitle", this.props.className);
+        //Return the box title element
         return h("div", props, this.props.children);
     }
 }
 
 //Box subtitle default props 
 BoxSubtitle.defaultProps = {
-    style: null,
-    className: []
+    style: null
 };
 
 //Box detail component 
 export class BoxDetail extends React.Component {
     render() {
+        //Initialize the box detail props
         let props = omit(this.props, ["children", "className"]);
-        props.className = concat(["siimple-box-detail"], this.props.className);
+        props.className = classNames("siimple-box-detail", this.props.className);
+        //Return the box detail element
         return h("div", props, this.props.children);
     }
 }
 
 //Box detail default props 
 BoxDetail.defaultProps = {
-    style: null,
-    className: []
+    style: null
 };
 
