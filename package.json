@@ -22,7 +22,7 @@
         "kofi": "^0.1.1",
         "react": "^16.3.0",
         "react-dom": "^16.3.0",
-        "siimple": "^3.1.0-beta",
+        "siimple": "^3.1.0-beta.1",
         "siimple-colors": "^1.0.0-beta"
     },
     "devDependencies": {
