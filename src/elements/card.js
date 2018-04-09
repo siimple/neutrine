@@ -24,6 +24,7 @@ export class CardHeader extends React.Component {
         //Initialize the card header props
         let props = omit(this.props, ["children", "className"]);
         props.className = classNames("siimple-card-header", this.props.className);
+        //Return the card body element
         return h("div", props, props.children);
     }
 }
@@ -37,6 +38,7 @@ export class CardBody extends React.Component {
         //Initialize the card body props
         let props = omit(this.props, ["children", "className"]);
         props.className = classNames("siimple-card-body", this.props.className);
+        //Return the card body element
         return h("div", props, props.children);
     }
 }
