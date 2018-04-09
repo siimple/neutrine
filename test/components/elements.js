@@ -4,10 +4,7 @@ import {hyperscript as h} from "neutrine-utils";
 import * as Neutrine from "../../index.js";
 
 let testAlert = function () {
-    let closeListener = function () {
-        return alert("Close clicked");
-    };
-    let alert1 = h(Neutrine.Alert, {color: "red", showClose: true, onCloseClick: closeListener}, "Hello world");
+    let alert1 = h(Neutrine.Alert, {color: "red"}, "Hello world");
     let alert2 = h(Neutrine.Alert, {color: "blue"}, h(Neutrine.AlertTitle, {}, "Alert title"), "Alert body content");
     return h("div", {}, alert1, alert2);
 };
