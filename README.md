@@ -1,6 +1,6 @@
 # neutrine 
 
-> A set of UI elements following the siimple design guidelines
+> A collection of React UI components that implements the siimple style specification.
 
 [![npm](https://img.shields.io/npm/v/neutrine.svg?style=flat-square)](https://www.npmjs.com/package/neutrine)
 [![npm](https://img.shields.io/npm/dt/neutrine.svg?style=flat-square)](https://www.npmjs.com/package/neutrine)
