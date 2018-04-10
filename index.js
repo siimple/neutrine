@@ -38,6 +38,7 @@ import Badge from "./src/typography/badge.js";
 import Blockquote from "./src/typography/blockquote.js";
 import Code from "./src/typography/code.js";
 import Heading from "./src/typography/heading.js";
+import Link from "./src/typography/link.js";
 import Paragraph from "./src/typography/paragraph.js";
 import Pre from "./src/typography/pre.js";
 import Small from "./src/typography/small.js";
@@ -111,6 +112,7 @@ export {
     Blockquote,
     Code,
     Heading,
+    Link,
     Paragraph,
     Pre,
     Small,
