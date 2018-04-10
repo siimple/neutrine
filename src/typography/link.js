@@ -5,7 +5,7 @@ import {omit} from "kofi";
 import "siimple/scss/typography/_link.scss";
 
 //Export link component 
-export default class Link extends React.Component {
+export default class Link extends React.Component {
     render() {
         //Clone the link props
         let props = omit(this.props, ["children", "className"]);
