@@ -28,6 +28,11 @@ export default class App extends React.Component {
 }
 ```
 
+## Documentation
+
+This package is on development. We will publish a detailed documentation in `v0.1.0`.
+
+
 ## License 
 
 Under the [MIT LICENSE](./LICENSE).
