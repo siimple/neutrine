@@ -15,9 +15,13 @@ export default class Checkbox extends React.Component {
     //Render the checkbox element
     render() {
         //Input default props
-        let inputProps = omit(this.props, ["cbildren", "className", "style", "id"]);
+        let inputProps = omit(this.props, ["checkboxRef", "cbildren", "className", "style", "id"]);
         inputProps.type = "checkbox";
         inputProps.id = (typeof this.props.id === "string") ? this.props.id : this.id;
+        //Chekc the checkboxRef property
+        if (this.props.checkboxRef) {
+            inputProps.ref = this.props.checkboxRef; 
+        }
         //Checkbox children content
         let children = [
             h("input", inputProps, null),
@@ -31,5 +35,8 @@ export default class Checkbox extends React.Component {
 }
 
 //Checkbox default props 
-Checkbox.defaultProps = {style: null};
+Checkbox.defaultProps = {
+    checkboxRef: null,
+    style: null
+};
 
