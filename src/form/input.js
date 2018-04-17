@@ -8,7 +8,7 @@ import "siimple/scss/form/_input.scss";
 export default class Input extends React.Component {
     render() {
         //Clone the input props
-        let props = omit(this.props, ["fluid", "children", "className"]);
+        let props = omit(this.props, ["inputRef", "fluid", "children", "className"]);
         //Initialize the input class list
         let classList = ["siimple-input"];
         //Check the fluid property
@@ -17,6 +17,10 @@ export default class Input extends React.Component {
         }
         //Generate the input class name
         props.className = classNames(classList, this.props.className);
+        //Check the input reference
+        if (this.props.inputRef) {
+            props.ref = inputRef;
+        }
         //Return the input element
         return h("input", props);
     }
@@ -24,6 +28,7 @@ export default class Input extends React.Component {
 
 //Input default props
 Input.defaultProps = {
-    fluid: false 
+    fluid: false,
+    inputRef: null
 };
 
