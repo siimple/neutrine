@@ -19,7 +19,7 @@ export default class Input extends React.Component {
         props.className = classNames(classList, this.props.className);
         //Check the input reference
         if (this.props.inputRef) {
-            props.ref = inputRef;
+            props.ref = this.props.inputRef;
         }
         //Return the input element
         return h("input", props);
