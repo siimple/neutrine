@@ -15,7 +15,7 @@ export default class Checkbox extends React.Component {
     //Render the checkbox element
     render() {
         //Input default props
-        let inputProps = omit(this.props, ["checkboxRef", "cbildren", "className", "style", "id"]);
+        let inputProps = omit(this.props, ["checkboxRef", "children", "className", "style", "id"]);
         inputProps.type = "checkbox";
         inputProps.id = (typeof this.props.id === "string") ? this.props.id : this.id;
         //Chekc the checkboxRef property
