@@ -8,7 +8,7 @@ import "siimple/scss/form/_textarea.scss";
 export default class Textarea extends React.Component {
     render() {
         //Extend the props 
-        let props = omit(this.props, ["fluid", "children", "className"]);
+        let props = omit(this.props, ["textareaRef", "fluid", "children", "className"]);
         //Initialize the textarea class list 
         let classList = ["siimple-textarea"];
         //Check the fluid attribute
@@ -17,6 +17,11 @@ export default class Textarea extends React.Component {
         }
         //Generate the textare className
         props.className = classNames(classList, this.props.className);
+        //Save the textarea reference
+        if (this.props.textareaRef) {
+            props.ref = this.props.textareaRef;
+        }
+        //Return the textarea element
         return h("textarea", props, this.props.children);
     }
 }
@@ -24,6 +29,7 @@ export default class Textarea extends React.Component {
 //Textarea default props 
 Textarea.defaultProps = {
     style: null,
+    textareaRef: null,
     fluid: false
 };
 
