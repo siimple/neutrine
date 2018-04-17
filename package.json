@@ -1,7 +1,7 @@
 {
     "name": "neutrine",
     "description": "A collection of React UI components that implements the siimple style specification",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "author": "Josemi Juanes <josemijuanes@gmail.com>",
     "license": "MIT",
     "homepage": "https://www.siimple.xyz/",
