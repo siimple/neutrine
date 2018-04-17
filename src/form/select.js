@@ -8,7 +8,7 @@ import "siimple/scss/form/_select.scss";
 export default class Select extends React.Component {
     render() {
         //Clone the select props
-        let props = omit(this.props, ["fluid", "children", "className"])
+        let props = omit(this.props, ["fluid", "selectRef", "children", "className"])
         //Initialize the select class list
         let classList = ["siimple-select"];
         //Check the fluid property
@@ -17,6 +17,10 @@ export default class Select extends React.Component {
         }
         //Save the className
         props.className = classNames(classList, this.props.className);
+        //Check the selectRef property
+        if (this.props.selectRef) {
+            props.ref = this.props.selectRef;
+        }
         //Return the select element
         return h("select", props, this.props.children);
     }
@@ -24,7 +28,8 @@ export default class Select extends React.Component {
 
 //Select element default props
 Select.defaultProps = {
-    fluid: false, 
+    fluid: false,
+    selectRef: null,
     style: null 
 };
 
