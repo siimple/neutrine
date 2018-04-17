@@ -19,11 +19,11 @@ $ npm install --save neutrine
 
 ```javascript
 import React from "react";
-import {Button} from "neutrine";
+import {Btn} from "neutrine";
 
 export default class App extends React.Component {
     render() {
-        return React.createElement(Button, {color: blue}, "Say hello");
+        return React.createElement(Btn, {color: blue}, "Say hello");
     }
 }
 ```
