@@ -13,9 +13,13 @@ export default class Radio extends React.Component {
     
     render() {
         //Switch input default props
-        let inputProps = omit(this.props, ["children", "className", "style", "id"]);
+        let inputProps = omit(this.props, ["radioRef", "children", "className", "style", "id"]);
         inputProps.type = "radio";
         inputProps.id = (typeof this.props.id === "string") ? this.props.id : this.id;
+        //Check the radio ref property
+        if (this.props.radioRef) {
+            inputProps.ref = this.props.radioRef;
+        }
         //Switch children content
         let children = [
             h("input", inputProps, null),
@@ -30,6 +34,7 @@ export default class Radio extends React.Component {
 
 //Radio component default props
 Radio.defaultProps = {
+    radioRef: null,
     style: null
 };
 
