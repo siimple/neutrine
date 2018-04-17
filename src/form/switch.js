@@ -13,9 +13,13 @@ export default class Switch extends React.Component {
 
     render() {
         //Input default props
-        let inputProps = omit(this.props, ["style", "id", "children", "className"]);
+        let inputProps = omit(this.props, ["switchRef", "style", "id", "children", "className"]);
         inputProps.type = "checkbox";
         inputProps.id = (typeof this.props.id === "string") ? this.props.id : this.id;
+        //Check the switch reference
+        if (this.props.switchRef) {
+            inputProps.ref = this.props.switchRef;
+        }
         //Switch children content
         let children = [
             h("input", inputProps, null),
@@ -31,6 +35,7 @@ export default class Switch extends React.Component {
 
 //Switch default props
 Switch.defaultProps = {
-    style: null
+    style: null,
+    switchRef: null
 };
 
