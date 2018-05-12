@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/elements/_list.scss";
 
@@ -8,7 +8,7 @@ import "siimple/scss/elements/_list.scss";
 export class List extends React.Component {
     render () {
         //Initialize the list props
-        let props = omit(this.props, ["children", "className", "hover"]);
+        let props = getProps(this.props, ["className", "hover"]);
         let classList = ["siimple-list"];
         //Check the hover prop
         if (this.props.hover === true) {
@@ -16,7 +16,7 @@ export class List extends React.Component {
         }
         props.className = classNames(classList, this.props.className);
         //Return the list element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -28,9 +28,9 @@ List.defaultProps = {
 //List item component 
 export class ListItem extends React.Component {
     render() {
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames(["siimple-list-item"], this.props.className);
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -40,9 +40,9 @@ ListItem.defaultProps = {};
 //List title component 
 export class ListTitle extends React.Component {
     render() {
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames(["siimple-list-title"], this.props.className);
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
