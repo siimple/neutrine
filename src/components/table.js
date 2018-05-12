@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
-import "siimple/scss/elements/_table.scss";
+import "siimple/scss/components/_table.scss";
 
 //Export main table component
 export class Table extends React.Component {
