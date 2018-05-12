@@ -23,11 +23,11 @@ export default Checkbox = React.forwardRef(function (props, ref) {
     let inputChild = React.createElement("input", inputProps, null);
     let labelChild = React.createElement("label", {htmlFor: inputProps.id}, null);
     //Build the checkbox props
-    let props = {
+    let checkboxProps = {
         className: classNames("siimple-checkbox", props.className),
         style: props.style
     };
     //Return the checkbox element
-    return React.createElement("div", props, inputChild, labelChild);  
+    return React.createElement("div", checkboxProps, inputChild, labelChild);  
 });
 
