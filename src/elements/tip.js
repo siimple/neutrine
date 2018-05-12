@@ -1,13 +1,13 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/elements/_tip.scss";
 
 //Tip class
 export default class Tip extends React.Component {
     render() {
-        let props = omit(this.props, ["children", "className", "color", "icon"]);
+        let props = getProps(this.props, ["className", "color", "icon"]);
         let classList = ["siimple-tip"];
         //Add the tip color
         if (typeof this.props.color === "string") {
@@ -20,7 +20,7 @@ export default class Tip extends React.Component {
         //Generate the class names
         props.className = classNames(classList, this.props.className);
         //Return the tip element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
