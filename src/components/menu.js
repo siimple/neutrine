@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
-import "siimple/scss/layout/_menu.scss";
+import "siimple/scss/components/_menu.scss";
 
 //Menu component
 export class Menu extends React.Component {
