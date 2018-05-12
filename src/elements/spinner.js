@@ -1,13 +1,13 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/elements/_spinner.scss";
 
 //Spinner class
 export default class Spinner extends React.Component {
     render() {
-        let props = omit(this.props, ["children", "className", "color", "size"]);
+        let props = getProps(this.props, ["className", "color", "size"]);
         let classList = ["siimple-spinner"];
         //Check the color attribute
         if(typeof this.props.color === "string") {
@@ -19,7 +19,7 @@ export default class Spinner extends React.Component {
         }
         props.className = classNames(classList, this.props.className);
         //Return the spinner element
-        return h("div", props, null);
+        return React.createElement("div", props, null);
     }
 }
 
