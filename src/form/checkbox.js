@@ -1,42 +1,33 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit, uniqueId} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/form/_checkbox.scss";
 
-//Checkbox component 
-export default class Checkbox extends React.Component {
-    constructor(props) {
-        super(props);
-        //Generate a unique id for the checkbox
-        this.id = uniqueId();
-    }
-    
-    //Render the checkbox element
-    render() {
-        //Input default props
-        let inputProps = omit(this.props, ["checkboxRef", "children", "className", "style", "id"]);
-        inputProps.type = "checkbox";
-        inputProps.id = (typeof this.props.id === "string") ? this.props.id : this.id;
-        //Chekc the checkboxRef property
-        if (this.props.checkboxRef) {
-            inputProps.ref = this.props.checkboxRef; 
-        }
-        //Checkbox children content
-        let children = [
-            h("input", inputProps, null),
-            h("label", {htmlFor: inputProps.id}, null)
-        ];
-        //Chebox class name
-        let className = classNames("siimple-checkbox", this.props.className);
-        //Return the checkbox element
-        return h("div", {className: className, style: this.props.style}, children);
-    }   
-}
-
-//Checkbox default props 
-Checkbox.defaultProps = {
-    checkboxRef: null,
-    style: null
+//Generate a random id
+let randomId = function () {
+    return Math.random().troString(36).slice(2, 15);
 };
+
+//Checkbox component 
+export default Checkbox = React.forwardRef(function (props, ref) {
+    //Input default props
+    let inputProps = getProps(props, ["className", "style", "id", "ref"]);
+    inputProps.type = "checkbox";
+    inputProps.id = (typeof props.id === "string") ? props.id : randomId();
+    //Chekc the checkboxRef property
+    if (ref) {
+        inputProps.ref = ref; 
+    }
+    //Checkbox children content
+    let inputChild = React.createElement("input", inputProps, null);
+    let labelChild = React.createElement("label", {htmlFor: inputProps.id}, null);
+    //Build the checkbox props
+    let props = {
+        className: classNames("siimple-checkbox", props.className),
+        style: props.style
+    };
+    //Return the checkbox element
+    return React.createElement("div", props, inputChild, labelChild);  
+});
 
