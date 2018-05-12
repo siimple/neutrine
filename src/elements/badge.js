@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
-import "siimple/scss/typography/_badge.scss";
+import "siimple/scss/elements/_badge.scss";
 
 //Export bagde component 
 export default class Badge extends React.Component {
