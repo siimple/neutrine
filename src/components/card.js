@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNamed from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/elements/_card.scss";
 
@@ -8,10 +8,10 @@ import "siimple/scss/elements/_card.scss";
 export class Card extends React.Component {
     render() {
         //Initialize the card props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-card", this.props.className);
         //Return the card element
-        return h("div", props, props.children);
+        return React.createElement("div", props, props.children);
     }
 }
 
@@ -22,10 +22,10 @@ Card.defaultProps = {};
 export class CardHeader extends React.Component {
     render() {
         //Initialize the card header props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-card-header", this.props.className);
         //Return the card body element
-        return h("div", props, props.children);
+        return React.createElement("div", props, props.children);
     }
 }
 
@@ -36,10 +36,10 @@ CardHeader.defaultProps = {};
 export class CardBody extends React.Component {
     render() {
         //Initialize the card body props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-card-body", this.props.className);
         //Return the card body element
-        return h("div", props, props.children);
+        return React.createElement("div", props, props.children);
     }
 }
 
@@ -50,10 +50,10 @@ CardBody.defaultProps = {};
 export class CardFooter extends React.Component {
     render() {
         //Initialize the card footer props
-        let props = omit(this.props, ["children", "className"]); 
+        let props = getProps(this.props, ["className"]); 
         props.className = classNames("siimple-card-footer", this.props.className);
         //Return the card footer element
-        return h("div", props, props.children);
+        return React.createElement("div", props, props.children);
     }
 }
 
@@ -64,10 +64,10 @@ CardFooter.defaultProps = {};
 export class CardTitle extends React.Component {
     render() {
         //Initialize the card title props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-card-title", this.props.className);
         //Return the card title element
-        return h("div", props, props.children);
+        return React.createElement("div", props, props.children);
     }
 }
 
@@ -78,10 +78,10 @@ CardTitle.defaultProps = {};
 export class CardSubtitle extends React.Component {
     render() {
         //Initialize the card subtitle props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-card-subtitle", this.props.className);
         //Return the card subtitle element
-        return h("div", props, props.children);
+        return React.createElement("div", props, props.children);
     }
 }
 
