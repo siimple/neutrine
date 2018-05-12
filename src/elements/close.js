@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/elements/_close.scss";
 
@@ -8,10 +8,10 @@ import "siimple/scss/elements/_close.scss";
 export default class Close extends React.Component {
     render() {
         //Clone the close button props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames(["siimple-close"], this.props.className);
         //Return the close button element
-        return h("div", props, null);
+        return React.createElement("div", props, null);
     }
 }
 
