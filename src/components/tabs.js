@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
-import "siimple/scss/layout/_tabs.scss";
+import "siimple/scss/components/_tabs.scss";
 
 //Export tabs component
 export class Tabs extends React.Component {
