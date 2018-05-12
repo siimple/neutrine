@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/layout/_menu.scss";
 
@@ -8,10 +8,10 @@ import "siimple/scss/layout/_menu.scss";
 export class Menu extends React.Component {
     render() {
         //Clone the menu props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-menu", this.props.className);
         //Return the menu element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -24,10 +24,10 @@ Menu.defaultProps = {
 export class MenuGroup extends React.Component {
     render() {
         //Clone the properties 
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-menu-group", this.props.className);
         //Return the menu group element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -40,7 +40,7 @@ MenuGroup.defaultProps = {
 export class MenuItem extends React.Component {
     render() {
         //Clone the properties 
-        let props = omit(this.props, ["selected", "children", "className"]);
+        let props = getProps(this.props, ["selected", "className"]);
         //Initialize the menu item class list
         let classList = ["siimple-menu-item"];
         //Check the selected attribute
@@ -50,7 +50,7 @@ export class MenuItem extends React.Component {
         //Generate the menu item classname
         props.className = classNames(classList, this.props.className);
         //Return the menu item element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
