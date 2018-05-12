@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
-import "siimple/scss/elements/_alert.scss";
+import "siimple/scss/components/_alert.scss";
 
 //Alert component
 export class Alert extends React.Component {
