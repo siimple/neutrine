@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/layout/_tabs.scss";
 
@@ -8,7 +8,7 @@ import "siimple/scss/layout/_tabs.scss";
 export class Tabs extends React.Component {
     render() {
         //Clone the tabs props 
-        let props = omit(this.props, ["children", "className", "boxed", "color"]);
+        let props = getProps(this.props, ["className", "boxed", "color"]);
         //Initialize the tabs class list
         let classList = ["siimple-tabs"];
         //Check the boxed attribute
@@ -22,7 +22,7 @@ export class Tabs extends React.Component {
         //Generate the classname
         props.className = classNames(classList, this.props.className);
         //Return the tabs element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -37,7 +37,7 @@ Tabs.defaultProps = {
 export class TabsItem extends React.Component {
     render() {
         //Extend the tabs item properties
-        let props = omit(this.props, ["children", "selected", "className"]);
+        let props = getProps(this.props, ["selected", "className"]);
         //Initialize the tabs item class list
         let classList = ["siimple-tabs-item"];
         //Check the selected attribute 
@@ -47,7 +47,7 @@ export class TabsItem extends React.Component {
         //Generate the tabs item classname
         props.className = classNames(classList, this.props.className);
         //Return the tab item
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
