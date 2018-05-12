@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
-import "siimple/scss/layout/_breadcrumb.scss";
+import "siimple/scss/components/_breadcrumb.scss";
 
 //Breadcrumb parent component
 export class Breadcrumb extends React.Component {
