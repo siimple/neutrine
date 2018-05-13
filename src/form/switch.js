@@ -26,6 +26,6 @@ export const Switch = React.forwardRef(function (props, ref) {
         style: props.style
     };
     //Return the switch element
-    return h("div", switchProps, inputChild, labelChild, divChild);
+    return React.createElement("div", switchProps, inputChild, labelChild, divChild);
 });
 
