@@ -19,14 +19,12 @@
     ],
     "main": "./index.js",
     "dependencies": {
-        "neutrine-utils": "^0.0.1",
-        "kofi": "^0.1.1",
-        "react": "^16.3.0",
-        "react-dom": "^16.3.0",
-        "siimple": "^3.1.0-beta.2",
+        "react": "^16.3.2",
+        "siimple": "^3.1.0-beta.3",
         "siimple-colors": "^1.0.0-beta"
     },
     "devDependencies": {
+        "react-dom": "^16.3.2",
         "webpack": "^4.4.1",
         "webpack-cli": "^2.0.13",
         "mini-css-extract-plugin": "^0.4.0",
