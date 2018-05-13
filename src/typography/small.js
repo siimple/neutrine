@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/typography/_small.scss";
 
@@ -8,10 +8,10 @@ import "siimple/scss/typography/_small.scss";
 export default class Small extends React.Component {
     render() {
         //Clone the small props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-small", this.props.className);
         //Return the small element
-        return h("span", props, this.props.children);
+        return React.createElement("span", props, this.props.children);
     }
 }
 
