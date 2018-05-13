@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/layout/_box.scss";
 
@@ -8,7 +8,7 @@ import "siimple/scss/layout/_box.scss";
 export class Box extends React.Component {
     render() {
         //Clone the box props 
-        let props = omit(this.props, ["children", "className", "color"]);
+        let props = getProps(this.props, ["className", "color"]);
         let classList = ["siimple-box"];
         //Check the box color property
         if (typeof this.props.color === "string") {
@@ -17,7 +17,7 @@ export class Box extends React.Component {
         //Save the box className
         props.className = classNames(classList, this.props.className);
         //Return the box component
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -30,10 +30,10 @@ Box.defaultProps = {
 export class BoxTitle extends React.Component {
     render() {
         //Initialize the box title props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-box-title", this.props.className);
         //Return the box title element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -46,10 +46,10 @@ BoxTitle.defaultProps = {
 export class BoxSubtitle extends React.Component {
     render() {
         //Initialize the box subtitle props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-box-subtitle", this.props.className);
         //Return the box title element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -62,10 +62,10 @@ BoxSubtitle.defaultProps = {
 export class BoxDetail extends React.Component {
     render() {
         //Initialize the box detail props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-box-detail", this.props.className);
         //Return the box detail element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
