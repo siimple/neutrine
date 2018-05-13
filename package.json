@@ -5,10 +5,8 @@
     "author": "Josemi Juanes <josemijuanes@gmail.com>",
     "license": "MIT",
     "homepage": "https://www.siimple.xyz/",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/siimple/neutrine.git"
-    },
+    "repository": "https://github.com/siimple/neutrine",
+    "bugs": "https://github.com/siimple/neutrine/issues",
     "keywords": [
         "siimple",
         "elements",
