@@ -26,6 +26,6 @@ export const Radio = React.forwardRef(function (props, ref) {
         style: props.style
     };
     //Return the radio element
-    return React.createElement("div", radioProps, children);
+    return React.createElement("div", radioProps, props.children);
 });
 
