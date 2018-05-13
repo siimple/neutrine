@@ -1,7 +1,7 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
-
 import * as Neutrine from "../../index.js";
+
+let h = React.createElement;
 
 let testGrid = function () {
     return h(Neutrine.Grid, {}, testGridRow(), testGridRow());

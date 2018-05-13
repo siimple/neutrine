@@ -1,7 +1,7 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
-
 import * as Neutrine from "../../index.js";
+
+let h = React.createElement;
 
 let testCheckbox = function () {
     return h(Neutrine.Checkbox, {defaultChecked: true});
@@ -25,9 +25,9 @@ let testRadio = function () {
 
 let testSelect = function () {
     let options = [
-        h("option", {value: "option1"}, "Option 1"),
-        h("option", {value: "option2"}, "Option 2"),
-        h("option", {value: "option3"}, "Option 3")
+        h("option", {key: 1, value: "option1"}, "Option 1"),
+        h("option", {key: 2, value: "option2"}, "Option 2"),
+        h("option", {key: 3, value: "option3"}, "Option 3")
     ];
     return h(Neutrine.Select, {defaultValue: "option2"}, options);
 };
@@ -42,7 +42,11 @@ let testTextarea = function () {
 
 export default class TestForm extends React.Component {
     render() {
-        let children = [
+        let title = h(Neutrine.FormTitle, {}, "Form title");
+        let detail = h(Neutrine.FormDetail, {}, "Form detail text");
+        return h(Neutrine.Form, {}, 
+            title,
+            detail,
             testCheckbox(),
             testField(),
             testInput(),
@@ -51,8 +55,7 @@ export default class TestForm extends React.Component {
             testSelect(),
             testSwitch(),
             testTextarea()
-        ];
-        return h(Neutrine.Form, {title: "Form title", detail: "FormDetail"}, children);
+        );
     }
 }
 

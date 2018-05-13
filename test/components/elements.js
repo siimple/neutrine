@@ -1,7 +1,7 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
-
 import * as Neutrine from "../../index.js";
+
+let h = React.createElement;
 
 let testAlert = function () {
     let alert1 = h(Neutrine.Alert, {color: "red"}, "Hello world");
@@ -72,16 +72,14 @@ let testTip = function () {
 
 export default class TestElements extends React.Component {
     render() {
-        let children = [
+        return h("div", {}, 
             testAlert(),
             testBtn(),
             testCard(),
             testList(),
-            testProgress(),
             testSpinner(),
             testTable(),
             testTip()
-        ];
-        return h("div", {}, children);
+        );
     }
 }

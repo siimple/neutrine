@@ -1,7 +1,7 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
-
 import * as Neutrine from "../../index.js";
+
+let h = React.createElement;
 
 let testBox = function () {
     let title = h(Neutrine.BoxTitle, {}, "Box title");
@@ -56,7 +56,7 @@ let testTabs = function () {
 
 export default class TestLayout extends React.Component {
     render() {
-        let children = [
+        return h("div", {}, 
             testBox(),
             testBreadcrumb(),
             testContent(),
@@ -65,8 +65,7 @@ export default class TestLayout extends React.Component {
             testMenu(),
             testNavbar(),
             testTabs()
-        ];
-        return h("div", {}, children);
+        );
     }
 }
 

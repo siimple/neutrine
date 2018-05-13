@@ -1,7 +1,7 @@
 import React from "react";
-import {hyperscript as h} from "neutrine-utils";
-
 import * as Neutrine from "../../index.js";
+
+let h = React.createElement;
 
 let testBadge = function () {
     let badge1 = h(Neutrine.Badge, {color: "red"}, "Badge 1");
@@ -47,7 +47,7 @@ let testTag = function () {
 
 export default class TestTypography extends React.Component {
     render() {
-        let children = [
+        return h("div", {},
             testBadge(),
             testBlockquote(),
             testCode(),
@@ -56,7 +56,6 @@ export default class TestTypography extends React.Component {
             testPre(),
             testSmall(),
             testTag()
-        ];
-        return h("div", {}, children);
+        );
     }
 }
