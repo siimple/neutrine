@@ -72,7 +72,7 @@ export {
     TabsItem,
 
     Badge,
-    Btn
+    Btn,
     Close,
     Rule,
     Spinner,
