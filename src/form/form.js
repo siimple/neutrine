@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/form/_form.scss";
 
@@ -8,10 +8,10 @@ import "siimple/scss/form/_form.scss";
 export class Form extends React.Component {
     render() {
         //Form props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-form", this.props.className);
         //Return the form element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -24,10 +24,10 @@ Form.defaultProps = {
 export class FormTitle extends React.Component {
     render() {
         //Form title props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-form-title", this.props.className);
         //Return the form title element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -40,10 +40,10 @@ FormTitle.defaultProps = {
 export class FormDetail extends React.Component {
     render() {
         //Form detail props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-form-detail", this.props.className);
         //Return the form detail element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -55,7 +55,11 @@ FormDetail.defaultProps = {
 //Form rule component 
 export class FormRule extends React.Component {
     render() {
-        return h("div", {className: "siimple-form-rule", style: this.props.style});
+        let props = {
+            className: "siimple-form-rule",
+            style: this.props.style
+        };
+        return React.createElement("div", props, null);
     }
 }
 
