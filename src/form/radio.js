@@ -15,10 +15,8 @@ export default Radio = React.forwardRef(function (props, ref) {
     let inputProps = getProps(props, ["className", "style", "id"]);
     inputProps.type = "radio";
     inputProps.id = (typeof props.id === "string") ? props.id : randomId;
-    //Check the radio ref property
-    if (ref) {
-        inputProps.ref = ref;
-    }
+    //Save the radio reference
+    inputProps.ref = ref;
     //Switch children content
     let inputChild = React.createElement("input", inputProps, null);
     let labelChild = React.createElement("label", {htmlFor: inputProps.id}, null);
