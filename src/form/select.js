@@ -1,35 +1,26 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/form/_select.scss";
 
 //Select component
-export default class Select extends React.Component {
-    render() {
-        //Clone the select props
-        let props = omit(this.props, ["fluid", "selectRef", "children", "className"])
-        //Initialize the select class list
-        let classList = ["siimple-select"];
-        //Check the fluid property
-        if (this.props.fluid === true) {
-            classList.push("siimple-select--fluid");
-        }
-        //Save the className
-        props.className = classNames(classList, this.props.className);
-        //Check the selectRef property
-        if (this.props.selectRef) {
-            props.ref = this.props.selectRef;
-        }
-        //Return the select element
-        return h("select", props, this.props.children);
+export default Select = React.forwardRef(function (props, key) {
+    //Clone the select props
+    let selectProps = getProps(props, ["fluid", "className"])
+    //Initialize the select class list
+    let classList = ["siimple-select"];
+    //Check the fluid property
+    if (typeof props.fluid === "boolean" && props.fluid === true) {
+        classList.push("siimple-select--fluid");
     }
-}
-
-//Select element default props
-Select.defaultProps = {
-    fluid: false,
-    selectRef: null,
-    style: null 
-};
+    //Save the className
+    selectProps.className = classNames(classList, props.className);
+    //Check the selectRef property
+    if (ref) {
+        selectProps.ref = ref;
+    }
+    //Return the select element
+    return React.createElement("select", selectProps, props.children);
+});
 
