@@ -3,7 +3,7 @@ import {Alert, AlertTitle} from "./src/components/alert.js";
 import {Breadcrumb, BreadcrumbItem} from "./src/components/breadcrumb.js";
 import {Card, CardHeader, CardBody, CardFooter, CardTitle, CardSubtitle} from "./src/components/card.js";
 import {List, ListItem, ListTitle} from "./src/components/list.js";
-import {Menu, MenuGroup, MenuTitle} from "./src/components/menu.js";
+import {Menu, MenuGroup, MenuItem} from "./src/components/menu.js";
 import {Table, TableHeader, TableBody, TableRow, TableCell} from "./src/components/table.js";
 import {Tabs, TabsItem} from "./src/components/tabs.js";
 
