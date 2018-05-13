@@ -1,5 +1,5 @@
 import React from "react";
-import className from "../class-names.js";
+import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
 import "siimple/scss/grid/_grid.scss";
