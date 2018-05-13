@@ -15,10 +15,8 @@ export default Checkbox = React.forwardRef(function (props, ref) {
     let inputProps = getProps(props, ["className", "style", "id", "ref"]);
     inputProps.type = "checkbox";
     inputProps.id = (typeof props.id === "string") ? props.id : randomId();
-    //Check the ref property
-    if (ref) {
-        inputProps.ref = ref; 
-    }
+    //Save the checkbox reference
+    inputProps.ref = ref; 
     //Checkbox children content
     let inputChild = React.createElement("input", inputProps, null);
     let labelChild = React.createElement("label", {htmlFor: inputProps.id}, null);
