@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/typography/_blockquote.scss";
 
@@ -8,10 +8,10 @@ import "siimple/scss/typography/_blockquote.scss";
 export default class Blockquote extends React.Component {
     render() {
         //Clone the blockquote props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-blockquote", this.props.className);
         //Return the blockquote element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
