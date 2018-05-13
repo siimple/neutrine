@@ -3,6 +3,7 @@ import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
 import "siimple/scss/layout/_content.scss";
+import "siimple/scss/helpers/_breakpoints.scss";
 
 //Content layout component
 export default class Content extends React.Component {

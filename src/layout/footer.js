@@ -3,6 +3,7 @@ import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
 import "siimple/scss/layout/_footer.scss";
+import "siimple/scss/helpers/_breakpoints.scss";
 
 //Footer layout component
 export default class Footer extends React.Component {

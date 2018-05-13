@@ -3,6 +3,7 @@ import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
 import "siimple/scss/layout/_navbar.scss";
+import "siimple/scss/helpers/_breakpoints.scss";
 
 //Navbar default class
 export class Navbar extends React.Component {

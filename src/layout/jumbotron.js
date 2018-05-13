@@ -3,6 +3,7 @@ import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
 import "siimple/scss/layout/_jumbotron.scss";
+import "siimple/scss/helpers/_breakpoints.scss";
 
 //Jumbotron base component
 export class Jumbotron extends React.Component {
