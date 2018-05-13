@@ -16,11 +16,9 @@ export default Input = React.forwardRef(function (props, ref) {
     }
     //Generate the input class name
     inputProps.className = classNames(classList, props.className);
-    //Check the input reference
-    if (ref) {
-        inputProps.ref = ref;
-    }
+    //Save the input reference
+    inputProps.ref = ref;
     //Return the input element
-    return React.createElement("input", props);
+    return React.createElement("input", inputProps);
 });
 
