@@ -6,7 +6,7 @@ import "siimple/scss/form/_checkbox.scss";
 
 //Generate a random id
 let randomId = function () {
-    return Math.random().troString(36).slice(2, 15);
+    return Math.random().toString(36).slice(2, 15);
 };
 
 //Checkbox component 
