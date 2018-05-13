@@ -1,15 +1,15 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import className from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/grid/_grid.scss";
 
 //Grid class
 export class Grid extends React.Component {
     render() {
-        let props = omit(this.props, ["className", "children"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-grid", this.props.className);
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -19,9 +19,9 @@ Grid.defaultProps = {};
 //Grid row class
 export class GridRow extends React.Component {
     render() {
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-grid-row", this.props.className);
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -31,7 +31,7 @@ GridRow.defaultProps = {};
 //Grid column class
 export class GridCol extends React.Component {
     render() {
-        let props = omit(this.props, ["children", "className", "size", "large", "medium", "small"]);
+        let props = getProps(this.props, ["className", "size", "large", "medium", "small"]);
         let classList = ["siimple-grid-col"];
         //Check the column size
         if (typeof this.props.size === "number") {
@@ -47,7 +47,7 @@ export class GridCol extends React.Component {
             classList.push("siimple-grid-col-sm--" + this.props.medium);
         }
         props.className = classNames(classList, this.props.className);
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
