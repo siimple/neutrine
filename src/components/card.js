@@ -1,5 +1,5 @@
 import React from "react";
-import classNamed from "../class-names.js";
+import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
 import "siimple/scss/components/_card.scss";
