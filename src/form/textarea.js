@@ -1,35 +1,24 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/form/_textarea.scss";
 
 //Textarea component 
-export default class Textarea extends React.Component {
-    render() {
-        //Extend the props 
-        let props = omit(this.props, ["textareaRef", "fluid", "children", "className"]);
-        //Initialize the textarea class list 
-        let classList = ["siimple-textarea"];
-        //Check the fluid attribute
-        if (this.props.fluid === true) {
-            classList.push("siimple-textarea--fluid");
-        }
-        //Generate the textare className
-        props.className = classNames(classList, this.props.className);
-        //Save the textarea reference
-        if (this.props.textareaRef) {
-            props.ref = this.props.textareaRef;
-        }
-        //Return the textarea element
-        return h("textarea", props, this.props.children);
+export default Textarea = React.Component(function (props, ref) {
+    //Extend the props 
+    let textareaProps = getProps(props, ["fluid", "className"]);
+    //Initialize the textarea class list 
+    let classList = ["siimple-textarea"];
+    //Check the fluid attribute
+    if (typeof props.fluid === "boolean" && props.fluid === true) {
+        classList.push("siimple-textarea--fluid");
     }
-}
-
-//Textarea default props 
-Textarea.defaultProps = {
-    style: null,
-    textareaRef: null,
-    fluid: false
-};
+    //Generate the textare className
+    textareaProps.className = classNames(classList, props.className);
+    //Save the textarea reference
+    textareaProps.ref = ref;
+    //Return the textarea element
+    return React.createElement("textarea", textareaProps, props.children);
+});
 
