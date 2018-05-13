@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/typography/_pre.scss";
 
@@ -8,10 +8,10 @@ import "siimple/scss/typography/_pre.scss";
 export default class Pre extends React.Component {
     render() {
         //Clone the pre props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-pre", this.props.className);
         //Return the pre element
-        return h("pre", props, this.props.children);
+        return React.createElement("pre", props, this.props.children);
     }
 }
 
