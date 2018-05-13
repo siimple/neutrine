@@ -1,6 +1,6 @@
 # neutrine 
 
-> A collection of React UI components that implements the siimple style specification.
+> A collection of React UI components based on siimple.
 
 [![npm](https://img.shields.io/npm/v/neutrine.svg?style=flat-square)](https://www.npmjs.com/package/neutrine)
 [![npm](https://img.shields.io/npm/dt/neutrine.svg?style=flat-square)](https://www.npmjs.com/package/neutrine)
@@ -23,7 +23,7 @@ import {Btn} from "neutrine";
 
 export default class App extends React.Component {
     render() {
-        return React.createElement(Btn, {color: blue}, "Say hello");
+        return React.createElement(Btn, {color: "primary"}, "Say hello");
     }
 }
 ```
