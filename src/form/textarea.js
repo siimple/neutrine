@@ -5,7 +5,7 @@ import getProps from "../get-props.js";
 import "siimple/scss/form/_textarea.scss";
 
 //Textarea component 
-export default Textarea = React.Component(function (props, ref) {
+export const Textarea = React.Component(function (props, ref) {
     //Extend the props 
     let textareaProps = getProps(props, ["fluid", "className"]);
     //Initialize the textarea class list 

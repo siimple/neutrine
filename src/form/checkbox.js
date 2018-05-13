@@ -10,7 +10,7 @@ let randomId = function () {
 };
 
 //Checkbox component 
-export default Checkbox = React.forwardRef(function (props, ref) {
+export const Checkbox = React.forwardRef(function (props, ref) {
     //Input default props
     let inputProps = getProps(props, ["className", "style", "id", "ref"]);
     inputProps.type = "checkbox";

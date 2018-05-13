@@ -10,7 +10,7 @@ let randomId = function () {
 };
 
 //Switch component
-export default Switch = React.forwardRef(function (props, ref) {
+export const Switch = React.forwardRef(function (props, ref) {
     //Input default props
     let inputProps = getProps(props, ["style", "id", "className"]);
     inputProps.type = "checkbox";

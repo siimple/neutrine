@@ -10,7 +10,7 @@ let randomId = function () {
 };
 
 //Radio component 
-export default Radio = React.forwardRef(function (props, ref) {
+export const Radio = React.forwardRef(function (props, ref) {
     //Switch input default props
     let inputProps = getProps(props, ["className", "style", "id"]);
     inputProps.type = "radio";

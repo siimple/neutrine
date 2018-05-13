@@ -5,7 +5,7 @@ import getProps from "../get-props.js";
 import "siimple/scss/form/_input.scss";
 
 //Input component
-export default Input = React.forwardRef(function (props, ref) {
+export const Input = React.forwardRef(function (props, ref) {
     //Clone the input props
     let inputProps = getProps(props, ["fluid", "className"]);
     //Initialize the input class list
