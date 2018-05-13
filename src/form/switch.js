@@ -1,41 +1,31 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit, uniqueId} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/form/_switch.scss";
 
-//Switch component
-export default class Switch extends React.Component {
-    constructor(props) {
-        super(props);
-        this.id = uniqueId();
-    }
-
-    render() {
-        //Input default props
-        let inputProps = omit(this.props, ["switchRef", "style", "id", "children", "className"]);
-        inputProps.type = "checkbox";
-        inputProps.id = (typeof this.props.id === "string") ? this.props.id : this.id;
-        //Check the switch reference
-        if (this.props.switchRef) {
-            inputProps.ref = this.props.switchRef;
-        }
-        //Switch children content
-        let children = [
-            h("input", inputProps, null),
-            h("label", {htmlFor: inputProps.id}, null),
-            h("div", {}, null)
-        ];
-        //Generate the switch className
-        let className = classNames("siimple-switch", this.props.className);
-        //Return the switch element
-        return h("div", {className: className, style: this.props.style}, children);
-    }
-}
-
-//Switch default props
-Switch.defaultProps = {
-    style: null,
-    switchRef: null
+//Generate a random id
+let randomId = function () {
+    return Math.random().troString(36).slice(2, 15);
 };
+
+//Switch component
+export default Switch = React.forwardRef(function (props, ref) {
+    //Input default props
+    let inputProps = getProps(props, ["style", "id", "className"]);
+    inputProps.type = "checkbox";
+    inputProps.id = (typeof props.id === "string") ? props.id : randomId();
+    inputProps.ref = ref;
+    //Switch children content
+    let inputChild = React.createElement("input", inputProps, null);
+    let labelChild = React.createElement("label", {htmlFor: inputProps.id}, null);
+    let divChild = React.createElement("div", {}, null);
+    //Generate the switch props
+    let switchProps = {
+        className: classNames("siimple-switch", props.className),
+        style: props.style
+    };
+    //Return the switch element
+    return h("div", switchProps, inputChild, labelChild, divChild);
+});
 
