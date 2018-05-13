@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi"
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/form/_field.scss";
 
@@ -8,10 +8,10 @@ import "siimple/scss/form/_field.scss";
 export class Field extends React.Component {
     render() {
         //Field props 
-        let props = omit(this.pros, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-field", this.props.className);
         //Return the field element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -22,10 +22,10 @@ Field.defaultProps = {};
 export class FieldLabel extends React.Component {
     render() {
         //Field label props 
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-field-label", this.props.className);
         //Return the field label element 
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
@@ -36,10 +36,10 @@ FieldLabel.defaultProps = {};
 export class FieldHelper extends React.Component {
     render() {
         //Field helper props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-field-helper", this.props.className);
         //Return the field helper element
-        return h("div", props, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
 
