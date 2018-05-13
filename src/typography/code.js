@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js"
 
 import "siimple/scss/typography/_code.scss";
 
@@ -8,10 +8,10 @@ import "siimple/scss/typography/_code.scss";
 export default class Code extends React.Component {
     render() {
         //Clone the code props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-code", this.props.className);
         //Return the code element
-        return h("code", props, this.props.children);
+        return React.createElement("code", props, this.props.children);
     }
 }
 
