@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames, hyperscript as h} from "neutrine-utils";
-import {omit} from "kofi";
+import classNames from "../class-names.js";
+import getProps from "../get-props.js";
 
 import "siimple/scss/form/_label.scss";
 
@@ -8,10 +8,10 @@ import "siimple/scss/form/_label.scss";
 export default class Label extends React.Component {
     render() {
         //Initialize the label props
-        let props = omit(this.props, ["children", "className"]);
+        let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-label", this.props.className);
         //Return the label element
-        return h("label", props, this.props.children);
+        return React.createElement("label", props, this.props.children);
     }
 }
 
