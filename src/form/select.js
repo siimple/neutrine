@@ -16,10 +16,8 @@ export default Select = React.forwardRef(function (props, key) {
     }
     //Save the className
     selectProps.className = classNames(classList, props.className);
-    //Check the selectRef property
-    if (ref) {
-        selectProps.ref = ref;
-    }
+    //Save the select reference
+    selectProps.ref = ref;
     //Return the select element
     return React.createElement("select", selectProps, props.children);
 });
