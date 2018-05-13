@@ -11,21 +11,21 @@ import {Tabs, TabsItem} from "./src/components/tabs.js";
 import Badge from "./src/elements/badge.js";
 import Btn from "./src/elements/btn.js";
 import Close from "./src/elements/close.js";
-import Rule from "./src/components/rule.js";
+import Rule from "./src/elements/rule.js";
 import Spinner from "./src/elements/spinner.js";
 import Tag from "./src/elements/tag.js";
 import Tip from "./src/elements/tip.js";
 
 //Form
-import Checkbox from "./src/form/checkbox.js";
+import {Checkbox} from "./src/form/checkbox.js";
 import {Field, FieldLabel, FieldHelper} from "./src/form/field.js";
 import {Form, FormTitle, FormDetail, FormRule} from "./src/form/form.js";
-import Input from "./src/form/input.js";
+import {Input} from "./src/form/input.js";
 import Label from "./src/form/label.js";
-import Radio from "./src/form/radio.js";
-import Select from "./src/form/select.js";
-import Switch from "./src/form/switch.js";
-import Textarea from "./src/form/textarea.js";
+import {Radio} from "./src/form/radio.js";
+import {Select} from "./src/form/select.js";
+import {Switch} from "./src/form/switch.js";
+import {Textarea} from "./src/form/textarea.js";
 
 //Grid
 import {Grid, GridRow, GridCol} from "./src/grid/grid.js";
