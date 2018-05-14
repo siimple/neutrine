@@ -11,7 +11,7 @@ export const Input = React.forwardRef(function (props, ref) {
     //Initialize the input class list
     let classList = ["siimple-input"];
     //Check the fluid property
-    if (typeof props.fluid === "boolean" && props.fuild === true) {
+    if (typeof props.fluid === "boolean" && props.fluid === true) {
         classList.push("siimple-input--fluid");
     }
     //Generate the input class name
