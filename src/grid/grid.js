@@ -31,7 +31,7 @@ GridRow.defaultProps = {};
 //Grid column class
 export class GridCol extends React.Component {
     render() {
-        let props = getProps(this.props, ["className", "size", "large", "medium", "small"]);
+        let props = getProps(this.props, ["className", "size", "extraLarge", "large", "medium", "small", "extraSmall"]);
         let classList = ["siimple-grid-col"];
         //Check the column size
         if (typeof this.props.size === "number" || typeof this.props.size === "string") {
