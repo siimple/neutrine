@@ -3,13 +3,6 @@ import * as Neutrine from "../../index.js";
 
 let h = React.createElement;
 
-let testBadge = function () {
-    let badge1 = h(Neutrine.Badge, {color: "red"}, "Badge 1");
-    let badge2 = h(Neutrine.Badge, {color: "green"}, "Badge 2");
-    let badge3 = h(Neutrine.Badge, {color: "blue"}, "Badge 3");
-    return h("div", {}, badge1, badge2, badge3);
-};
-
 let testBlockquote = function (){
     return h(Neutrine.Blockquote, {}, "Content of the blockquote");
 };
@@ -48,7 +41,6 @@ let testTag = function () {
 export default class TestTypography extends React.Component {
     render() {
         return h("div", {},
-            testBadge(),
             testBlockquote(),
             testCode(),
             testHeading(),
