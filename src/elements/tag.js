@@ -15,6 +15,10 @@ export default class Tag extends React.Component {
         if (typeof this.props.color === "string") {
             classList.push("siimple-tag--" + this.props.color.toLowerCase().trim());
         }
+        //Check the rounded attribute
+        if (typeof this.props.rounded === "boolean" && this.props.rounded === true) {
+            classList.push("siimple-tag--rounded");
+        }
         //Generate the tag classname
         props.className = classNames(classList, this.props.className);
         //Return the tag element
@@ -24,7 +28,8 @@ export default class Tag extends React.Component {
 
 //Tag default props
 Tag.defaultProps = {
-    color: null,
-    style: null
+    "color": null,
+    "rounded": false,
+    "style": null
 };
 
