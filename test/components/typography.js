@@ -32,9 +32,9 @@ let testSmall = function () {
 };
 
 let testTag = function () {
-    let tag1 = h(Neutrine.Tag, {color: "red"}, "Tag 1");
-    let tag2 = h(Neutrine.Tag, {color: "blue"}, "Tag 2");
-    let tag3 = h(Neutrine.Tag, {color: "orange"}, "Tag 3");
+    let tag1 = h(Neutrine.Tag, {"color": "red"}, "Tag 1");
+    let tag2 = h(Neutrine.Tag, {"color": "blue"}, "Tag 2");
+    let tag3 = h(Neutrine.Tag, {"color": "orange", "rounded": true}, "Tag 3");
     return h("div", {}, tag1, tag2, tag3);
 };
 
