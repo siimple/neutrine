@@ -8,7 +8,7 @@ import "siimple/scss/elements/_tag.scss";
 export default class Tag extends React.Component {
     render() {
         //Clone the tag component props
-        let props = getProps(this.props, ["className", "color"]);
+        let props = getProps(this.props, ["className", "color", "rounded"]);
         //Initialize the tag class list 
         let classList = ["siimple-tag"];
         //Check the color attribute
