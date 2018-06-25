@@ -8,7 +8,6 @@ import {Table, TableHeader, TableBody, TableRow, TableCell} from "./src/componen
 import {Tabs, TabsItem} from "./src/components/tabs.js";
 
 //Elements
-import Badge from "./src/elements/badge.js";
 import Btn from "./src/elements/btn.js";
 import Close from "./src/elements/close.js";
 import Rule from "./src/elements/rule.js";
@@ -71,7 +70,6 @@ export {
     Tabs,
     TabsItem,
 
-    Badge,
     Btn,
     Close,
     Rule,
