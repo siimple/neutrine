@@ -10,15 +10,6 @@ import * as cookies from "../../utils/cookies.js";
 //Import styles
 import "./style.scss";
 
-//Check if an object is equal
-let objectEquals = function (source, target) {
-    let isEqual = true;
-    Object.keys(source).forEach(function (key) {
-        isEqual = (isEqual === true && source[key] === target[key]);
-    });
-    return isEqual;
-};  
-
 //Cookies Consent component
 export default class CookiesConsentComponent extends React.Component {
     constructor(props) {
