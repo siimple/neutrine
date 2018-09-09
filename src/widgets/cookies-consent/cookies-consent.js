@@ -11,7 +11,7 @@ import * as cookies from "../../utils/cookies.js";
 import "./style.scss";
 
 //Cookies Consent component
-export default class CookiesConsentComponent extends React.Component {
+export default class CookiesConsent extends React.Component {
     constructor(props) {
         super(props);
         let self = this;
@@ -224,7 +224,7 @@ export default class CookiesConsentComponent extends React.Component {
 }
 
 //Default props
-CookiesConsentComponent.defaultProps = {
+CookiesConsent.defaultProps = {
     //General information
     "url": "",
     "cookies": {
