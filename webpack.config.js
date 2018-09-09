@@ -3,11 +3,17 @@ let MiniCssExtract = require("mini-css-extract-plugin");
 
 //Export the webpack configuration
 module.exports = {
-    "entry": "./test/index.js",
+    "entry": "./index.js",
     "mode": "development",
     "output": {
-        "path": path.resolve(__dirname, "./test/"),
-        "filename": "bundle.test.js"
+        "library": "Neutrine",
+        "libraryTarget": "umd",
+        "path": path.resolve(__dirname, "./dist/"),
+        "filename": "neutrine.js"
+    },
+    "externals": {
+        "react": "React",
+        "react-dom": "ReactDOM"
     },
     "resolve": {
         "modules": [
@@ -24,13 +30,16 @@ module.exports = {
                     {loader: "css-loader"},
                     {
                         "loader": "sass-loader",
-                        "options": {"includePaths": ["./node_modules/"]}
+                        "options": {
+                            "implementation": require("sass"),
+                            "includePaths": ["./node_modules/"]
+                        }
                     }
                 ]
             }
         ]
     },
     "plugins": [
-        new MiniCssExtract({filename: "bundle.test.css"})
+        new MiniCssExtract({filename: "neutrine.css"})
     ]
 };
