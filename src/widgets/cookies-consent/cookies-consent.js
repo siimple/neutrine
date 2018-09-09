@@ -150,8 +150,8 @@ export default class CookiesConsentComponent extends React.Component {
     //Render the dialog buttons
     renderDialogButtons() {
         let self = this;
-        let acceptBtn = React.createElement(Btn, {"color": "success", onClick: self.handleDialogAcceptClick}, "Accept cookies");
-        let manageBtn = React.createElement(Btn, {"color": "primary", onClick: self.handleDialogManageClick}, "Manage");
+        let acceptBtn = React.createElement(Btn, {"color": "success", onClick: self.handleDialogAcceptClick}, this.props.dialogAcceptButton);
+        let manageBtn = React.createElement(Btn, {"color": "primary", onClick: self.handleDialogManageClick}, this.props.dialogManageButton);
         //Return the buttons wrapper
         return React.createElement("div", {"className": "neutrine-cc-dialog-buttons", "align": "right"}, acceptBtn, manageBtn);
     }
@@ -210,7 +210,7 @@ export default class CookiesConsentComponent extends React.Component {
             //Generate the settings senctions
             let settingsHeader = this.renderSettingsHeader();
             let settingsContent = this.renderSettingsContent();
-            let settingsBtn = React.createElement(Btn, {"color": "success", "fluid": true, "onClick": self.handleSettingsSaveClick}, "Save settings");
+            let settingsBtn = React.createElement(Btn, {"color": "success", "fluid": true, "onClick": self.handleSettingsSaveClick}, this.props.settingsSaveButton);
             let settings = React.createElement("div", {"className": "neutrine-cc-settings"}, settingsHeader, settingsContent, settingsBtn);
             //Return the settings container
             return React.createElement("div", {"className": "neutrine-cc-settings-container"}, settings);
@@ -240,9 +240,12 @@ CookiesConsentComponent.defaultProps = {
     "cookieExpiry": 365,
     //Dialog configuration
     "dialogDescription": "We use cookies to ensure you get the best experience on our website.",
+    "dialogAcceptButton": "Accept cookies",
+    "dialogManageButton": "Manage",
     //Settings configuration
     "settingsTitle": "Manage cookies",
-    "settingsDescription": "We use cookies to ensure you get the best experience on our website",
+    "settingsDescription": "We use cookies to ensure you get the best experience on our website.",
+    "settingsSaveButton": "Save settings",
     //Listeners
     "onCookiesAccept": null,
     "onCookiesReject": null
