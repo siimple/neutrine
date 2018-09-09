@@ -39,6 +39,7 @@ export default class CookiesConsentComponent extends React.Component {
         this.handleDialogAcceptClick = this.handleDialogAcceptClick.bind(this);
         this.handleDialogManageClick = this.handleDialogManageClick.bind(this);
         this.handleSettingsSaveClick = this.handleSettingsSaveClick.bind(this);
+        this.displaySettings = this.displaySettings.bind(this);
     }
 
     componentDidMount() {
@@ -216,9 +217,18 @@ export default class CookiesConsentComponent extends React.Component {
             return React.createElement("div", {"className": "neutrine-cc-settings-container"}, settings);
         }
     }
+    
+    //Render cookies icon
+    renderIcon() {
+        if (this.state.dialogVisible === false && this.state.settingsVisible === false) {
+            let self = this;
+            return React.createElement("div", {"className": "neutrine-cc-icon", "onClick": self.displaySettings}, null);
+        }
+        return null;
+    }
 
     render() {
-        return React.createElement("div", {"className": "neutrine-cc"}, this.renderDialog(), this.renderSettings());
+        return React.createElement("div", {"className": "neutrine-cc"}, this.renderDialog(), this.renderSettings(), this.renderIcon());
     }
 }
 
