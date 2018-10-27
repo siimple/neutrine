@@ -1,7 +1,10 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import component utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import menu styles
 import "siimple/scss/components/_menu.scss";
 
 //Menu component
@@ -15,11 +18,6 @@ export class Menu extends React.Component {
     }
 }
 
-//Main menu props
-Menu.defaultProps = {
-    style: null
-};
-
 //Menu group component
 export class MenuGroup extends React.Component {
     render() {
@@ -30,11 +28,6 @@ export class MenuGroup extends React.Component {
         return React.createElement("div", props, this.props.children);
     }
 }
-
-//Menu group default props
-MenuGroup.defaultProps = {
-    style: null
-};
 
 //Menu item
 export class MenuItem extends React.Component {
@@ -56,5 +49,5 @@ export class MenuItem extends React.Component {
 
 //Menu item default props
 MenuItem.defaultProps = {
-    style: null
+    "selected": false
 };
