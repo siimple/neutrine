@@ -32,7 +32,6 @@ export default class CookiesConsent extends React.Component {
         this.handleSettingsSaveClick = this.handleSettingsSaveClick.bind(this);
         this.displaySettings = this.displaySettings.bind(this);
     }
-
     componentDidMount() {
         //Get the consent stored data
         let consent = this.getCurrentConsent();
@@ -45,7 +44,6 @@ export default class CookiesConsent extends React.Component {
         //Update the state
         return this.setState({"dialogVisible": true});
     }
-
     componentDidUpdate(prevProps, prevState) {
         let props = this.props;
         if (this.state.consent !== null) {
@@ -53,7 +51,6 @@ export default class CookiesConsent extends React.Component {
             return cookies.setCookie(props.cookieName, cookieValue, props.cookieExpiry, props.cookieDomain, props.cookiePath);
         }
     }
-
     //Call event listeners
     callCookiesListeners() {
         if (this.state.consent !== null) {
@@ -72,17 +69,14 @@ export default class CookiesConsent extends React.Component {
             }
         }
     }
-
     //Get the current consent
     getCurrentConsent() {
         return JSON.parse(cookies.getCookie(this.props.cookieName));
     }
-
     //Display settings window
     displaySettings() {
         return this.setState({"settingsVisible": true});
     }
-
     //Accept all cookies
     handleDialogAcceptClick() {
         let self = this;
@@ -100,12 +94,10 @@ export default class CookiesConsent extends React.Component {
             return self.callCookiesListeners();
         });
     }
-
     //Open the settings dialog
     handleDialogManageClick() {
         return this.setState({"dialogVisible": false, "settingsVisible": true});
     }
-
     //Handle save
     handleSettingsSaveClick() {
         let self = this;
@@ -130,7 +122,6 @@ export default class CookiesConsent extends React.Component {
             return self.callCookiesListeners();
         });
     }
-
     //Render the dialog message
     renderDialogMessage() {
         //Generate the link to get more information about cookies
@@ -138,7 +129,6 @@ export default class CookiesConsent extends React.Component {
         //Return the message wrapper
         return React.createElement("div", {"className": "neutrine-cc-dialog-message"}, this.props.dialogDescription.trim() + " ", link);
     }
-
     //Render the dialog buttons
     renderDialogButtons() {
         let self = this;
@@ -147,7 +137,6 @@ export default class CookiesConsent extends React.Component {
         //Return the buttons wrapper
         return React.createElement("div", {"className": "neutrine-cc-dialog-buttons", "align": "right"}, acceptBtn, manageBtn);
     }
-
     //Render the dialog element
     renderDialog() {
         if (this.state.dialogVisible === true) {
@@ -159,14 +148,12 @@ export default class CookiesConsent extends React.Component {
             return React.createElement("div", {"className": "neutrine-cc-dialog-container"}, dialog);
         }
     }
-
     //Render settings header
     renderSettingsHeader() {
         let title = React.createElement("div", {"className": "neutrine-cc-settings-title"}, this.props.settingsTitle);
         let description = React.createElement("div", {"className": "neutrine-cc-settings-description"}, this.props.settingsDescription);
         return React.createElement(React.Fragment, {}, title, description); 
     }
-
     //Render settings content
     renderSettingsContent() {
         let self = this;
@@ -194,7 +181,6 @@ export default class CookiesConsent extends React.Component {
         });
         return React.createElement("div", {}, children);
     }
-
     //Render the settings element
     renderSettings() {
         let self = this;
@@ -208,7 +194,6 @@ export default class CookiesConsent extends React.Component {
             return React.createElement("div", {"className": "neutrine-cc-settings-container"}, settings);
         }
     }
-    
     //Render cookies icon
     renderIcon() {
         if (this.state.dialogVisible === false && this.state.settingsVisible === false) {
@@ -217,7 +202,6 @@ export default class CookiesConsent extends React.Component {
         }
         return null;
     }
-
     render() {
         return React.createElement("div", {"className": "neutrine-cc"}, this.renderDialog(), this.renderSettings(), this.renderIcon());
     }
