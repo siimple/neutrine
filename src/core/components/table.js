@@ -1,7 +1,10 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import component utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import table styles
 import "siimple/scss/components/_table.scss";
 
 //Export main table component
@@ -22,15 +25,16 @@ export class Table extends React.Component {
             classList.push("siimple-table--hover");
         }
         props.className = classNames(classList, this.props.className);
+        //Return the table wrapper element
         return React.createElement("div", props, this.props.children);
     }
 }
 
 //Table default properties
 Table.defaultProps = {
-    striped: false, 
-    border: false, 
-    hover: false
+    "striped": false, 
+    "border": false, 
+    "hover": false
 };
 
 //Export table header component
@@ -42,20 +46,14 @@ export class TableHeader extends React.Component {
     }
 }
 
-//Table header default props
-TableHeader.defaultProps = {};
-
 //Export table body component
 export class TableBody extends React.Component {
     render() {
         let props = getProps(this.props, ["className"]);
         props.className = classNames("siimple-table-body", this.props.className);
-        return React.createElement("div", {className: "siimple-table-body", style: this.props.style}, this.props.children);
+        return React.createElement("div", props, this.props.children);
     }
 }
-
-//Table body default props
-TableBody.defaultProps = {};
 
 //Export table row component
 export class TableRow extends React.Component {
@@ -66,9 +64,6 @@ export class TableRow extends React.Component {
     }
 }
 
-//Table row default props
-TableRow.defaultProps = {};
-
 //Export table cell component
 export class TableCell extends React.Component {
     render() {
@@ -77,7 +72,4 @@ export class TableCell extends React.Component {
         return React.createElement("div", props, this.props.children);
     }
 }
-
-//Table cell default props
-TableCell.defaultProps = {};
 
