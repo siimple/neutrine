@@ -1,23 +1,22 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import component utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import tab styles
 import "siimple/scss/components/_tabs.scss";
 
 //Export tabs component
 export class Tabs extends React.Component {
     render() {
         //Clone the tabs props 
-        let props = getProps(this.props, ["className", "boxed", "color"]);
+        let props = getProps(this.props, ["className", "boxed"]);
         //Initialize the tabs class list
         let classList = ["siimple-tabs"];
         //Check the boxed attribute
         if (this.props.boxed === true) {
             classList.push("siimple-tabs--boxed");
-        }
-        //Add the color tab
-        if (typeof this.props.color === "string") {
-            classList.push("siimple-tabs--" + this.props.color);
         }
         //Generate the classname
         props.className = classNames(classList, this.props.className);
@@ -28,9 +27,7 @@ export class Tabs extends React.Component {
 
 //Tabs default props
 Tabs.defaultProps = {
-    boxed: true, 
-    color: null,
-    style: null
+    "boxed": true 
 };
 
 //Tabs item component 
@@ -53,7 +50,6 @@ export class TabsItem extends React.Component {
 
 //Tabs item default props 
 TabsItem.defaultProps = {
-    selected: false,
-    style: null
+    "selected": false
 };
 
