@@ -1,6 +1,8 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
+
+//Import components utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
 
 import "siimple/scss/form/_checkbox.scss";
 
@@ -19,11 +21,11 @@ export const Checkbox = React.forwardRef(function (props, ref) {
     inputProps.ref = ref; 
     //Checkbox children content
     let inputChild = React.createElement("input", inputProps, null);
-    let labelChild = React.createElement("label", {htmlFor: inputProps.id}, null);
+    let labelChild = React.createElement("label", {"htmlFor": inputProps.id}, null);
     //Build the checkbox props
     let checkboxProps = {
-        className: classNames("siimple-checkbox", props.className),
-        style: props.style
+        "className": classNames("siimple-checkbox", props.className),
+        "style": props.style
     };
     //Return the checkbox element
     return React.createElement("div", checkboxProps, inputChild, labelChild);  
