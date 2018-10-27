@@ -1,9 +1,11 @@
 import React from "react";
+
+//Import components utils
 import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
+//Import navbar styles
 import "siimple/scss/layout/_navbar.scss";
-import "siimple/scss/helpers/_breakpoints.scss";
 
 //Navbar default class
 export class Navbar extends React.Component {
@@ -18,7 +20,7 @@ export class Navbar extends React.Component {
         }
         //Check the size
         if (typeof this.props.size === "string") {
-            classList.push("siimple--" + this.props.size.toLowerCase());
+            classList.push("siimple-navbar--" + this.props.size.toLowerCase());
         }
         //Generate the navbar classname
         props.className = classNames(classList, this.props.className);
@@ -29,9 +31,8 @@ export class Navbar extends React.Component {
 
 //Navbar default props
 Navbar.defaultProps = {
-    color: null, 
-    size: null,
-    style: null
+    "color": null, 
+    "size": null
 };
 
 //Navbar title element
@@ -45,11 +46,6 @@ export class NavbarTitle extends React.Component {
     }
 }
 
-//Navbar title default props
-NavbarTitle.defaultProps = {
-    style: null
-};
-
 //Navbar subtitle class
 export class NavbarSubtitle extends React.Component {
     render() {
@@ -61,11 +57,6 @@ export class NavbarSubtitle extends React.Component {
     }
 }
 
-//Navbar subtitle default props 
-NavbarSubtitle.defaultProps = {
-    style: null
-};
-
 //Navbar item element
 export class NavbarItem extends React.Component {
     render() {
@@ -76,9 +67,4 @@ export class NavbarItem extends React.Component {
         return React.createElement("div", props, this.props.children);
     }
 }
-
-//Navbar item default props
-NavbarItem.defaultProps = {
-    style: null
-};
 
