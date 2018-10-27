@@ -1,8 +1,8 @@
 import React from "react";
 
 //Import core components
-import Btn from "../../elements/btn.js";
-import {Switch} from "../../form/switch.js";
+import Btn from "../../core/elements/btn.js";
+import {Switch} from "../../core/form/switch.js";
 
 //Import utils
 import * as cookies from "../../utils/cookies.js";
