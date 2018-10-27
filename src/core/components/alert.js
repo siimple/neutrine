@@ -1,7 +1,10 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import alert styles
 import "siimple/scss/components/_alert.scss";
 
 //Alert component
@@ -20,10 +23,9 @@ export class Alert extends React.Component {
         return React.createElement("div", props, this.props.children);
     }
 }
-
 //Alert default props
 Alert.defaultProps = { 
-    color: "blue" 
+    "color": "blue" 
 };
 
 //Alert title component 
@@ -37,7 +39,4 @@ export class AlertTitle extends React.Component {
         return React.createElement("div", props, this.props.children);
     }
 }
-
-//Alert title default props 
-AlertTitle.defaultProps = {};
 
