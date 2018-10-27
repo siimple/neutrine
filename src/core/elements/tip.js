@@ -1,7 +1,10 @@
 import React from "react";
+
+//Import components utils
 import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
+//Import tip styles
 import "siimple/scss/elements/_tip.scss";
 
 //Tip class
@@ -26,7 +29,7 @@ export default class Tip extends React.Component {
 
 //Initialize the tip element default props
 Tip.defaultProps = { 
-    color: "blue", 
-    icon: null
+    "color": "primary", 
+    "icon": null
 };
 
