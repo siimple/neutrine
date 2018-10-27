@@ -1,7 +1,10 @@
 import React from "react";
+
+//Import components utils
 import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
+//Import form styles
 import "siimple/scss/form/_form.scss";
 
 //Form component
@@ -15,11 +18,6 @@ export class Form extends React.Component {
     }
 }
 
-//Form default props
-Form.defaultProps = {
-    style: null 
-};
-
 //Form title component
 export class FormTitle extends React.Component {
     render() {
@@ -30,11 +28,6 @@ export class FormTitle extends React.Component {
         return React.createElement("div", props, this.props.children);
     }
 }
-
-//Form title default props 
-FormTitle.defaultProps = {
-    style: null
-};
 
 //Form detail component 
 export class FormDetail extends React.Component {
@@ -47,24 +40,10 @@ export class FormDetail extends React.Component {
     }
 }
 
-//Form detail default props 
-FormDetail.defaultProps = {
-    style: null
-};
-
 //Form rule component 
 export class FormRule extends React.Component {
     render() {
-        let props = {
-            className: "siimple-form-rule",
-            style: this.props.style
-        };
-        return React.createElement("div", props, null);
+        return React.createElement("div", {"className": "siimple-form-rule"}, null);
     }
 }
-
-//Form rule default props 
-FormRule.defaultProps = {
-    style: null
-};
 
