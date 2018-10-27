@@ -1,7 +1,10 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import components utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import styles
 import "siimple/scss/layout/_box.scss";
 
 //Box layout class
@@ -23,7 +26,7 @@ export class Box extends React.Component {
 
 //Default props
 Box.defaultProps = {
-    color: null
+    "color": null
 };
 
 //Box title
@@ -37,11 +40,6 @@ export class BoxTitle extends React.Component {
     }
 }
 
-//Box title default props 
-BoxTitle.defaultProps = {
-    style: null
-};
-
 //Box subtitle 
 export class BoxSubtitle extends React.Component {
     render() {
@@ -53,11 +51,6 @@ export class BoxSubtitle extends React.Component {
     }
 }
 
-//Box subtitle default props 
-BoxSubtitle.defaultProps = {
-    style: null
-};
-
 //Box detail component 
 export class BoxDetail extends React.Component {
     render() {
@@ -68,9 +61,4 @@ export class BoxDetail extends React.Component {
         return React.createElement("div", props, this.props.children);
     }
 }
-
-//Box detail default props 
-BoxDetail.defaultProps = {
-    style: null
-};
 
