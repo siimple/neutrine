@@ -1,7 +1,10 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import components utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import spinner styles
 import "siimple/scss/elements/_spinner.scss";
 
 //Spinner class
@@ -25,7 +28,7 @@ export default class Spinner extends React.Component {
 
 //Spinner default props
 Spinner.defaultProps = { 
-    color: "blue", 
-    size: null
+    "color": "primary", 
+    "size": null
 };
 
