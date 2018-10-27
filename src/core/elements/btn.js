@@ -40,8 +40,9 @@ export default class Btn extends React.Component {
 
 //Default properties values
 Btn.defaultProps = { 
-    "color": "blue", 
+    "color": "primary", 
     "disabled": false, 
-    "fluid": false 
+    "fluid": false,
+    "small": false
 };
 
