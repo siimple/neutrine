@@ -1,8 +1,8 @@
 import React from "react";
 
 //Import components utils
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
 
 //Import input styles
 import "siimple/scss/form/_input.scss";
