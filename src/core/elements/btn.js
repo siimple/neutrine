@@ -1,14 +1,17 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import component utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import button styles
 import "siimple/scss/elements/_btn.scss";
 
 //Button component
 export default class Btn extends React.Component {
     render() {
         //Initialize the button props 
-        let props = getProps(this.props, ["className", "color", "disabled", "fluid"]);
+        let props = getProps(this.props, ["className", "color", "disabled", "fluid", "small"]);
         //Initialize the class names list 
         let classList = ["siimple-btn"];
         //Add the button color
@@ -24,6 +27,10 @@ export default class Btn extends React.Component {
             //btn_props.style = { width: '100%', paddingLeft: '0px', paddingRight: '0px' };
             classList.push("siimple-btn--fluid");
         }
+        //Check the small property
+        if (this.props.small === true) {
+            classList.push("siimple-btn--small");
+        }
         //Append the provided class names
         props.className = classNames(classList, this.props.className);
         //Return the button element
@@ -33,8 +40,8 @@ export default class Btn extends React.Component {
 
 //Default properties values
 Btn.defaultProps = { 
-    color: "blue", 
-    disabled: false, 
-    fluid: false 
+    "color": "blue", 
+    "disabled": false, 
+    "fluid": false 
 };
 
