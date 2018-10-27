@@ -1,7 +1,10 @@
 import React from "react";
+
+//Import components utils
 import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
+//Import list style
 import "siimple/scss/components/_list.scss";
 
 //List component 
@@ -22,30 +25,36 @@ export class List extends React.Component {
 
 //List default props 
 List.defaultProps = {
-    hover: false
+    "hover": false
 };
 
 //List item component 
 export class ListItem extends React.Component {
     render() {
         let props = getProps(this.props, ["className"]);
-        props.className = classNames(["siimple-list-item"], this.props.className);
+        let classList = ["siimple-list-item"];
+        //Check the selected prop
+        if (this.props.selected === true) {
+            classList.push("siimple-list-item--selected");
+        }
+        props.className = classNames(classList, this.props.className);
+        //Return the list item element
         return React.createElement("div", props, this.props.children);
     }
 }
 
 //List item default props 
-ListItem.defaultProps = {};
+ListItem.defaultProps = {
+    "selected": false
+};
 
 //List title component 
 export class ListTitle extends React.Component {
     render() {
         let props = getProps(this.props, ["className"]);
         props.className = classNames(["siimple-list-title"], this.props.className);
+        //Return the list title element
         return React.createElement("div", props, this.props.children);
     }
 }
-
-//List title default props 
-ListTitle.defaultProps = {};
 
