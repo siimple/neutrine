@@ -1,9 +1,11 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import components utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import content styles
 import "siimple/scss/layout/_content.scss";
-import "siimple/scss/helpers/_breakpoints.scss";
 
 //Content layout component
 export default class Content extends React.Component {
@@ -14,7 +16,7 @@ export default class Content extends React.Component {
         let classList = ["siimple-content"];
         //Check the content size
         if (typeof this.props.size === "string") {
-            classList.push("siimple--" + this.props.size.toLowerCase());
+            classList.push("siimple-content--" + this.props.size.toLowerCase());
         }
         //Generate the content className
         props.className = classNames(classList, this.props.className);
@@ -25,7 +27,6 @@ export default class Content extends React.Component {
 
 //Default props
 Content.defaultProps = {
-    size: null, 
-    style: null 
+    "size": null 
 };
 
