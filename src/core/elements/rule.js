@@ -1,7 +1,10 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import components utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import rule styles
 import "siimple/scss/elements/_rule.scss";
 
 //Close button class
@@ -14,7 +17,4 @@ export default class Rule extends React.Component {
         return React.createElement("div", props, null);
     }
 }
-
-//Default props
-Rule.defaultProps = {};
 
