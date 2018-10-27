@@ -1,8 +1,8 @@
 import React from "react";
 
 //Import components folder
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
 
 //Import select styles
 import "siimple/scss/form/_select.scss";
