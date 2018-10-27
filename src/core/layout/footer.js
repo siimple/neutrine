@@ -1,9 +1,11 @@
 import React from "react";
+
+//Import components utils
 import classNames from "../class-names.js";
 import getProps from "../get-props.js";
 
+//Import footer styles
 import "siimple/scss/layout/_footer.scss";
-import "siimple/scss/helpers/_breakpoints.scss";
 
 //Footer layout component
 export default class Footer extends React.Component {
@@ -18,7 +20,7 @@ export default class Footer extends React.Component {
         }
         //Check the content size
         if (typeof this.props.size === "string") {
-            classList.push("siimple--" + this.props.size.toLowerCase());
+            classList.push("siimple-footer--" + this.props.size.toLowerCase());
         }
         //Generate the footer classname
         props.className = classNames(classList, this.props.className);
@@ -29,8 +31,7 @@ export default class Footer extends React.Component {
 
 //Default props
 Footer.defaultProps = {
-    color: null, 
-    size: null, 
-    style: null
+    "color": null, 
+    "size": null 
 };
 
