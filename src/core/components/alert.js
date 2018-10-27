@@ -40,3 +40,13 @@ export class AlertTitle extends React.Component {
     }
 }
 
+//Alert close component
+export class AlertClose extends React.Component {
+    render() {
+        let props = getProps(this.props, ["className"]);
+        props.className = classNames(["siimple-alert-close"], this.props.className);
+        //Return the alert close element
+        return React.createElement("div", props, this.props.children);
+    }
+}
+
