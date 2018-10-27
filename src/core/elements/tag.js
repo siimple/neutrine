@@ -1,7 +1,10 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import components utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import tabg styles
 import "siimple/scss/elements/_tag.scss";
 
 //Export tag component 
@@ -29,7 +32,6 @@ export default class Tag extends React.Component {
 //Tag default props
 Tag.defaultProps = {
     "color": null,
-    "rounded": false,
-    "style": null
+    "rounded": false
 };
 
