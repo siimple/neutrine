@@ -1,7 +1,10 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import component utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import textarea utils
 import "siimple/scss/form/_textarea.scss";
 
 //Textarea component 
