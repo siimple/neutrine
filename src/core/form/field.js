@@ -1,7 +1,10 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import components utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import filed styles
 import "siimple/scss/form/_field.scss";
 
 //Form field component
@@ -15,9 +18,6 @@ export class Field extends React.Component {
     }
 }
 
-//Form field default props
-Field.defaultProps = {};
-
 //Field label component 
 export class FieldLabel extends React.Component {
     render() {
@@ -29,9 +29,6 @@ export class FieldLabel extends React.Component {
     }
 }
 
-//Field label default props 
-FieldLabel.defaultProps = {};
-
 //Field helper component
 export class FieldHelper extends React.Component {
     render() {
@@ -42,7 +39,4 @@ export class FieldHelper extends React.Component {
         return React.createElement("div", props, this.props.children);
     }
 }
-
-//Field helper default props
-FieldHelper.defaultProps = {};
 
