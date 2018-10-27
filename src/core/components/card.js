@@ -1,7 +1,10 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import components utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import card styles
 import "siimple/scss/components/_card.scss";
 
 //Card base component
@@ -15,9 +18,6 @@ export class Card extends React.Component {
     }
 }
 
-//Card base default props 
-Card.defaultProps = {};
-
 //Card header component 
 export class CardHeader extends React.Component {
     render() {
@@ -28,9 +28,6 @@ export class CardHeader extends React.Component {
         return React.createElement("div", props, this.props.children);
     }
 }
-
-//Card header default props 
-CardHeader.defaultProps = {};
 
 //Card body component 
 export class CardBody extends React.Component {
@@ -43,9 +40,6 @@ export class CardBody extends React.Component {
     }
 }
 
-//Card body default props 
-CardBody.defaultProps = {};
-
 //Card footer component 
 export class CardFooter extends React.Component {
     render() {
@@ -56,9 +50,6 @@ export class CardFooter extends React.Component {
         return React.createElement("div", props, this.props.children);
     }
 }
-
-//Card footer default props
-CardFooter.defaultProps = {};
 
 //Card title component 
 export class CardTitle extends React.Component {
@@ -71,9 +62,6 @@ export class CardTitle extends React.Component {
     }
 }
 
-//Card title default props 
-CardTitle.defaultProps = {};
-
 //Card subtitle component
 export class CardSubtitle extends React.Component {
     render() {
@@ -84,7 +72,4 @@ export class CardSubtitle extends React.Component {
         return React.createElement("div", props, this.props.children);
     }
 }
-
-//Card subtitle default props 
-CardSubtitle.defaultProps = {};
 
