@@ -1,7 +1,10 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import components utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import switch styles
 import "siimple/scss/form/_switch.scss";
 
 //Generate a random id
@@ -22,8 +25,8 @@ export const Switch = React.forwardRef(function (props, ref) {
     let divChild = React.createElement("div", {}, null);
     //Generate the switch props
     let switchProps = {
-        className: classNames("siimple-switch", props.className),
-        style: props.style
+        "className": classNames("siimple-switch", props.className),
+        "style": props.style
     };
     //Return the switch element
     return React.createElement("div", switchProps, inputChild, labelChild, divChild);
