@@ -1,7 +1,10 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import components utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import radio styles
 import "siimple/scss/form/_radio.scss";
 
 //Generate a random id
@@ -22,8 +25,8 @@ export const Radio = React.forwardRef(function (props, ref) {
     let labelChild = React.createElement("label", {htmlFor: inputProps.id}, null);
     //Radio props
     let radioProps = {
-        className: classNames("siimple-radio", props.className),
-        style: props.style
+        "className": classNames("siimple-radio", props.className),
+        "style": props.style
     };
     //Return the radio element
     return React.createElement("div", radioProps, props.children);
