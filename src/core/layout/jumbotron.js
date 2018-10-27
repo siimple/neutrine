@@ -1,9 +1,11 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import components utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import jumbotron styles
 import "siimple/scss/layout/_jumbotron.scss";
-import "siimple/scss/helpers/_breakpoints.scss";
 
 //Jumbotron base component
 export class Jumbotron extends React.Component {
@@ -18,7 +20,7 @@ export class Jumbotron extends React.Component {
         }
         //Check the jumbotron size property
         if (typeof this.props.size === "string") {
-            classList.push("siimple--" + this.props.size.toLowerCase());
+            classList.push("siimple-jumbotron--" + this.props.size.toLowerCase());
         }
         //Generate the jumbotron classname
         props.className = classNames(classList, this.props.className);
@@ -29,9 +31,8 @@ export class Jumbotron extends React.Component {
 
 //Jumbotron default props
 Jumbotron.defaultProps = {
-    color: null, 
-    size: null,
-    style: null
+    "color": null, 
+    "size": null
 };
 
 //Jumbotron title
@@ -45,11 +46,6 @@ export class JumbotronTitle extends React.Component {
     }
 }
 
-//Jumbotron title default props 
-JumbotronTitle.defaultProps = {
-    style: null
-};
-
 //Jumbotron subtitle 
 export class JumbotronSubtitle extends React.Component {
     render() {
@@ -61,11 +57,6 @@ export class JumbotronSubtitle extends React.Component {
     }
 }
 
-//Jumbotron subtitle default props 
-JumbotronSubtitle.defaultProps = {
-    style: null
-};
-
 //Jumbotron detail component 
 export class JumbotronDetail extends React.Component {
     render() {
@@ -76,9 +67,4 @@ export class JumbotronDetail extends React.Component {
         return React.createElement("div", props, this.props.children);
     }
 }
-
-//Jumbotron detail default props 
-JumbotronDetail.defaultProps = {
-    style: null
-};
 
