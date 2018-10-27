@@ -1,7 +1,10 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import components utils
+import classNames from "../../class-names.js";
+import getProps from "../../get-props.js";
+
+//Import grid styles
 import "siimple/scss/grid/_grid.scss";
 
 //Grid class
@@ -13,9 +16,6 @@ export class Grid extends React.Component {
     }
 }
 
-//Grid default props
-Grid.defaultProps = {};
-
 //Grid row class
 export class GridRow extends React.Component {
     render() {
@@ -24,9 +24,6 @@ export class GridRow extends React.Component {
         return React.createElement("div", props, this.props.children);
     }
 }
-
-//Grid row default props
-GridRow.defaultProps = {};
 
 //Grid column class
 export class GridCol extends React.Component {
