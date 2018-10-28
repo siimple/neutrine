@@ -1,7 +1,7 @@
 import React from "react";
 
 //Import components utils
-import utils from "../utils.js";
+import * as utils from "../utils.js";
 
 //Import navbar styles
 import "siimple/scss/layout/_navbar.scss";
