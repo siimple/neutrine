@@ -1,8 +1,7 @@
 import React from "react";
 
 //Import components utils
-import classNames from "../../class-names.js";
-import getProps from "../../get-props.js";
+import utils from "../utils.js";
 
 //Import jumbotron styles
 import "siimple/scss/layout/_jumbotron.scss";
@@ -11,7 +10,7 @@ import "siimple/scss/layout/_jumbotron.scss";
 export class Jumbotron extends React.Component {
     render() {
         //Clone the jumbotron props 
-        let props = getProps(this.props, ["className", "color", "size"]);
+        let props = utils.filterProps(this.props, ["className", "color", "size"]);
         //Initialize the jumbotron class names list
         let classList = ["siimple-jumbotron"];
         //Check the jumbotron color
@@ -23,7 +22,7 @@ export class Jumbotron extends React.Component {
             classList.push("siimple-jumbotron--" + this.props.size.toLowerCase());
         }
         //Generate the jumbotron classname
-        props.className = classNames(classList, this.props.className);
+        props.className = utils.classNames(classList, this.props.className);
         //Return the parent div
         return React.createElement("div", props, this.props.children);
     }
@@ -36,35 +35,17 @@ Jumbotron.defaultProps = {
 };
 
 //Jumbotron title
-export class JumbotronTitle extends React.Component {
-    render() {
-        //Clone the jumbotron props
-        let props = getProps(this.props, ["className"]);
-        props.className = classNames("siimple-jumbotron-title", this.props.className);
-        //Return the jumbotron title element
-        return React.createElement("div", props, this.props.children);
-    }
+export function JumbotronTitle (props) {
+    return utils.basicComponent("div", props, "siimple-jumbotron-title");
 }
 
 //Jumbotron subtitle 
-export class JumbotronSubtitle extends React.Component {
-    render() {
-        //Clone the jumbotron subtitle props
-        let props = getProps(this.props, ["className"]);
-        props.className = classNames("siimple-jumbotron-subtitle", this.props.className);
-        //Return the jumbotron subititle element
-        return React.createElement("div", props, this.props.children);
-    }
+export function JumbotronSubtitle (props) {
+    return utils.basicComponent("div", props, "siimple-jumbotron-subtitle");
 }
 
 //Jumbotron detail component 
-export class JumbotronDetail extends React.Component {
-    render() {
-        //Clone the jumbotron detail props
-        let props = getProps(this.props, ["className"]);
-        props.className = classNames("siimple-jumbotron-detail", this.props.className);
-        //Return the jumbotron detail element
-        return React.createElement("div", props, this.props.children);
-    }
+export function JumbotronDetail (props) {
+    return utils.basicComponent("div", props, "siimple-jumbotron-detail");
 }
 
