@@ -1,0 +1,11 @@
+{
+    "name": "neutrine",
+    "author": "Josemi Juanes <josemijuanes@gmail.com>",
+    "homepage": "https://www.siimple.xyz",
+    "repository": "https://github.com/siimple/neutrine.git",
+    "devDependencies": {
+        "siimple": "siimple/siimple#v3.2.0",
+        "siimple-colors": "siimple/siimple-colors#develop"
+    },
+    "license": "MIT"
+}
