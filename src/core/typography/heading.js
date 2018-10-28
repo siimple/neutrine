@@ -1,14 +1,16 @@
 import React from "react";
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
 
+//Import component utils
+import utils from "../utils.js";
+
+//Import heading styles
 import "siimple/scss/typography/_heading.scss";
 
 //Heading class
 export default class Heading extends React.Component {
     render() {
         //Initialize the header props
-        let props = getProps(this.props, ["type", "className"]);
+        let props = utils.filterProps(this.props, ["type", "className"]);
         //Initialize the header class list
         let classList = [];
         //Check the header type
@@ -16,7 +18,7 @@ export default class Heading extends React.Component {
             classList.push("siimple-" + this.props.type.toLowerCase().trim());
         }
         //Generate the header classname
-        props.className = classNames(classList, this.props.className);
+        props.className = utils.classNames(classList, this.props.className);
         //Return the heading element
         return React.createElement("div", props, this.props.children);
     }
@@ -24,7 +26,6 @@ export default class Heading extends React.Component {
 
 //Default heading props
 Heading.defaultProps = {
-    type: "h1",
-    style: null
+    "type": "h1"
 };
 
