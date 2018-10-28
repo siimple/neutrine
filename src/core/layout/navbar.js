@@ -1,8 +1,7 @@
 import React from "react";
 
 //Import components utils
-import classNames from "../class-names.js";
-import getProps from "../get-props.js";
+import utils from "../utils.js";
 
 //Import navbar styles
 import "siimple/scss/layout/_navbar.scss";
@@ -11,7 +10,7 @@ import "siimple/scss/layout/_navbar.scss";
 export class Navbar extends React.Component {
     render() {
         //Clone the navbar props 
-        let props = getProps(this.props, ["className", "color", "size"]);
+        let props = utils.filterProps(this.props, ["className", "color", "size"]);
         //Initialize the class list
         let classList = ["siimple-navbar"];
         //Check the color
@@ -23,7 +22,7 @@ export class Navbar extends React.Component {
             classList.push("siimple-navbar--" + this.props.size.toLowerCase());
         }
         //Generate the navbar classname
-        props.className = classNames(classList, this.props.className);
+        props.className = utils.classNames(classList, this.props.className);
         //Render the navbar
         return React.createElement("div", props, this.props.children);
     }
@@ -36,35 +35,17 @@ Navbar.defaultProps = {
 };
 
 //Navbar title element
-export class NavbarTitle extends React.Component {
-    render() {
-        //Initialize the title element props
-        let props = getProps(this.props, ["className"]);
-        props.className = classNames("siimple-navbar-title", this.props.className);
-        //Render the navbar title
-        return React.createElement("div", props, this.props.children);
-    }
+export function NavbarTitle (props) {
+    return utils.basicComponent("div", props, "siimple-navbar-title");
 }
 
 //Navbar subtitle class
-export class NavbarSubtitle extends React.Component {
-    render() {
-        //Clone the subtitle props 
-        let props = getProps(this.props, ["className"]);
-        props.className = classNames("siimple-navbar-subtitle", this.props.className);
-        //Return the navbar subtitle element
-        return React.createElement("div", props, this.props.children);
-    }
+export function NavbarSubtitle (props) {
+    return utils.basicComponent("div", props, "siimple-navbar-subtitle");
 }
 
 //Navbar item element
-export class NavbarItem extends React.Component {
-    render() {
-        //Clone the navbar item props
-        let props = getProps(this.props, ["className"]);
-        props.className = classNames("siimple-navbar-item", this.props.className);
-        //Render the navbar link
-        return React.createElement("div", props, this.props.children);
-    }
+export function NavbarItem (props) {
+    return utils.basicComponent("div", props, "siimple-navbar-item");
 }
 
