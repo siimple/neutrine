@@ -49,7 +49,8 @@ export {default as Small} from "./src/core/typography/small.js";
 
 //Components
 export {default as CookiesConsent} from "./src/components/cookies-consent/index.js";
+export {default as Toast} from "./src/components/toast/index.js";
 
 //Widgets
-export {default as TextEditor} from "./src/widgets/text-editor/index.js";
+//export {default as TextEditor} from "./src/widgets/text-editor/index.js";
 
