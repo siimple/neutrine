@@ -1,7 +1,7 @@
 import React from "react";
 
 //Import components utils
-import utils from "../util.js";
+import * as utils from "../utils.js";
 
 //Import blockquote stules
 import "siimple/scss/typography/_blockquote.scss";
