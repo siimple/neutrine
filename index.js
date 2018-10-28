@@ -1,122 +1,55 @@
-//Components
-import {Alert, AlertTitle} from "./src/components/alert.js";
-import {Breadcrumb, BreadcrumbItem} from "./src/components/breadcrumb.js";
-import {Card, CardHeader, CardBody, CardFooter, CardTitle, CardSubtitle} from "./src/components/card.js";
-import {List, ListItem, ListTitle} from "./src/components/list.js";
-import {Menu, MenuGroup, MenuItem} from "./src/components/menu.js";
-import {Table, TableHeader, TableBody, TableRow, TableCell} from "./src/components/table.js";
-import {Tabs, TabsItem} from "./src/components/tabs.js";
+//Neutrine version
+export {version} from "./src/version.js";
 
-//Elements
-import Btn from "./src/elements/btn.js";
-import Close from "./src/elements/close.js";
-import Rule from "./src/elements/rule.js";
-import Spinner from "./src/elements/spinner.js";
-import Tag from "./src/elements/tag.js";
-import Tip from "./src/elements/tip.js";
+//Core components
+export {Alert, AlertTitle, AlertClose} from "./src/core/components/alert.js";
+export {Breadcrumb, BreadcrumbItem} from "./src/core/components/breadcrumb.js";
+export {Card, CardHeader, CardBody, CardFooter, CardTitle, CardSubtitle} from "./src/core/components/card.js";
+export {List, ListItem, ListTitle} from "./src/core/components/list.js";
+export {Menu, MenuGroup, MenuItem} from "./src/core/components/menu.js";
+export {Table, TableHeader, TableBody, TableRow, TableCell} from "./src/core/components/table.js";
+export {Tabs, TabsItem} from "./src/core/components/tabs.js";
 
-//Form
-import {Checkbox} from "./src/form/checkbox.js";
-import {Field, FieldLabel, FieldHelper} from "./src/form/field.js";
-import {Form, FormTitle, FormDetail, FormRule} from "./src/form/form.js";
-import {Input} from "./src/form/input.js";
-import Label from "./src/form/label.js";
-import {Radio} from "./src/form/radio.js";
-import {Select} from "./src/form/select.js";
-import {Switch} from "./src/form/switch.js";
-import {Textarea} from "./src/form/textarea.js";
+//Core elements
+export {default as Btn} from "./src/core/elements/btn.js";
+export {default as Rule} from "./src/core/elements/rule.js";
+export {default as Spinner} from "./src/core/elements/spinner.js";
+export {default as Tag} from "./src/core/elements/tag.js";
+export {default as Tip} from "./src/core/elements/tip.js";
 
-//Grid
-import {Grid, GridRow, GridCol} from "./src/grid/grid.js";
+//Core form
+export {Checkbox} from "./src/core/form/checkbox.js";
+export {Field, FieldLabel, FieldHelper} from "./src/core/form/field.js";
+export {Form, FormTitle, FormDetail, FormRule} from "./src/core/form/form.js";
+export {Input} from "./src/core/form/input.js";
+export {default as Label} from "./src/core/form/label.js";
+export {Radio} from "./src/core/form/radio.js";
+export {Select} from "./src/core/form/select.js";
+export {Switch} from "./src/core/form/switch.js";
+export {Textarea} from "./src/core/form/textarea.js";
 
-//Layout
-import {Box, BoxTitle, BoxSubtitle, BoxDetail} from "./src/layout/box.js";
-import Content from "./src/layout/content.js";
-import Footer from "./src/layout/footer.js";
-import {Jumbotron, JumbotronTitle, JumbotronSubtitle, JumbotronDetail} from "./src/layout/jumbotron.js";
-import {Navbar, NavbarTitle, NavbarSubtitle, NavbarItem} from "./src/layout/navbar.js";
+//Core grid
+export {Grid, GridRow, GridCol} from "./src/core/grid/grid.js";
+
+//Core layout
+export {Box, BoxTitle, BoxSubtitle, BoxDetail} from "./src/core/layout/box.js";
+export {default as Content} from "./src/core/layout/content.js";
+export {Footer, FooterTitle, FooterSubtitle, FooterParagraph, FooterLink, FooterGroup, FooterRule} from "./src/core/layout/footer.js";
+export {Jumbotron, JumbotronTitle, JumbotronSubtitle, JumbotronDetail} from "./src/core/layout/jumbotron.js";
+export {Navbar, NavbarTitle, NavbarSubtitle, NavbarItem} from "./src/core/layout/navbar.js";
 
 //Typography
-import Blockquote from "./src/typography/blockquote.js";
-import Code from "./src/typography/code.js";
-import Heading from "./src/typography/heading.js";
-import Link from "./src/typography/link.js";
-import Paragraph from "./src/typography/paragraph.js";
-import Pre from "./src/typography/pre.js";
-import Small from "./src/typography/small.js";
+export {default as Blockquote} from "./src/core/typography/blockquote.js";
+export {default as Code} from "./src/core/typography/code.js";
+export {default as Heading} from "./src/core/typography/heading.js";
+export {default as Link} from "./src/core/typography/link.js";
+export {default as Paragraph} from "./src/core/typography/paragraph.js";
+export {default as Pre} from "./src/core/typography/pre.js";
+export {default as Small} from "./src/core/typography/small.js";
 
-export {
-    Alert,
-    AlertTitle,
-    Breadcrumb,
-    BreadcrumbItem,
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    CardTitle,
-    CardSubtitle,
-    List,
-    ListItem,
-    ListTitle,
-    Menu,
-    MenuGroup,
-    MenuItem,
-    Table,
-    TableHeader,
-    TableBody,
-    TableRow,
-    TableCell,
-    Tabs,
-    TabsItem,
+//Components
+export {default as CookiesConsent} from "./src/components/cookies-consent/index.js";
 
-    Btn,
-    Close,
-    Rule,
-    Spinner,
-    Tag,
-    Tip,
-    
-    Checkbox,
-    Field,
-    FieldLabel,
-    FieldHelper,
-    Form,
-    FormTitle,
-    FormDetail,
-    FormRule,
-    Input,
-    Label,
-    Radio,
-    Select,
-    Switch,
-    Textarea,
-
-    Grid,
-    GridRow,
-    GridCol,
-
-    Box,
-    BoxTitle,
-    BoxSubtitle,
-    BoxDetail,
-    Content,
-    Footer,
-    Jumbotron,
-    JumbotronTitle,
-    JumbotronSubtitle,
-    JumbotronDetail,
-    Navbar,
-    NavbarTitle,
-    NavbarSubtitle,
-    NavbarItem,
-
-    Blockquote,
-    Code,
-    Heading,
-    Link,
-    Paragraph,
-    Pre,
-    Small
-}
+//Widgets
+export {default as TextEditor} from "./src/widgets/text-editor/index.js";
 
