@@ -1,34 +1,25 @@
 import React from "react";
 
 //Import components utils
-import classNames from "../../class-names.js";
-import getProps from "../../get-props.js";
+import utils from "../utils.js";
 
 //Import grid styles
 import "siimple/scss/grid/_grid.scss";
 
 //Grid class
-export class Grid extends React.Component {
-    render() {
-        let props = getProps(this.props, ["className"]);
-        props.className = classNames("siimple-grid", this.props.className);
-        return React.createElement("div", props, this.props.children);
-    }
+export function Grid (props) {
+    return utils.basicComponent("div", props, "siimple-grid");
 }
 
 //Grid row class
-export class GridRow extends React.Component {
-    render() {
-        let props = getProps(this.props, ["className"]);
-        props.className = classNames("siimple-grid-row", this.props.className);
-        return React.createElement("div", props, this.props.children);
-    }
+export function GridRow (props) {
+    return utils.basicComponent("div", props, "siimple-grid-row");
 }
 
 //Grid column class
 export class GridCol extends React.Component {
     render() {
-        let props = getProps(this.props, ["className", "size", "extraLarge", "large", "medium", "small", "extraSmall"]);
+        let props = utils.filterProps(this.props, ["className", "size", "extraLarge", "large", "medium", "small", "extraSmall"]);
         let classList = ["siimple-grid-col"];
         //Check the column size
         if (typeof this.props.size === "number" || typeof this.props.size === "string") {
@@ -49,7 +40,7 @@ export class GridCol extends React.Component {
         if (typeof this.props.extraSmall === "number" || typeof this.props.extraSmall === "string") {
             classList.push("siimple-grid-col--xs-" + this.props.extraSmall);
         }
-        props.className = classNames(classList, this.props.className);
+        props.className = utils.classNames(classList, this.props.className);
         return React.createElement("div", props, this.props.children);
     }
 }
