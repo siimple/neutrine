@@ -12,6 +12,7 @@ $neutrine-toast-index: 4000;
     left: calc(50% - #{$neutrine-toast-width} / 2);
     margin: 0px !important;
     padding: 0px !important;
+    opacity: 0;
     //Toast position top
     &--top { 
         top: -50px; 
@@ -19,6 +20,7 @@ $neutrine-toast-index: 4000;
     //Toast position top visible
     &--top#{&}--visible { 
         top: 40px !important; 
+        opacity: 1.0 !important;
     }
     //Toast position bottom
     &--bottom { 
@@ -27,5 +29,6 @@ $neutrine-toast-index: 4000;
     //Toast position bottom visible
     &--bottom#{&}--visible { 
         top: calc(100% - 80px); 
+        opacity: 1.0 !important;
     }
 }
