@@ -13,27 +13,26 @@ export class Modal extends React.Component {
     //Render modal content
     renderContent() {
         let props = {
-            "className": ["siimple-modal-content"],
+            "className": "siimple-modal-content",
             "style": null
         };
-        //Check for modal predefined size
-        if (typeof this.props.size === "string") {
-            props.className.push("siimple-modal--" + this.props.size.toLowerCase());
-        }
         //Check for modal custon width
-        else if (typeof this.props.width === "string") {
+        if (typeof this.props.width === "string") {
             props.style = {
                 "maxWidth": this.props.width
             };
         }
-        //Merge the modal content styles
-        props.className = props.className.join(" ");
         //Return the modal content
         return React.createElement("div", props, this.props.children);
     }
     render() {
         //Get the modal wrapper props
         let props = getProps(this.props, ["className", "width", "size"]);
+        //Check for modal predefined size
+        if (typeof this.props.size === "string") {
+            props.className.push("siimple-modal--" + this.props.size.toLowerCase());
+        }
+        //Merge the modal class names
         props.className = classNames(["siimple-modal"], this.props.className);
         //Return the modal wrapper element
         return React.createElement("div", props, this.renderContent());
