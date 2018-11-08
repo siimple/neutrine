@@ -5,6 +5,9 @@ import * as utils from "../utils.js";
 import classNames from "../../class-names.js";
 import getProps from "../../get-props.js";
 
+//Import modal styles
+import "siimple/scss/experiments/_modal.scss";
+
 //Export main modal component
 export class Modal extends React.Component {
     //Render modal content
