@@ -38,7 +38,7 @@ export {Footer, FooterTitle, FooterSubtitle, FooterParagraph, FooterLink, Footer
 export {Jumbotron, JumbotronTitle, JumbotronSubtitle, JumbotronDetail} from "./src/core/layout/jumbotron.js";
 export {Navbar, NavbarTitle, NavbarSubtitle, NavbarItem} from "./src/core/layout/navbar.js";
 
-//Typography
+//Core typography
 export {default as Blockquote} from "./src/core/typography/blockquote.js";
 export {default as Code} from "./src/core/typography/code.js";
 export {default as Heading} from "./src/core/typography/heading.js";
@@ -46,6 +46,10 @@ export {default as Link} from "./src/core/typography/link.js";
 export {default as Paragraph} from "./src/core/typography/paragraph.js";
 export {default as Pre} from "./src/core/typography/pre.js";
 export {default as Small} from "./src/core/typography/small.js";
+
+//Core experiments
+export {Modal, ModalHeader, ModalBody, ModalFooter} from "./src/core/experiments/modal.js";
+export {default as Progress} from "./src/core/experiments/progress.js";
 
 //Components
 export {default as CookiesConsent} from "./src/components/cookies-consent/index.js";
