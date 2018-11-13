@@ -21,7 +21,8 @@ export function ProjectsColumn (props) {
         "className": "neutrine-projects-column",
         "style": {
             "flexGrow": (typeof props.size === "string") ? props.size : null
-        }
+        },
+        "onClick": props.onClick
     };
     //Return the column component
     return React.createElement("div", columnProps, props.children);
@@ -29,7 +30,7 @@ export function ProjectsColumn (props) {
 
 //Projects info column
 export function ProjectsInfoColumn (props) {
-    return React.createElement(ProjectsColumn, {"size": 2}, 
+    return React.createElement(ProjectsColumn, {"size": 2, "onClick": props.onClick}, 
         React.createElement("div", {"className": "neutrine-projects-info-title"}, props.title),
         React.createElement("div", {"className": "neutrine-projects-info-description"}, props.description)
     );
