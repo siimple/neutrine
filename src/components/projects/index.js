@@ -11,7 +11,13 @@ export function Projects (props) {
 
 //Projects row component
 export function ProjectsRow (props) {
-    return React.createElement("div", {"className": "neutrine-projects-row"}, props.children);
+    //Build row props
+    let rowProps = {
+        "className": "neutrine-projects-row",
+        "onClick": (typeof props.onClick === "function") ? props.onClick : null
+    };
+    //Return row component
+    return React.createElement("div", rowProps, props.children);
 }
 
 //Projects base column
@@ -22,7 +28,7 @@ export function ProjectsColumn (props) {
         "style": {
             "flexGrow": (typeof props.size === "string") ? props.size : null
         },
-        "onClick": props.onClick
+        "onClick": (typeof props.onClick === "function") ? props.onClick : null
     };
     //Return the column component
     return React.createElement("div", columnProps, props.children);
@@ -30,7 +36,13 @@ export function ProjectsColumn (props) {
 
 //Projects info column
 export function ProjectsInfoColumn (props) {
-    return React.createElement(ProjectsColumn, {"size": 2, "onClick": props.onClick}, 
+    //Build info column props
+    let infoProps = {
+        "size": 2,
+        "onClick": (typeof props.onClick === "function") ? props.onClick : null
+    };
+    //Return info column
+    return React.createElement(ProjectsColumn, infoProps, 
         React.createElement("div", {"className": "neutrine-projects-info-title"}, props.title),
         React.createElement("div", {"className": "neutrine-projects-info-description"}, props.description)
     );
