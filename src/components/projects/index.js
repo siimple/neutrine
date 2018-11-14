@@ -6,7 +6,7 @@ import "./style.scss";
 
 //Export projects wrapper component
 export function Projects (props) {
-    return React.createElement("div", {"className": "neutrine-projects"}, props.childen);
+    return React.createElement("div", {"className": "neutrine-projects"}, props.children);
 }
 
 //Projects row component
