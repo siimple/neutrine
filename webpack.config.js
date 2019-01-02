@@ -22,8 +22,8 @@ module.exports = {
         ],
     },
     "module": {
-        "rules": [
-            {
+        "rules": Object.values({
+            "scssParser": {
                 "test": /\.scss$/,
                 "use": [
                     MiniCssExtract.loader,
@@ -37,19 +37,39 @@ module.exports = {
                     }
                 ]
             },
-            {
+            "cssParser": {
+                "test": /\.css$/,
+                "use": Object.values({
+                    "cssLoader": {
+                        "loader": "css-loader"
+                    }
+                })
+            },
+            "imageParser": {
                 "test": /\.(png|jpg|gif|svg)$/,
                 "use": [
                     {
                         "loader": "file-loader",
                         "options": {
-                            "name": "[path][name].[ext]",
+                            "name": "[hash].[ext]",
                             "outputPath": "images/"
                         }
                     }
                 ]
+            },
+            "fontParser": {
+                "test": /\.(ttf|woff|woff2)$/,
+                "use": Object.values({
+                    "fileLoader": {
+                        "loader": "file-loader",
+                        "options": {
+                            "name": "[hash].[ext]",
+                            "outputPath": "fonts/"
+                        }
+                    }
+                })
             }
-        ]
+        })
     },
     "plugins": [
         new MiniCssExtract({filename: "neutrine.css"})
