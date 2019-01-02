@@ -2,7 +2,7 @@
 import React from "react";
 
 //Import neutrine components
-import {Btn} from "neutrine";
+import Btn from "../../core/elements/btn.js";
 
 //Import subhead styles
 import "./style.scss";
