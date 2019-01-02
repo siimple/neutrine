@@ -51,6 +51,9 @@ export {default as Small} from "./src/core/typography/small.js";
 export {Modal, ModalHeader, ModalBody, ModalFooter} from "./src/core/experiments/modal.js";
 export {default as Progress} from "./src/core/experiments/progress.js";
 
+//Icons
+export {default as Icon} from "./src/icon/index.js";
+
 //Components
 export {default as CookiesConsent} from "./src/components/cookies-consent/index.js";
 export {Projects, ProjectsRow, ProjectsColumn, ProjectsInfoColumn} from "./src/components/projects/index.js";
