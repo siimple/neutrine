@@ -43,6 +43,8 @@ dist/
 # IntelliJ project files
 *.iml
 
-# Vim cache files
+# Other files and directories
 *.swp
+package-lock.json
+dist
 
