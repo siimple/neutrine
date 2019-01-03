@@ -1,0 +1,195 @@
+//Import dependencies
+@import "siimple-colors/scss/colors.scss";
+
+//Dashboard variables
+$neutrine-layout-dashboard-sidebar-width: 250px;
+$neutrine-layout-dashboard-main-width: 860px;
+$neutrine-layout-dashboard-header-height: 70px;
+
+//Dashboard style
+.neutrine-layout-dashboard {
+    display: block;
+    min-height: 100%;
+    position: relative;
+    //background-color: $siimple-grey-light;
+    padding-left: $neutrine-layout-dashboard-sidebar-width;
+    padding-top: $neutrine-layout-dashboard-header-height;
+    //Dashboard sidebar
+    &-sidebar {
+        display: block;
+        position: absolute;
+        width: calc(#{$neutrine-layout-dashboard-sidebar-width} - 30px);
+        height: calc(100% - #{$neutrine-layout-dashboard-header-height} - 40px);
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        //background-color: $siimple-grey-light;
+        transition: all 0.3s;
+        top: $neutrine-layout-dashboard-header-height !important;
+        left: 0px !important;
+        //Sidebar link
+        &-link {
+            display: block;
+            padding-left: 50px;
+            padding-right: 10px;
+            min-height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            margin-bottom: 5px;
+            border-radius: 3px;
+            transition: all 0.3s;
+            background-position: 13px 8px;
+            background-repeat: no-repeat;
+            background-size: 24px 24px;
+            cursor: pointer;
+            text-overflow: clip;
+            overflow: hidden;
+            position: relative;
+            color: $siimple-navy-light;
+            //Hover link
+            &:hover {
+                background-color: rgba($siimple-blue, 0.1);
+            }
+            //Active link
+            &--active {
+                background-color: rgba($siimple-blue, 0.2) !important;
+                color: $siimple-blue;
+                font-weight: 600;
+            }
+            //Link icons
+            &-icon {
+                position: absolute;
+                left: 13px;
+                font-size: 24px;
+                line-height: 40px;
+                font-weight: normal !important;
+            }
+        }
+        //Sidebar separator
+        &-separator {
+            display: block;
+            height: 1px;
+            background-color: $siimple-grey;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
+    //Dashboard header 
+    &-header {
+        display: block;
+        width: calc(100% - 30px);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: calc(#{$neutrine-layout-dashboard-header-height} - 20px);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: $siimple-grey-light;
+        //background-color: $siimple-white;
+        //Header title and subtitle
+        &-title,
+        &-subtitle {
+            display: block;
+            float: left;
+            height: calc(#{$neutrine-layout-dashboard-header-height} - 20px);
+            line-height: calc(#{$neutrine-layout-dashboard-header-height} - 20px);
+            font-size: 20px;
+            padding-right: 3px;
+        }
+        //Header title
+        &-title {
+            font-weight: bold;
+            color: $siimple-navy;
+        }
+        //Header subtitle
+        &-subtitle {
+            color: $siimple-navy-extra-light;
+        }
+        //Sidebar user block
+        &-user {
+            display: block;
+            float: right;
+            position: relative;
+            height: calc(#{$neutrine-layout-dashboard-header-height} - 20px);
+            //User caret 
+            &-caret {
+                display: block;
+                border-radius: 100px;
+                width: 36px;
+                height: 36px;
+                border: 2px solid $siimple-white;
+                background-position: center center;
+                //background-image: url("./static/user.svg");
+                background-size: 36px 36px;
+                background-repeat: no-repeat;
+                margin: 5px;
+                cursor: pointer;
+            }
+            //User dropdown
+            &-dropdown {
+                display: none;
+                position: absolute;
+                top: 50px;
+                right: 5px;
+                width: 200px;
+                padding: 10px;
+                border-radius: 5px;
+                color: $siimple-white;
+                background-color: $siimple-navy;
+                //Dropdown email
+                &-email {
+                    display: block;
+                    opacity: 0.6;
+                    font-size: 13px;
+                }
+                //Dropdown triangle
+                &::after {
+                    display: block;
+                    content: "";
+                    position: absolute;
+                    border-bottom: 5px solid $siimple-navy;
+                    border-left: 5px solid transparent;
+                    border-right: 5px solid transparent;
+                    width: 0px;
+                    height: 0px;
+                    top: -5px;
+                    right: 15px;
+                }
+            }
+            &:hover > &-dropdown {
+                display: block;
+            }
+        }
+    }
+    //Dashboard main
+    &-main {
+        display: block;
+        max-width: calc(#{$neutrine-layout-dashboard-main-width} - 20px);
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        //min-height: 100%;
+    }
+    //Dashboard footer
+    &-footer {
+        display: block;
+        max-width: calc(#{$neutrine-layout-dashboard-main-width} - 20px);
+        border-top: 1px solid $siimple-grey;
+        padding-top: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        color: $siimple-navy-extra-light;
+        font-size: 14px;
+    }
+}
+
