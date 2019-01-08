@@ -4,10 +4,15 @@ import React from "react";
 import {Alert, AlertClose} from "../../core/components/alert.js";
 
 //Import utils
-import delay from "../../utils/delay.js";
+//import delay from "../../utils/delay.js";
 
 //Import toast styles
 import "./style.scss";
+
+//Delay wrapper
+let delay = function (time, callback) {
+    return setTimeout(callback, time);
+};
 
 //Export toas widget component
 export default class Toast extends React.Component {
