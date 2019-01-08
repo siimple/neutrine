@@ -1,4 +1,4 @@
-export default function ready (callback) {
+export function ready (callback) {
     //Check if the state is not loading
     if (document.readyState !== "loading") {
         return callback.call(null, null);
