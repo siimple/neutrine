@@ -1,9 +1,9 @@
 import React from "react";
 
 //Import components utils
-import classNames from "../../class-names.js";
-import getProps from "../../get-props.js";
+import * as reactUtils from "../../utils/react.js";
 
+//Import styles
 import "siimple/scss/form/_checkbox.scss";
 
 //Generate a random id
@@ -14,7 +14,7 @@ let randomId = function () {
 //Checkbox component 
 export const Checkbox = React.forwardRef(function (props, ref) {
     //Input default props
-    let inputProps = getProps(props, ["className", "style", "id", "ref"]);
+    let inputProps = reactUtils.filterProps(props, ["className", "style", "id", "ref"]);
     inputProps.type = "checkbox";
     inputProps.id = (typeof props.id === "string") ? props.id : randomId();
     //Save the checkbox reference
@@ -24,7 +24,7 @@ export const Checkbox = React.forwardRef(function (props, ref) {
     let labelChild = React.createElement("label", {"htmlFor": inputProps.id}, null);
     //Build the checkbox props
     let checkboxProps = {
-        "className": classNames("siimple-checkbox", props.className),
+        "className": reactUtils.classNames("siimple-checkbox", props.className),
         "style": props.style
     };
     //Return the checkbox element
