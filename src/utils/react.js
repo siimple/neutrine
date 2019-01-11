@@ -29,6 +29,11 @@ export function filterProps (props, ignoreProps) {
     return newProps;
 }
 
+//Filter props alias
+export function getProps (props, ignoreProps) {
+    return filterProps(props, ignoreProps);
+}
+
 //Join class names
 export function classNames () {
     //Initialize the list of class names
