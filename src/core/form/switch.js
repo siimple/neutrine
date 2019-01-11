@@ -1,8 +1,7 @@
 import React from "react";
 
 //Import components utils
-import classNames from "../../class-names.js";
-import getProps from "../../get-props.js";
+import * as reactUtils from "../../utils/react.js";
 
 //Import switch styles
 import "siimple/scss/form/_switch.scss";
@@ -15,7 +14,7 @@ let randomId = function () {
 //Switch component
 export const Switch = React.forwardRef(function (props, ref) {
     //Input default props
-    let inputProps = getProps(props, ["style", "id", "className"]);
+    let inputProps = reactUtils.filterProps(props, ["style", "id", "className"]);
     inputProps.type = "checkbox";
     inputProps.id = (typeof props.id === "string") ? props.id : randomId();
     inputProps.ref = ref;
@@ -25,7 +24,7 @@ export const Switch = React.forwardRef(function (props, ref) {
     let divChild = React.createElement("div", {}, null);
     //Generate the switch props
     let switchProps = {
-        "className": classNames("siimple-switch", props.className),
+        "className": reactUtils.classNames("siimple-switch", props.className),
         "style": props.style
     };
     //Return the switch element
