@@ -9,7 +9,7 @@ import "siimple/scss/elements/_tag.scss";
 //Export tag component 
 export default function Tag (props) {
     //Clone the tag component props
-    let newProps = reactUtils.getProps(props, ["className", "color", "rounded"]);
+    let newProps = reactUtils.filterProps(props, ["className", "color", "rounded"]);
     //Initialize the tag class list 
     let classList = ["siimple-tag"];
     //Check the color attribute
