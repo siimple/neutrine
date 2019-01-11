@@ -1,8 +1,7 @@
 import React from "react";
 
 //Import utils
-import classNames from "../../class-names.js";
-import getProps from "../../get-props.js";
+import * as reactUtils from "../../utils/react.js";
 
 //Import alert styles
 import "siimple/scss/components/_alert.scss";
@@ -11,7 +10,7 @@ import "siimple/scss/components/_alert.scss";
 export class Alert extends React.Component {
     render() {
         //Clone the alert props 
-        let props = getProps(this.props, ["className", "color"]);
+        let props = reactUtils.filterProps(this.props, ["className", "color"]);
         //Initialize the class list
         let classList = ["siimple-alert"];
         //Check the alert color property
@@ -19,7 +18,7 @@ export class Alert extends React.Component {
             classList.push("siimple-alert--"  + this.props.color.toLowerCase().trim());
         }
         //Append the provided class list 
-        props.className = classNames(classList, this.props.className);
+        props.className = reactUtils.classNames(classList, this.props.className);
         return React.createElement("div", props, this.props.children);
     }
 }
@@ -31,22 +30,14 @@ Alert.defaultProps = {
 //Alert title component 
 export class AlertTitle extends React.Component {
     render() {
-        //Initialize the element props 
-        let props = getProps(this.props, ["className"]);
-        //Generate the class names
-        props.className = classNames(["siimple-alert-title"], this.props.className);
-        //Return the alert title element
-        return React.createElement("div", props, this.props.children);
+        return reactUtils.basicComponent("div", this.props, "siimple-alert-title");
     }
 }
 
 //Alert close component
 export class AlertClose extends React.Component {
     render() {
-        let props = getProps(this.props, ["className"]);
-        props.className = classNames(["siimple-alert-close"], this.props.className);
-        //Return the alert close element
-        return React.createElement("div", props, this.props.children);
+        return reactUtils.basicComponent("div", this.props, "siimple-alert-close");
     }
 }
 
