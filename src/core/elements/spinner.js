@@ -8,7 +8,7 @@ import "siimple/scss/elements/_spinner.scss";
 
 //Spinner element
 export default function Spinner (props) {
-    let newProps = reactUtils.getProps(props, ["className", "color", "size"]);
+    let newProps = reactUtils.filterProps(props, ["className", "color", "size"]);
     //Initialize the spinner class-list
     let classList = ["siimple-spinner"];
     //Check the color attribute
