@@ -9,7 +9,7 @@ import "siimple/scss/elements/_btn.scss";
 //Button component
 export default function Btn (props) {
     //Initialize the button props 
-    let newProps = reactUrils.getProps(props, ["className", "color", "disabled", "fluid", "small"]);
+    let newProps = reactUtils.getProps(props, ["className", "color", "disabled", "fluid", "small"]);
     //Initialize the class names list 
     let classList = ["siimple-btn"];
     //Add the button color
