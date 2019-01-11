@@ -1,48 +1,49 @@
 import React from "react";
 
 //Import components utils
-import * as utils from "../utils.js";
+import * as reactUtils from "../../utils/react.js";
 
 //Import grid styles
 import "siimple/scss/grid/_grid.scss";
 
 //Grid class
 export function Grid (props) {
-    return utils.basicComponent("div", props, "siimple-grid");
+    return reactUtils.basicComponent("div", props, "siimple-grid");
 }
 
 //Grid row class
 export function GridRow (props) {
-    return utils.basicComponent("div", props, "siimple-grid-row");
+    return reactUtils.basicComponent("div", props, "siimple-grid-row");
 }
 
 //Grid column class
-export class GridCol extends React.Component {
-    render() {
-        let props = utils.filterProps(this.props, ["className", "size", "extraLarge", "large", "medium", "small", "extraSmall"]);
-        let classList = ["siimple-grid-col"];
-        //Check the column size
-        if (typeof this.props.size === "number" || typeof this.props.size === "string") {
-            classList.push("siimple-grid-col--" + this.props.size);
-        }
-        if (typeof this.props.extraLarge === "number" || typeof this.props.extraLarge === "string") {
-            classList.push("siimple-grid-col--xl-" + this.props.extraLarge);
-        }
-        if (typeof this.props.large === "number" || typeof this.props.large === "string") {
-            classList.push("siimple-grid-col--lg-" + this.props.large);
-        }
-        if (typeof this.props.medium === "number" || typeof this.props.medium === "string") {
-            classList.push("siimple-grid-col--md-" + this.props.medium);
-        }
-        if (typeof this.props.small === "number" || typeof this.props.small === "string") {
-            classList.push("siimple-grid-col--sm-" + this.props.medium);
-        }
-        if (typeof this.props.extraSmall === "number" || typeof this.props.extraSmall === "string") {
-            classList.push("siimple-grid-col--xs-" + this.props.extraSmall);
-        }
-        props.className = utils.classNames(classList, this.props.className);
-        return React.createElement("div", props, this.props.children);
+export function GridCol (props) {
+    //Extract props
+    let newProps = reactUtils.filterProps(props, ["className", "size", "extraLarge", "large", "medium", "small", "extraSmall"]);
+    let classList = ["siimple-grid-col"];
+    //Check the column size
+    if (typeof props.size === "number" || typeof props.size === "string") {
+        classList.push("siimple-grid-col--" + props.size);
     }
+    if (typeof props.extraLarge === "number" || typeof props.extraLarge === "string") {
+        classList.push("siimple-grid-col--xl-" + props.extraLarge);
+    }
+    if (typeof props.large === "number" || typeof props.large === "string") {
+        classList.push("siimple-grid-col--lg-" + props.large);
+    }
+    if (typeof props.medium === "number" || typeof props.medium === "string") {
+        classList.push("siimple-grid-col--md-" + props.medium);
+    }
+    if (typeof props.small === "number" || typeof props.small === "string") {
+        classList.push("siimple-grid-col--sm-" + props.medium);
+    }
+    if (typeof props.extraSmall === "number" || typeof props.extraSmall === "string") {
+        classList.push("siimple-grid-col--xs-" + props.extraSmall);
+    }
+    //Join all class names
+    newProps.className = reactUtils.classNames(classList, props.className);
+    //Return the grid element
+    return React.createElement("div", newProps, props.children);
 }
 
 //Column default props
