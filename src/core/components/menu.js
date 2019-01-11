@@ -1,50 +1,35 @@
 import React from "react";
 
 //Import component utils
-import classNames from "../../class-names.js";
-import getProps from "../../get-props.js";
+import * as reactUtils from "../../utils/react.js";
 
 //Import menu styles
 import "siimple/scss/components/_menu.scss";
 
 //Menu component
-export class Menu extends React.Component {
-    render() {
-        //Clone the menu props
-        let props = getProps(this.props, ["className"]);
-        props.className = classNames("siimple-menu", this.props.className);
-        //Return the menu element
-        return React.createElement("div", props, this.props.children);
-    }
+export function Menu (props) {
+    return reactUtils.basicComponent("div", props, "siimple-menu");
 }
 
 //Menu group component
-export class MenuGroup extends React.Component {
-    render() {
-        //Clone the properties 
-        let props = getProps(this.props, ["className"]);
-        props.className = classNames("siimple-menu-group", this.props.className);
-        //Return the menu group element
-        return React.createElement("div", props, this.props.children);
-    }
+export function MenuGroup (props) {
+    return reactUtils.basicComponents("div", props, "siimple-menu-group");
 }
 
 //Menu item
-export class MenuItem extends React.Component {
-    render() {
-        //Clone the properties 
-        let props = getProps(this.props, ["selected", "className"]);
-        //Initialize the menu item class list
-        let classList = ["siimple-menu-item"];
-        //Check the selected attribute
-        if (this.props.selected === true) {
-            classList.push("siimple-menu-item--selected");
-        }
-        //Generate the menu item classname
-        props.className = classNames(classList, this.props.className);
-        //Return the menu item element
-        return React.createElement("div", props, this.props.children);
+export function MenuItem (props) {
+    //Clone the properties 
+    let newProps = reactUtils.filterProps(props, ["selected", "className"]);
+    //Initialize the menu item class list
+    let classList = ["siimple-menu-item"];
+    //Check the selected attribute
+    if (props.selected === true) {
+        classList.push("siimple-menu-item--selected");
     }
+    //Generate the menu item classname
+    newProps.className = reactUtils.classNames(classList, props.className);
+    //Return the menu item element
+    return React.createElement("div", newProps, props.children);
 }
 
 //Menu item default props
