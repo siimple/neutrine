@@ -1,26 +1,23 @@
 import React from "react";
 
 //Import components utils
-import classNames from "../../class-names.js";
-import getProps from "../../get-props.js";
+import * as reactUtils from "../../utils/react.js";
 
 //Import list style
 import "siimple/scss/components/_list.scss";
 
 //List component 
-export class List extends React.Component {
-    render () {
-        //Initialize the list props
-        let props = getProps(this.props, ["className", "hover"]);
-        let classList = ["siimple-list"];
-        //Check the hover prop
-        if (this.props.hover === true) {
-            classList.push("siimple-list--hover");
-        }
-        props.className = classNames(classList, this.props.className);
-        //Return the list element
-        return React.createElement("div", props, this.props.children);
+export function List (props) {
+    //Initialize the list props
+    let newProps = reactUtils.filterProps(props, ["className", "hover"]);
+    let classList = ["siimple-list"];
+    //Check the hover prop
+    if (props.hover === true) {
+        classList.push("siimple-list--hover");
     }
+    newProps.className = reactUtils.classNames(classList, props.className);
+    //Return the list element
+    return React.createElement("div", newProps, props.children);
 }
 
 //List default props 
@@ -29,18 +26,16 @@ List.defaultProps = {
 };
 
 //List item component 
-export class ListItem extends React.Component {
-    render() {
-        let props = getProps(this.props, ["className"]);
-        let classList = ["siimple-list-item"];
-        //Check the selected prop
-        if (this.props.selected === true) {
-            classList.push("siimple-list-item--selected");
-        }
-        props.className = classNames(classList, this.props.className);
-        //Return the list item element
-        return React.createElement("div", props, this.props.children);
+export function ListItem (props) {
+    let newProps = reactUtils.filterProps(props, ["className"]);
+    let classList = ["siimple-list-item"];
+    //Check the selected prop
+    if (props.selected === true) {
+        classList.push("siimple-list-item--selected");
     }
+    newProps.className = reactUtils.classNames(classList, props.className);
+    //Return the list item element
+    return React.createElement("div", newProps, props.children);
 }
 
 //List item default props 
@@ -49,12 +44,7 @@ ListItem.defaultProps = {
 };
 
 //List title component 
-export class ListTitle extends React.Component {
-    render() {
-        let props = getProps(this.props, ["className"]);
-        props.className = classNames(["siimple-list-title"], this.props.className);
-        //Return the list title element
-        return React.createElement("div", props, this.props.children);
-    }
+export function ListTitle (props) {
+    return reactUtils.basicComponent("div", props, "siimple-list-title");
 }
 
