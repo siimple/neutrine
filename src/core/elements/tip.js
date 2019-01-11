@@ -8,7 +8,7 @@ import "siimple/scss/elements/_tip.scss";
 
 //Tip class
 export default function Tip (props) {
-    let newProps = reactUtils.getProps(props, ["className", "color", "icon"]);
+    let newProps = reactUtils.filterProps(props, ["className", "color", "icon"]);
     //Initialize tip class list
     let classList = ["siimple-tip"];
     //Add the tip color
