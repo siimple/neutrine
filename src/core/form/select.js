@@ -1,8 +1,7 @@
 import React from "react";
 
 //Import components folder
-import classNames from "../../class-names.js";
-import getProps from "../../get-props.js";
+import * as reactUtils from "../../utils/react.js";
 
 //Import select styles
 import "siimple/scss/form/_select.scss";
@@ -10,7 +9,7 @@ import "siimple/scss/form/_select.scss";
 //Select component
 export const Select = React.forwardRef(function (props, ref) {
     //Clone the select props
-    let selectProps = getProps(props, ["fluid", "className"])
+    let selectProps = reactUtils.filterProps(props, ["fluid", "className"])
     //Initialize the select class list
     let classList = ["siimple-select"];
     //Check the fluid property
@@ -18,7 +17,7 @@ export const Select = React.forwardRef(function (props, ref) {
         classList.push("siimple-select--fluid");
     }
     //Save the className
-    selectProps.className = classNames(classList, props.className);
+    selectProps.className = reactUtils.classNames(classList, props.className);
     //Save the select reference
     selectProps.ref = ref;
     //Return the select element
