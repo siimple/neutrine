@@ -13,7 +13,7 @@ export function Menu (props) {
 
 //Menu group component
 export function MenuGroup (props) {
-    return reactUtils.basicComponents("div", props, "siimple-menu-group");
+    return reactUtils.basicComponent("div", props, "siimple-menu-group");
 }
 
 //Menu item
