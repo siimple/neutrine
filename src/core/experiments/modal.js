@@ -1,9 +1,7 @@
 import React from "react";
 
 //Import components utils
-import * as utils from "../utils.js";
-import classNames from "../../class-names.js";
-import getProps from "../../get-props.js";
+import * as reactUtils from "../../utils/react.js";
 
 //Import modal styles
 import "siimple/scss/experiments/_modal.scss";
@@ -27,7 +25,7 @@ export class Modal extends React.Component {
     }
     render() {
         //Get the modal wrapper props
-        let props = getProps(this.props, ["className", "width", "size"]);
+        let props = reactUtils.filterProps(this.props, ["className", "width", "size"]);
         //Initialize the modal class
         props.className = ["siimple-modal"];
         //Check for modal predefined size
@@ -35,7 +33,7 @@ export class Modal extends React.Component {
             props.className.push("siimple-modal--" + this.props.size.toLowerCase());
         }
         //Merge the modal class names
-        props.className = classNames(props.className, this.props.className);
+        props.className = reactUtils.classNames(props.className, this.props.className);
         //Return the modal wrapper element
         return React.createElement("div", props, this.renderContent());
     }
@@ -72,8 +70,8 @@ export class ModalHeader extends React.Component {
     }
     render() {
         //Get the modal header props
-        let props = getProps(this.props, ["className", "onClose", "title"]);
-        props.className = classNames(["siimple-modal-header"], this.props.className);
+        let props = reactUtils.filterProps(this.props, ["className", "onClose", "title"]);
+        props.className = reactUtils.classNames(["siimple-modal-header"], this.props.className);
         //Return the modal header wrapper
         return React.createElement("div", props, this.renderTitle(), this.renderClose());
     }
@@ -87,11 +85,11 @@ ModalHeader.defaultProps = {
 
 //Modal body component
 export function ModalBody (props) {
-    return utils.basicComponent("div", props, "siimple-modal-body"); 
+    return reactUtils.basicComponent("div", props, "siimple-modal-body"); 
 }
 
 //Modal footer component
 export function ModalFooter (props) {
-    return utils.basicComponent("div", props, "siimple-modal-footer"); 
+    return reactUtils.basicComponent("div", props, "siimple-modal-footer"); 
 }
 
