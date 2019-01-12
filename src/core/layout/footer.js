@@ -1,31 +1,29 @@
 import React from "react";
 
 //Import components utils
-import * as utils from "../utils.js";
+import * as reactUtils from "../../utils/react.js";
 
 //Import footer styles
 import "siimple/scss/layout/_footer.scss";
 
 //Footer layout component
-export class Footer extends React.Component {
-    render() {
-        //Clone the footer props 
-        let props = utils.filterProps(this.props, ["className", "color", "size"]);
-        //Initialize the footer class list
-        let classList = ["siimple-footer"];
-        //Check the color
-        if (typeof this.props.color === "string") {
-            classList.push("siimple-footer--" + this.props.color.toLowerCase());
-        }
-        //Check the content size
-        if (typeof this.props.size === "string") {
-            classList.push("siimple-footer--" + this.props.size.toLowerCase());
-        }
-        //Generate the footer classname
-        props.className = utils.classNames(classList, this.props.className);
-        //Render the footer div
-        return React.createElement("div", props, this.props.children);
+export function Footer (props) {
+    //Clone the footer props 
+    let newProps = reactUtils.filterProps(props, ["className", "color", "size"]);
+    //Initialize the footer class list
+    let classList = ["siimple-footer"];
+    //Check the color
+    if (typeof props.color === "string") {
+        classList.push("siimple-footer--" + props.color.toLowerCase());
     }
+    //Check the content size
+    if (typeof props.size === "string") {
+        classList.push("siimple-footer--" + props.size.toLowerCase());
+    }
+    //Generate the footer classname
+    newProps.className = reactUtils.classNames(classList, props.className);
+    //Render the footer div
+    return React.createElement("div", newProps, props.children);
 }
 
 //Default props
@@ -36,31 +34,31 @@ Footer.defaultProps = {
 
 //Footer title
 export function FooterTitle (props) {
-    return utils.basicComponent("div", props, "siimple-footer-title");
+    return reactUtils.basicComponent("div", props, "siimple-footer-title");
 }
 
 //Footer subtitle
 export function FooterSubtitle (props) {
-    return utils.basicComponent("div", props, "siimple-footer-subtitle");
+    return reactUtils.basicComponent("div", props, "siimple-footer-subtitle");
 }
 
 //Footer group
 export function FooterGroup (props) {
-    return utils.basicComponent("div", props, "siimple-footer-group");
+    return reactUtils.basicComponent("div", props, "siimple-footer-group");
 }
 
 //Footer paragraph
 export function FooterParagraph (props) {
-    return utils.basicComponent("div", props, "siimple-footer-paragraph");
+    return reactUtils.basicComponent("div", props, "siimple-footer-paragraph");
 }
 
 //Footer link
 export function FooterLink (props) {
-    return utils.basicComponent("a", props, "siimple-footer-link");
+    return reactUtils.basicComponent("a", props, "siimple-footer-link");
 }
 
 //Footer rule
 export function FooterRule (props) {
-    return utils.basicComponent("div", props, "siimple-footer-rule");
+    return reactUtils.basicComponent("div", props, "siimple-footer-rule");
 }
 
