@@ -1,7 +1,7 @@
 import React from "react";
 
 //Import components utils
-import * as utils from "../utils.js";
+import * as utils from "../../utils/react.js";
 
 //Import small component styles
 import "siimple/scss/typography/_small.scss";
