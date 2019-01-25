@@ -64,9 +64,9 @@ export function TableCell (props) {
         classList.push("siimple-table-cell--" + props.order);
     }
     //Merge classlist
-    newProps.className = reqctUtils.classNames(classList, props.className);
+    newProps.className = reactUtils.classNames(classList, props.className);
     //Return the table cell
-    return react.createElement("div", newProps, props.children);
+    return React.createElement("div", newProps, props.children);
 }
 
 //Table cell default props
