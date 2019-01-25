@@ -21,13 +21,12 @@ export const Switch = React.forwardRef(function (props, ref) {
     //Switch children content
     let inputChild = React.createElement("input", inputProps, null);
     let labelChild = React.createElement("label", {htmlFor: inputProps.id}, null);
-    let divChild = React.createElement("div", {}, null);
     //Generate the switch props
     let switchProps = {
         "className": reactUtils.classNames("siimple-switch", props.className),
         "style": props.style
     };
     //Return the switch element
-    return React.createElement("div", switchProps, inputChild, labelChild, divChild);
+    return React.createElement("div", switchProps, inputChild, labelChild);
 });
 
