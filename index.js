@@ -61,7 +61,7 @@ export {Subhead, SubheadText, SubheadBtn} from "./src/components/subhead/index.j
 export {default as Toast} from "./src/components/toast/index.js";
 
 //Widgets
-//export {default as TextEditor} from "./src/widgets/text-editor/index.js";
+export {default as TextEditor} from "./src/widgets/text-editor/index.js";
 
 //Utils
 import * as cookiesUtils from "./src/utils/cookies.js";
