@@ -7,7 +7,7 @@ import * as reactUtils from "../../utils/react.js";
 import "siimple/scss/elements/_btn.scss";
 
 //Button component
-export default function Btn (props) {
+export function Btn (props) {
     //Initialize the button props 
     let newProps = reactUtils.filterProps(props, ["className", "color", "disabled", "fluid", "small"]);
     //Initialize the class names list 
@@ -42,4 +42,9 @@ Btn.defaultProps = {
     "fluid": false,
     "small": false
 };
+
+//Button groups
+export function BtnGroup (props) {
+    return reactUtils.basicComponent("div", props, "siimple-btn-group");
+}
 
