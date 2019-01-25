@@ -22,6 +22,7 @@
         "siimple": "^3.3.0"
     },
     "devDependencies": {
+        "express": "^4.16.3",
         "webpack": "^4.17.2",
         "webpack-cli": "^3.1.0",
         "mini-css-extract-plugin": "^0.4.2",
@@ -30,8 +31,5 @@
         "css-loader": "^1.0.0",
         "style-loader": "^0.23.0",
         "sass": "^1.6.0"
-    },
-    "scripts": {
-        "build": "./node_modules/.bin/webpack --config webpack.config.js"
     }
 }
