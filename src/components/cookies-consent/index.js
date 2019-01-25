@@ -1,7 +1,7 @@
 import React from "react";
 
 //Import core components
-import Btn from "../../core/elements/btn.js";
+import {Btn} from "../../core/elements/btn.js";
 import {Switch} from "../../core/form/switch.js";
 
 //Import utils
