@@ -52,6 +52,26 @@ export function TableRow (props) {
 
 //Export table cell component
 export function TableCell (props) {
-    return reactUtils.basicComponent("div", props, "siimple-table-cell");
+    //Extract props
+    let newProps = reactUtils.filterProps(props, ["className", "sortable", "order"]);
+    let classList = ["siimple-table-cell"];
+    //Check the sortable option
+    if (typeof props.sortable === "boolean" && props.sortable === true) {
+        classList.push("siimple-table-cell--sortable");
+    }
+    //Check the sort order
+    if (typeof props.order === "string") {
+        classList.push("siimple-table-cell--" + props.order);
+    }
+    //Merge classlist
+    newProps.className = reqctUtils.classNames(classList, props.className);
+    //Return the table cell
+    return react.createElement("div", newProps, props.children);
 }
+
+//Table cell default props
+TableCell.defaultProps = {
+    "sortable": false,
+    "order": null
+};
 
