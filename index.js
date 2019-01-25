@@ -11,7 +11,7 @@ export {Table, TableHeader, TableBody, TableRow, TableCell} from "./src/core/com
 export {Tabs, TabsItem} from "./src/core/components/tabs.js";
 
 //Core elements
-export {default as Btn} from "./src/core/elements/btn.js";
+export {Btn, BtnGroup} from "./src/core/elements/btn.js";
 export {default as Rule} from "./src/core/elements/rule.js";
 export {default as Spinner} from "./src/core/elements/spinner.js";
 export {default as Tag} from "./src/core/elements/tag.js";
@@ -64,6 +64,12 @@ export {default as Toast} from "./src/components/toast/index.js";
 //export {default as TextEditor} from "./src/widgets/text-editor/index.js";
 
 //Utils
-export {getCookie, setCookie, deleteCookie} from "./src/utils/cookies.js";
-export {default as ready} from "./src/utils/ready.js";
+import * as cookiesUtils from "./src/utils/cookies.js";
+import * as domUtils from "./src/utils/dom.js";
+import * as reactUtils from "./src/utils/react.js";
+export {
+    cookiesUtils,
+    domUtils,
+    reactUtils
+};
 
