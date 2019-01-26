@@ -1,6 +1,9 @@
 //Neutrine version
 export {version} from "./src/version.js";
 
+//Import global styles
+import "./src/style.scss";
+
 //Core components
 export {Alert, AlertTitle, AlertClose} from "./src/core/components/alert.js";
 export {Breadcrumb, BreadcrumbItem} from "./src/core/components/breadcrumb.js";
