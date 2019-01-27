@@ -17,7 +17,7 @@ export function CardHeader (props) {
 }
 
 //Card body component 
-export function CardBody (proos) {
+export function CardBody (props) {
     return reactUtils.basicComponent("div", props, "siimple-card-body");
 }
 
