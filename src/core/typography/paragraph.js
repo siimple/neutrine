@@ -9,7 +9,7 @@ import "siimple/scss/typography/_paragraph.scss";
 //Paragraph component
 export default function Paragraph (props) {
     //Initialize the button props 
-    let newProps = reactUtils.filterProps(props, ["className", "lead"]);
+    let newProps = utils.filterProps(props, ["className", "lead"]);
     //Initialize the class names list 
     let classList = ["siimple-paragraph"];
     //Check for lead parargraph
@@ -17,7 +17,7 @@ export default function Paragraph (props) {
         classList.push("siimple-paragraph--lead");
     }
     //Append the provided class names
-    newProps.className = reactUtils.classNames(classList, props.className);
+    newProps.className = utils.classNames(classList, props.className);
     //Return the paragraph element
     return React.createElement("div", newProps, props.children);
 }
