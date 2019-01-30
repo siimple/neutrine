@@ -8,6 +8,22 @@ import "siimple/scss/typography/_paragraph.scss";
 
 //Paragraph component
 export default function Paragraph (props) {
-    return utils.basicComponent("div", props, "siimple-paragraph");
+    //Initialize the button props 
+    let newProps = reactUtils.filterProps(props, ["className", "lead"]);
+    //Initialize the class names list 
+    let classList = ["siimple-paragraph"];
+    //Check for lead parargraph
+    if (typeof props.lead === "boolean" && props.lead === true) {
+        classList.push("siimple-paragraph--lead");
+    }
+    //Append the provided class names
+    newProps.className = reactUtils.classNames(classList, props.className);
+    //Return the paragraph element
+    return React.createElement("div", newProps, props.children);
 }
+
+//Paragraph default props
+Paragraph.defaultProps = {
+    "lead": false
+};
 
