@@ -7,7 +7,7 @@ import "./src/style.scss";
 //Core components
 export {Alert, AlertTitle, AlertClose} from "./src/core/components/alert.js";
 export {Breadcrumb, BreadcrumbItem} from "./src/core/components/breadcrumb.js";
-export {Card, CardHeader, CardBody, CardFooter, CardTitle, CardSubtitle} from "./src/core/components/card.js";
+export {Card, CardHeader, CardBody, CardLink, CardFooter, CardTitle, CardSubtitle} from "./src/core/components/card.js";
 export {List, ListItem, ListTitle} from "./src/core/components/list.js";
 export {Menu, MenuGroup, MenuItem} from "./src/core/components/menu.js";
 export {Table, TableHeader, TableBody, TableRow, TableCell} from "./src/core/components/table.js";
