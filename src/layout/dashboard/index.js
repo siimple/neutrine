@@ -1,6 +1,7 @@
 //Import dependencies
 import React from "react";
 import Icon from "../../icon/index.js";
+import * as reactUtils from "../../utils/react.js";
 
 //Import dashboard styles
 import "./style.scss";
@@ -10,12 +11,7 @@ let baseClass = "neutrine-layout-dashboard";
 
 //Export dashboard component
 export function Dashboard (props) {
-    //Initialize the dashboard props
-    let dashboardProps = {
-        "className": baseClass
-    };
-    //Return dashboard component
-    return React.createElement("div", dashboardProps, props.children);
+    return reactUtils.basicComponent("div", props, baseClass);
 }
 
 //Export sidebar component
@@ -67,7 +63,7 @@ export function DashboardSidebar (props) {
         "className": baseClass + "-sidebar"
     }
     //Return sidebar component
-    return React.createElement("div", sidebarProps, items);
+    return React.createElement("div", sidebarProps, items, props.children);
 }
 
 //Sidebar default props
@@ -77,44 +73,84 @@ DashboardSidebar.defaultProps = {
 };
 
 //Export header component
-export function DashboardHeader (props) {
-    //return (
-    //    <div className="dashboard-header">
-    //        <div className="dashboard-header-title">siimple</div>
-    //        <div className="dashboard-header-subtitle">genomics</div>
-    //        <div className="dashboard-header-user">
-    //            <div className="dashboard-header-user-caret"></div>
-    //            <div className="dashboard-header-user-dropdown">
-    //                <div className="dashboard-header-user-dropdown-email">test@test.com</div>
-    //            </div>
-    //        </div>
-    //    </div>
-    //);
-    //Buiuld the header title and subtitle elements
-    let headerTitle = React.createElement("div", {"className": baseClass + "-header-title"}, props.title);
-    let headerSubtitle = React.createElement("div", {"className": baseClass + "-header-subtitle"}, props.subtitle);
-    //Initialize the dashboard header props
-    let headerProps = {
-        "className": baseClass + "-header"
-    };
-    //Return the header element
-    return React.createElement("div", headerProps, headerTitle, headerSubtitle);
+export class DashboardHeader extends React.Component {
+    //Render the heeader title
+    renderTitle() {
+        let self = this;
+        return React.createElement("div", {
+            "className": baseClass + "-header-title",
+            "onClick": self.props.onTitleClick
+        }, this.props.title);
+    }
+    //Render the header subtitle
+    renderSubtitle() {
+        return React.createElement("div", {
+            "className": baseClass + "-header-subtitle"
+        }, this.props.subtitle);
+    }
+    //Render the menu user icon
+    renderMenuUser() {
+        return React.createElement("div", {
+            "className": baseClass + "-header-menu-user"
+        });
+    }
+    //Render the menu dropdown
+    renderMenuDropdown() {
+        let self = this;
+        //Initialize the menu dropdown
+        let dropdownProps = {
+            "className": baseClass + "-header-menu-dropdown"
+        };
+        //Build the dropdown elements
+        return React.createElement("div", dropdownProps, this.props.links.map(function (item, index) {
+            //Initialize the item props
+            let itemProps = {
+                "className": baseClass + "-header-menu-item",
+                "onClick": function (event) {
+                    if (typeof self.props.onLinkClick === "function") {
+                        return self.props.onLinkClick(event, item, index);
+                    }
+                },
+                "key": index
+            };
+            //Return the item element
+            return React.createElement("div", itemProps, item);
+        }));
+    }
+    //Render the header menu
+    renderMenu() {
+        //Check for no links to display
+        if (this.props.links.length === 0) {
+            return null;
+        }
+        //Initialize the menu props
+        let menuProps = {
+            "className": baseClass + "-header-menu"
+        };
+        //Return the menu component
+        return React.createElement("div", menuProps, this.renderMenuUser(), this.renderMenuDropdown());
+    }
+    render () {
+        //Initialize the dashboard header props
+        let headerProps = {
+            "className": baseClass + "-header"
+        };
+        //Return the header element
+        return React.createElement("div", headerProps, this.renderTitle(), this.renderSubtitle(), this.renderMenu());
+    }
 }
 
 //Dashboard header default props
 DashboardHeader.defaultProps = {
     "title": "",
-    "subtitle": ""
+    "subtitle": "",
+    "links": [],
+    "onLinkClick": null,
+    "onTitleClick": null
 };
 
 //Export main dashboard container
 export function DashboardMain (props) {
-    //Initialize the main content props
-    let mainProps = {
-        "className": baseClass + "-main"
-    };
-    //Return the main content wrapper
-    return React.createElement("div", mainProps, props.children);
+    return reactUtils.basicComponent("div", props, baseClass + "-main");
 }
-
 
