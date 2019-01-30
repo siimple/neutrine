@@ -26,6 +26,11 @@ export function CardFooter (props) {
     return reactUtils.basicComponent("div", props, "siimple-card-footer");
 }
 
+//Card link component
+export function CardLink (props) {
+    return reactUtils.basicComponent("div", props, "siimple-card-link");
+}
+
 //Card title component 
 export function CardTitle (props) {
     return reactUtils.basicComponent("div", props, "siimple-card-title");
