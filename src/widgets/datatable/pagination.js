@@ -25,7 +25,7 @@ export default function DataTablePagination (props) {
     //Render the pagination left content 
     let renderLeftContent = function () {
         //Left content text 
-        let text = React.createElement("div", {"className": "jviz-datatable-pagination-text"}, 
+        let text = React.createElement("div", {"className": "neutrine-datatable-pagination-text"}, 
             "Showing ", 
             Strong(props.rowStart + 1), 
             " to ", 
@@ -35,7 +35,7 @@ export default function DataTablePagination (props) {
             " rows."
         );
         //Return the left content
-        return React.createElement("div", {"className": "jviz-datatable-pagination-left"}, text);
+        return React.createElement("div", {"className": "neutrine-datatable-pagination-left"}, text);
     }
     //Render the pagination right content 
     let renderRightContent = function () {
@@ -58,7 +58,7 @@ export default function DataTablePagination (props) {
         });
         //Select props
         let selectProps = { 
-            "className": "jviz-datatable-pagination-entries", 
+            "className": "neutrine-datatable-pagination-entries", 
             "onChange": null, 
             "value": props.pageSize
         };
@@ -92,18 +92,18 @@ export default function DataTablePagination (props) {
             }
         };
         //Return the right content component
-        return React.createElement("div", {"className": "jviz-datatable-pagination-right"}, 
-            React.createElement("div", {"className": "jviz-datatable-pagination-text"}, "Rows per page: "),
+        return React.createElement("div", {"className": "neutrine-datatable-pagination-right"}, 
+            React.createElement("div", {"className": "neutrine-datatable-pagination-text"}, "Rows per page: "),
             React.createElement(Select, selectProps, selectChilds),
-            React.createElement("div", {"className": "jviz-datatable-pagination-space"}, null),
+            React.createElement("div", {"className": "neutrine-datatable-pagination-space"}, null),
             React.createElement(Btn, prevButtonProps, "Prev"),
-            React.createElement("div", {"className": "jviz-datatable-pagination-page"}, pageCounter),
+            React.createElement("div", {"className": "neutrine-datatable-pagination-page"}, pageCounter),
             React.createElement(Btn, nextButtonProps, "Next")
         );
     }
     //Initialize the pagination props
     let paginationProps = {
-        "className": "jviz-datatable-pagination"
+        "className": "neutrine-datatable-pagination"
     };
     //Build the pagination component 
     return React.createElement("div", paginationProps, renderLeftContent(), renderRightContent());
