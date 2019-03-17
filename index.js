@@ -67,6 +67,7 @@ export {default as Toast} from "./src/components/toast/index.js";
 export {Dashboard, DashboardSidebar, DashboardHeader, DashboardMain} from "./src/layout/dashboard/index.js";
 
 //Widgets
+export {default as DataTable} from "./src/widgets/datatable/index.js";
 //export {default as TextEditor} from "./src/widgets/text-editor/index.js";
 
 //Utils
