@@ -70,6 +70,9 @@ export {Dashboard, DashboardSidebar, DashboardHeader, DashboardMain} from "./src
 export {default as DataTable} from "./src/widgets/datatable/index.js";
 //export {default as TextEditor} from "./src/widgets/text-editor/index.js";
 
+//Export testing components
+export * from "./src/test/index.js";
+
 //Utils
 import * as cookiesUtils from "./src/utils/cookies.js";
 import * as domUtils from "./src/utils/dom.js";
