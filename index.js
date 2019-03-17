@@ -25,7 +25,7 @@ export {Checkbox} from "./src/core/form/checkbox.js";
 export {Field, FieldLabel, FieldHelper} from "./src/core/form/field.js";
 export {Form, FormTitle, FormDetail, FormRule} from "./src/core/form/form.js";
 export {Input} from "./src/core/form/input.js";
-export {default as Label} from "./src/core/form/label.js";
+export {Label} from "./src/core/form/label.js";
 export {Radio} from "./src/core/form/radio.js";
 export {Select} from "./src/core/form/select.js";
 export {Switch} from "./src/core/form/switch.js";
