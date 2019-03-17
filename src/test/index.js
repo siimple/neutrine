@@ -1,0 +1,117 @@
+//Import dependencies
+import React from "react";
+
+//Import core components
+import {Select} from "../core/form/select.js";
+import {Switch} from "../core/form/switch.js";
+import {Label} from "../core/form/label.js";
+
+//Import styles
+import "./style.scss";
+
+//Export testing component
+export class Test extends React.Component {
+    constructor(props) {
+        super(props);
+        let self = this;
+        //Initial state and references objects
+        this.state = {};
+        this.ref = {};
+        //For each property added
+        Object.keys(this.props.props).forEach(function (key) {
+            //Initialize the default value of the state
+            self.state[key] = self.props.props[key].defaultValue;
+            //Initialize the referenced element
+            self.ref[key] = React.createRef();
+        });
+        //Referenced element
+        this.reference = React.createRef();
+        //Bind methods
+        this.handleChange = this.handleChange.bind(this);
+    }
+    //Get referenced element
+    getReferencedElement() {
+        return this.reference.current;
+    }
+    //Handle change
+    handleChange() {
+        let self = this;
+        let newState = {};
+        Object.keys(this.props.props).forEach(function (key, index) {
+            let element = self.props.props[key];
+            if (element.type === "string") {
+                newState[key] = self.ref[key].current.value;
+            }
+            else if (element.type === "boolean") {
+                newState[key] = self.ref[key].current.checked;
+            }
+        });
+        //Update the component state
+        return this.setState(newState);
+    }
+    //Render the content
+    renderContent() {
+        let props = this.props;
+        let content = (typeof props.render === "function") ? props.render.call(null, this.state, this.reference) : null;
+        return React.createElement("div", {"className": "neutrine-test-content"}, content);
+    }
+    //Render a string option
+    renderStringOption(key, element) {
+        let self = this;
+        let title = React.createElement(Label, {}, key);
+        //Generate the select options
+        let options = element.options.map(function (value, index) {
+            return React.createElement("option", {"value": value, "key": index}, value);
+        });
+        //Generate the select props
+        let selectProps = {
+            "fluid": true,
+            "defaultValue": element.defaultValue,
+            "ref": self.ref[key],
+            "onChange": self.handleChange
+        };
+        let select = React.createElement(Select, selectProps, options);
+        //Return the string control
+        return React.createElement(React.Fragment, {}, title, select);
+    }
+    //Render a boolean option
+    renderBooleanOption(key, element) {
+        let self = this;
+        let switchProps = {
+            "defaultChecked": element.defaultValue,
+            "ref": self.ref[key],
+            "onChange": self.handleChange
+        };
+        let switchElement = React.createElement(Switch, switchProps);
+        let title = React.createElement(Label, {}, key);
+        return React.createElement(React.Fragment, {}, switchElement, title);
+    }
+    //Render the options
+    renderOptions() {
+        let self = this;
+        let content = Object.keys(this.props.props).map(function (key, index) {
+            let element = self.props.props[key];
+            let control = null;
+            if (element.type === "string") {
+                control = self.renderStringOption(key, element);
+            }
+            else if (element.type === "boolean") {
+                control = self.renderBooleanOption(key, element);
+            }
+            //Return the control
+            return React.createElement("div", {"className": "neutrine-test-options-control", "key": index}, control);
+        });
+        return React.createElement("div", {"className": "neutrine-test-options"}, content);
+    }
+    //Render the component
+    render() {
+        return React.createElement("div", {"className": "neutrine-test"}, this.renderContent(), this.renderOptions());
+    }
+}
+
+//Testing component default props
+Test.defaultProps = {
+    "props": {},
+    "render": null
+};
+
