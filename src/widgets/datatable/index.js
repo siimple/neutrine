@@ -327,7 +327,7 @@ export default class DataTable extends React.Component {
     renderEmpty() {
         //Empty columns props
         let emptyProps = {
-            "className": "jviz-table-empty",
+            "className": "neutrine-datatable-empty",
             "align": "center"
         };
         //Render the empty message
@@ -483,7 +483,7 @@ export default class DataTable extends React.Component {
         }
         //Initialize the table props
         let tableProps = {
-            "className": "jviz-datatable-container",
+            "className": "neutrine-datatable-container",
             "style": null
         };
         //Check the height attribute
@@ -495,7 +495,7 @@ export default class DataTable extends React.Component {
         //Build the table element
         let table = React.createElement("div", tableProps, this.renderTable(rowStart, rowEnd));
         //Return the datatable element
-        return React.createElement("div", {"className": "jviz-datatable"}, table, paginationRender);
+        return React.createElement("div", {"className": "neutrine-datatable"}, table, paginationRender);
     }
 }
 
