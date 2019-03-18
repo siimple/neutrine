@@ -1,5 +1,3 @@
-import React from "react";
-
 //Import components helpers
 import * as helpers from "../../helpers.js";
 
@@ -8,9 +6,8 @@ import "siimple/scss/form/_label.scss";
 
 //Label component
 export function Label (props) {
-    let newProps = helpers.mergeProps(props, {
+    return helpers.createMergedElement("div", props, {
         "className": "siimple-label"
     });
-    return React.createElement("div", newProps, props.children);
 }
 
