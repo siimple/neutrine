@@ -1,13 +1,16 @@
 import React from "react";
 
-//Import components utils
-import * as reactUtils from "../../utils/react.js";
+//Import components helpers
+import * as helpers from "../../helpers.js";
 
 //Import label styles
 import "siimple/scss/form/_label.scss";
 
 //Label component
-export default function Label (props) {
-    return reactUtils.basicComponent("div", props, "siimple-label");
+export function Label (props) {
+    let newProps = helpers.mergeProps(props, {
+        "className": "siimple-label"
+    });
+    return react.createElement("div", newProps, props.children);
 }
 
