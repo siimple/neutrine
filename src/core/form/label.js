@@ -11,6 +11,6 @@ export function Label (props) {
     let newProps = helpers.mergeProps(props, {
         "className": "siimple-label"
     });
-    return react.createElement("div", newProps, props.children);
+    return React.createElement("div", newProps, props.children);
 }
 
