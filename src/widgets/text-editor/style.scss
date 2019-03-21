@@ -63,11 +63,15 @@
         transition: background-color 0.3s;
         cursor: pointer;
         //fill: siimple-default-color("dark", "light");
-        color: siimple-default-color("dark", "light");
-        font-size: 15px;
+        color: siimple-default-color("dark");
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
         &:hover {
             background-color: siimple-default-color("light");
         }
+        //Hack to fix buttons position with missing icon
+        vertical-align: top;
     }
 }
 
