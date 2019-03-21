@@ -67,11 +67,11 @@ export {Subhead, SubheadText, SubheadBtn} from "./src/components/subhead/index.j
 export {default as Toast} from "./src/components/toast/index.js";
 
 //Layout components
-export {Dashboard, DashboardSidebar, DashboardHeader, DashboardMain} from "./src/layout/dashboard/index.js";
+export * from "./src/layout/dashboard/index.js";
 
 //Widgets
-export {default as DataTable} from "./src/widgets/datatable/index.js";
-//export {default as TextEditor} from "./src/widgets/text-editor/index.js";
+export * from "./src/widgets/datatable/index.js";
+export * from "./src/widgets/text-editor/index.js";
 
 //Export testing components
 export * from "./src/test/index.js";
