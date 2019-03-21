@@ -20,7 +20,7 @@ let range = function (start, num) {
 };
 
 //DataTable component
-export default class DataTable extends React.Component {
+export class DataTable extends React.Component {
     constructor(props) {
         super(props);
         this.state = this.resetState(this.props);
