@@ -70,6 +70,7 @@ export default class TextEditor extends React.Component {
         let self = this;
         let buttons = this.props.buttons.map(function (key, index) {
             return React.createElement(Icon, {
+                "icon": key,
                 "className": "neutrine-te-btn",
                 "title": defaultButtons[key].title,
                 "key": index,
