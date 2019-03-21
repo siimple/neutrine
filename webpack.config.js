@@ -40,6 +40,7 @@ module.exports = {
             "cssParser": {
                 "test": /\.css$/,
                 "use": Object.values({
+                    "cssExtract": MiniCssExtract.loader,
                     "cssLoader": {
                         "loader": "css-loader"
                     }
@@ -75,3 +76,4 @@ module.exports = {
         new MiniCssExtract({filename: "neutrine.css"})
     ]
 };
+
