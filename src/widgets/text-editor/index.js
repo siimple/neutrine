@@ -43,7 +43,7 @@ let defaultButtons = {
 };
 
 //Export text editor widget
-export default class TextEditor extends React.Component {
+export class TextEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
