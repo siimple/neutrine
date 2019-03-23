@@ -8,7 +8,7 @@ import "./style.scss";
 let baseClass = "neutrine-layout-toolbar";
 
 //Export layout toolbar component
-export default class Toolbar extends React.Component {
+export class Toolbar extends React.Component {
     constructor(props) {
         super(props);
         //Initialize the toolbar status
