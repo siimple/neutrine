@@ -68,6 +68,7 @@ export {default as Toast} from "./src/components/toast/index.js";
 
 //Layout components
 export * from "./src/layout/dashboard/index.js";
+export * from "./src/layout/toolbar/index.js";
 
 //Widgets
 export * from "./src/widgets/datatable/index.js";
