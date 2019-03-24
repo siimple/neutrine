@@ -82,7 +82,7 @@ export class Toolbar extends React.Component {
         let toggleProps = {
             "className": baseClass + "-toggle",
             "onClick": function (event) {
-                console.log("toggle clicked");
+                //console.log("toggle clicked");
                 //Get the current collapsed value
                 let currentCollapsed = self.state.collapsed;
                 //Update the state
