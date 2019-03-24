@@ -1,0 +1,69 @@
+//Import dependencies
+@import "siimple-colors/scss/colors.scss";
+
+//Auth layout styles
+.neutrine-layout-auth {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    //Branding and container common styles
+    &-branding,
+    &-content {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        flex: 1;
+    }
+    //Left content --> branding
+    &-branding {
+        display: flex;
+        max-width: 40%;
+        background-color: $siimple-blue;
+    }
+    //Right content --> main content
+    &-content {
+        display: block;
+        align-self: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100%;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    //Content title
+    &-title {
+        display: block;
+        font-size: 26px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    //Subtitle
+    &-subtitle {
+        display: block;
+        font-size: 16px;
+        line-height: 24px;
+        color: $siimple-navy-light;
+        margin-bottom: 15px;
+    }
+    //Content link
+    &-link {
+        display: block;
+        margin-top: 20px;
+        font-size: 13px;
+        color: $siimple-navy-extra-light;
+        line-height: 20px;
+        height: 20px;
+        cursor: pointer;
+        transition: opacity 0.3s;
+        opacity: 0.7;
+        &:hover {
+            opacity: 1.0;
+        }
+    }
+}
+
