@@ -58,7 +58,7 @@ export {Modal, ModalHeader, ModalBody, ModalFooter} from "./src/core/experiments
 export {default as Progress} from "./src/core/experiments/progress.js";
 
 //Icons
-export {default as Icon} from "./src/icon/index.js";
+export * from "./src/icon/index.js";
 
 //Components
 export {default as CookiesConsent} from "./src/components/cookies-consent/index.js";
