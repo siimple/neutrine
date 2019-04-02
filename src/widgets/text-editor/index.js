@@ -1,7 +1,7 @@
 import React from "react";
 
 //Import icons
-import Icon from "../../icon/index.js";
+import {Icon} from "../../icon/index.js";
 
 //Import styles
 import "./style.scss";
