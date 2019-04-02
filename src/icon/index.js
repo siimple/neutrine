@@ -8,7 +8,7 @@ import * as helpers from "../helpers.js";
 import "siimple-icons/dist/siimple-icons.css";
 
 //Export icon component
-export default function Icon (props) {
+export function Icon (props) {
     //Filter props
     let filteredProps = helpers.filterProps(props, ["className", "icon", "iconTag"]);
     //Initialize the icon class name list
