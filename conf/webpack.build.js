@@ -17,8 +17,8 @@ module.exports = {
     },
     "resolve": {
         "modules": [
-            path.resolve(__dirname, "./bower_components/"),
-            path.resolve(__dirname, "./node_modules/")
+            path.join(process.cwd(), "bower_components"),
+            path.join(process.cwd(), "node_modules")
         ],
     },
     "module": {
