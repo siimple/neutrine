@@ -5,6 +5,7 @@ let path = require("path");
 let handlebars = require("handlebars");
 
 //Import available testing files
+let testing = require(path.join(process.cwd(), "conf", "test.json"));
 
 //Server render
 process.nextTick(function () {
@@ -40,9 +41,10 @@ process.nextTick(function () {
     });
     //Module to test
     app.get("/test/:module", function (req, res) {
+        let module = tesing[req.params.bundle];
         return res.renderTemplateFile("template.html", {
-            "title": "Test page",
-            "main": path.join("/bundle", "test", req.params.module + ".js")
+            "title": module.title,
+            "main": path.join("/bundle", "test", module.bundle)
         });
     });
     //Not found middleware
