@@ -3,12 +3,12 @@ let MiniCssExtract = require("mini-css-extract-plugin");
 
 //Export the webpack configuration
 module.exports = {
-    "entry": "./index.js",
+    "entry": path.join(process.cwd(), "index.js"),
     "mode": "development",
     "output": {
         "library": "Neutrine",
         "libraryTarget": "umd",
-        "path": path.resolve(__dirname, "./dist/"),
+        "path": path.join(process.cwd(), "bundle"),
         "filename": "neutrine.js"
     },
     "externals": {
