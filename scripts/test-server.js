@@ -1,6 +1,10 @@
 //Import dependencies
+let fs = require("fs");
 let express = require("express");
 let path = require("path");
+let handlebars = require("handlebars");
+
+//Import available testing files
 
 //Server render
 process.nextTick(function () {
@@ -12,10 +16,35 @@ process.nextTick(function () {
         return next();
     });
     //Register static folders routes
-    app.use("/dist", express.static(path.join(process.cwd(), "dist")));
+    app.use("/bundle", express.static(path.join(process.cwd(), "dist")));
     app.use("/node_modules", express.static(path.join(process.cwd(), "node_modules")));
     app.use("/bower_components", express.static(path.join(process.cwd(), "bower_components")));
-    app.use("/", express.static(path.join(process.cwd(), "test")));
+    app.use("/resources", express.static(path.join(process.cwd(), "test/resources")));
+    //Render the template
+    app.use(function (req, res, next) {
+        //Render template file function
+        res.renderTemplateFile = function (file, options) {
+            let filePath = path.join(process.cwd(), "test", file);
+            return fs.readFile(filePath, "utf8", function (error, content) {
+                return res.type("html").send(handlebars.compile(content)(options));
+            });
+        };
+        //Continue
+        return next();
+    });
+    //Home page
+    app.get("/", function (req, res) {
+        return res.renderTemplateFile("index.html", {
+            "title": "Neutrine testing home"
+        });
+    });
+    //Module to test
+    app.get("/test/:module", function (req, res) {
+        return res.renderTemplateFile("template.html", {
+            "title": "Test page",
+            "main": path.join("/bundle", "test", req.params.module + ".js")
+        });
+    });
     //Not found middleware
     app.use("*", function (req, res) {
         return res.sendStatus(404);
