@@ -19,6 +19,18 @@ let range = function (start, num) {
     });
 };
 
+//Convert an array to an object
+let arrayToObject = function (array, obj) {
+    //Check for valid array
+    if (typeof array === "object" && array !== null && array.length > 0) {
+        array.forEach(function (value) {
+            obj["" + value + ""] = true;
+        });
+    }
+    //Return the provided object
+    return obj;
+};
+
 //DataTable component
 export class DataTable extends React.Component {
     constructor(props) {
@@ -46,6 +58,7 @@ export class DataTable extends React.Component {
             "sortedColumns": [], 
             "filteredRows": range(0, props.data.length),
             "sortedRows": range(0, props.data.length),
+            "selectedRows": arrayToObject(props.selectedRows, {}),
             "highlightedRows": []
         };
         //console.log("Number of pages: " + newState.pages);
@@ -313,6 +326,36 @@ export class DataTable extends React.Component {
     isRowHighlighted(index) {
         return this.state.highlightedRows.indexOf(index) !== -1;
     }
+    //Select a list of rows
+    selectRow(row) {
+        let rows = (Array.isArray(row) === true) ? row : [row];
+        //Get the current selected rows list
+        let currentSelectedRows = this.state.selectedRows;
+        //Add the provided rows to the selection
+        rows.forEach(function (key) {
+            currentSelectedRows["" + key + ""] = true;
+        });
+        //Update the state
+        return this.setState({
+            "selectedRows": currentSelectedRows
+        });
+    }
+    //Deselect a list of rows
+    deselectRow(row) {
+        let rows = (Array.isArray(row) === true) ? row : [row];
+        //Get the current selected rows list
+        let currentSelectedRows = this.state.selectedRows;
+        //Remove the provided rows
+        rows.forEach(function (key) {
+            if (typeof currentSelectedRows["" + key + ""] !== "undefined") {
+                delete currentSelectedRows["" + key + ""];
+            }
+        });
+        //Update the table state
+        return this.setState({
+            "selectedRows": currentSelectedRows
+        });
+    }
     //New props
     componentWillReceiveProps(props) {
         this.setState(this.resetState(props));
@@ -515,6 +558,9 @@ DataTable.defaultProps = {
     "pageSize": 10, //Number of rows for each page
     "pageEntries": [5, 10, 15], //Available rows for each page
     "emptyText": "No data to display", 
+    //Selection
+    "select": false,
+    "selectedRows": null,
     "usePagination": true, //Use pagination
     "showPagination": true //Display pagination
 };
