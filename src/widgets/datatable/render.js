@@ -53,11 +53,13 @@ export default function DataTableRender (props) {
         //Check if column is sortable
         if (typeof column.sortable === "boolean" && column.sortable === true) {
             //Add the sortable class
-            cellProps.className.push("neutrine-datatable-header-cell--sortable");
-            //Check the column order
-            if (column.order !== null) {
-                cellProps.className.push("neutrine-datatable-header-cell--" + column.order);
-            }
+            //cellProps.className.push("neutrine-datatable-header-cell--sortable");
+            cellProps.sortable = true;
+            cellProps.order = column.order;
+            //Add the column order
+            //if (column.order !== null) {
+            //    cellProps.className.push("neutrine-datatable-header-cell--" + column.order);
+            //}
         }
         //Add the cell column index
         cellProps["data-column"] = column.index;
