@@ -377,6 +377,10 @@ export class DataTable extends React.Component {
             "selectedRows": currentSelectedRows
         });
     }
+    //Get a list with all selected rows
+    getSelectedRows() {
+        return Object.keys(this.state.selectedRows);
+    }
     //New props
     componentWillReceiveProps(props) {
         this.setState(this.resetState(props));
