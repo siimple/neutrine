@@ -4,9 +4,6 @@ let express = require("express");
 let path = require("path");
 let handlebars = require("handlebars");
 
-//Import available testing files
-let modules = require(path.join(process.cwd(), "conf", "test.json"));
-
 //Server render
 process.nextTick(function () {
     let app = express();
@@ -20,8 +17,6 @@ process.nextTick(function () {
     app.use("/bundle", express.static(path.join(process.cwd(), "bundle")));
     app.use("/node_modules", express.static(path.join(process.cwd(), "node_modules")));
     app.use("/bower_components", express.static(path.join(process.cwd(), "bower_components")));
-    app.use("/resources", express.static(path.join(process.cwd(), "test", "resources")));
-    app.use("/utils", express.static(path.join(process.cwd(), "test", "utils")));
     //Render the template
     app.use(function (req, res, next) {
         //Render template file function
@@ -41,11 +36,10 @@ process.nextTick(function () {
         });
     });
     //Module to test
-    app.get("/test/:module", function (req, res) {
-        let module = modules[req.params.module];
+    app.get("/test/:bundle", function (req, res) {
         return res.renderTemplateFile("template.html", {
             "title": module.title,
-            "main": path.join("/bundle", "test", module.bundle)
+            "bundle": path.join("/bundle", "test", req.params.bundle + ".js")
         });
     });
     //Not found middleware
