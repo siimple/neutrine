@@ -19,6 +19,19 @@ let findClassInNodeList = function (list, className, callback) {
     return null;
 };
 
+//Render selection element
+let CellSelection = function (props) {
+    //Initialize the selection item class list
+    let classList = ["neutrine-datatable-selection"];
+    if (props.selected === true) {
+        classList.push("neutrine-datatable-selection--selected");
+    }
+    //Return the selection element
+    return React.createElement("div", {
+        "className": classList.join(" ")
+    });
+};
+
 //Export datatable render component
 export default function DataTableRender (props) {
     //Handle body cell click
@@ -34,8 +47,10 @@ export default function DataTableRender (props) {
     };
     //Handle body cell select
     let handleBodyCellSelect = function (event) {
+        console.log("Cell select clicked");
         return findClassInNodeList(event.nativeEvent.path, "neutrine-datatable-cell", function (node, index) {
             let rowIndex = parseInt(node.dataset.row);
+            console.log("Row selected: " + rowIndex);
             return props.onBodyCellSelect.call(null, event, rowIndex);
         });
     };
@@ -124,7 +139,9 @@ export default function DataTableRender (props) {
                 "key": -1
             };
             //Initialize the selection cell content
-            let selectCellContent = React.createElement("div", {}, row.selected);
+            let selectCellContent = React.createElement(CellSelection, {
+                "selected": row.selected
+            });
             //Save the selection cell
             rowCells.unshift(React.createElement(TableCell, selectCellProps, selectCellContent));
         }
