@@ -3,16 +3,16 @@
 # Global variables
 NODE_BIN=./node_modules/.bin
 
-# Build neutrine
+# Build neutrine source
 build:
-	${NODE_BIN}/webpack --config webpack.config.js
+	${NODE_BIN}/webpack --config conf/webpack.build.js
 
-# Build test modules
+# Build tests
 test:
 	${NODE_BIN}/webpack --config conf/webpack.test.js
 
 # Run test service
 serve-test: 
 	@## Run test script for creating the testing server using express
-	node scripts/test-server.js
+	node test/server.js
 
