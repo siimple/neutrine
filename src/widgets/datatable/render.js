@@ -21,7 +21,7 @@ let findClassInNodeList = function (list, className, callback) {
 
 //Export datatable render component
 export default function DataTableRender (props) {
-    //Handle bocy cell click
+    //Handle body cell click
     let handleBodyCellClick = function (event) {
         if (typeof props.onBodyCellClick === "function") {
             //Find the cell class in the nodes list
@@ -33,6 +33,13 @@ export default function DataTableRender (props) {
                 return props.onBodyCellClick.call(null, event, rowIndex, colIndex);
             });
         }
+    };
+    //Handle body cell select
+    let handleBodyCellSelect = function (event) {
+        return findClassInNodeList(event.nativeEvent.path, "neutrine-datatable-cell", function (node, index) {
+            let rowIndex = parseInt(node.dataset.row);
+            return props.onBodyCellSelect.call(null, event, rowIndex);
+        });
     };
     //Build the table header cell
     let headerCells = props.columns.map(function (column, index) {
@@ -72,6 +79,14 @@ export default function DataTableRender (props) {
         //Save the cell
         return React.createElement(TableCell, cellProps, column.content);
     });
+    //Check if table is selectable
+    if (this.props.selectable === true) {
+        headerCells.unshift(React.createElement(TableCell, {
+            "className": "neutrine-datatable-header-cell",
+            "onClick": null,
+            "key": -1
+        }));
+    }
     //Build the row element
     let headerRow = React.createElement(TableRow, {}, headerCells);
     //Build the table body rows
@@ -101,6 +116,20 @@ export default function DataTableRender (props) {
             //Return the cell element
             return React.createElement(TableCell, cellProps, cell.content);
         });
+        //Check if the table is selectable
+        if (self.props.selectable === true) {
+            //Initialize the selection cell props
+            let selectCellProps = {
+                "className": "neutrine-datatable-cell",
+                "data-row": "" + rowIndex + "",
+                "onClick": handleBodyCellSelect,
+                "key": -1
+            };
+            //Initialize the selection cell content
+            let selectCellContent = React.createElement("div", {}, row.selected);
+            //Save the selection cell
+            rowCells.unshift(React.createElement(TableCell, selectCellProps, selectCellContent));
+        }
         //Return this row
         return React.createElement(TableRow, rowProps, rowCells);
     });
@@ -125,7 +154,10 @@ DataTableRender.defaultProps = {
     "border": false,
     "striped": false,
     "hover": false,
+    "selectable": false,
     "onHeaderCellClick": null,
-    "onBodyCellClick": null
+    "onHeaderCellSelect": null,
+    "onBodyCellClick": null,
+    "onBodyCellSelect": null
 };
 
