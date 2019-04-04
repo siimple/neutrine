@@ -23,16 +23,14 @@ let findClassInNodeList = function (list, className, callback) {
 export default function DataTableRender (props) {
     //Handle body cell click
     let handleBodyCellClick = function (event) {
-        if (typeof props.onBodyCellClick === "function") {
-            //Find the cell class in the nodes list
-            return findClassInNodeList(event.nativeEvent.path, "neutrine-datatable-cell", function (node, index) {
-                //Get the row and column index
-                let rowIndex = parseInt(node.dataset.row);
-                let colIndex = parseInt(node.dataset.column);
-                //Call the click listener
-                return props.onBodyCellClick.call(null, event, rowIndex, colIndex);
-            });
-        }
+        //Find the cell class in the nodes list
+        return findClassInNodeList(event.nativeEvent.path, "neutrine-datatable-cell", function (node, index) {
+            //Get the row and column index
+            let rowIndex = parseInt(node.dataset.row);
+            let colIndex = parseInt(node.dataset.column);
+            //Call the click listener
+            return props.onBodyCellClick.call(null, event, rowIndex, colIndex);
+        });
     };
     //Handle body cell select
     let handleBodyCellSelect = function (event) {
