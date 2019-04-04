@@ -104,7 +104,7 @@ export default function DataTableRender (props) {
             let cellProps = {
                 "key": cellIndex,
                 "className": ["neutrine-datatable-cell"],
-                "data-row": "" + rowIndex + "",
+                "data-row": "" + row.index + "",
                 "data-column": "" + cell.index + "",
                 "onClick": handleBodyCellClick,
                 "style": cell.style
@@ -121,7 +121,7 @@ export default function DataTableRender (props) {
             //Initialize the selection cell props
             let selectCellProps = {
                 "className": "neutrine-datatable-cell",
-                "data-row": "" + rowIndex + "",
+                "data-row": "" + row.index + "",
                 "onClick": handleBodyCellSelect,
                 "key": -1
             };
