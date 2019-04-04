@@ -80,7 +80,7 @@ export default function DataTableRender (props) {
         return React.createElement(TableCell, cellProps, column.content);
     });
     //Check if table is selectable
-    if (this.props.selectable === true) {
+    if (props.selectable === true) {
         headerCells.unshift(React.createElement(TableCell, {
             "className": "neutrine-datatable-header-cell",
             "onClick": null,
@@ -117,7 +117,7 @@ export default function DataTableRender (props) {
             return React.createElement(TableCell, cellProps, cell.content);
         });
         //Check if the table is selectable
-        if (self.props.selectable === true) {
+        if (props.selectable === true) {
             //Initialize the selection cell props
             let selectCellProps = {
                 "className": "neutrine-datatable-cell",
