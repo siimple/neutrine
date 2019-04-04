@@ -383,6 +383,10 @@ export class DataTable extends React.Component {
             return parseInt(value);
         });
     }
+    //Added method to check if a row is selected
+    isRowSelected(row) {
+        return typeof this.state.selectedRows["" + row ""] !== "undefined";
+    }
     //New props
     componentWillReceiveProps(props) {
         this.setState(this.resetState(props));
