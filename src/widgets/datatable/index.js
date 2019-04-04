@@ -36,11 +36,15 @@ export class DataTable extends React.Component {
     constructor(props) {
         super(props);
         this.state = this.resetState(this.props);
-        //Bind methods
+        //Page handlers
         this.handlePageChange = this.handlePageChange.bind(this);
         this.handlePageSizeChange = this.handlePageSizeChange.bind(this);
+        //Body cell handlers
         this.handleBodyCellClick = this.handleBodyCellClick.bind(this);
+        this.handleBodyCellSelect = this.handleBodyCellSelect.bind(this);
+        //Header cell handlers
         this.handleHeaderCellClick = this.handleHeaderCellClick.bind(this);
+        this.handleHeaderCellSelect = this.handleHeaderCellSelect.bind(this);
     }
     //Reset the table state
     resetState(props) {
@@ -102,6 +106,17 @@ export class DataTable extends React.Component {
             return this.props.onBodyCellClick(event.nativeEvent, row, rowIndex, columnIndex);
         }
     }
+    //Handle body cell select event
+    handleBodyCellSelect(event, index) {
+        if (this.isRowSelected(index) === true) {
+            console.log("----> Deselect row");
+            return this.deselectRow([index]);
+        }
+        else {
+            console.log("----> Select row");
+            return this.selectRow([index]);
+        }
+    }
     //Handle the header cell click event
     handleHeaderCellClick(event, index) {
         //Get the column
@@ -114,6 +129,10 @@ export class DataTable extends React.Component {
         if (typeof this.props.onHeaderCellClick === "function") {
             this.props.onHeaderCellClick.call(null, event.nativeEvent, index);
         }
+    }
+    //Handle the header cell select event
+    handleHeaderCellSelect(event) {
+        //<TODO>
     }
     //Get a column data by index
     getColumn(index) {
@@ -385,7 +404,7 @@ export class DataTable extends React.Component {
     }
     //Added method to check if a row is selected
     isRowSelected(row) {
-        return typeof this.state.selectedRows["" + row ""] !== "undefined";
+        return typeof this.state.selectedRows["" + row + ""] !== "undefined";
     }
     //New props
     componentWillReceiveProps(props) {
@@ -418,8 +437,11 @@ export class DataTable extends React.Component {
             "border": this.props.border,
             "striped": this.props.striped,
             "hover": this.props.hover,
+            "selectable": this.props.selectable,
             "onHeaderCellClick": self.handleHeaderCellClick,
-            "onBodyCellClick": self.handleBodyCellClick
+            //"onHeaderCellSelect": self.handleHeaderCellSelect,
+            "onBodyCellClick": self.handleBodyCellClick,
+            "onBodyCellSelect": self.handleBodyCellSelect
         };
         //Add the table columns
         this.props.columns.forEach(function (column, index) {
@@ -461,10 +483,12 @@ export class DataTable extends React.Component {
         if (this.state.sortedRows.length > 0) {
             for (let i = start; i < end; i++) {
                 //Initialize the row props
+                let rowIndex = this.state.sortedRows[i];
                 let rowProps = {
-                    "index": this.state.sortedRows[i],
+                    "index": rowIndex,
                     "cells": [],
-                    "className": null
+                    "className": null,
+                    "selected": this.isRowSelected(rowIndex)
                 };
                 //Get the row data
                 let row = this.props.data[rowProps.index];
@@ -590,7 +614,7 @@ DataTable.defaultProps = {
     "pageEntries": [5, 10, 15], //Available rows for each page
     "emptyText": "No data to display", 
     //Selection
-    "enableSelection": false,
+    "selectable": false,
     "selectedRows": null,
     //Pagination
     "usePagination": true, //Use pagination
