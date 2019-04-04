@@ -340,6 +340,18 @@ export class DataTable extends React.Component {
             "selectedRows": currentSelectedRows
         });
     }
+    //Select all filtered rows
+    selectFilteredRows() {
+        let currentSelectedRows = this.state.selectedRows;
+        //Select only the displayed rows
+        this.state.filteredRows.forEach(function (value) {
+            currentSelectedRows["" + value + ""] = true;
+        });
+        //Update the table state
+        return this.setState({
+            "selectedRows": currentSelectedRows
+        });
+    }
     //Deselect a list of rows
     deselectRow(row) {
         let rows = (Array.isArray(row) === true) ? row : [row];
@@ -350,6 +362,17 @@ export class DataTable extends React.Component {
             if (typeof currentSelectedRows["" + key + ""] !== "undefined") {
                 delete currentSelectedRows["" + key + ""];
             }
+        });
+        //Update the table state
+        return this.setState({
+            "selectedRows": currentSelectedRows
+        });
+    }
+    //Deselect all filtered rows
+    deselectFilteredRows() {
+        let currentSelectedRows = this.state.selectedRows;
+        this.state.filteredRows.forEach(function (value) {
+            delete currentSelectedRows["" + value + ""];
         });
         //Update the table state
         return this.setState({
