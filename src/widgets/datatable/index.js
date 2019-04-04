@@ -359,9 +359,7 @@ export class DataTable extends React.Component {
         let currentSelectedRows = this.state.selectedRows;
         //Remove the provided rows
         rows.forEach(function (key) {
-            if (typeof currentSelectedRows["" + key + ""] !== "undefined") {
-                delete currentSelectedRows["" + key + ""];
-            }
+            delete currentSelectedRows["" + key + ""];
         });
         //Update the table state
         return this.setState({
@@ -582,8 +580,9 @@ DataTable.defaultProps = {
     "pageEntries": [5, 10, 15], //Available rows for each page
     "emptyText": "No data to display", 
     //Selection
-    "select": false,
+    "enableSelection": false,
     "selectedRows": null,
+    //Pagination
     "usePagination": true, //Use pagination
     "showPagination": true //Display pagination
 };
