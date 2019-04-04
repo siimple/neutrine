@@ -2,20 +2,19 @@ let path = require("path");
 //let MiniCssExtract = require("mini-css-extract-plugin");
 
 //Import testing modules
-let modules = require("./test.json");
+let modules = require("../scripts/testing.js").getTestingModules();
 
 //Export the webpack multi configuration
 //https://github.com/webpack/webpack/tree/master/examples/multi-compiler 
 module.exports = Object.keys(modules).map(function (key, index) {
-    let module = modules[key];
     //Return the webpack configuration for this module
     return {
         "name": key,
         "mode": "development",
-        "entry": module.entry,
+        "entry": path.join(process.cwd(), "test", key, "index.js"),
         "output": {
-            "path": path.join(process.cwd(), "bundle"),
-            "filename": module.bundle
+            "path": path.join(process.cwd(), "bundle", "test"),
+            "filename": key + ".js"
         },
         "externals": {
             "react": "React",
