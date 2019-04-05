@@ -8,7 +8,7 @@ module.exports = {
     "output": {
         "library": "Neutrine",
         "libraryTarget": "umd",
-        "path": path.join(process.cwd(), "bundle"),
+        "path": path.join(process.cwd(), "dist"),
         "filename": "neutrine.js"
     },
     "externals": {
