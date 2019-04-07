@@ -1,6 +1,6 @@
 //Import dependencies
 import React from "react";
-import Icon from "../../icon/index.js";
+import {Icon} from "../../icon/index.js";
 import * as helpers from "../../helpers.js";
 import * as reactUtils from "../../utils/react.js";
 
