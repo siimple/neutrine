@@ -72,6 +72,40 @@ DashboardSidebar.defaultProps = {
     "onClick": null
 };
 
+//Sidebar item
+export function DashboardSidebarItem (props) {
+    //Initialize the button props
+    let itemProps = {
+        "className": [baseClass + "-sidebar-item"],
+        "onClick": props.onClick
+    };
+    //Add the button icon
+    let icon = null;
+    if (props.icon !== null) {
+        icon = React.createElement(Icon, {
+            "icon": props["icon"],
+            "className": baseClass + "-sidebar-item-icon"
+        });
+    }
+    //itemProps.className.push(baseClass + "-link-" + key);
+    //Check if this link is active
+    if (typeof props.active === "boolean" && props.active === true) {
+        itemProps.className.push(baseClass + "-sidebar-item--active");
+    }
+    //Merge the classnames
+    itemProps.className = itemProps.className.join(" ");
+    //Return the sidebar item element
+    return React.createElement("div", itemProps, icon, props.text);
+}
+
+//Sidebar item default props
+DashboardSidebarItem.defaultProps = {
+    "text": "",
+    "icon": null,
+    "active": false,
+    "onClick": null,
+};
+
 //Export header component
 export class DashboardHeader extends React.Component {
     //Render the heeader title
