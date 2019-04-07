@@ -138,8 +138,8 @@ DashboardHeader.defaultProps = {
     "onTitleClick": null
 };
 
-//Export main dashboard container
-export function DashboardMain (props) {
-    return reactUtils.basicComponent("div", props, baseClass + "-main");
+//Export dashboard content container
+export function DashboardContent (props) {
+    return reactUtils.basicComponent("div", props, baseClass + "-content");
 }
 
