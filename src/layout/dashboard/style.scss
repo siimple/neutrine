@@ -29,8 +29,8 @@ $neutrine-layout-dashboard-header-height: 70px;
         top: $neutrine-layout-dashboard-header-height !important;
         left: 0px !important;
         //left: calc(-1*#{$neutrine-layout-dashboard-sidebar-width} - 2*#{$neutrine-layout-dashboard-sidebar-padding});
-        //Sidebar link
-        &-link {
+        //Sidebar item
+        &-item {
             display: block;
             padding-left: 50px;
             padding-right: 10px;
