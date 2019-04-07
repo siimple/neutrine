@@ -12,15 +12,12 @@ let baseClass = "neutrine-layout-dashboard";
 
 //Export dashboard component
 export function Dashboard (props) {
-    return reactUtils.basicComponent("div", props, baseClass);
+    return React.createElement("div", {"className": baseClass}, props.children);
 }
 
 //Export sidebar component
 export function DashboardSidebar (props) {
-    //Return sidebar component
-    return helpers.createMergedElement("div", props, {
-        "className": baseClass + "-sidebar"
-    });
+    return React.createElement("div", {"className": baseClass + "-sidebar"}, props.children);
 }
 
 //Sidebar separator
