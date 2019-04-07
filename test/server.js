@@ -14,14 +14,15 @@ process.nextTick(function () {
         return next();
     });
     //Register static folders routes
-    app.use("/bundle", express.static(path.join(process.cwd(), "bundle")));
+    app.use("/dist", express.static(path.join(process.cwd(), "dist")));
     app.use("/node_modules", express.static(path.join(process.cwd(), "node_modules")));
     app.use("/bower_components", express.static(path.join(process.cwd(), "bower_components")));
+    app.use("/raw", express.static(path.join(process.cwd(), "test")));
     //Render the template
     app.use(function (req, res, next) {
         //Render template file function
         res.renderTemplateFile = function (file, options) {
-            let filePath = path.join(process.cwd(), "test", file);
+            let filePath = path.join(process.cwd(), "test", "templates", file);
             return fs.readFile(filePath, "utf8", function (error, content) {
                 return res.type("html").send(handlebars.compile(content)(options));
             });
@@ -36,10 +37,10 @@ process.nextTick(function () {
         });
     });
     //Module to test
-    app.get("/test/:bundle", function (req, res) {
-        return res.renderTemplateFile("template.html", {
-            "title": module.title,
-            "bundle": path.join("/bundle", "test", req.params.bundle + ".js")
+    app.get("/test/:package", function (req, res) {
+        return res.renderTemplateFile("default.html", {
+            "title": "",
+            "package": req.params.package
         });
     });
     //Not found middleware
