@@ -1,6 +1,7 @@
 //Import dependencies
 import React from "react";
 import Icon from "../../icon/index.js";
+import * as helpers from "../../helpers.js";
 import * as reactUtils from "../../utils/react.js";
 
 //Import dashboard styles
@@ -16,61 +17,11 @@ export function Dashboard (props) {
 
 //Export sidebar component
 export function DashboardSidebar (props) {
-    //Build all buttons
-    let items = props.items.map(function (item, index) {
-        //Check for null item
-        if (item === null) {
-            return null;
-        }
-        //Check the button type
-        if (typeof item["type"] === "string" && item["type"] === "separator") {
-            return React.createElement("div", {
-                "className": baseClass + "-sidebar-separator",
-                "key": index
-            });
-        }
-        //Initialize the button props
-        let itemProps = {
-            "className": [baseClass + "-sidebar-link"],
-            "onClick": function (event) {
-                //Check the click function
-                if (typeof props.onClick === "function") {
-                    return props.onClick(item, index);
-                }
-            },
-            "key": index
-        };
-        //Add the button icon
-        let icon = null;
-        if (typeof item["icon"] === "string") {
-            icon = React.createElement(Icon, {
-                "icon": item["icon"],
-                "className": baseClass + "-sidebar-link-icon"
-            });
-        }
-        //itemProps.className.push(baseClass + "-link-" + key);
-        //Check if this link is active
-        if (typeof item.active === "boolean" && item.active === true) {
-            itemProps.className.push(baseClass + "-sidebar-link--active");
-        }
-        //Merge the classnames
-        itemProps.className = itemProps.className.join(" ");
-        //Return the button component
-        return React.createElement("div", itemProps, icon, item["title"]); 
-    });
-    //Initialize the sidebar props
-    let sidebarProps = {
-        "className": baseClass + "-sidebar"
-    }
     //Return sidebar component
-    return React.createElement("div", sidebarProps, items, props.children);
+    return helpers.createMergedElement("div", props, {
+        "className": baseClass + "-sidebar"
+    });
 }
-
-//Sidebar default props
-DashboardSidebar.defaultProps = {
-    "items": [],
-    "onClick": null
-};
 
 //Sidebar separator
 export function DashboardSidebarSeparator (props) {
