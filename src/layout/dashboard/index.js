@@ -72,6 +72,13 @@ DashboardSidebar.defaultProps = {
     "onClick": null
 };
 
+//Sidebar separator
+export function DashboardSidebarSeparator (props) {
+    return React.createElement("div", {
+        "className": baseClass + "-sidebar-separator"
+    });
+}
+
 //Sidebar item
 export function DashboardSidebarItem (props) {
     //Initialize the button props
