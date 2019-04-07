@@ -140,6 +140,18 @@ DashboardHeader.defaultProps = {
 
 //Export dashboard content container
 export function DashboardContent (props) {
-    return reactUtils.basicComponent("div", props, baseClass + "-content");
+    //Content class list
+    let classList = [baseClass + "-content"];
+    //Check for fluid content
+    if (props.fluid === true) {
+        classList.push(baseClass + "-content--fluid");
+    }
+    //Return the content element
+    return React.createElement("div", {"className": classList.join(" ")}, props.children);
 }
+
+//Dashboard content props
+DashboardContent.defaultProps = {
+    "fluid": false
+};
 
