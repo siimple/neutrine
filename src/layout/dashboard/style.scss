@@ -173,8 +173,8 @@ $neutrine-layout-dashboard-header-height: 70px;
             }
         }
     }
-    //Dashboard main
-    &-main {
+    //Dashboard Content
+    &-content {
         display: block;
         max-width: calc(#{$neutrine-layout-dashboard-main-width} - 20px);
         margin-left: auto;
