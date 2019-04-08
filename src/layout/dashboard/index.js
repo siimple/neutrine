@@ -112,7 +112,7 @@ export function DashboardHeader (props) {
         "className": baseClass + "-header"
     };
     //Return the header element
-    return React.createElement("div", headerProps, this.props.children);
+    return React.createElement("div", headerProps, props.children);
 }
 
 //Dashboard header default props
@@ -125,6 +125,23 @@ DashboardHeader.defaultProps = {
     "onTitleClick": null
 };
 */
+
+//Dashboard header toggle
+export function DashboardHeaderToggle (props) {
+    let toggleProps = {
+        "className": baseClass + "-header-toggle",
+        "onClick": props.onClick
+    };
+    //Build the toggle icon
+    let icon = React.createElement(Icon, {
+        "icon": "menu",
+        "style": {
+            "fontSize": "30px"
+        }
+    });
+    //Return the header toggle element
+    return React.createElement("div", toggleProps, icon);
+}
 
 //Dashboard header title
 export function DashboardHeaderTitle (props) {
