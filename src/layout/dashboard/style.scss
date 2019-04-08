@@ -126,7 +126,9 @@ $neutrine-layout-dashboard-header-height: 70px;
             float: left;
             height: 30px;
             width: 30px;
-            padding: 10px;
+            padding-right: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
             cursor: pointer;
             color: $siimple-navy-light;
             &:hover {
