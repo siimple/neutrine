@@ -15,6 +15,14 @@ $neutrine-layout-dashboard-header-height: 70px;
     //background-color: $siimple-grey-light;
     padding-left: $neutrine-layout-dashboard-sidebar-width;
     padding-top: $neutrine-layout-dashboard-header-height;
+    transition: padding-left 0.3s;
+    //Hide sidebar
+    &--hide-sidebar {
+        padding-left: 0px;
+    }
+    &--hide-sidebar &-sidebar {
+        left: -$neutrine-layout-dashboard-sidebar-width;
+    }
     //Dashboard sidebar
     &-sidebar {
         display: block;
@@ -28,8 +36,9 @@ $neutrine-layout-dashboard-header-height: 70px;
         //background-color: $siimple-grey-light;
         transition: all 0.3s;
         top: $neutrine-layout-dashboard-header-height !important;
-        left: 0px !important;
+        left: 0px;
         //left: calc(-1*#{$neutrine-layout-dashboard-sidebar-width} - 2*#{$neutrine-layout-dashboard-sidebar-padding});
+        transition: left 0.3s;
         //Sidebar item
         &-item {
             display: block;
