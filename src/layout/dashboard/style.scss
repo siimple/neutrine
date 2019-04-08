@@ -1,4 +1,5 @@
 //Import dependencies
+//@import "siimple/scss/_variables.scss";
 @import "siimple-colors/scss/colors.scss";
 
 //Dashboard variables
@@ -109,6 +110,20 @@ $neutrine-layout-dashboard-header-height: 70px;
         //Header subtitle
         &-subtitle {
             color: $siimple-navy-extra-light;
+        }
+        //Header toggle icon
+        &-toggle {
+            display: block;
+            float: left;
+            height: 30px;
+            width: 30px;
+            padding: 10px;
+            cursor: pointer;
+            color: $siimple-navy-light;
+            &:hover {
+                color: $siimple-navy;
+            }
+            transition: color 0.3s;
         }
         //Dashboard menu user block
         &-menu {
