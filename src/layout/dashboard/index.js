@@ -138,6 +138,20 @@ DashboardHeader.defaultProps = {
     "onTitleClick": null
 };
 
+//Dashboard header title
+export function DashboardHeaderTitle (props) {
+    return helpers.createMergedElement("div", props, {
+        "className": baseClass + "-header-title"
+    });
+}
+
+//Dashboard header subtitle
+export function DashboardHeaderSubtitle (props) {
+    return React.createElement("div", props, {
+        "className": baseClass + "-header-subtitle"
+    });
+}
+
 //Export dashboard content container
 export function DashboardContent (props) {
     //Content class list
