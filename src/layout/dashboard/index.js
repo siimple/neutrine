@@ -12,8 +12,20 @@ let baseClass = "neutrine-layout-dashboard";
 
 //Export dashboard component
 export function Dashboard (props) {
-    return React.createElement("div", {"className": baseClass}, props.children);
+    //Dashboard class styles
+    let classList = [baseClass];
+    //Check if sidebar is not visible
+    if (props.hideSidebar === true) {
+        classList.push(baseClass + "--hide-sidebar");
+    }
+    //Return the dahsboard element
+    return React.createElement("div", {"className": classList.join(" ")}, props.children);
 }
+
+//Dashboard default props
+Dashboard.defaultProps = {
+    "hideSidebar": true
+};
 
 //Export sidebar component
 export function DashboardSidebar (props) {
