@@ -62,21 +62,8 @@ DashboardSidebarItem.defaultProps = {
 };
 
 //Export header component
-export class DashboardHeader extends React.Component {
-    //Render the heeader title
-    renderTitle() {
-        let self = this;
-        return React.createElement("div", {
-            "className": baseClass + "-header-title",
-            "onClick": self.props.onTitleClick
-        }, this.props.title);
-    }
-    //Render the header subtitle
-    renderSubtitle() {
-        return React.createElement("div", {
-            "className": baseClass + "-header-subtitle"
-        }, this.props.subtitle);
-    }
+export function DashboardHeader (props) {
+    /*
     //Render the menu user icon
     renderMenuUser() {
         return React.createElement("div", {
@@ -119,17 +106,17 @@ export class DashboardHeader extends React.Component {
         //Return the menu component
         return React.createElement("div", menuProps, this.renderMenuUser(), this.renderMenuDropdown());
     }
-    render () {
-        //Initialize the dashboard header props
-        let headerProps = {
-            "className": baseClass + "-header"
-        };
-        //Return the header element
-        return React.createElement("div", headerProps, this.renderTitle(), this.renderSubtitle(), this.renderMenu());
-    }
+    //*/
+    //Initialize the dashboard header props
+    let headerProps = {
+        "className": baseClass + "-header"
+    };
+    //Return the header element
+    return React.createElement("div", headerProps, this.props.children);
 }
 
 //Dashboard header default props
+/*
 DashboardHeader.defaultProps = {
     "title": "",
     "subtitle": "",
@@ -137,6 +124,7 @@ DashboardHeader.defaultProps = {
     "onLinkClick": null,
     "onTitleClick": null
 };
+*/
 
 //Dashboard header title
 export function DashboardHeaderTitle (props) {
@@ -147,7 +135,7 @@ export function DashboardHeaderTitle (props) {
 
 //Dashboard header subtitle
 export function DashboardHeaderSubtitle (props) {
-    return React.createElement("div", props, {
+    return helpers.createMergedElement("div", props, {
         "className": baseClass + "-header-subtitle"
     });
 }
