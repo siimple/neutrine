@@ -200,17 +200,17 @@ $neutrine-layout-dashboard-header-height: 70px;
     //Dashboard Content
     &-content {
         display: block;
-        max-width: calc(#{$neutrine-layout-dashboard-main-width} - 20px);
+        max-width: calc(#{$neutrine-layout-dashboard-main-width} - 30px);
         margin-left: auto;
         margin-right: auto;
         padding-top: 20px;
         padding-bottom: 20px;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
         //min-height: 100%;
         //Fluid content
         &--fluid {
-            max-width: calc(100% - 20px);
+            max-width: calc(100% - 30px);
         }
     }
     //Dashboard footer
