@@ -66,6 +66,9 @@ export {Projects, ProjectsRow, ProjectsColumn, ProjectsInfoColumn} from "./src/c
 export {Subhead, SubheadText, SubheadBtn} from "./src/components/subhead/index.js";
 export {default as Toast} from "./src/components/toast/index.js";
 
+//Components
+export * from "./src/components/panel/index.js";
+
 //Loaders
 export * from "./src/loaders/dna-loader/index.js";
 
