@@ -79,14 +79,16 @@ export default function DataTablePagination (props) {
         };
         //Next page button props
         let nextButtonProps = {
-            "color": "light",
+            //"color": "light",
+            "className": "neutrine-datatable-pagination-btn",
             "onClick": function (event) {
                 return changePage(props.page + 1);
             }
         };
         //Previous page button props
         let prevButtonProps = {
-            "color": "light",
+            //"color": "light",
+            "className": "neutrine-datatable-pagination-btn",
             "onClick": function (event) {
                 return changePage(props.page - 1);
             }
