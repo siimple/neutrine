@@ -4,7 +4,7 @@
 let table = null;
 
 //When dom is ready
-NeutrineUtils.loadJSON("/raw/datatable/data.json", function (data) {
+NeutrineUtils.loadJSON("/raw/packages/datatable/data.json", function (data) {
     //Function to parse the salary
     let parseSalary = function (value) {
         return parseInt(value.replace("$", "").replace(/\,/g, ""));
