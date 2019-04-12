@@ -77,6 +77,7 @@ export * from "./src/layout/dashboard/index.js";
 export * from "./src/layout/toolbar/index.js";
 
 //Widgets
+export * from "./src/widgets/box/index.js";
 export * from "./src/widgets/datatable/index.js";
 export * from "./src/widgets/text-editor/index.js";
 
