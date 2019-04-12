@@ -13,7 +13,7 @@ export function Box (props) {
     //}
     //Build box component props
     let boxProps = {
-        "className": classList.join(" ");
+        "className": classList.join(" ")
     };
     //Return main box component
     return helpers.createMergedElement("div", props, boxProps);
