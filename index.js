@@ -38,7 +38,7 @@ export {Textarea} from "./src/core/form/textarea.js";
 export {Grid, GridRow, GridCol} from "./src/core/grid/grid.js";
 
 //Core layout
-export {Box, BoxTitle, BoxSubtitle, BoxDetail} from "./src/core/layout/box.js";
+//export {Box, BoxTitle, BoxSubtitle, BoxDetail} from "./src/core/layout/box.js";
 export {default as Content} from "./src/core/layout/content.js";
 export {Footer, FooterTitle, FooterSubtitle, FooterParagraph, FooterLink, FooterGroup, FooterRule} from "./src/core/layout/footer.js";
 export {Jumbotron, JumbotronTitle, JumbotronSubtitle, JumbotronDetail} from "./src/core/layout/jumbotron.js";
