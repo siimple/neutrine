@@ -16,7 +16,7 @@ export function Box (props) {
         "className": classList.join(" ");
     };
     //Return main box component
-    return React.createElement("div", boxProps, props.children);
+    return helpers.createMergedElement("div", props, boxProps);
 }
 
 //Box default props
