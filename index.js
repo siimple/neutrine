@@ -67,6 +67,7 @@ export {Subhead, SubheadText, SubheadBtn} from "./src/components/subhead/index.j
 export {default as Toast} from "./src/components/toast/index.js";
 
 //Components
+export * from "./src/components/box/index.js";
 export * from "./src/components/panel/index.js";
 
 //Loaders
@@ -77,7 +78,6 @@ export * from "./src/layout/dashboard/index.js";
 export * from "./src/layout/toolbar/index.js";
 
 //Widgets
-export * from "./src/widgets/box/index.js";
 export * from "./src/widgets/datatable/index.js";
 export * from "./src/widgets/text-editor/index.js";
 
