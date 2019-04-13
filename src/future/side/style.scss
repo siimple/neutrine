@@ -1,12 +1,12 @@
 //Import dependencies
 @import "siimple/scss/_variables.scss";
 
-//Aside variables
-$neutrine-aside-width: 400px;
-$neutrine-aside-padding: 25px;
+//Side variables
+$neutrine-side-width: 400px;
+$neutrine-side-padding: 25px;
 
-//Aside styles
-.neutrine-aside {
+//Side styles
+.neutrine-side {
     //Background 
     &-background {
         display: none;
@@ -22,12 +22,12 @@ $neutrine-aside-padding: 25px;
         overflow-y: hidden;
         //transition: visibility 0.3s;
     }
-    //Aside visible
+    //Side visible
     &--visible &-background {
         display: block;
         //visibility: visible;
     }
-    //Aside header
+    //Side header
     //&-header {
     //    display: block;
     //    height: 34px;
@@ -35,64 +35,37 @@ $neutrine-aside-padding: 25px;
     //    font-size: 18px;
     //    font-weight: normal;
     //}
-    ////Aside body
+    ////Side body
     //&-body {
     //    display: block;
-    //    height: calc(100% - 2 * #{$neutrine-aside-padding});
-    //    padding: $neutrine-aside-padding;
+    //    height: calc(100% - 2 * #{$neutrine-side-padding});
+    //    padding: $neutrine-side-padding;
     //    overflow-y: auto;
     //}
-    //Aside content
+    //Side content
     &-content {
         display: block;
         //display: none;
+        height: 100%;
         background-color: #ffffff;
         border-radius: 0px;
         position: fixed;
+        top: 0px;
         z-index: 120;
         overflow-x: hidden;
         overflow-y: hidden;
-        //Common horizontal aligned asides
-        &--right,
-        &--left {
-            top: 0px;
-            height: 100%;
-        }
-        //Right aligned aside
+        //Right aligned side
         &--right {
             right: calc(-1 * 100%);
             transition: right 0.3s;
         }
-        //Left aligned aside
+        //Left aligned side
         &--left {
             left: calc(-1 * 100%);
             transition: left 0.3s;
         }
-        //Bottom and top common styles
-        &--top,
-        &--bottom {
-            left: 0px;
-            width: 100%;
-        }
-        //Top aligned aside
-        &--top {
-            top: calc(-1 * 100%);
-            transition: top 0.3s;
-        }
-        //Bottom aligned aside
-        &--bottom {
-            bottom: calc(-1 * 100%);
-            transition: bottom 0.3s;
-        }
-        //Content container
-        //&-container {
-        //    display: block;
-        //    height: calc(100% - 2 * #{$neutrine-aside-padding});
-        //    margin: $neutrine-aside-padding;
-        //    overflow-y: auto;
-        //}
     }
-    //Aside visible
+    //Side visible
     //&--visible &-content {
     //    display: block;
     //}
@@ -102,13 +75,7 @@ $neutrine-aside-padding: 25px;
     &--visible &-content--left {
         left: 0px;
     }
-    &--visible &-content--bottom {
-        bottom: 0px;
-    }
-    &--visible &-content--top {
-        top: 0px;
-    }
-    //Aside close icon
+    //Side close icon
     &-close {
         display: block;
         position: absolute;
@@ -141,5 +108,4 @@ $neutrine-aside-padding: 25px;
         }
     }
 }
-
 
