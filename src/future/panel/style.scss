@@ -1,13 +1,14 @@
 //Import dependencies
 @import "siimple/scss/_variables.scss";
 
-//Box component
-.neutrine-box {
+//Panel component
+.neutrine-panel {
     display: block;
     padding: 15px;
     border-radius: 5px;
     background-color: siimple-default-color("light", "light");
-    //Box header
+    margin-bottom: $siimple-default-margin-bottom;
+    //Panel header
     &-header {
         display: block;
         font-size: 16px;
@@ -15,27 +16,8 @@
         height: 24px;
         line-height: 24px;
         //cursor: pointer;
-        //Header title
-        //&-title {
-        //    font-weight: bold;
-        //}
     }
-    //Header label
-    //&-label {
-    //    display: inline-block;
-    //    font-size: 13px;
-    //    font-weight: normal;
-    //    line-height: 1;
-    //    border-radius: 20px;
-    //    padding-top: 3px;
-    //    padding-bottom: 3px;
-    //    padding-left: 5px;
-    //    padding-right: 5px;
-    //    margin-left: 5px;
-    //    color: siimple-default-color("dark", "light");
-    //    background-color: rgba(#ffffff, 0.8);
-    //}
-    //Box body 
+    //Panel body 
     &-body {
         display: block;
         padding-top: 10px;
@@ -47,23 +29,38 @@
             border-top: 1px solid siimple-default-color("light", "dark");
         }
     }
-    //Box collapsed
+    //Panel collapsed
     //&--collapsed &-body {
     //    display: none;
     //}
-    //Box title
-    //&-title {
-    //    font-size: 20px;
-    //    font-weight: bold;
-    //    margin-bottom: 1px;
-    //}
-    ////Box description
-    //&-description {
-    //    font-size: 14px;
-    //    font-weight: normal;
-    //    line-height: 22px;
-    //    color: siimple-default-color("dark", "light");
-    //    margin-bottom: 10px;
-    //}
+    //Panel title
+    &-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 1px;
+    }
+    //Panel description
+    &-description {
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 22px;
+        color: siimple-default-color("dark", "light");
+        margin-bottom: 10px;
+    }
+    //Panel label
+    &-label {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: normal;
+        line-height: 1;
+        border-radius: 20px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-left: 5px;
+        color: siimple-default-color("dark", "light");
+        background-color: rgba(#ffffff, 0.8);
+    }
 }
 
