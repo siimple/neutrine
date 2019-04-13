@@ -1,13 +1,12 @@
 Neutrine.ready(function () {
-    //Aside testing component
-    class AsideTest extends React.Component {
+    //Side testing component
+    class SideTest extends React.Component {
         constructor(props) {
             super(props);
             this.state = {
                 "visible": true,
                 "position": "right",
-                "width": "400px",
-                "height": "400px"
+                "width": "400px"
             };
             //Bind methods
             this.handleClose = this.handleClose.bind(this);
@@ -18,20 +17,20 @@ Neutrine.ready(function () {
                 "visible": false
             });
         }
-        //Render the aside test
+        //Render the side test
         render () {
             return (
-                <Neutrine.Aside visible={this.state.visible}>
-                    <Neutrine.AsideBackground onClick={this.handleClose} />
-                    <Neutrine.AsideContent position={this.state.position} width={this.state.width} height={this.state.height}>
-                        <Neutrine.AsideClose onClick={this.handleClose} />
+                <Neutrine.Side visible={this.state.visible}>
+                    <Neutrine.SideBackground onClick={this.handleClose} />
+                    <Neutrine.SideContent position={this.state.position} width={this.state.width}>
+                        <Neutrine.SideClose onClick={this.handleClose} />
                         More content
-                    </Neutrine.AsideContent>
-                </Neutrine.Aside>
+                    </Neutrine.SideContent>
+                </Neutrine.Side>
             );
         }
     };
-    //Mount aside test component
-    ReactDOM.render(<AsideTest />, document.getElementById("root"));
+    //Mount side test component
+    ReactDOM.render(<SideTest />, document.getElementById("root"));
 });
 
