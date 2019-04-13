@@ -1,45 +1,45 @@
 import React from "react";
 import * as helpers from "../../helpers.js";
 
-//Import panel styles
+//Import aside component styles
 import "./style.scss";
 
-//Panel base class
-let baseClass = "neutrine-panel";
+//Aside base class
+let baseClass = "neutrine-aside";
 
-//Available panel positions
-let panelPositions = ["left", "right", "top", "bottom"];
+//Available positions
+let asidePositions = ["left", "right", "top", "bottom"];
 
-//Export panel component
-export function Panel (props) {
-    //Panel styles
+//Export aside component
+export function Aside (props) {
+    //Aside styles
     let classList = [baseClass];
-    //Check if panel is visible
+    //Check if aside is visible
     if (props.visible === true) {
         classList.push(baseClass + "--visible");
     }
-    //Return the panel wrapper
+    //Return the aside wrapper
     return React.createElement("div", {"className": classList.join(" ")}, props.children);
 }
 
-//Panel default props
-Panel.defaultProps = {
+//Aside default props
+Aside.defaultProps = {
     "visible": true
 };
 
-//Panel background
-export function PanelBackground (props) {
+//Aside background
+export function AsideBackground (props) {
     return helpers.createMergedElement("div", props, {
         "className": baseClass + "-background"
     });
 }
 
-//Panel content
-export function PanelContent (props) {
-    //Panel content class list
+//Aside content
+export function AsideContent (props) {
+    //Aside content class list
     let classList = [baseClass + "-content"];
-    //Check the panel content position
-    if (panelPositions.indexOf(props.position) !== -1) {
+    //Check the aside content position
+    if (asidePositions.indexOf(props.position) !== -1) {
         classList.push(baseClass + "-content--" + props.position);
     }
     //Build the content props
@@ -56,43 +56,43 @@ export function PanelContent (props) {
     }
     //Build the content container
     //let content = React.createElement("div", {"className": baseClass + "-content-container"}, props.children);
-    //Return the panel container
+    //Return the aside container
     return React.createElement("div", contentProps, props.children);
 }
 
-//Panel content default props
-PanelContent.defaultProps = {
+//Aside content default props
+AsideContent.defaultProps = {
     "position": "right",
     "width": "400px",
     "height": "400px"
 };
 
-//Panel close icon
-export function PanelClose (props) {
+//Aside close icon
+export function AsideClose (props) {
     return helpers.createMergedElement("div", props, {
         "className": baseClass + "-close"
     });
 }
 
 /*
-//Panel header
-export function PanelHeader (props) {
+//Aside header
+export function AsideHeader (props) {
     let close = React.createElement("div", {
         "className": baseClass + "-close",
         "onClick": props.onClose
     });
-    //Return the panel header
+    //Return the aside header
     return React.createElement("div", {"className": baseClass + "-header"}, props.title, close);
 }
 
-//Panel header default props
-PanelHeader.defaultProps = {
+//Aside header default props
+AsideHeader.defaultProps = {
     "title": null,
     "onClose": null
 };
 
-//Panel body
-export function PanelBody (props) {
+//Aside body
+export function AsideBody (props) {
     return helpers.createMergedElement("div", props, {
         "className": baseClass + "-body"
     });
