@@ -1,12 +1,12 @@
 //Import dependencies
 @import "siimple/scss/_variables.scss";
 
-//Panel variables
-$neutrine-panel-width: 400px;
-$neutrine-panel-padding: 25px;
+//Aside variables
+$neutrine-aside-width: 400px;
+$neutrine-aside-padding: 25px;
 
-//Panel styles
-.neutrine-panel {
+//Aside styles
+.neutrine-aside {
     //Background 
     &-background {
         display: none;
@@ -22,12 +22,12 @@ $neutrine-panel-padding: 25px;
         overflow-y: hidden;
         //transition: visibility 0.3s;
     }
-    //Panel visible
+    //Aside visible
     &--visible &-background {
         display: block;
         //visibility: visible;
     }
-    //Panel header
+    //Aside header
     //&-header {
     //    display: block;
     //    height: 34px;
@@ -35,14 +35,14 @@ $neutrine-panel-padding: 25px;
     //    font-size: 18px;
     //    font-weight: normal;
     //}
-    ////Panel body
+    ////Aside body
     //&-body {
     //    display: block;
-    //    height: calc(100% - 2 * #{$neutrine-panel-padding});
-    //    padding: $neutrine-panel-padding;
+    //    height: calc(100% - 2 * #{$neutrine-aside-padding});
+    //    padding: $neutrine-aside-padding;
     //    overflow-y: auto;
     //}
-    //Panel content
+    //Aside content
     &-content {
         display: block;
         //display: none;
@@ -52,18 +52,18 @@ $neutrine-panel-padding: 25px;
         z-index: 120;
         overflow-x: hidden;
         overflow-y: hidden;
-        //Common horizontal aligned panels
+        //Common horizontal aligned asides
         &--right,
         &--left {
             top: 0px;
             height: 100%;
         }
-        //Right aligned panel
+        //Right aligned aside
         &--right {
             right: calc(-1 * 100%);
             transition: right 0.3s;
         }
-        //Left aligned panel
+        //Left aligned aside
         &--left {
             left: calc(-1 * 100%);
             transition: left 0.3s;
@@ -74,12 +74,12 @@ $neutrine-panel-padding: 25px;
             left: 0px;
             width: 100%;
         }
-        //Top aligned panel
+        //Top aligned aside
         &--top {
             top: calc(-1 * 100%);
             transition: top 0.3s;
         }
-        //Bottom aligned panel
+        //Bottom aligned aside
         &--bottom {
             bottom: calc(-1 * 100%);
             transition: bottom 0.3s;
@@ -87,12 +87,12 @@ $neutrine-panel-padding: 25px;
         //Content container
         //&-container {
         //    display: block;
-        //    height: calc(100% - 2 * #{$neutrine-panel-padding});
-        //    margin: $neutrine-panel-padding;
+        //    height: calc(100% - 2 * #{$neutrine-aside-padding});
+        //    margin: $neutrine-aside-padding;
         //    overflow-y: auto;
         //}
     }
-    //Panel visible
+    //Aside visible
     //&--visible &-content {
     //    display: block;
     //}
@@ -108,7 +108,7 @@ $neutrine-panel-padding: 25px;
     &--visible &-content--top {
         top: 0px;
     }
-    //Panel close icon
+    //Aside close icon
     &-close {
         display: block;
         position: absolute;
