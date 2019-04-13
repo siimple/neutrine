@@ -1,98 +1,92 @@
 import React from "react";
 import * as helpers from "../../helpers.js";
 
-//Import aside component styles
+//Import side component styles
 import "./style.scss";
 
-//Aside base class
-let baseClass = "neutrine-aside";
+//Side base class
+let baseClass = "neutrine-side";
 
 //Available positions
-let asidePositions = ["left", "right", "top", "bottom"];
+let sidePositions = ["left", "right"];
 
-//Export aside component
-export function Aside (props) {
-    //Aside styles
+//Export side component
+export function Side (props) {
+    //Side styles
     let classList = [baseClass];
-    //Check if aside is visible
+    //Check if side is visible
     if (props.visible === true) {
         classList.push(baseClass + "--visible");
     }
-    //Return the aside wrapper
+    //Return the side wrapper
     return React.createElement("div", {"className": classList.join(" ")}, props.children);
 }
 
-//Aside default props
-Aside.defaultProps = {
+//Side default props
+Side.defaultProps = {
     "visible": true
 };
 
-//Aside background
-export function AsideBackground (props) {
+//Side background
+export function SideBackground (props) {
     return helpers.createMergedElement("div", props, {
         "className": baseClass + "-background"
     });
 }
 
-//Aside content
-export function AsideContent (props) {
-    //Aside content class list
+//Side content
+export function SideContent (props) {
+    //Side content class list
     let classList = [baseClass + "-content"];
-    //Check the aside content position
-    if (asidePositions.indexOf(props.position) !== -1) {
+    //Check the side content position
+    if (sidePositions.indexOf(props.position) !== -1) {
         classList.push(baseClass + "-content--" + props.position);
     }
     //Build the content props
     let contentProps = {
         "className": classList.join(" "),
-        "style": {}
+        "style": {
+            "width": props.width
+        }
     };
-    //Check the position value
-    if (props.position === "left" || props.position === "right") {
-        contentProps.style["width"] = props.width;
-    }
-    else if (props.position === "bottom" || props.position === "top") {
-        contentProps.style["height"] = props.height;
-    }
     //Build the content container
     //let content = React.createElement("div", {"className": baseClass + "-content-container"}, props.children);
-    //Return the aside container
+    //Return the side container
     return React.createElement("div", contentProps, props.children);
 }
 
-//Aside content default props
-AsideContent.defaultProps = {
+//Side content default props
+SideContent.defaultProps = {
     "position": "right",
-    "width": "400px",
-    "height": "400px"
+    "width": "400px"
 };
 
-//Aside close icon
-export function AsideClose (props) {
+//Side close icon
+export function SideClose (props) {
     return helpers.createMergedElement("div", props, {
         "className": baseClass + "-close"
     });
 }
 
 /*
-//Aside header
-export function AsideHeader (props) {
+//Side header
+export function SideHeader (props) {
     let close = React.createElement("div", {
         "className": baseClass + "-close",
         "onClick": props.onClose
     });
-    //Return the aside header
+    //Return the side header
     return React.createElement("div", {"className": baseClass + "-header"}, props.title, close);
 }
 
-//Aside header default props
-AsideHeader.defaultProps = {
+//Side header default props
+SideHeader.defaultProps = {
     "title": null,
     "onClose": null
 };
 
-//Aside body
-export function AsideBody (props) {
+//Side body
+export function SideBody (props) {
     return helpers.createMergedElement("div", props, {
         "className": baseClass + "-body"
     });
