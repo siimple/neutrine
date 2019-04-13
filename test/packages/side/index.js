@@ -23,8 +23,16 @@ Neutrine.ready(function () {
                 <Neutrine.Side visible={this.state.visible}>
                     <Neutrine.SideBackground onClick={this.handleClose} />
                     <Neutrine.SideContent position={this.state.position} width={this.state.width}>
-                        <Neutrine.SideClose onClick={this.handleClose} />
-                        More content
+                        <Neutrine.SideHeader>Title</Neutrine.SideHeader>
+                        <Neutrine.SideBody>
+                            Content of the side component 1
+                        </Neutrine.SideBody>
+                        <Neutrine.SideBody>
+                            Content of the side component 2
+                        </Neutrine.SideBody>
+                        <Neutrine.SideBody>
+                            Content of the side component 3
+                        </Neutrine.SideBody>
                     </Neutrine.SideContent>
                 </Neutrine.Side>
             );
