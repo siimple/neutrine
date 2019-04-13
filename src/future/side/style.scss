@@ -53,7 +53,7 @@ $neutrine-side-padding: 25px;
         top: 0px;
         z-index: 120;
         overflow-x: hidden;
-        overflow-y: hidden;
+        overflow-y: auto;
         //Right aligned side
         &--right {
             right: calc(-1 * 100%);
