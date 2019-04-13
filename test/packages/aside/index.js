@@ -1,6 +1,6 @@
 Neutrine.ready(function () {
-    //Panel testing component
-    class PanelTest extends React.Component {
+    //Aside testing component
+    class AsideTest extends React.Component {
         constructor(props) {
             super(props);
             this.state = {
@@ -18,20 +18,20 @@ Neutrine.ready(function () {
                 "visible": false
             });
         }
-        //Render the panel test
+        //Render the aside test
         render () {
             return (
-                <Neutrine.Panel visible={this.state.visible}>
-                    <Neutrine.PanelBackground onClick={this.handleClose} />
-                    <Neutrine.PanelContent position={this.state.position} width={this.state.width} height={this.state.height}>
-                        <Neutrine.PanelClose onClick={this.handleClose} />
+                <Neutrine.Aside visible={this.state.visible}>
+                    <Neutrine.AsideBackground onClick={this.handleClose} />
+                    <Neutrine.AsideContent position={this.state.position} width={this.state.width} height={this.state.height}>
+                        <Neutrine.AsideClose onClick={this.handleClose} />
                         More content
-                    </Neutrine.PanelContent>
-                </Neutrine.Panel>
+                    </Neutrine.AsideContent>
+                </Neutrine.Aside>
             );
         }
     };
-    //Mount panel test component
-    ReactDOM.render(<PanelTest />, document.getElementById("root"));
+    //Mount aside test component
+    ReactDOM.render(<AsideTest />, document.getElementById("root"));
 });
 
