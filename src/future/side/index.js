@@ -68,21 +68,23 @@ export function SideClose (props) {
     });
 }
 
-/*
 //Side header
 export function SideHeader (props) {
-    let close = React.createElement("div", {
-        "className": baseClass + "-close",
-        "onClick": props.onClose
+    //let close = React.createElement("div", {
+    //    "className": baseClass + "-close",
+    //    "onClick": props.onClose
+    //});
+    ////Return the side header
+    //return React.createElement("div", {"className": baseClass + "-header"}, props.title, close);
+    return helpers.createMergedElement("div", props, {
+        "className": baseClass + "-header"
     });
-    //Return the side header
-    return React.createElement("div", {"className": baseClass + "-header"}, props.title, close);
 }
 
 //Side header default props
 SideHeader.defaultProps = {
-    "title": null,
-    "onClose": null
+    //"title": null,
+    //"onClose": null
 };
 
 //Side body
@@ -91,5 +93,4 @@ export function SideBody (props) {
         "className": baseClass + "-body"
     });
 }
-*/
 
