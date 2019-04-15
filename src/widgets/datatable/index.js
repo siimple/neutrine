@@ -536,7 +536,7 @@ export class DataTable extends React.Component {
                         rowProps.className = this.props.highlightClassName;
                     }
                     else {
-                        rowProps.className = "jviz-datatable-row--highlighted";
+                        rowProps.className = "neutrine-datatable-row--highlighted";
                     }
                 }
                 //Check for custom row class name
