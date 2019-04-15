@@ -406,15 +406,19 @@ export class DataTable extends React.Component {
     isRowSelected(row) {
         return typeof this.state.selectedRows["" + row + ""] !== "undefined";
     }
-    //New props
-    componentWillReceiveProps(props) {
-        this.setState(this.resetState(props));
-    }
     //Get visible columns list
     getVisibleColumns() {
         return this.props.columns.filter(function (column) {
             return !(typeof column.visible === "boolean" && column.visible === false);
         });
+    }
+    //New props
+    componentWillReceiveProps(props) {
+        //this.setState(this.resetState(props));
+    }
+    //Reset the table
+    reset() {
+        return this.setState(this.resetState(this.props));
     }
     //Render empty table
     renderEmpty() {
