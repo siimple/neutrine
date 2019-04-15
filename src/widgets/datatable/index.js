@@ -70,10 +70,10 @@ export class DataTable extends React.Component {
     }
     //Calculate the number of pages
     calculatePages(rowsTotal, rowsPage) {
-        console.log(rowsTotal + " - " + rowsPage);
+        //console.log(rowsTotal + " - " + rowsPage);
         let pages = rowsTotal / rowsPage;
-        console.log("Calculated pages: ");
-        console.log(pages);
+        //console.log("Calculated pages: ");
+        //console.log(pages);
         return (Math.floor(pages) === pages) ? pages : Math.floor(pages) + 1;
     }
     //Page change
