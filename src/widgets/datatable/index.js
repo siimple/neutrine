@@ -6,8 +6,8 @@ import React from "react";
 //import * as utils from "../commons/utils.js";
 
 //Import datatable libs
-import DataTablePagination from "./pagination.js";
-import DataTableRender from "./render.js";
+import DataTablePagination from "./src/pagination.js";
+import DataTableRender from "./src/render.js";
 
 //Import styles
 import "./style.scss";
@@ -414,7 +414,7 @@ export class DataTable extends React.Component {
     }
     //New props
     componentWillReceiveProps(props) {
-        //this.setState(this.resetState(props));
+        this.setState(this.resetState(props));
     }
     //Reset the table
     reset() {
@@ -609,20 +609,28 @@ DataTable.defaultProps = {
     "striped": false, 
     "hover": false,
     "height": null,
+    //Table style customization
+    "rowClassName": null,
+    "cellClassName": null,
+    //Highlighted rows
+    "highlightedRows": [], //Highlighted rows
     "highlightClassName": null, //Custom highlight class-name
     "highlightStyle": null,     //Custom highlight style
-    "rowClassName": null,
+    //Cell clicks listener
     "onBodyCellClick": null, //Body cell click event listener
     "onHeaderCellClick": null, //Header cell click event listener
+    //Pagination
+    "page": 0, //Initial page
     "pageSize": 10, //Number of rows for each page
     "pageEntries": [5, 10, 15], //Available rows for each page
+    "usePagination": true, //Use pagination
+    "showPagination": true, //Display pagination
+    //Empty table configuration
     "emptyText": "No data to display", 
     //Selection
     "selectable": false,
-    "selectedRows": null,
-    //Pagination
-    "usePagination": true, //Use pagination
-    "showPagination": true //Display pagination
+    "onSelect": null,
+    "selectedRows": null
 };
 
 
