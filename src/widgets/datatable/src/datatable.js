@@ -105,6 +105,12 @@ export class DataTable extends React.Component {
     }
     //Handle body cell select event
     handleBodyCellSelect(event, index) {
+        let isSelected = this.isRowSelected(index);
+        //Check for custom row selection handler
+        if (typeof this.props.onSelect === "function") {
+            let row = this.getRow(index);
+            return this.props.onSelect(row, index, isSelected);
+        }
         if (this.isRowSelected(index) === true) {
             console.log("----> Deselect row");
             return this.deselectRow([index]);
