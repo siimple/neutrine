@@ -4,8 +4,8 @@ import React from "react";
 //Import table partials
 import {Table, TableHeader, TableBody, TableRow, TableCell} from "../../../core/components/table.js";
 
-//Import commons
-//import * as classNames from "../../commons/dom/class-names.js";
+//Import helpers
+import * as helpers from "../../../helpers.js";
 
 //Find a class-name in a node list
 let findClassInNodeList = function (list, className, callback) {
@@ -58,7 +58,7 @@ export function DataTableRender (props) {
     let headerCells = props.columns.map(function (column, index) {
         //Initialize the cell props
         let cellProps = {
-            "className": ["neutrine-datatable-header-cell"],
+            "className": null, //["neutrine-datatable-header-cell"],
             "onClick": null,
             "style": column.style,
             "key": index
@@ -84,11 +84,11 @@ export function DataTableRender (props) {
         //Add the cell column index
         cellProps["data-column"] = column.index;
         //Join other class names
-        if (typeof column.className === "string") {
-            cellProps.className.push(column.className);
-        }
-        //Join the class list
-        cellProps.className = cellProps.className.join(" ");
+        //if (typeof column.className === "string") {
+        //    cellProps.className.push(column.className);
+        //}
+        //Build the class list
+        cellProps.className = helpers.classNames("neutrine-datatable-header-cell", column.className);
         //Save the cell
         return React.createElement(TableCell, cellProps, column.content);
     });
@@ -107,6 +107,7 @@ export function DataTableRender (props) {
         //Initialize the row props
         let rowProps = {
             "className": row.className,
+            "style": row.style,
             "key": rowIndex
         };
         //Generate the row cells
@@ -116,16 +117,18 @@ export function DataTableRender (props) {
             //Initialize the cell props
             let cellProps = {
                 "key": cellIndex,
-                "className": ["neutrine-datatable-cell"],
+                "className": null, //["neutrine-datatable-cell"],
                 "data-row": "" + row.index + "",
                 "data-column": "" + cell.index + "",
                 "onClick": handleBodyCellClick,
                 "style": cell.style
             };
             //Check the custom cell class-name
-            if (typeof cell.className === "string") {
-                cellProps.className.push(cell.className);
-            }
+            //if (typeof cell.className === "string") {
+            //    cellProps.className.push(cell.className);
+            //}
+            //Add classnames
+            cellProps.className = helpers.classNames("neutrine-datatable-cell", cell.className);
             //Return the cell element
             return React.createElement(TableCell, cellProps, cell.content);
         });
