@@ -30,6 +30,7 @@ export class DataTable extends React.Component {
     }
     //Reset the table state
     resetState(props) {
+        //console.log("Reset global state");
         //Return the new state
         return Object.assign({}, this.resetPaginationState(props), { 
             "sortedColumns": [], 
@@ -52,7 +53,7 @@ export class DataTable extends React.Component {
             newState.selectedRows = DataTableUtils.arrayToObject(selectedRows, {});
         }
         //Check for updating the pagination
-        if (nextProps.usePagination !== this.props.usePatination || nextProps.pageSize !== this.props.pageSize) {
+        if (nextProps.usePagination !== this.props.usePagination || nextProps.pageSize !== this.props.pageSize) {
             Object.assign(newState, this.resetPaginationState(nextProps));
         }
         //Save the table state
@@ -60,6 +61,7 @@ export class DataTable extends React.Component {
     }
     //Reset pagination state
     resetPaginationState(props) {
+        //console.log("Reset pagination state");
         //Get the page size
         let pageSize = props.pageSize;
         //Check if pagination is disabled
