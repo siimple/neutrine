@@ -45,8 +45,8 @@ export function mergeProps (props, extraProps) {
     return extraProps;
 }
 
-//Get prop value
-export function getPropValue (prop, args) {
+//Call a prop to get a value
+export function callProp (prop, args) {
     if (typeof prop === "function") {
         return prop.apply(null, args);
     }
