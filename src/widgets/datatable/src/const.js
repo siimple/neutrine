@@ -1,5 +1,5 @@
 //Contant values of the datatable
 export const DataTableConst = {
-    "highlightedClass": "neutrine-"
+    "highlightedClass": "neutrine-datatable-row--highlighted"
 };
 
