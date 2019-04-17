@@ -17,3 +17,15 @@ export function arrayToObject (array, obj) {
     return obj;
 }
 
+//Find a class-name in a node list
+export function findClassInNodeList (list, className, callback) {
+    for(let i = 0; i < list.length; i++) {
+        //Check if this node contains the provided class name
+        if (list[i].classList.contains(className) === true) {
+            return callback.call(null, list[i], i);
+        }
+    }
+    //Item not found
+    return null;
+}
+
