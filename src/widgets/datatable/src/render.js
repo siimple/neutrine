@@ -7,17 +7,8 @@ import {Table, TableHeader, TableBody, TableRow, TableCell} from "../../../core/
 //Import helpers
 import * as helpers from "../../../helpers.js";
 
-//Find a class-name in a node list
-let findClassInNodeList = function (list, className, callback) {
-    for(let i = 0; i < list.length; i++) {
-        //Check if this node contains the provided class name
-        if (list[i].classList.contains(className) === true) {
-            return callback.call(null, list[i], i);
-        }
-    }
-    //Item not found
-    return null;
-};
+//Import table utils
+import * as DataTableUtils from "./utils.js";
 
 //Render selection element
 let CellSelection = function (props) {
@@ -37,7 +28,7 @@ export function DataTableRender (props) {
     //Handle body cell click
     let handleBodyCellClick = function (event) {
         //Find the cell class in the nodes list
-        return findClassInNodeList(event.nativeEvent.path, "neutrine-datatable-cell", function (node, index) {
+        return DataTableUtils.findClassInNodeList(event.nativeEvent.path, "neutrine-datatable-cell", function (node, index) {
             //Get the row and column index
             let rowIndex = parseInt(node.dataset.row);
             let colIndex = parseInt(node.dataset.column);
@@ -47,10 +38,10 @@ export function DataTableRender (props) {
     };
     //Handle body cell select
     let handleBodyCellSelect = function (event) {
-        console.log("Cell select clicked");
-        return findClassInNodeList(event.nativeEvent.path, "neutrine-datatable-cell", function (node, index) {
+        //console.log("Cell select clicked");
+        return DataTableUtils.findClassInNodeList(event.nativeEvent.path, "neutrine-datatable-cell", function (node, index) {
             let rowIndex = parseInt(node.dataset.row);
-            console.log("Row selected: " + rowIndex);
+            //console.log("Row selected: " + rowIndex);
             return props.onBodyCellSelect.call(null, event, rowIndex);
         });
     };
