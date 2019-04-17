@@ -45,6 +45,15 @@ export function mergeProps (props, extraProps) {
     return extraProps;
 }
 
+//Get prop value
+export function getPropValue (prop, args) {
+    if (typeof prop === "function") {
+        return prop.apply(null, args);
+    }
+    //Return the prop value
+    return prop;
+}
+
 //Join class names
 export function classNames () {
     //Initialize the list of class names
