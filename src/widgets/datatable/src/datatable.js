@@ -5,8 +5,8 @@ import React from "react";
 import * as helpers from "../../../helpers.js";
 
 //Import datatable libs
-import DataTablePagination from "./pagination.js";
-import DataTableRender from "./render.js";
+import {DataTablePagination} from "./pagination.js";
+import {DataTableRender} from "./render.js";
 import * as DataTableUtils from "./utils.js";
 import {DataTableConst} from "./const.js";
 
@@ -318,37 +318,37 @@ export class DataTable extends React.Component {
         //Return the sorted rows
         return sortedRows;
     }
-    //Add a highlighted row
-    addHighlightedRow(row) {
-        let highlightedRows = this.state.highlightedRows;
-        //Check if this row is not highlighted
-        if (highlightedRows.indexOf(row) === -1) {
-            //Insert the new row index
-            highlightedRows.push(row);
-            //Update the state
-            return this.setState({
-                "highlightedRows": highlightedRows
-            });
-        }
-    }
-    //Remove a highlighted row
-    removeHighlightedRow(row) {
-        let highlightedRows = this.state.highlightedRows;
-        let index = highlightedRows.indexOf(row);
-        //Check if this row is not highlighted
-        if (index !== -1) {
-            //Remove the row
-            highlightedRows.splice(index, 1);
-            //Update the state
-            return this.setState({
-                "highlightedRows": highlightedRows
-            });
-        }
-    }
-    //Check if a row is highlighted
-    isRowHighlighted(index) {
-        return this.state.highlightedRows.indexOf(index) !== -1;
-    }
+    ////Add a highlighted row
+    //addHighlightedRow(row) {
+    //    let highlightedRows = this.state.highlightedRows;
+    //    //Check if this row is not highlighted
+    //    if (highlightedRows.indexOf(row) === -1) {
+    //        //Insert the new row index
+    //        highlightedRows.push(row);
+    //        //Update the state
+    //        return this.setState({
+    //            "highlightedRows": highlightedRows
+    //        });
+    //    }
+    //}
+    ////Remove a highlighted row
+    //removeHighlightedRow(row) {
+    //    let highlightedRows = this.state.highlightedRows;
+    //    let index = highlightedRows.indexOf(row);
+    //    //Check if this row is not highlighted
+    //    if (index !== -1) {
+    //        //Remove the row
+    //        highlightedRows.splice(index, 1);
+    //        //Update the state
+    //        return this.setState({
+    //            "highlightedRows": highlightedRows
+    //        });
+    //    }
+    //}
+    ////Check if a row is highlighted
+    //isRowHighlighted(index) {
+    //    return this.state.highlightedRows.indexOf(index) !== -1;
+    //}
     //Select a single row
     selectRow(index) {
         //Get the current selected rows list
@@ -512,18 +512,18 @@ export class DataTable extends React.Component {
                     //Save the cell information
                     rowProps.cells.push(cellProps);
                 });
-                //Check if this row is highlighted
-                if (this.isRowHighlighted(this.state.sortedRows[i]) === true) {
-                    //Check for custom highlight class name
-                    if (typeof this.props.highlightClassName === "string") {
-                        rowProps.className = this.props.highlightClassName;
-                    }
-                    else {
-                        rowProps.className = "neutrine-datatable-row--highlighted";
-                    }
-                }
+                ////Check if this row is highlighted
+                //if (this.isRowHighlighted(this.state.sortedRows[i]) === true) {
+                //    //Check for custom highlight class name
+                //    if (typeof this.props.highlightClassName === "string") {
+                //        rowProps.className = this.props.highlightClassName;
+                //    }
+                //    else {
+                //        rowProps.className = "neutrine-datatable-row--highlighted";
+                //    }
+                //}
                 //Check for custom row class name
-                else if (typeof this.props.rowClassName === "function") {
+                if (typeof this.props.rowClassName === "function") {
                     rowProps.className = this.props.rowClassName.call(null, row, rowProps.index);
                 }
                 //Append this row data
