@@ -111,13 +111,14 @@ export class DataTable extends React.Component {
             let row = this.getRow(index);
             return this.props.onSelect(row, index, isSelected);
         }
-        if (this.isRowSelected(index) === true) {
-            console.log("----> Deselect row");
-            return this.deselectRow([index]);
+        //Select or deselect a row
+        if (isSelected === true) {
+            //console.log("----> Deselect row");
+            return this.deselectRow(index);
         }
         else {
-            console.log("----> Select row");
-            return this.selectRow([index]);
+            //console.log("----> Select row");
+            return this.selectRow(index);
         }
     }
     //Handle the header cell click event
@@ -348,52 +349,23 @@ export class DataTable extends React.Component {
     isRowHighlighted(index) {
         return this.state.highlightedRows.indexOf(index) !== -1;
     }
-    //Select a list of rows
-    selectRow(row) {
-        let rows = (Array.isArray(row) === true) ? row : [row];
+    //Select a single row
+    selectRow(index) {
         //Get the current selected rows list
         let currentSelectedRows = this.state.selectedRows;
         //Add the provided rows to the selection
-        rows.forEach(function (key) {
-            currentSelectedRows["" + key + ""] = true;
-        });
+        currentSelectedRows["" + index + ""] = true;
         //Update the state
         return this.setState({
             "selectedRows": currentSelectedRows
         });
     }
-    //Select all filtered rows
-    selectFilteredRows() {
-        let currentSelectedRows = this.state.selectedRows;
-        //Select only the displayed rows
-        this.state.filteredRows.forEach(function (value) {
-            currentSelectedRows["" + value + ""] = true;
-        });
-        //Update the table state
-        return this.setState({
-            "selectedRows": currentSelectedRows
-        });
-    }
-    //Deselect a list of rows
-    deselectRow(row) {
-        let rows = (Array.isArray(row) === true) ? row : [row];
+    //Deselect a single row
+    deselectRow(index) {
         //Get the current selected rows list
         let currentSelectedRows = this.state.selectedRows;
         //Remove the provided rows
-        rows.forEach(function (key) {
-            delete currentSelectedRows["" + key + ""];
-        });
-        //Update the table state
-        return this.setState({
-            "selectedRows": currentSelectedRows
-        });
-    }
-    //Deselect all filtered rows
-    deselectFilteredRows() {
-        let currentSelectedRows = this.state.selectedRows;
-        this.state.filteredRows.forEach(function (value) {
-            delete currentSelectedRows["" + value + ""];
-        });
+        delete currentSelectedRows["" + index + ""];
         //Update the table state
         return this.setState({
             "selectedRows": currentSelectedRows
@@ -403,6 +375,18 @@ export class DataTable extends React.Component {
     getSelectedRows() {
         return Object.keys(this.state.selectedRows).map(function (value) {
             return parseInt(value);
+        });
+    }
+    //Set selected rows
+    setSelectedRows(rows) {
+        return this.setState({
+            "selectedRows": DataTableUtils.arrayToObject(rows, {})
+        });
+    }
+    //Clean selected rows
+    cleanSelectedRows() {
+        return this.setState({
+            "selectedRows": {}
         });
     }
     //Added method to check if a row is selected
