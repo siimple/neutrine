@@ -2,8 +2,8 @@
 import React from "react";
 
 //Import core components
-import {Btn} from "../../core/elements/btn.js";
-import {Select} from "../../core/form/select.js";
+import {Btn} from "../../../core/elements/btn.js";
+import {Select} from "../../../core/form/select.js";
 
 //Strong text wrapper
 let Strong = function (text) {
@@ -11,7 +11,7 @@ let Strong = function (text) {
 };
 
 //Table pagination class
-export default function DataTablePagination (props) {
+export function DataTablePagination (props) {
     //Change the page
     let changePage = function (page) {
         //Parse the provided page
