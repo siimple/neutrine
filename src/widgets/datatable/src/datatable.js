@@ -30,24 +30,13 @@ export class DataTable extends React.Component {
     }
     //Reset the table state
     resetState(props) {
-        //Get the page size
-        let pageSize = props.pageSize;
-        //Check if pagination is disabled
-        if (typeof props.usePagination === "boolean" && props.usePagination === false) {
-            pageSize = props.data.length;
-        }
         //Return the new state
-        let newState = { 
-            "page": 0, 
-            "pages": this.calculatePages(props.data.length, pageSize),
-            "pageSize": pageSize, 
+        return Object.assign({}, this.resetPaginationState(props), { 
             "sortedColumns": [], 
             "filteredRows": DataTableUtils.range(0, props.data.length),
             "sortedRows": DataTableUtils.range(0, props.data.length),
             "selectedRows": DataTableUtils.arrayToObject(props.selectedRows, {})
-        };
-        //console.log("Number of pages: " + newState.pages);
-        return newState;
+        });
     }
     //New props
     componentWillReceiveProps(nextProps) {
@@ -62,8 +51,27 @@ export class DataTable extends React.Component {
         if (selectedRows !== null && Array.isArray(selectedRows) === true && selectedRows.length > 0) {
             newState.selectedRows = DataTableUtils.arrayToObject(selectedRows, {});
         }
+        //Check for updating the pagination
+        if (nextProps.usePagination !== this.props.usePatination || nextProps.pageSize !== this.props.pageSize) {
+            Object.assign(newState, this.resetPaginationState(nextProps));
+        }
         //Save the table state
         this.setState(newState);
+    }
+    //Reset pagination state
+    resetPaginationState(props) {
+        //Get the page size
+        let pageSize = props.pageSize;
+        //Check if pagination is disabled
+        if (typeof props.usePagination === "boolean" && props.usePagination === false) {
+            pageSize = props.data.length;
+        }
+        //Return the new state with the new pagination configuration
+        return {
+            "page": 0,
+            "pages": this.calculatePages(props.data.length, pageSize),
+            "pageSize": pageSize
+        };
     }
     //Calculate the number of pages
     calculatePages(rowsTotal, rowsPage) {
