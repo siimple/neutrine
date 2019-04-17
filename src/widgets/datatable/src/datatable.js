@@ -470,6 +470,7 @@ export class DataTable extends React.Component {
                 let rowProps = {
                     "index": rowIndex,
                     "cells": [],
+                    "style": null,
                     "className": null,
                     "selected": this.isRowSelected(rowIndex)
                 };
@@ -523,9 +524,13 @@ export class DataTable extends React.Component {
                 //    }
                 //}
                 //Check for custom row class name
-                if (typeof this.props.rowClassName === "function") {
-                    rowProps.className = this.props.rowClassName.call(null, row, rowProps.index);
-                }
+                //if (typeof this.props.rowClassName === "function") {
+                //    rowProps.className = this.props.rowClassName.call(null, row, rowProps.index);
+                //}
+                //Add custom row class
+                rowProps.className = helpers.callProp(this.props.rowClassName, [row, rowProps.index, rowProps.selected]);
+                //Add custom row style
+                rowProps.style = helpers.callProp(this.props.rowStyle, [row, rowProps.index, rowProps.selected]);
                 //Append this row data
                 renderProps.data.push(rowProps);
             }
