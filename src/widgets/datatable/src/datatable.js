@@ -1,35 +1,17 @@
 //Import dependencies
 import React from "react";
 
-//Import commons
-//import * as classNames from "../commons/dom/class-names.js";
-//import * as utils from "../commons/utils.js";
+//Import helpers
+import * as helpers from "../../../helpers.js";
 
 //Import datatable libs
-import DataTablePagination from "./src/pagination.js";
-import DataTableRender from "./src/render.js";
+import DataTablePagination from "./pagination.js";
+import DataTableRender from "./render.js";
+import * as DataTableUtils from "./utils.js";
+import {DataTableConst} from "./const.js";
 
 //Import styles
-import "./style.scss";
-
-//Generate an array range 
-let range = function (start, num) {
-    return Array(num).fill().map(function (el, index) {
-        return start + index;
-    });
-};
-
-//Convert an array to an object
-let arrayToObject = function (array, obj) {
-    //Check for valid array
-    if (typeof array === "object" && array !== null && array.length > 0) {
-        array.forEach(function (value) {
-            obj["" + value + ""] = true;
-        });
-    }
-    //Return the provided object
-    return obj;
-};
+import "../styles/datatable.scss";
 
 //DataTable component
 export class DataTable extends React.Component {
@@ -60,13 +42,28 @@ export class DataTable extends React.Component {
             "pages": this.calculatePages(props.data.length, pageSize),
             "pageSize": pageSize, 
             "sortedColumns": [], 
-            "filteredRows": range(0, props.data.length),
-            "sortedRows": range(0, props.data.length),
-            "selectedRows": arrayToObject(props.selectedRows, {}),
-            "highlightedRows": []
+            "filteredRows": DataTableUtils.range(0, props.data.length),
+            "sortedRows": DataTableUtils.range(0, props.data.length),
+            "selectedRows": DataTableUtils.arrayToObject(props.selectedRows, {})
         };
         //console.log("Number of pages: " + newState.pages);
         return newState;
+    }
+    //New props
+    componentWillReceiveProps(nextProps) {
+        //Check for reset the table state
+        if (nextProps.reload === true || this.props.data.length !== nextProps.data.length) {
+            return this.setState(this.resetState(props));
+        }
+        //Build the new state
+        let newState = {};
+        //Check for new selected rows data
+        let selectedRows = nextProps.selectedRows;
+        if (selectedRows !== null && Array.isArray(selectedRows) === true && selectedRows.length > 0) {
+            newState.selectedRows = DataTableUtils.arrayToObject(selectedRows, {});
+        }
+        //Save the table state
+        this.setState(newState);
     }
     //Calculate the number of pages
     calculatePages(rowsTotal, rowsPage) {
@@ -203,7 +200,7 @@ export class DataTable extends React.Component {
     filter(fn) {
         let self = this;
         //Generate the new filter array
-        let filteredRows = range(0, this.props.data.length);
+        let filteredRows = DataTableUtils.range(0, this.props.data.length);
         //Check the filtering function
         if (typeof fn === "function") {
             //Filter the array of rows indexes
@@ -412,14 +409,6 @@ export class DataTable extends React.Component {
             return !(typeof column.visible === "boolean" && column.visible === false);
         });
     }
-    //New props
-    componentWillReceiveProps(props) {
-        this.setState(this.resetState(props));
-    }
-    //Reset the table
-    reset() {
-        return this.setState(this.resetState(this.props));
-    }
     //Render empty table
     renderEmpty() {
         //Empty columns props
@@ -605,13 +594,17 @@ export class DataTable extends React.Component {
 DataTable.defaultProps = { 
     "columns": [], 
     "data": [],
+    "reload": false,
+    //Table style configuration
     "border": true, 
     "striped": false, 
     "hover": false,
     "height": null,
     //Table style customization
     "rowClassName": null,
+    "rowStyle": null,
     "cellClassName": null,
+    "cellStyle": null,
     //Highlighted rows
     "highlightedRows": [], //Highlighted rows
     "highlightClassName": null, //Custom highlight class-name
