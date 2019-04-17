@@ -2,7 +2,7 @@
 import React from "react";
 
 //Import table partials
-import {Table, TableHeader, TableBody, TableRow, TableCell} from "../../core/components/table.js";
+import {Table, TableHeader, TableBody, TableRow, TableCell} from "../../../core/components/table.js";
 
 //Import commons
 //import * as classNames from "../../commons/dom/class-names.js";
@@ -33,7 +33,7 @@ let CellSelection = function (props) {
 };
 
 //Export datatable render component
-export default function DataTableRender (props) {
+export function DataTableRender (props) {
     //Handle body cell click
     let handleBodyCellClick = function (event) {
         //Find the cell class in the nodes list
