@@ -85,6 +85,7 @@ export * from "./src/widgets/text-editor/index.js";
 export * from "./src/test/index.js";
 
 //Utils
+export * from "./src/utils/dom.js";
 export * from "./src/utils/if.js";
 
 //TO_BE_DEPRECATED
