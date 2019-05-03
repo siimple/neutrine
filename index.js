@@ -84,6 +84,9 @@ export * from "./src/widgets/text-editor/index.js";
 //Export testing components
 export * from "./src/test/index.js";
 
+//Export main components
+export * from "./src/global.js";
+
 //Utils
 export * from "./src/utils/dom.js";
 export * from "./src/utils/if.js";
