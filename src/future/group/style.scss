@@ -69,7 +69,17 @@
         color: siimple-default-color("dark", "light");
     }
     //Group icon
-    &-icon {}
+    &-icon {
+        display: block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 24px;
+        color: #ffffff;
+        background-color: siimple-default-color("primary");
+        border-radius: 100px;
+    }
     //Group action icon
     &-action {
         color: siimple-default-color("dark");
