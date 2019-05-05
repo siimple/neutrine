@@ -71,7 +71,22 @@
     //Group icon
     &-icon {}
     //Group action icon
-    &-action {}
+    &-action {
+        color: siimple-default-color("dark");
+        //color: siimple-default-color("dark", "light");
+        transition: opacity 0.3s;
+        font-size: 22px;
+        height: 34px;
+        width: 34px;
+        line-height: 34px;
+        text-align: center;
+        opacity: 0.4;
+        //Action icon hover
+        &:hover {
+            //color: siimple-default-color("dark");
+            opacity: 1.0;
+        }
+    }
     //Group label 
     &-label {
         font-weight: bold;
