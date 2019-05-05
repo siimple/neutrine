@@ -75,7 +75,9 @@ export function GroupText (props) {
 
 //Group icon
 export function GroupIcon (props) {
-    return null;
+    return helpers.createMergedElement(Icon, props, {
+        "className": baseClass + "-icon"
+    });
 }
 
 //Group action
