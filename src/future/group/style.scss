@@ -25,8 +25,8 @@
         padding: 5px;
         //flex-grow: 1;
         //Item only visible on hover
-        &--visible-on-hover {
-            opacity: 0.0;
+        &--visible-only-on-hover {
+            opacity: 0;
             transition: opacity 0.3s;
         }
         //Primary column
