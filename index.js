@@ -67,6 +67,7 @@ export {Subhead, SubheadText, SubheadBtn} from "./src/components/subhead/index.j
 export {default as Toast} from "./src/components/toast/index.js";
 
 //Future components
+export * from "./src/future/group/index.js";
 export * from "./src/future/side/index.js";
 export * from "./src/future/panel/index.js";
 
