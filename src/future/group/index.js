@@ -80,7 +80,9 @@ export function GroupIcon (props) {
 
 //Group action
 export function GroupAction (props) {
-    return null;
+    return helpers.createMergedElement(Icon, props, {
+        "className": baseClass + "-action"
+    });
 }
 
 //Group label
