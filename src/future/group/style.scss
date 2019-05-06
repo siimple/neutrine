@@ -12,12 +12,32 @@
         padding: 10px;
         width: calc(100% - 20px);
         border-radius: $siimple-default-border-radius;
-        margin-bottom: 5px;
+        //margin-bottom: 11px;
+        position: relative;
         transition: background-color 0.3s;
         //Group on hover
         &:hover {
             background-color: siimple-default-color("light", "light");
             cursor: pointer;
+        }
+        //Not last child
+        &:not(:last-child) {
+            margin-bottom: 5px;
+        }
+        //Bordered row
+        &--border:not(:last-child) {
+            margin-bottom: 11px;
+            //Bottom border
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                height: 1px;
+                width: 100%;
+                background-color: siimple-default-color("light", "light");
+                bottom: -5px;
+                left: 0px;
+            }
         }
     }
     //Group column
