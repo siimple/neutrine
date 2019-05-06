@@ -3,7 +3,7 @@ Neutrine.ready(function () {
     let GroupTest = function () {
         let items = [1, 2, 3, 4].map(function (index) {
             return (
-                <Neutrine.GroupRow key={index}>
+                <Neutrine.GroupRow border key={index}>
                     <Neutrine.GroupColumn align="left" style={{"width":"50px"}}>
                         <Neutrine.GroupIcon icon="rocket" />
                     </Neutrine.GroupColumn>
