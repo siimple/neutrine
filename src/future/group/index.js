@@ -17,10 +17,25 @@ export function Group (props) {
 
 //Main group container
 export function GroupRow (props) {
-    return helpers.createMergedElement("div", props, {
-        "className": baseClass + "-row"
-    });
+    let newProps = helpers.filterProps(props, ["border", "className"]);
+    //Initialize the row class list
+    let classList = [baseClass + "-row"];
+    if (props.border === true) {
+        classList.push(baseClass + "-row--border");
+    }
+    //Build the new props class 
+    newProps.className = helpers.classNames(classList, props.className);
+    //Return the row component
+    return React.createElement("div", newProps, props.children);
+    //return helpers.createMergedElement("div", props, {
+    //    "className": baseClass + "-row"
+    //});
 }
+
+//Row default props
+GroupRow.defaultProps = {
+    "border": false
+};
 
 //Group item component
 export function GroupColumn (props) {
