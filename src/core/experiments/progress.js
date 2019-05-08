@@ -1,14 +1,23 @@
 import React from "react";
-
-//Import component utils
-import * as reactUtils from "../../utils/react.js";
+import * as helpers from "../../helpers.js";
 
 //Import rogress styles
 import "siimple/scss/experiments/_progress.scss";
 
+//Build the progress bar content
+let progressBar = function (props) {
+    let barProps = {
+        "style": {
+            "width": props.completed + "%"
+        }
+    };
+    //Return the bar component
+    return React.createElement("span", barProps, props.children);
+}
+
 //Progress component
-export default function Progress (props) {
-    let newProps = reactUtils.filterProps(props, ["className", "color", "completed", "striped", "velocity"]);
+export function Progress (props) {
+    let newProps = helpers.filterProps(props, ["className", "color", "completed", "striped", "velocity"]);
     let classList = ["siimple-progress"];
     //Check the color property
     if (typeof props.color === "string") {
@@ -23,11 +32,10 @@ export default function Progress (props) {
             classList.push("siimple-progress--striped");
         }
     }
-    //Build the progress bar conent
-    let content = React.createElement("span", {"style": {"width": props.completed + "%"}}, props.children);
-    newProps.className = reactUtils.classNames(classList, props.className);
+    //Merge classnames
+    newProps.className = helpers.classNames(classList, props.className);
     //Return the progress element
-    return React.createElement("div", newProps, content);
+    return React.createElement("div", newProps, progressBar(props));
 }
 
 //Progress component default props 
