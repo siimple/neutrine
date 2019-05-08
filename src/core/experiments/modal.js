@@ -1,42 +1,39 @@
 import React from "react";
-
-//Import components utils
-import * as reactUtils from "../../utils/react.js";
+import * as helpers from "../../helpers.js";
 
 //Import modal styles
 import "siimple/scss/experiments/_modal.scss";
 
-//Export main modal component
-export class Modal extends React.Component {
-    //Render modal content
-    renderContent() {
-        let props = {
-            "className": "siimple-modal-content",
-            "style": null
+//Render modal content
+let modalContent = function (props) {
+    let contentProps = {
+        "className": "siimple-modal-content",
+        "style": null
+    };
+    //Check for modal custon width
+    if (typeof props.width === "string") {
+        contentProps.style = {
+            "maxWidth": props.width
         };
-        //Check for modal custon width
-        if (typeof this.props.width === "string") {
-            props.style = {
-                "maxWidth": this.props.width
-            };
-        }
-        //Return the modal content
-        return React.createElement("div", props, this.props.children);
     }
-    render() {
-        //Get the modal wrapper props
-        let props = reactUtils.filterProps(this.props, ["className", "width", "size"]);
-        //Initialize the modal class
-        props.className = ["siimple-modal"];
-        //Check for modal predefined size
-        if (typeof this.props.size === "string") {
-            props.className.push("siimple-modal--" + this.props.size.toLowerCase());
-        }
-        //Merge the modal class names
-        props.className = reactUtils.classNames(props.className, this.props.className);
-        //Return the modal wrapper element
-        return React.createElement("div", props, this.renderContent());
+    //Return the modal content
+    return React.createElement("div", contentProps, props.children);
+};
+
+//Export main modal component
+export function Modal (props) {
+    //Get the modal wrapper props
+    let newProps = helpers.filterProps(props, ["className", "width", "size"]);
+    //Initialize the modal class
+    let classList = ["siimple-modal"];
+    //Check for modal predefined size
+    if (typeof props.size === "string") {
+        classList.push("siimple-modal--" + props.size.toLowerCase());
     }
+    //Merge the modal class names
+    newProps.className = helpers.classNames(classList, props.className);
+    //Return the modal wrapper element
+    return React.createElement("div", newProps, modalContent(props));
 }
 
 //Modal default props
@@ -45,36 +42,41 @@ Modal.defaultProps = {
     "size": null
 };
 
+//Render the header title element
+let modalHeaderTitle = function (props) {
+    if (typeof props.title === "string") {
+        let titleProps = {
+            "className": "siimple-modal-header-title"
+        };
+        //Return the title element
+        return React.createElement("div", titleProps, props.title);
+    }
+    //No title to display
+    return null;
+};
+
+//Render the modal close element
+let modalHeaderClose = function (props) {
+    if (typeof props.onClose === "function") {
+        //Render the close icon
+        return React.createElement("div", {
+            "className": "siimple-modal-header-close",
+            "onClick": props.onClose
+        });
+    }
+    //No close icon to display
+    return null;
+};
+
+
 //Modal header component
-export class ModalHeader extends React.Component {
-    //Render the modal header title
-    renderTitle() {
-        if (typeof this.props.title === "string") {
-            return React.createElement("div", {"className": "siimple-modal-header-title"}, this.props.title);
-        }
-        //No title to display
-        return null;
-    }
-    //Render the modal header close icon
-    renderClose() {
-        if (typeof this.props.onClose === "function") {
-            //Render the close icon
-            let self = this;
-            return React.createElement("div", {
-                "className": "siimple-modal-header-close",
-                "onClick": self.props.onClose
-            });
-        }
-        //No close icon to display
-        return null;
-    }
-    render() {
-        //Get the modal header props
-        let props = reactUtils.filterProps(this.props, ["className", "onClose", "title"]);
-        props.className = reactUtils.classNames(["siimple-modal-header"], this.props.className);
-        //Return the modal header wrapper
-        return React.createElement("div", props, this.renderTitle(), this.renderClose());
-    }
+export function ModalHeader (props) {
+    //Get the modal header props
+    let newProps = helpers.filterProps(props, ["className", "onClose", "title"]);
+    //Build the header class-names prop
+    newProps.className = helpers.classNames(["siimple-modal-header"], props.className);
+    //Return the modal header wrapper
+    return React.createElement("div", newProps, modalHeaderTitle(props), modalHeaderClose(props));
 }
 
 //Modal header props
@@ -85,11 +87,15 @@ ModalHeader.defaultProps = {
 
 //Modal body component
 export function ModalBody (props) {
-    return reactUtils.basicComponent("div", props, "siimple-modal-body"); 
+    return helpers.createMergedElement("div", props, {
+        "className": "siimple-modal-body"
+    }); 
 }
 
 //Modal footer component
 export function ModalFooter (props) {
-    return reactUtils.basicComponent("div", props, "siimple-modal-footer"); 
+    return helpers.createMergedElement("div", props, {
+        "className": "siimple-modal-footer"
+    }); 
 }
 
