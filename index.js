@@ -55,7 +55,7 @@ export {default as Small} from "./src/core/typography/small.js";
 
 //Core experiments
 export {Modal, ModalHeader, ModalBody, ModalFooter} from "./src/core/experiments/modal.js";
-export {default as Progress} from "./src/core/experiments/progress.js";
+export * from "./src/core/experiments/progress.js";
 export * from "./src/core/experiments/steps.js";
 
 //Icons
