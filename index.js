@@ -65,7 +65,6 @@ export * from "./src/icon/index.js";
 export {default as CookiesConsent} from "./src/components/cookies-consent/index.js";
 export {Projects, ProjectsRow, ProjectsColumn, ProjectsInfoColumn} from "./src/components/projects/index.js";
 export {Subhead, SubheadText, SubheadBtn} from "./src/components/subhead/index.js";
-export {default as Toast} from "./src/components/toast/index.js";
 
 //Future components
 export * from "./src/future/group/index.js";
@@ -82,6 +81,7 @@ export * from "./src/layout/toolbar/index.js";
 //Widgets
 export * from "./src/widgets/datatable/index.js";
 export * from "./src/widgets/text-editor/index.js";
+export * from "./src/widgets/toast/index.js";
 
 //Export testing components
 export * from "./src/test/index.js";
