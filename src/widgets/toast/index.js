@@ -3,9 +3,6 @@ import React from "react";
 //Import core components
 import {Alert, AlertClose} from "../../core/components/alert.js";
 
-//Import utils
-//import delay from "../../utils/delay.js";
-
 //Import toast styles
 import "./style.scss";
 
@@ -15,7 +12,7 @@ let delay = function (time, callback) {
 };
 
 //Export toas widget component
-export default class Toast extends React.Component {
+export class Toast extends React.Component {
     constructor(props) {
         super(props);
         //Ininitialize the toast state
