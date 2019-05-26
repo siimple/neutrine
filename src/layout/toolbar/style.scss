@@ -8,23 +8,23 @@ $neutrine-layout-toolbar-padding: 15px;
 //Neutrine layout toolbar style
 .neutrine-layout-toolbar {
     display: block;
-    min-height: 100%;
-    margin-left: $neutrine-layout-toolbar-width;
+    position: fixed;
+    width: calc(#{$neutrine-layout-toolbar-width} - 2 * #{$neutrine-layout-toolbar-padding});
+    height: 100%;
+    padding-left: $neutrine-layout-toolbar-padding;
+    padding-right: $neutrine-layout-toolbar-padding;
+    background-color: $siimple-blue;
     transition: all 0.3s;
-    position: relative;
+    color: $siimple-white;
+    top: 0px !important;
+    left: 0px;
     //Layout toolbar container
     &-container {
         display: block;
-        position: fixed;
-        width: calc(#{$neutrine-layout-toolbar-width} - 2 * #{$neutrine-layout-toolbar-padding});
-        height: 100%;
-        padding-left: $neutrine-layout-toolbar-padding;
-        padding-right: $neutrine-layout-toolbar-padding;
-        background-color: $siimple-blue;
+        min-height: 100%;
+        margin-left: $neutrine-layout-toolbar-width;
         transition: all 0.3s;
-        color: $siimple-white;
-        top: 0px !important;
-        left: 0px;
+        position: relative;
     }
     //Toolbar group
     &-group {
@@ -39,8 +39,8 @@ $neutrine-layout-toolbar-padding: 15px;
         transition: all 0.3s;
         overflow: hidden;
     }
-    //Toolbar link
-    &-link {
+    //Toolbar item
+    &-item {
         display: block;
         padding-left: 40px;
         padding-right: 10px;
@@ -57,7 +57,7 @@ $neutrine-layout-toolbar-padding: 15px;
         cursor: pointer;
         text-overflow: clip;
         overflow: hidden;
-        //Hover and active link
+        //Hover and active item
         &:hover,
         &--active {
             background-color: rgba($siimple-white, 0.2);
@@ -108,7 +108,7 @@ $neutrine-layout-toolbar-padding: 15px;
         width: 40px !important;    
         //margin-left: 0px !important;
     }
-    &--collapsed &-link {
+    &--collapsed &-item {
         width: 0px !important;
         color: transparent !important;
         padding-right: 0px !important;
