@@ -69,18 +69,29 @@ export function ToolbarItem (props) {
         "onClick": props.onClick
     };
     //Return the item
-    return React.createElement("div", itemProps, props.children); 
+    return React.createElement("div", itemProps, props.text); 
 }
 
 //Toolbar item defualt props
 ToolbarItem.defaultProps = {
     "onClick": null,
     "active": false,
-    "icon": null
+    "icon": null,
+    "text": null
 };
 
 //Toolbar group
 export function ToolbarGroup (props) {
-    return React.createElement("div", {"className": baseClass + "-group"}, props.children);
+    //Toolbar group default props
+    let groupProps = {
+        "className": baseClass + "-group"
+    };
+    //Return the toolbar group element
+    return React.createElement("div", groupProps, props.text);
 }
+
+//Toolbar group default props
+ToolbarGroup.defaultProps = {
+    "text": null
+};
 
