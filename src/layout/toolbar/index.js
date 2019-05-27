@@ -63,11 +63,14 @@ export function ToolbarItem (props) {
     //Build the item props
     let itemProps = {
         "className": helpers.classNames(classList, props.className),
-        "style": {
-            "backgroundImage": "url('" + props.icon + "')"
-        },
         "onClick": props.onClick
     };
+    //Check for custom icon
+    if (props.icon !== null && typeof props.icon === "string") {
+        itemProps.style = {
+            "backgroundImage": "url('" + props.icon + "')"
+        };
+    }
     //Return the item
     return React.createElement("div", itemProps, props.text); 
 }
