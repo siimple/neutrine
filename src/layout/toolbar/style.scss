@@ -104,25 +104,25 @@ $neutrine-layout-toolbar-padding: 15px;
         //transition: all 0.3s;
     }
     //Collapsed toolbar
-    &--collapsed &-container {
+    &-container--collapsed {
         width: 40px !important;    
         //margin-left: 0px !important;
     }
-    &--collapsed &-item {
+    &-container--collapsed &-item {
         width: 0px !important;
         color: transparent !important;
         padding-right: 0px !important;
     }
-    &--collapsed &-group {
+    &-container--collapsed &-group {
         height: 0px !important;
         opacity: 0 !important;
     }
-    &--collapsed &-toggle {
+    &-container--collapsed &-toggle {
         &::before {
             transform: rotate(180deg);
         }
     }
-    &--collapsed {
+    &-container--collapsed & {
         margin-left: calc(40px + 2 * #{$neutrine-layout-toolbar-padding});
     }
 }
