@@ -71,6 +71,9 @@ export * from "./src/future/group/index.js";
 export * from "./src/future/side/index.js";
 export * from "./src/future/panel/index.js";
 
+//Export fake components
+export * from "./src/future/fake-checkbox/index.js";
+
 //Loaders
 export * from "./src/loaders/dna-loader/index.js";
 
