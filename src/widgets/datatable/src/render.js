@@ -1,27 +1,15 @@
 //Import dependencies
 import React from "react";
 
-//Import table partials
+//Import partials
 import {Table, TableHeader, TableBody, TableRow, TableCell} from "../../../core/components/table.js";
+import {FakeCheckbox} from "../../../future/fake-checkbox/index.js";
 
 //Import helpers
 import * as helpers from "../../../helpers.js";
 
 //Import table utils
 import * as DataTableUtils from "./utils.js";
-
-//Render selection element
-let CellSelection = function (props) {
-    //Initialize the selection item class list
-    let classList = ["neutrine-datatable-selection"];
-    if (props.selected === true) {
-        classList.push("neutrine-datatable-selection--selected");
-    }
-    //Return the selection element
-    return React.createElement("div", {
-        "className": classList.join(" ")
-    });
-};
 
 //Export datatable render component
 export function DataTableRender (props) {
@@ -133,7 +121,7 @@ export function DataTableRender (props) {
                 "key": -1
             };
             //Initialize the selection cell content
-            let selectCellContent = React.createElement(CellSelection, {
+            let selectCellContent = React.createElement(FakeCheckbox, {
                 "selected": row.selected
             });
             //Save the selection cell
