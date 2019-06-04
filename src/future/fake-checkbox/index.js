@@ -1,7 +1,7 @@
 import React from "react";
 
 //Import fake checkbox styles
-import "./style.scss;"
+import "./style.scss";
 
 //Export fake checkbox component
 export function FakeCheckbox (props) {
