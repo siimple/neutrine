@@ -4,11 +4,11 @@ import React from "react";
 import "./style.scss;"
 
 //Export fake checkbox component
-export function FakeCheck (props) {
+export function FakeCheckbox (props) {
     //Initialize the fake checkbox class list
-    let classList = ["neutrine-fake-check"];
+    let classList = ["neutrine-fake-checkbox"];
     if (props.selected === true) {
-        classList.push("neutrine-fake-check--selected");
+        classList.push("neutrine-fake-checkbox--selected");
     }
     //Return the fake checkbox component
     return React.createElement("div", {
@@ -18,7 +18,7 @@ export function FakeCheck (props) {
 }
 
 //Fake check default props
-FakeCheck.defaultProps = {
+FakeCheckbox.defaultProps = {
     "selected": false,
     "onClick": null
 }
