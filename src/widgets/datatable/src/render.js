@@ -3,7 +3,7 @@ import React from "react";
 
 //Import partials
 import {Table, TableHeader, TableBody, TableRow, TableCell} from "../../../core/components/table.js";
-import {FakeCheckbox} from "../../../future/fake-checkbox/index.js";
+import {FakeCheckbox} from "../../../components/fake-checkbox/index.js";
 
 //Import helpers
 import * as helpers from "../../../helpers.js";
