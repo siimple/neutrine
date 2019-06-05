@@ -20,7 +20,7 @@ export const Range = React.forwardRef(function (props, ref) {
     //}
     //Check the disabled property
     if (props.disabled === true) {
-        classList.push("neutrine-raange--disabled");
+        classList.push("neutrine-range--disabled");
     }
     //Update range input props
     Object.assign(inputProps, {
@@ -31,4 +31,10 @@ export const Range = React.forwardRef(function (props, ref) {
     //Return the input element
     return React.createElement("input", inputProps);
 });
+
+//Range default props
+Range.defaultProps = {
+    "fluid": false,
+    "disabled": false
+};
 
