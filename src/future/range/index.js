@@ -7,7 +7,7 @@ import "./style.scss";
 //Export range component
 export const Range = React.forwardRef(function (props, ref) {
     //Clone the input props
-    let inputProps = helpers.filterProps(props, ["fluid", "color", "className", "type"]);
+    let inputProps = helpers.filterProps(props, ["fluid", "disabled", "color", "className", "type"]);
     //Initialize the input class list
     let classList = ["neutrine-range"];
     //Check the fluid property
@@ -18,6 +18,10 @@ export const Range = React.forwardRef(function (props, ref) {
     //if (typeof props.color === "string") {
     //    classList.push("neutrine-range--" + props.color);
     //}
+    //Check the disabled property
+    if (props.disabled === true) {
+        classList.push("neutrine-raange--disabled");
+    }
     //Update range input props
     Object.assign(inputProps, {
         "type": "range",
