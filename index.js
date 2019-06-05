@@ -62,17 +62,14 @@ export * from "./src/core/experiments/steps.js";
 export * from "./src/icon/index.js";
 
 //Components
-export {default as CookiesConsent} from "./src/components/cookies-consent/index.js";
-export {Projects, ProjectsRow, ProjectsColumn, ProjectsInfoColumn} from "./src/components/projects/index.js";
-export {Subhead, SubheadText, SubheadBtn} from "./src/components/subhead/index.js";
+//export {default as CookiesConsent} from "./src/components/cookies-consent/index.js";
+export * from "./src/components/split-panel/index.js";
+export * from "./src/components/fake-checkbox/index.js";
 
 //Future components
 export * from "./src/future/group/index.js";
 export * from "./src/future/side/index.js";
 export * from "./src/future/panel/index.js";
-
-//Export fake components
-export * from "./src/future/fake-checkbox/index.js";
 
 //Loaders
 export * from "./src/loaders/dna-loader/index.js";
