@@ -31,6 +31,17 @@
     &--fluid {
         width: 100%;
     }
+    //Range disabled
+    &--disabled {
+        opacity: 0.7 !important;
+        cursor: not-allowed !important;
+        //Thumb disbaled style
+        &::-webkit-slider-thumb,
+        &::-moz-range-thumb,
+        &::-ms-thumb {
+            background-color: siimple-default-color("dark") !important;
+        }
+    }
     //Thumb style
     &::-webkit-slider-thumb {
         -webkit-appearance: none;
