@@ -19,8 +19,14 @@
     outline: none;
     //opacity: 0.7;
     border-radius: 5px;
+    margin-top: 11px;
+    margin-bottom: 11px;
     -webkit-transition: .2s;
     transition: opacity .2s;
+    //Range hover
+    //&:hover {
+    //    opacity: 1.0;
+    //}
     //Fluid range
     &--fluid {
         width: 100%;
