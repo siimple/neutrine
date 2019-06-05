@@ -1,4 +1,4 @@
-import React fromm "react";
+import React from "react";
 import * as helpers from "../../helpers.js";
 
 //Import range styles
