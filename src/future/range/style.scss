@@ -39,7 +39,7 @@
         &::-webkit-slider-thumb,
         &::-moz-range-thumb,
         &::-ms-thumb {
-            background-color: siimple-default-color("dark") !important;
+            background: siimple-default-color("dark") !important;
         }
     }
     //Thumb style
