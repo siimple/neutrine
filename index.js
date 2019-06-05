@@ -73,6 +73,7 @@ export * from "./src/future/side/index.js";
 export * from "./src/future/panel/index.js";
 
 //Loaders
+export * from "./src/loaders/basic-loader/index.js";
 export * from "./src/loaders/dna-loader/index.js";
 
 //Layout components
