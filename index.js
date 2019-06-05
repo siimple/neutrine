@@ -71,6 +71,7 @@ export * from "./src/components/fake-checkbox/index.js";
 export * from "./src/future/group/index.js";
 export * from "./src/future/side/index.js";
 export * from "./src/future/panel/index.js";
+export * from "./src/future/range/index.js";
 
 //Loaders
 export * from "./src/loaders/basic-loader/index.js";
