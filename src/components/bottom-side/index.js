@@ -22,7 +22,7 @@ export class BottomSide extends React.Component {
         });
     }
     //Render the title
-    renderiHeaderTitle() {
+    renderHeaderTitle() {
         return this.title;
     }
     //Render the header chevron
