@@ -66,6 +66,7 @@ export * from "./src/icon/index.js";
 export * from "./src/components/split-panel/index.js";
 export * from "./src/components/scrim/index.js";
 export * from "./src/components/fake-checkbox/index.js";
+export * from "./src/components/bottom-side/index.js";
 
 //Future components
 export * from "./src/future/group/index.js";
