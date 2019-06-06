@@ -62,7 +62,7 @@ export class BottomSide extends React.Component {
         //Check if component is collapsed
         if (this.state.collapsed === true) {
             //Update the props
-            Object.assign({
+            Object.assign(props, {
                 "className": [baseClass, baseClass + "--collapsed"].join(" "),
                 "style": {
                     "bottom": "-" + this.props.height + "px"
