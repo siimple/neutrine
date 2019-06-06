@@ -23,7 +23,7 @@ export class BottomSide extends React.Component {
     }
     //Render the title
     renderHeaderTitle() {
-        return this.title;
+        return this.props.title;
     }
     //Render the header chevron
     renderHeaderChevron() {
