@@ -65,7 +65,7 @@ export class BottomSide extends React.Component {
             Object.assign(props, {
                 "className": [baseClass, baseClass + "--collapsed"].join(" "),
                 "style": {
-                    "bottom": "-" + this.props.height + "px"
+                    "bottom": "-" + this.props.height
                 }
             });
         }
@@ -77,6 +77,6 @@ export class BottomSide extends React.Component {
 //Bottom side component default props
 BottomSide.defaultProps = {
     "title": "",
-    "height": 350
+    "height": "350px"
 };
 
