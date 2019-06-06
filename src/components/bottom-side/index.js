@@ -45,25 +45,38 @@ export class BottomSide extends React.Component {
     renderBody() {
         //Build the body props
         let props = {
-            "className": baseClass + "-body"
+            "className": baseClass + "-body",
+            "style": {
+                "height": this.props.height
+            }
         };
         //Return the body component
         return React.createElement("div", props, this.props.children);
     }
     //Render the bottom side component
     render() {
-        let classList = [baseClass];
+        //Build the component props
+        let props = {
+            "className": baseClass
+        };
         //Check if component is collapsed
         if (this.state.collapsed === true) {
-            classList.push(baseClass + "--collapsed");
+            //Update the props
+            Object.assign({
+                "className": [baseClass, baseClass + "--collapsed"].join(" ").
+                "style": {
+                    "bottom": "-" + this.props.height + "px"
+                }
+            });
         }
         //Return the bottom side component
-        return React.createElement("div", {"className": classList.join(" ")}, this.renderHeader(), this.renderBody());
+        return React.createElement("div", props, this.renderHeader(), this.renderBody());
     }
 }
 
 //Bottom side component default props
 BottomSide.defaultProps = {
-    "title": ""
+    "title": "",
+    "height": 350
 };
 
