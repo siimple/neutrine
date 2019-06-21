@@ -3,8 +3,9 @@ import React from "react";
 //Import panel styles
 import "./style.scss";
 
-//Base class
+//Global styles
 let baseClass = "neutrine-splitpanel";
+let separatorSize = 4;
 
 //Get children elements
 let getChildren = function (props) {
@@ -170,17 +171,23 @@ export class SplitPanel extends React.Component {
             //Check for vertical split
             if (this.isVerticalSplit() === true) {
                 Object.assign(panelProps.style, {
-                    "width": this.state.currentSize,
-                    "flex": "none"
+                    "width": this.state.currentSize
                 });
             }
             else {
                 Object.assign(panelProps.style, {
                     "height": this.state.currentSize,
-                    "display": "flex",
-                    "flex": "none"
+                    "display": "flex"
                 });
             }
+            //Assign the flex property
+            panelProps.style.flex = "none";
+        }
+        //Add the second panel width/height
+        else {
+            let styleProp = (this.isVerticalSplit() === true) ? "height" : "width";
+            //Add hack to prevent fill width/height panels
+            panelProps.style[styleProp] = "0px";
         }
         //Return the panel wrapper
         return React.createElement("div", panelProps, children[index]);
