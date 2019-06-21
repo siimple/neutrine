@@ -185,7 +185,7 @@ export class SplitPanel extends React.Component {
         }
         //Add the second panel width/height
         else {
-            let styleProp = (this.isVerticalSplit() === true) ? "height" : "width";
+            let styleProp = (this.isVerticalSplit() === true) ? "width" : "height";
             //Add hack to prevent fill width/height panels
             panelProps.style[styleProp] = "0px";
         }
