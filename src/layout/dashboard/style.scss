@@ -27,6 +27,17 @@ $neutrine-layout-dashboard-header-height: 70px;
     &--hide-sidebar &-sidebar {
         left: -$neutrine-layout-dashboard-sidebar-width;
     }
+    //Collapse sidebar
+    &--collapse-sidebar {
+        padding-left: 80px;
+    }
+    &--collapse-sidebar &-sidebar {
+        width: 50px !important;
+    }
+    &--collapse-sidebar &-sidebar-item {
+        width: 0px;
+        padding-right: 0px;
+    }
     //Dashboard sidebar
     &-sidebar {
         display: block;
