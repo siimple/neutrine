@@ -16,6 +16,10 @@ $neutrine-layout-dashboard-header-height: 70px;
     padding-left: $neutrine-layout-dashboard-sidebar-width;
     padding-top: $neutrine-layout-dashboard-header-height;
     transition: padding-left 0.3s;
+    //Light dashboard
+    &--light {
+        background-color: siimple-default-color("light", "light");
+    }
     //Hide sidebar
     &--hide-sidebar {
         padding-left: 0px;
