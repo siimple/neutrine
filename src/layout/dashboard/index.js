@@ -17,13 +17,23 @@ export function Dashboard (props) {
     if (props.hideSidebar === true) {
         classList.push(baseClass + "--hide-sidebar");
     }
+    //Check if sidebar is collapsed
+    else if (props.collapseSidebar === true) {
+        classList.push(baseClass + "--collapse-sidebar");
+    }
+    //Check for light dashboard
+    if (props.light === true) {
+        classList.push(baseClass + "--light");
+    }
     //Return the dahsboard element
     return React.createElement("div", {"className": classList.join(" ")}, props.children);
 }
 
 //Dashboard default props
 Dashboard.defaultProps = {
-    "hideSidebar": true
+    "light": false,
+    "hideSidebar": false,
+    "collapseSidebar": false
 };
 
 //Export sidebar component
