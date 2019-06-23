@@ -1,6 +1,6 @@
 //Import dependencies
-//@import "siimple/scss/_variables.scss";
-@import "siimple-colors/scss/colors.scss";
+@import "siimple/scss/_variables.scss";
+//@import "siimple-colors/scss/colors.scss";
 
 //Dashboard variables
 $neutrine-layout-dashboard-sidebar-width: 250px;
@@ -18,7 +18,7 @@ $neutrine-layout-dashboard-header-height: 70px;
     transition: padding-left 0.3s;
     //Light dashboard
     &--light {
-        background-color: siimple-default-color("light", "light");
+        background-color: siimple-default-color("light","light");
     }
     //Hide sidebar
     &--hide-sidebar {
@@ -37,7 +37,6 @@ $neutrine-layout-dashboard-header-height: 70px;
         padding-right: 15px;
         padding-top: 20px;
         padding-bottom: 20px;
-        //background-color: $siimple-grey-light;
         transition: all 0.3s;
         top: $neutrine-layout-dashboard-header-height !important;
         left: 0px;
@@ -61,15 +60,15 @@ $neutrine-layout-dashboard-header-height: 70px;
             text-overflow: clip;
             overflow: hidden;
             position: relative;
-            color: $siimple-navy-light;
+            color: siimple-default-color("dark","light");
             //Hover link
             &:hover {
-                background-color: rgba($siimple-blue, 0.1);
+                background-color: rgba(siimple-default-color("primary"), 0.1);
             }
             //Active link
             &--active {
-                background-color: rgba($siimple-blue, 0.2) !important;
-                color: $siimple-blue;
+                background-color: rgba(siimple-default-color("primary"), 0.2) !important;
+                color: siimple-default-color("primary");
                 font-weight: 600;
             }
             //Link icons
@@ -85,7 +84,7 @@ $neutrine-layout-dashboard-header-height: 70px;
         &-separator {
             display: block;
             height: 1px;
-            background-color: $siimple-grey;
+            background-color: siimple-default-color("light");
             margin-top: 10px;
             margin-bottom: 10px;
         }
@@ -102,9 +101,8 @@ $neutrine-layout-dashboard-header-height: 70px;
         padding-bottom: 10px;
         padding-left: 15px;
         padding-right: 15px;
-        //background-color: $siimple-grey-light;
-        background-color: $siimple-white;
-        border-bottom: 2px solid $siimple-grey-light;
+        background-color: siimple-default-color("white");
+        border-bottom: 2px solid siimple-default-color("light", "light");
         //Header title and subtitle
         &-title,
         &-subtitle {
@@ -118,11 +116,11 @@ $neutrine-layout-dashboard-header-height: 70px;
         //Header title
         &-title {
             font-weight: bold;
-            color: $siimple-navy;
+            color: siimple-default-color("dark");
         }
         //Header subtitle
         &-subtitle {
-            color: $siimple-navy-extra-light;
+            color: siimple-default-color("dark", "light");
         }
         //Header toggle icon
         &-toggle {
@@ -134,76 +132,12 @@ $neutrine-layout-dashboard-header-height: 70px;
             padding-top: 10px;
             padding-bottom: 10px;
             cursor: pointer;
-            color: $siimple-navy-light;
+            color: siimple-default-color("dark", "light");
             &:hover {
-                color: $siimple-navy;
+                color: siimple-default-color("dark");
             }
             transition: color 0.3s;
         }
-        //Dashboard menu user block
-        /*
-        &-menu {
-            display: block;
-            float: right;
-            position: relative;
-            height: calc(#{$neutrine-layout-dashboard-header-height} - 20px);
-            //User icon 
-            &-user {
-                display: block;
-                border-radius: 100px;
-                width: 36px;
-                height: 36px;
-                border: 2px solid $siimple-white;
-                background-position: center center;
-                background-image: url("./images/user.svg");
-                background-size: 36px 36px;
-                background-repeat: no-repeat;
-                margin: 5px;
-                cursor: pointer;
-            }
-            //User dropdown
-            &-dropdown {
-                display: none;
-                position: absolute;
-                top: 50px;
-                right: 5px;
-                width: 200px;
-                padding: 10px;
-                border-radius: 5px;
-                color: $siimple-white;
-                background-color: $siimple-navy;
-                //Dropdown triangle
-                &::after {
-                    display: block;
-                    content: "";
-                    position: absolute;
-                    border-bottom: 5px solid $siimple-navy;
-                    border-left: 5px solid transparent;
-                    border-right: 5px solid transparent;
-                    width: 0px;
-                    height: 0px;
-                    top: -5px;
-                    right: 15px;
-                }
-            }
-            //Menu item
-            &-item {
-                display: block;
-                line-height: 22px;
-                opacity: 0.6;
-                font-size: 14px;
-                transition: all 0.3s;
-                cursor: pointer;
-                &:hover {
-                    opacity: 0.8;
-                }
-            }
-            //On menu hover
-            &:hover > &-dropdown {
-                display: block;
-            }
-        }
-        */
     }
     //Dashboard Content
     &-content {
@@ -225,7 +159,7 @@ $neutrine-layout-dashboard-header-height: 70px;
     &-footer {
         display: block;
         max-width: calc(#{$neutrine-layout-dashboard-main-width} - 20px);
-        border-top: 1px solid $siimple-grey;
+        border-top: 1px solid siimple-default-color("light");
         padding-top: 30px;
         padding-left: 10px;
         padding-right: 10px;
@@ -233,7 +167,7 @@ $neutrine-layout-dashboard-header-height: 70px;
         margin-right: auto;
         margin-top: 30px;
         margin-bottom: 30px;
-        color: $siimple-navy-extra-light;
+        color: siimple-default-color("dark", "light");
         font-size: 14px;
     }
 }
