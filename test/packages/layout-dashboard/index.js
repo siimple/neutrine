@@ -16,7 +16,7 @@ Neutrine.ready(function () {
         }
         render(props) {
             return (
-                <Neutrine.Dashboard hideSidebar={!this.state.sidebarVisible}>
+                <Neutrine.Dashboard light collapseSidebar={!this.state.sidebarVisible}>
                     <Neutrine.DashboardHeader>
                         <Neutrine.DashboardHeaderToggle onClick={this.handleToggleClick} />
                         <Neutrine.DashboardHeaderTitle>
