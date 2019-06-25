@@ -197,7 +197,7 @@ export function DashboardContent (props) {
     }
     //Build the dashboard content props
     let contentProps = {
-        "className": classNames(classList, props.className),
+        "className": helpers.classNames(classList, props.className),
         "style": props.style
     };
     //Return the content element
