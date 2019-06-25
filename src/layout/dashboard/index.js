@@ -135,12 +135,10 @@ export function DashboardHeader (props) {
         return React.createElement("div", menuProps, this.renderMenuUser(), this.renderMenuDropdown());
     }
     //*/
-    //Initialize the dashboard header props
-    let headerProps = {
-        "className": baseClass + "-header"
-    };
     //Return the header element
-    return React.createElement("div", headerProps, props.children);
+    return helpers.createMergedElement("div", props, {
+        "className": baseClass + "-header"
+    });
 }
 
 //Dashboard header default props
@@ -197,8 +195,13 @@ export function DashboardContent (props) {
     if (props.fluid === true) {
         classList.push(baseClass + "-content--fluid");
     }
+    //Build the dashboard content props
+    let contentProps = {
+        "className": classNames(classList, props.className),
+        "style": props.style
+    };
     //Return the content element
-    return React.createElement("div", {"className": classList.join(" ")}, props.children);
+    return React.createElement("div", contentProps, props.children);
 }
 
 //Dashboard content props
