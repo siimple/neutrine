@@ -25,8 +25,13 @@ export function Dashboard (props) {
     if (props.light === true) {
         classList.push(baseClass + "--light");
     }
+    //Build the dashboard props
+    let dashboardProps = {
+        "className": helpers.classNames(classList, props.className),
+        "style": props.style
+    };
     //Return the dahsboard element
-    return React.createElement("div", {"className": classList.join(" ")}, props.children);
+    return React.createElement("div", dashboardProps, props.children);
 }
 
 //Dashboard default props
@@ -38,7 +43,9 @@ Dashboard.defaultProps = {
 
 //Export sidebar component
 export function DashboardSidebar (props) {
-    return React.createElement("div", {"className": baseClass + "-sidebar"}, props.children);
+    return helpers.createMergedElement("div", props, {
+        "className": baseClass + "-sidebar"
+    });
 }
 
 //Sidebar separator
