@@ -5,16 +5,16 @@
 //Dashboard variables
 $neutrine-layout-dashboard-sidebar-width: 250px;
 $neutrine-layout-dashboard-main-width: 860px;
-$neutrine-layout-dashboard-header-height: 70px;
+$neutrine-layout-dashboard-header-height: 52px;
 
 //Dashboard style
 .neutrine-layout-dashboard {
     display: block;
-    min-height: 100%;
+    min-height: calc(100% - 54px);
     position: relative;
     //background-color: $siimple-grey-light;
     padding-left: $neutrine-layout-dashboard-sidebar-width;
-    padding-top: $neutrine-layout-dashboard-header-height;
+    padding-top: 54px;
     transition: padding-left 0.3s;
     //Light dashboard
     &--light {
@@ -43,7 +43,7 @@ $neutrine-layout-dashboard-header-height: 70px;
         display: block;
         position: absolute;
         width: calc(#{$neutrine-layout-dashboard-sidebar-width} - 30px);
-        height: calc(100% - #{$neutrine-layout-dashboard-header-height} - 40px);
+        height: calc(100% - 54px - 40px);
         padding-left: 15px;
         padding-right: 15px;
         padding-top: 20px;
@@ -107,9 +107,9 @@ $neutrine-layout-dashboard-header-height: 70px;
         position: absolute;
         top: 0px;
         left: 0px;
-        height: calc(#{$neutrine-layout-dashboard-header-height} - 20px);
-        padding-top: 10px;
-        padding-bottom: 10px;
+        height: 34px;
+        padding-top: 9px;
+        padding-bottom: 8px;
         padding-left: 15px;
         padding-right: 15px;
         background-color: siimple-default-color("white");
@@ -119,8 +119,8 @@ $neutrine-layout-dashboard-header-height: 70px;
         &-subtitle {
             display: block;
             float: left;
-            height: calc(#{$neutrine-layout-dashboard-header-height} - 20px);
-            line-height: calc(#{$neutrine-layout-dashboard-header-height} - 20px);
+            height: 34px;
+            line-height: 34px;
             font-size: 20px;
             padding-right: 3px;
         }
