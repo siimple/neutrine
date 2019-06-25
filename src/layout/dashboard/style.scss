@@ -165,6 +165,12 @@ $neutrine-layout-dashboard-header-height: 52px;
         &--fluid {
             max-width: calc(100% - 30px);
         }
+        //Full content
+        &--full {
+            width: 100%;
+            height: calc(100% - 54px);
+            padding: 0px !important;
+        }
     }
     //Dashboard footer
     &-footer {
