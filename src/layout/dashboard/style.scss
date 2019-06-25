@@ -10,9 +10,9 @@ $neutrine-layout-dashboard-header-height: 52px;
 //Dashboard style
 .neutrine-layout-dashboard {
     display: block;
-    min-height: calc(100% - 54px);
+    min-height: calc(100% - 66px);
     position: relative;
-    //background-color: $siimple-grey-light;
+    background-color: siimple-default-color("white");
     padding-left: $neutrine-layout-dashboard-sidebar-width;
     padding-top: 54px;
     transition: padding-left 0.3s;
@@ -43,7 +43,7 @@ $neutrine-layout-dashboard-header-height: 52px;
         display: block;
         position: absolute;
         width: calc(#{$neutrine-layout-dashboard-sidebar-width} - 30px);
-        height: calc(100% - 54px - 40px);
+        height: calc(100% - 66px - 40px);
         padding-left: 15px;
         padding-right: 15px;
         padding-top: 20px;
@@ -51,7 +51,6 @@ $neutrine-layout-dashboard-header-height: 52px;
         transition: all 0.3s;
         top: $neutrine-layout-dashboard-header-height !important;
         left: 0px;
-        //left: calc(-1*#{$neutrine-layout-dashboard-sidebar-width} - 2*#{$neutrine-layout-dashboard-sidebar-padding});
         //transition: left 0.3s;
         //Sidebar item
         &-item {
@@ -108,8 +107,8 @@ $neutrine-layout-dashboard-header-height: 52px;
         top: 0px;
         left: 0px;
         height: 34px;
-        padding-top: 9px;
-        padding-bottom: 9px;
+        padding-top: 15px;
+        padding-bottom: 15px;
         padding-left: 15px;
         padding-right: 15px;
         background-color: siimple-default-color("white");
@@ -156,8 +155,8 @@ $neutrine-layout-dashboard-header-height: 52px;
         max-width: calc(#{$neutrine-layout-dashboard-main-width} - 30px);
         margin-left: auto;
         margin-right: auto;
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
         padding-left: 15px;
         padding-right: 15px;
         //min-height: 100%;
@@ -165,14 +164,12 @@ $neutrine-layout-dashboard-header-height: 52px;
         &--fluid {
             max-width: calc(100% - 30px);
         }
-        //Full content
-        &--full {
+        //Fixed height
+        &--fixed {
             //width: 100%;
-            max-width: 100%;
-            height: calc(100% - 54px);
-            padding: 0px !important;
-            margin-left: 0px !important;
-            margin-right: 0px !important;
+            max-width: calc(100% - 30px);
+            height: calc(100% - 96px);
+            //padding: 0px !important;
         }
     }
     //Dashboard footer
