@@ -189,12 +189,12 @@ export function DashboardHeaderSubtitle (props) {
 export function DashboardContent (props) {
     //Content class list
     let classList = [baseClass + "-content"];
-    //Check for full content
-    if (props.full === true) {
-        classList.push(baseClass + "-content--full");
+    //Check for Fixed content
+    if (props.fixed === true) {
+        classList.push(baseClass + "-content--fixed");
     }
     //Check for fluid content
-    else if (props.fluid === true) {
+    if (props.fluid === true) {
         classList.push(baseClass + "-content--fluid");
     }
     //Return the content element
@@ -203,7 +203,7 @@ export function DashboardContent (props) {
 
 //Dashboard content props
 DashboardContent.defaultProps = {
-    "full": false,
+    "fixed": false,
     "fluid": false
 };
 
