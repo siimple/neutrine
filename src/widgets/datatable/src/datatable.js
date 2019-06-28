@@ -35,8 +35,8 @@ export class DataTable extends React.Component {
         return Object.assign({}, this.resetPaginationState(props), { 
             "sortedColumns": [], 
             "filteredRows": DataTableUtils.range(0, props.data.length),
-            "sortedRows": DataTableUtils.range(0, props.data.length),
-            "selectedRows": DataTableUtils.arrayToObject(props.selectedRows, {})
+            "sortedRows": DataTableUtils.range(0, props.data.length)
+            //"selectedRows": DataTableUtils.arrayToObject(props.selectedRows, {})
         });
     }
     //New props
@@ -48,10 +48,10 @@ export class DataTable extends React.Component {
         //Build the new state
         let newState = {};
         //Check for new selected rows data
-        let selectedRows = nextProps.selectedRows;
-        if (selectedRows !== null && Array.isArray(selectedRows) === true && selectedRows.length > 0) {
-            newState.selectedRows = DataTableUtils.arrayToObject(selectedRows, {});
-        }
+        //let selectedRows = nextProps.selectedRows;
+        //if (selectedRows !== null && Array.isArray(selectedRows) === true && selectedRows.length > 0) {
+        //    newState.selectedRows = DataTableUtils.arrayToObject(selectedRows, {});
+        //}
         //Check for updating the pagination
         if (nextProps.usePagination !== this.props.usePagination || nextProps.pageSize !== this.props.pageSize) {
             Object.assign(newState, this.resetPaginationState(nextProps));
@@ -115,20 +115,9 @@ export class DataTable extends React.Component {
     }
     //Handle body cell select event
     handleBodyCellSelect(event, index) {
-        let isSelected = this.isRowSelected(index);
         //Check for custom row selection handler
         if (typeof this.props.onSelect === "function") {
-            let row = this.getRow(index);
-            return this.props.onSelect(row, index, isSelected);
-        }
-        //Select or deselect a row
-        if (isSelected === true) {
-            //console.log("----> Deselect row");
-            return this.deselectRow(index);
-        }
-        else {
-            //console.log("----> Select row");
-            return this.selectRow(index);
+            return this.props.onSelect(this.getRow(index), index); //, isSelected);
         }
     }
     //Handle the header cell click event
@@ -359,50 +348,50 @@ export class DataTable extends React.Component {
     //isRowHighlighted(index) {
     //    return this.state.highlightedRows.indexOf(index) !== -1;
     //}
-    //Select a single row
-    selectRow(index) {
-        //Get the current selected rows list
-        let currentSelectedRows = this.state.selectedRows;
-        //Add the provided rows to the selection
-        currentSelectedRows["" + index + ""] = true;
-        //Update the state
-        return this.setState({
-            "selectedRows": currentSelectedRows
-        });
-    }
-    //Deselect a single row
-    deselectRow(index) {
-        //Get the current selected rows list
-        let currentSelectedRows = this.state.selectedRows;
-        //Remove the provided rows
-        delete currentSelectedRows["" + index + ""];
-        //Update the table state
-        return this.setState({
-            "selectedRows": currentSelectedRows
-        });
-    }
-    //Get a list with all selected rows
-    getSelectedRows() {
-        return Object.keys(this.state.selectedRows).map(function (value) {
-            return parseInt(value);
-        });
-    }
-    //Set selected rows
-    setSelectedRows(rows) {
-        return this.setState({
-            "selectedRows": DataTableUtils.arrayToObject(rows, {})
-        });
-    }
-    //Clean selected rows
-    cleanSelectedRows() {
-        return this.setState({
-            "selectedRows": {}
-        });
-    }
-    //Added method to check if a row is selected
-    isRowSelected(row) {
-        return typeof this.state.selectedRows["" + row + ""] !== "undefined";
-    }
+    ////Select a single row
+    //selectRow(index) {
+    //    //Get the current selected rows list
+    //    let currentSelectedRows = this.state.selectedRows;
+    //    //Add the provided rows to the selection
+    //    currentSelectedRows["" + index + ""] = true;
+    //    //Update the state
+    //    return this.setState({
+    //        "selectedRows": currentSelectedRows
+    //    });
+    //}
+    ////Deselect a single row
+    //deselectRow(index) {
+    //    //Get the current selected rows list
+    //    let currentSelectedRows = this.state.selectedRows;
+    //    //Remove the provided rows
+    //    delete currentSelectedRows["" + index + ""];
+    //    //Update the table state
+    //    return this.setState({
+    //        "selectedRows": currentSelectedRows
+    //    });
+    //}
+    ////Get a list with all selected rows
+    //getSelectedRows() {
+    //    return Object.keys(this.state.selectedRows).map(function (value) {
+    //        return parseInt(value);
+    //    });
+    //}
+    ////Set selected rows
+    //setSelectedRows(rows) {
+    //    return this.setState({
+    //        "selectedRows": DataTableUtils.arrayToObject(rows, {})
+    //    });
+    //}
+    ////Clean selected rows
+    //cleanSelectedRows() {
+    //    return this.setState({
+    //        "selectedRows": {}
+    //    });
+    //}
+    ////Added method to check if a row is selected
+    //isRowSelected(row) {
+    //    return typeof this.state.selectedRows["" + row + ""] !== "undefined";
+    //}
     //Get visible columns list
     getVisibleColumns() {
         return this.props.columns.filter(function (column) {
@@ -482,7 +471,7 @@ export class DataTable extends React.Component {
                     "cells": [],
                     "style": null,
                     "className": null,
-                    "selected": this.isRowSelected(rowIndex)
+                    "selected": false, //this.isRowSelected(rowIndex)
                 };
                 //Get the row data
                 let row = this.props.data[rowProps.index];
@@ -523,6 +512,10 @@ export class DataTable extends React.Component {
                     //Save the cell information
                     rowProps.cells.push(cellProps);
                 });
+                //Check if this row is selected
+                if (typeof this.props.rowSelected === "function") {
+                    rowProps.selected = this.props.rowSelected(row, rowProps.index);
+                }
                 ////Check if this row is highlighted
                 //if (this.isRowHighlighted(this.state.sortedRows[i]) === true) {
                 //    //Check for custom highlight class name
@@ -611,9 +604,9 @@ DataTable.defaultProps = {
     "cellClassName": null,
     "cellStyle": null,
     //Highlighted rows
-    "highlightedRows": [], //Highlighted rows
-    "highlightClassName": null, //Custom highlight class-name
-    "highlightStyle": null,     //Custom highlight style
+    //"highlightedRows": [], //Highlighted rows
+    //"highlightClassName": null, //Custom highlight class-name
+    //"highlightStyle": null,     //Custom highlight style
     //Cell clicks listener
     "onBodyCellClick": null, //Body cell click event listener
     "onHeaderCellClick": null, //Header cell click event listener
@@ -627,8 +620,9 @@ DataTable.defaultProps = {
     "emptyText": "No data to display", 
     //Selection
     "selectable": false,
-    "onSelect": null,
-    "selectedRows": null
+    "onBodySelect": null,
+    "onHeaderSelect": null, 
+    "rowSelected": null
 };
 
 
