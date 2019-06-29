@@ -484,8 +484,8 @@ export class DataTable extends React.Component {
                     //Initialize the cell props
                     let cellProps = {
                         "index": index,
-                        "style": null,
-                        "className": null,
+                        "style": helpers.callProp(column.bodyClassName, [row, rowIndex, column, index]),
+                        "className": helpers.callProp(column.bodyStyle, [row, rowIndex, column, index]),
                         "content": (typeof column.defaultValue === "string") ? column.defaultValue : ""
                     };
                     //Check for custom cell content
@@ -500,14 +500,6 @@ export class DataTable extends React.Component {
                             }
                         }
                         //cellProps.content = (typeof column.key !== "undefined") ? row[column.key] : column.defaultValue;
-                    }
-                    //Check the custom cell class-name
-                    if (typeof column.className === "string") {
-                        cellProps.className = column.className;
-                    }
-                    //Check the custom cell style
-                    if (typeof column.style === "object" && column.style !== null) {
-                        cellProps.style = column.style;
                     }
                     //Save the cell information
                     rowProps.cells.push(cellProps);
@@ -593,36 +585,41 @@ DataTable.defaultProps = {
     "columns": [], 
     "data": [],
     "reload": false,
-    //Table style configuration
+    //Global table style configuration
     "border": true, 
     "striped": false, 
     "hover": false,
     "height": null,
-    //Table style customization
-    "rowClassName": null,
-    "rowStyle": null,
-    "cellClassName": null,
-    "cellStyle": null,
-    //Highlighted rows
-    //"highlightedRows": [], //Highlighted rows
-    //"highlightClassName": null, //Custom highlight class-name
-    //"highlightStyle": null,     //Custom highlight style
-    //Cell clicks listener
+    "className": null, //Global table classname
+    "style": null, //Global table style
+    //Header row style
+    "headerRowClassName": null,
+    "headerRowStyle": null,
+    //Body row style
+    "bodyRowClassName": null,
+    "bodyRowStyle": null,
+    //Cell click listener
     "onBodyCellClick": null, //Body cell click event listener
     "onHeaderCellClick": null, //Header cell click event listener
     //Pagination
+    "pagination": true, //Use pagination
     "page": 0, //Initial page
-    "pageSize": 10, //Number of rows for each page
-    "pageEntries": [5, 10, 15], //Available rows for each page
-    "usePagination": true, //Use pagination
+    "pageSize": 10, //Initial number of rows for each page
+    "pageSizeOptions": [5, 10, 15], //Available rows for each page
     "showPagination": true, //Display pagination
-    //Empty table configuration
-    "emptyText": "No data to display", 
+    "showPaginationTop": false, //Not available yet
+    "showPaginationBottom": false, //Not available yet
+    "showPageSize": false, //Not available yet
+    "onPageChange": null, //Current page changed
+    "onPageSizeChange": null, //Page size changed
     //Selection
     "selectable": false,
-    "onBodySelect": null,
-    "onHeaderSelect": null, 
-    "rowSelected": null
+    "onBodyRowSelect": null,  //Select/deselect on a body row
+    "onHeaderRowSelect": null,  //Select/deselect on a header row
+    "headerRowSelected": null, //Set if the header row should be selected
+    "bodyRowSelected": null,  //Set if a body row should be selected
+    //Default texts
+    "emptyText": "No data to display" //No data to display
 };
 
 
