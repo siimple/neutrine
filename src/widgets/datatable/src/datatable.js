@@ -436,10 +436,16 @@ export class DataTable extends React.Component {
     renderTableContainer(rowStart, rowEnd) {
         //Initialize the table props
         let tableProps = {
-            "height": (this.props.pagination === true) ? null : this.props.height,
-            "className": helpers.classNames(DataTableConst.containerClass, this.props.className),
-            "style": this.props.style
+            //"height": (this.props.pagination === true) ? null : this.props.height,
+            "style": {
+                "height": (this.props.pagination === true) ? null : this.props.height
+            },
+            "className": helpers.classNames(DataTableConst.containerClass, this.props.className)
         };
+        //Check for custom style provided
+        if (typeof this.props.style === "object" && this.props.style !== null) {
+            Object.assign(tableProps, this.props.style);
+        }
         //Return the table wrapper
         return React.createElement("div", tableProps, this.renderTable(rowStart, rowEnd));
     }
