@@ -412,7 +412,7 @@ export class DataTable extends React.Component {
         return React.createElement(DataTableRender, renderProps);
     }
     //Render the pagination component
-    renderPagination(rowStart, rowEnd, rowTotal) {
+    renderPagination(rowStart, rowEnd, rowSize) {
         //Check if pagination is enabled and visible
         if (this.props.showPagination === true && this.props.pagination === true) {
             //Return the pagination component
@@ -426,7 +426,7 @@ export class DataTable extends React.Component {
                 "onPageSizeChange": this.handlePageSizeChange,
                 "rowStart": rowStart,
                 "rowEnd": rowEnd,
-                "rowTotal": rowTotal
+                "rowSize": rowSize
             });
         }
         //Default: no pagination to display
@@ -451,12 +451,12 @@ export class DataTable extends React.Component {
             return this.renderEmpty();
         }
         //Calculate the rows start and end values
-        let rowTotal = this.state.sortedRows.length;
+        let rowSize = this.state.sortedRows.length;
         let rowStart = Math.max(0, this.state.page * this.state.pageSize);
-        let rowEnd = Math.min(rowStart + this.state.pageSize, rowTotal);
+        let rowEnd = Math.min(rowStart + this.state.pageSize, rowSize);
         //Build the pagination components
         let paginationTop = null; //TODO
-        let paginationBottom = this.renderPagination(rowStart, rowEnd, rowTotal);
+        let paginationBottom = this.renderPagination(rowStart, rowEnd, rowSize);
         //Build the table
         let table = this.renderTableContainer(rowStart, rowEnd);
         //Initialize the datatable props
