@@ -24,13 +24,13 @@ export function DataTableRender (props) {
             return props.onBodyCellClick.call(null, event, rowIndex, colIndex);
         });
     };
-    //Handle body cell select
-    let handleBodyCellSelect = function (event) {
+    //Handle body row select
+    let handleBodyRowSelect = function (event) {
         //console.log("Cell select clicked");
         return DataTableUtils.findClassInNodeList(event.nativeEvent.path, "neutrine-datatable-cell", function (node, index) {
             let rowIndex = parseInt(node.dataset.row);
             //console.log("Row selected: " + rowIndex);
-            return props.onBodyCellSelect.call(null, event, rowIndex);
+            return props.onBodyRowSelect.call(null, event, rowIndex);
         });
     };
     //Build the table header cell
@@ -153,8 +153,8 @@ DataTableRender.defaultProps = {
     "hover": false,
     "selectable": false,
     "onHeaderCellClick": null,
-    "onHeaderCellSelect": null,
+    "onHeaderRowSelect": null,
     "onBodyCellClick": null,
-    "onBodyCellSelect": null
+    "onBodyRowSelect": null
 };
 
