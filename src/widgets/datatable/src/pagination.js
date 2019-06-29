@@ -116,7 +116,7 @@ DataTablePagination.defaultProps = {
     "page": 0, 
     "pages": 0, 
     "pageSize": 0,
-    "pageSizeOptions": [] 
+    "pageSizeOptions": [],
     "onPageChange": null, 
     "onPageSizeChange": null, 
     "rowStart": 0,
