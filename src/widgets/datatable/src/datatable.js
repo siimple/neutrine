@@ -401,8 +401,8 @@ export class DataTable extends React.Component {
                 }
                 //Assign row style
                 Object.assign({
-                    "className": helpers.callProp(this.props.rowClassName, [row, rowProps.index, rowProps.selected]),
-                    "style": helpers.callProp(this.props.rowStyle, [row, rowProps.index, rowProps.selected])
+                    "className": helpers.callProp(this.props.bodyRowClassName, [row, rowProps.index, rowProps.selected]),
+                    "style": helpers.callProp(this.props.bodyRowStyle, [row, rowProps.index, rowProps.selected])
                 });
                 //Append this row data
                 renderProps.data.push(rowProps);
