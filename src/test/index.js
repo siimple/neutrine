@@ -2,6 +2,7 @@
 import React from "react";
 
 //Import core components
+import {Btn} from "../core/elements/btn.js";
 import {Select} from "../core/form/select.js";
 import {Switch} from "../core/form/switch.js";
 import {Label} from "../core/form/label.js";
@@ -15,7 +16,9 @@ export class Test extends React.Component {
         super(props);
         let self = this;
         //Initial state and references objects
-        this.state = {};
+        this.state = {
+            "key": Date.now()
+        };
         this.ref = {};
         //For each property added
         Object.keys(this.props.props).forEach(function (key) {
@@ -36,7 +39,9 @@ export class Test extends React.Component {
     //Handle change
     handleChange() {
         let self = this;
-        let newState = {};
+        let newState = {
+            "key": Date.now()
+        };
         Object.keys(this.props.props).forEach(function (key, index) {
             let element = self.props.props[key];
             if (element.type === "string") {
@@ -67,8 +72,7 @@ export class Test extends React.Component {
         let selectProps = {
             "fluid": true,
             "defaultValue": element.defaultValue,
-            "ref": self.ref[key],
-            "onChange": self.handleChange
+            "ref": self.ref[key]
         };
         let select = React.createElement(Select, selectProps, options);
         //Return the string control
@@ -79,12 +83,21 @@ export class Test extends React.Component {
         let self = this;
         let switchProps = {
             "defaultChecked": element.defaultValue,
-            "ref": self.ref[key],
-            "onChange": self.handleChange
+            "ref": self.ref[key]
         };
         let switchElement = React.createElement(Switch, switchProps);
         let title = React.createElement(Label, {}, key);
         return React.createElement(React.Fragment, {}, switchElement, title);
+    }
+    //Render the update button
+    renderUpdateBtn() {
+        let btnProps = {
+            "fluid": true,
+            "color": "primary",
+            "onClick": this.handleChange
+        };
+        //Render the button
+        return React.createElement(Btn, btnProps, "Update");
     }
     //Render the options
     renderOptions() {
@@ -101,7 +114,8 @@ export class Test extends React.Component {
             //Return the control
             return React.createElement("div", {"className": "neutrine-test-options-control", "key": index}, control);
         });
-        return React.createElement("div", {"className": "neutrine-test-options"}, content);
+        //Build the update button
+        return React.createElement("div", {"className": "neutrine-test-options"}, content, this.renderUpdateBtn());
     }
     //Render the component
     render() {
