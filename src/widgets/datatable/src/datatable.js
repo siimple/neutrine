@@ -400,7 +400,7 @@ export class DataTable extends React.Component {
                     rowProps.selected = this.props.rowSelected(row, rowProps.index);
                 }
                 //Assign row style
-                Object.assign({
+                Object.assign(rowProps, {
                     "className": helpers.callProp(this.props.bodyRowClassName, [row, rowProps.index, rowProps.selected]),
                     "style": helpers.callProp(this.props.bodyRowStyle, [row, rowProps.index, rowProps.selected])
                 });
