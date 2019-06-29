@@ -94,6 +94,12 @@ NeutrineUtils.loadJSON("/raw/packages/datatable/data.json", function (data) {
                 "pagination": newProps.pagination,
                 "bodyRowClassName": function (row, index) {
                     return (parseSalary(row[5]) < 100000) ? "siimple-table-row--warning" : "";
+                },
+                "onBodyCellClick": function () {
+                    console.log("clicked on cell");
+                },
+                "onBodyRowSelect": function () {
+                    console.log("row selected");
                 }
             });
         }
