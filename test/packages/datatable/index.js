@@ -28,7 +28,7 @@ NeutrineUtils.loadJSON("/raw/packages/datatable/data.json", function (data) {
                 "type": "boolean",
                 "defaultValue": false
             },
-            "usePagination": {
+            "pagination": {
                 "type": "boolean",
                 "defaultValue": true
             },
@@ -83,6 +83,7 @@ NeutrineUtils.loadJSON("/raw/packages/datatable/data.json", function (data) {
             //Return the table testing element
             return React.createElement(Neutrine.DataTable, {
                 "ref": reference,
+                "key": newProps.key,
                 "data": data,
                 "columns": columns,
                 "height": newProps.height,
@@ -90,8 +91,8 @@ NeutrineUtils.loadJSON("/raw/packages/datatable/data.json", function (data) {
                 "border": newProps.border,
                 "hover": newProps.hover,
                 "selectable": newProps.selectable,
-                "usePagination": newProps.usePagination,
-                "rowClassName": function (row, index) {
+                "pagination": newProps.pagination,
+                "bodyRowClassName": function (row, index) {
                     return (parseSalary(row[5]) < 100000) ? "siimple-table-row--warning" : "";
                 }
             });
