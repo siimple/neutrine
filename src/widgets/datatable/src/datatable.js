@@ -13,78 +13,51 @@ import {DataTableConst} from "./const.js";
 //Import styles
 import "../styles/datatable.scss";
 
+//Calculate the number of pages
+let calculatePages = function (rowsTotal, rowsPage) {
+    //console.log(rowsTotal + " - " + rowsPage);
+    let pages = rowsTotal / rowsPage;
+    //console.log("Calculated pages: ");
+    //console.log(pages);
+    return (Math.floor(pages) === pages) ? pages : Math.floor(pages) + 1;
+};
+
 //DataTable component
 export class DataTable extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.resetState(this.props);
+        this.state = this.buildState(this.props);
         //Page handlers
         this.handlePageChange = this.handlePageChange.bind(this);
         this.handlePageSizeChange = this.handlePageSizeChange.bind(this);
-        //Body cell handlers
-        this.handleBodyCellClick = this.handleBodyCellClick.bind(this);
-        this.handleBodyCellSelect = this.handleBodyCellSelect.bind(this);
-        //Header cell handlers
+        //Cell click handlers
         this.handleHeaderCellClick = this.handleHeaderCellClick.bind(this);
-        this.handleHeaderCellSelect = this.handleHeaderCellSelect.bind(this);
+        this.handleBodyCellClick = this.handleBodyCellClick.bind(this);
+        //Row select handlers
+        this.handleHeaderRowSelect = this.handleHeaderRowSelect.bind(this);
+        this.handleBodyRowSelect = this.handleBodyRowSelect.bind(this);
     }
-    //Reset the table state
-    resetState(props) {
+    //Build the table state
+    buildState(props) {
         //console.log("Reset global state");
-        //Return the new state
-        return Object.assign({}, this.resetPaginationState(props), { 
-            "sortedColumns": [], 
-            "filteredRows": DataTableUtils.range(0, props.data.length),
-            "sortedRows": DataTableUtils.range(0, props.data.length)
-            //"selectedRows": DataTableUtils.arrayToObject(props.selectedRows, {})
-        });
-    }
-    //New props
-    componentWillReceiveProps(nextProps) {
-        //Check for reset the table state
-        if (nextProps.reload === true || this.props.data.length !== nextProps.data.length) {
-            return this.setState(this.resetState(props));
-        }
-        //Build the new state
-        let newState = {};
-        //Check for new selected rows data
-        //let selectedRows = nextProps.selectedRows;
-        //if (selectedRows !== null && Array.isArray(selectedRows) === true && selectedRows.length > 0) {
-        //    newState.selectedRows = DataTableUtils.arrayToObject(selectedRows, {});
-        //}
-        //Check for updating the pagination
-        if (nextProps.usePagination !== this.props.usePagination || nextProps.pageSize !== this.props.pageSize) {
-            Object.assign(newState, this.resetPaginationState(nextProps));
-        }
-        //Save the table state
-        this.setState(newState);
-    }
-    //Reset pagination state
-    resetPaginationState(props) {
-        //console.log("Reset pagination state");
-        //Get the page size
-        let pageSize = props.pageSize;
-        //Check if pagination is disabled
-        if (typeof props.usePagination === "boolean" && props.usePagination === false) {
-            pageSize = props.data.length;
-        }
+        let pageSize = (props.pagination === false) ? props.data.length : props.pageSize;
         //Return the new state with the new pagination configuration
         return {
             "page": 0,
-            "pages": this.calculatePages(props.data.length, pageSize),
-            "pageSize": pageSize
+            "pages": calculatePages(props.data.length, pageSize),
+            "pageSize": pageSize,
+            "sortedColumns": [], 
+            "filteredRows": DataTableUtils.range(0, props.data.length),
+            "sortedRows": DataTableUtils.range(0, props.data.length)
         };
     }
-    //Calculate the number of pages
-    calculatePages(rowsTotal, rowsPage) {
-        //console.log(rowsTotal + " - " + rowsPage);
-        let pages = rowsTotal / rowsPage;
-        //console.log("Calculated pages: ");
-        //console.log(pages);
-        return (Math.floor(pages) === pages) ? pages : Math.floor(pages) + 1;
+    //Reset the table state
+    reset() {
+        return this.setState(this.buildState(this.props));
     }
     //Page change
     handlePageChange(page) {
+        //TODO: emit onPageChange event
         //Update the page
         return this.setState({
             "page": page
@@ -92,8 +65,9 @@ export class DataTable extends React.Component {
     }
     //Handle the page size change
     handlePageSizeChange(size) {
+        //TODO: emit onPageSizeChange event
         //Calculate the new number of pages
-        let newPagesCount = this.calculatePages(this.state.filteredRows.length, size);
+        let newPagesCount = calculatePages(this.state.filteredRows.length, size);
         //console.log("New number of pages: " + newState.pages);
         //Update the state
         return this.setState({
@@ -113,11 +87,11 @@ export class DataTable extends React.Component {
             return this.props.onBodyCellClick(event.nativeEvent, row, rowIndex, columnIndex);
         }
     }
-    //Handle body cell select event
-    handleBodyCellSelect(event, index) {
+    //Handle body row select event
+    handleBodyRowSelect(event, index) {
         //Check for custom row selection handler
-        if (typeof this.props.onSelect === "function") {
-            return this.props.onSelect(this.getRow(index), index); //, isSelected);
+        if (typeof this.props.onBodyRowSelect === "function") {
+            return this.props.onBodyRowSelect(this.getRow(index), index); //, isSelected);
         }
     }
     //Handle the header cell click event
@@ -133,9 +107,9 @@ export class DataTable extends React.Component {
             this.props.onHeaderCellClick.call(null, event.nativeEvent, index);
         }
     }
-    //Handle the header cell select event
-    handleHeaderCellSelect(event) {
-        //<TODO>
+    //Handle the header row select event
+    handleHeaderRowSelect(event) {
+        //TODO
     }
     //Get a column data by index
     getColumn(index) {
@@ -222,7 +196,7 @@ export class DataTable extends React.Component {
         return this.setState({
             "filteredRows": filteredRows,
             "sortedRows": sortedRows,
-            "pages": this.calculatePages(filteredRows.length, currentPageSize),
+            "pages": calculatePages(filteredRows.length, currentPageSize),
             "page": 0
         });
     }
@@ -317,81 +291,6 @@ export class DataTable extends React.Component {
         //Return the sorted rows
         return sortedRows;
     }
-    ////Add a highlighted row
-    //addHighlightedRow(row) {
-    //    let highlightedRows = this.state.highlightedRows;
-    //    //Check if this row is not highlighted
-    //    if (highlightedRows.indexOf(row) === -1) {
-    //        //Insert the new row index
-    //        highlightedRows.push(row);
-    //        //Update the state
-    //        return this.setState({
-    //            "highlightedRows": highlightedRows
-    //        });
-    //    }
-    //}
-    ////Remove a highlighted row
-    //removeHighlightedRow(row) {
-    //    let highlightedRows = this.state.highlightedRows;
-    //    let index = highlightedRows.indexOf(row);
-    //    //Check if this row is not highlighted
-    //    if (index !== -1) {
-    //        //Remove the row
-    //        highlightedRows.splice(index, 1);
-    //        //Update the state
-    //        return this.setState({
-    //            "highlightedRows": highlightedRows
-    //        });
-    //    }
-    //}
-    ////Check if a row is highlighted
-    //isRowHighlighted(index) {
-    //    return this.state.highlightedRows.indexOf(index) !== -1;
-    //}
-    ////Select a single row
-    //selectRow(index) {
-    //    //Get the current selected rows list
-    //    let currentSelectedRows = this.state.selectedRows;
-    //    //Add the provided rows to the selection
-    //    currentSelectedRows["" + index + ""] = true;
-    //    //Update the state
-    //    return this.setState({
-    //        "selectedRows": currentSelectedRows
-    //    });
-    //}
-    ////Deselect a single row
-    //deselectRow(index) {
-    //    //Get the current selected rows list
-    //    let currentSelectedRows = this.state.selectedRows;
-    //    //Remove the provided rows
-    //    delete currentSelectedRows["" + index + ""];
-    //    //Update the table state
-    //    return this.setState({
-    //        "selectedRows": currentSelectedRows
-    //    });
-    //}
-    ////Get a list with all selected rows
-    //getSelectedRows() {
-    //    return Object.keys(this.state.selectedRows).map(function (value) {
-    //        return parseInt(value);
-    //    });
-    //}
-    ////Set selected rows
-    //setSelectedRows(rows) {
-    //    return this.setState({
-    //        "selectedRows": DataTableUtils.arrayToObject(rows, {})
-    //    });
-    //}
-    ////Clean selected rows
-    //cleanSelectedRows() {
-    //    return this.setState({
-    //        "selectedRows": {}
-    //    });
-    //}
-    ////Added method to check if a row is selected
-    //isRowSelected(row) {
-    //    return typeof this.state.selectedRows["" + row + ""] !== "undefined";
-    //}
     //Get visible columns list
     getVisibleColumns() {
         return this.props.columns.filter(function (column) {
@@ -406,7 +305,7 @@ export class DataTable extends React.Component {
             "align": "center"
         };
         //Render the empty message
-        return React.createElement("div", emptyProps, "No columns to display");
+        return React.createElement("div", emptyProps, this.props.emptyText);
     }
     //Render the table
     renderTable(start, end) {
@@ -421,9 +320,9 @@ export class DataTable extends React.Component {
             "hover": this.props.hover,
             "selectable": this.props.selectable,
             "onHeaderCellClick": self.handleHeaderCellClick,
-            //"onHeaderCellSelect": self.handleHeaderCellSelect,
             "onBodyCellClick": self.handleBodyCellClick,
-            "onBodyCellSelect": self.handleBodyCellSelect
+            //"onHeaderRowSelect": self.handleHeaderRowSelect,
+            "onBodyRowSelect": self.handleBodyRowSelect
         };
         //Add the table columns
         this.props.columns.forEach(function (column, index) {
@@ -437,8 +336,8 @@ export class DataTable extends React.Component {
                 "content": column.title,
                 "sortable": false,
                 "order": null,
-                "className": null,
-                "style": null
+                "className": column.headerClassName,
+                "style": column.headerStyle
             };
             //Check if column is sortable
             if (typeof column.sortable === "boolean" && column.sortable === true) {
@@ -449,14 +348,6 @@ export class DataTable extends React.Component {
                 if (columnOrder !== -1) {
                     columnProps.order = self.state.sortedColumns[columnOrder].order.toLowerCase();
                 }
-            }
-            //Check the column header className
-            if (typeof column.headerClassName === "string") {
-                columnProps.className = column.headerClassName;
-            }
-            //Check the column header style
-            if (typeof column.headerStyle === "object" && column.headerStyle !== null) {
-                columnProps.style = column.headerStyle;
             }
             //Add this column to the list of displayed columns
             renderProps.columns.push(columnProps);
@@ -471,7 +362,7 @@ export class DataTable extends React.Component {
                     "cells": [],
                     "style": null,
                     "className": null,
-                    "selected": false, //this.isRowSelected(rowIndex)
+                    "selected": false 
                 };
                 //Get the row data
                 let row = this.props.data[rowProps.index];
@@ -508,24 +399,11 @@ export class DataTable extends React.Component {
                 if (typeof this.props.rowSelected === "function") {
                     rowProps.selected = this.props.rowSelected(row, rowProps.index);
                 }
-                ////Check if this row is highlighted
-                //if (this.isRowHighlighted(this.state.sortedRows[i]) === true) {
-                //    //Check for custom highlight class name
-                //    if (typeof this.props.highlightClassName === "string") {
-                //        rowProps.className = this.props.highlightClassName;
-                //    }
-                //    else {
-                //        rowProps.className = "neutrine-datatable-row--highlighted";
-                //    }
-                //}
-                //Check for custom row class name
-                //if (typeof this.props.rowClassName === "function") {
-                //    rowProps.className = this.props.rowClassName.call(null, row, rowProps.index);
-                //}
-                //Add custom row class
-                rowProps.className = helpers.callProp(this.props.rowClassName, [row, rowProps.index, rowProps.selected]);
-                //Add custom row style
-                rowProps.style = helpers.callProp(this.props.rowStyle, [row, rowProps.index, rowProps.selected]);
+                //Assign row style
+                Object.assign({
+                    "className": helpers.callProp(this.props.rowClassName, [row, rowProps.index, rowProps.selected]),
+                    "style": helpers.callProp(this.props.rowStyle, [row, rowProps.index, rowProps.selected])
+                });
                 //Append this row data
                 renderProps.data.push(rowProps);
             }
@@ -533,50 +411,60 @@ export class DataTable extends React.Component {
         //Render the table
         return React.createElement(DataTableRender, renderProps);
     }
+    //Render the pagination component
+    renderPagination(rowStart, rowEnd, rowTotal) {
+        //Check if pagination is enabled and visible
+        if (this.props.showPagination === true && this.props.pagination === true) {
+            //Return the pagination component
+            return React.createElement(DataTablePagination, {
+                "key": 1,
+                "page": this.state.page, 
+                "pages": this.state.pages, 
+                "pageSize": this.state.pageSize, 
+                "pageSizeOptions": this.props.pageSizeOptions,
+                "onPageChange": this.handlePageChange,
+                "onPageSizeChange": this.handlePageSizeChange,
+                "rowStart": rowStart,
+                "rowEnd": rowEnd,
+                "rowTotal": rowTotal
+            });
+        }
+        //Default: no pagination to display
+        return null;
+    }
+    //Render the table container
+    renderTableContainer(rowStart, rowEnd) {
+        //Initialize the table props
+        let tableProps = {
+            "height": (this.props.pagination === false) ? null : this.props.height,
+            "className": helpers.classNames(DataTableConst.containerClass, this.props.className),
+            "style": this.props.style
+        };
+        //Return the table wrapper
+        return React.createElement("div", tableProps, this.renderTable(rowStart, rowEnd));
+    }
     //Render the datatable component
     render() {
         let self = this;
         //Check the number of columns to display
-        if (this.props.columns.length === 0) {
+        if (this.props.columns.length === 0 || this.props.data.lenght === 0) {
             return this.renderEmpty();
         }
         //Calculate the rows start and end values
         let rowTotal = this.state.sortedRows.length;
         let rowStart = Math.max(0, this.state.page * this.state.pageSize);
         let rowEnd = Math.min(rowStart + this.state.pageSize, rowTotal);
-        //Initialize the pagination props
-        let paginationProps = { 
-            "key": 1,
-            "page": this.state.page, 
-            "pages": this.state.pages, 
-            "pageSize": this.state.pageSize, 
-            "pageEntries": this.props.pageEntries,
-            "onPageChange": self.handlePageChange,
-            "onPageSizeChange": self.handlePageSizeChange,
-            "rowStart": rowStart,
-            "rowEnd": rowEnd,
-            "rowTotal": rowTotal
+        //Build the pagination components
+        let paginationTop = null; //TODO
+        let paginationBottom = this.renderPagination(rowStart, rowEnd, rowTotal);
+        //Build the table
+        let table = this.renderTableContainer(rowStart, rowEnd);
+        //Initialize the datatable props
+        let datatableProps = {
+            "className": DataTableConst.mainClass
         };
-        //Check if pagination is visible
-        let paginationRender = null;
-        if (this.props.showPagination === true && this.props.usePagination === true) {
-            paginationRender = React.createElement(DataTablePagination, paginationProps);
-        }
-        //Initialize the table props
-        let tableProps = {
-            "className": "neutrine-datatable-container",
-            "style": null
-        };
-        //Check the height attribute
-        if (this.props.usePagination === false && this.props.height !== null) {
-            tableProps.style = {
-                "height": this.props.height
-            };
-        }
-        //Build the table element
-        let table = React.createElement("div", tableProps, this.renderTable(rowStart, rowEnd));
         //Return the datatable element
-        return React.createElement("div", {"className": "neutrine-datatable"}, table, paginationRender);
+        return React.createElement("div", datatableProps, paginationTop, table, paginationBottom);
     }
 }
 
@@ -616,8 +504,7 @@ DataTable.defaultProps = {
     "selectable": false,
     "onBodyRowSelect": null,  //Select/deselect on a body row
     "onHeaderRowSelect": null,  //Select/deselect on a header row
-    "headerRowSelected": null, //Set if the header row should be selected
-    "bodyRowSelected": null,  //Set if a body row should be selected
+    "rowSelected": null,  //Set if a body row should be selected
     //Default texts
     "emptyText": "No data to display" //No data to display
 };
