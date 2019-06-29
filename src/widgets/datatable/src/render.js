@@ -117,7 +117,7 @@ export function DataTableRender (props) {
             let selectCellProps = {
                 "className": "neutrine-datatable-cell",
                 "data-row": "" + row.index + "",
-                "onClick": handleBodyCellSelect,
+                "onClick": handleBodyRowSelect,
                 "key": -1
             };
             //Initialize the selection cell content
