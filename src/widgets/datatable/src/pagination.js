@@ -31,7 +31,7 @@ export function DataTablePagination (props) {
             " to ", 
             Strong(props.rowEnd), 
             " of ", 
-            Strong(props.rowTotal), 
+            Strong(props.rowSize), 
             " rows."
         );
         //Return the left content
@@ -47,7 +47,7 @@ export function DataTablePagination (props) {
         let pageCounter = `Page ${props.page + 1} of ${props.pages}`;
         //Select entries 
         let selectChilds = [];
-        props.pageEntries.forEach(function (value, index) {
+        props.pageSizeOptions.forEach(function (value, index) {
             //Initialize this option element props
             let optionProps = {
                 "value": value,
@@ -115,8 +115,12 @@ export function DataTablePagination (props) {
 DataTablePagination.defaultProps = { 
     "page": 0, 
     "pages": 0, 
+    "pageSize": 0,
+    "pageSizeOptions": [] 
     "onPageChange": null, 
     "onPageSizeChange": null, 
-    "pageEntries": [] 
+    "rowStart": 0,
+    "rowEnd": 0,
+    "rowSize": 0
 };
 
