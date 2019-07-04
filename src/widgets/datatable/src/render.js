@@ -3,7 +3,7 @@ import React from "react";
 
 //Import partials
 import {Table, TableHeader, TableBody, TableRow, TableCell} from "../../../core/components/table.js";
-import {FakeCheckbox} from "../../../components/fake-checkbox/index.js";
+import {Chek} from "../../../components/check/index.js";
 
 //Import helpers
 import * as helpers from "../../../helpers.js";
@@ -121,7 +121,7 @@ export function DataTableRender (props) {
                 "key": -1
             };
             //Initialize the selection cell content
-            let selectCellContent = React.createElement(FakeCheckbox, {
+            let selectCellContent = React.createElement(Check, {
                 "selected": row.selected
             });
             //Save the selection cell
