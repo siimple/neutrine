@@ -1,6 +1,4 @@
 import React from "react";
-
-//Import core components
 import {Alert, AlertClose} from "../../core/components/alert.js";
 
 //Import toast styles
@@ -39,7 +37,7 @@ export class Toast extends React.Component {
         let self = this;
         //Check the provided time
         if (typeof time !== "number" || time <= 0) {
-            time = this.props.defaultDisplayedTime;
+            time = this.props.timeout;
         }
         //Display this toast message
         return this.setState({"visible": true, "color": color, "message": message}, function () {
@@ -93,6 +91,6 @@ export class Toast extends React.Component {
 Toast.defaultProps = {
     "position": "bottom",
     "cancellable": false,
-    "defaultDisplayedTime": 5000
+    "timeout": 5000
 };
 
