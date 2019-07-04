@@ -65,7 +65,7 @@ export * from "./src/icon/index.js";
 //export {default as CookiesConsent} from "./src/components/cookies-consent/index.js";
 export * from "./src/components/split-panel/index.js";
 export * from "./src/components/scrim/index.js";
-export * from "./src/components/fake-checkbox/index.js";
+export * from "./src/components/check/index.js";
 export * from "./src/components/bottom-side/index.js";
 
 //Future components
