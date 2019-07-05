@@ -33,6 +33,6 @@ export function DNALoader (props) {
 //DNA Loader default props
 DNALoader.defaultProps = {
     "stick": true,
-    "color": "blue"
+    "color": null
 };
 
