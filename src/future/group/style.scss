@@ -88,7 +88,7 @@
         font-size: 13px;
         color: siimple-default-color("dark", "light");
     }
-    //Group icon
+    //Group icon and add elements
     &-icon {
         display: block;
         width: 40px;
@@ -96,10 +96,26 @@
         line-height: 40px;
         text-align: center;
         font-size: 24px;
-        color: #ffffff;
-        background-color: siimple-default-color("primary");
+        color: #ffffff; //Default icon color
         border-radius: 100px;
     }
+    //Group icon specific styles
+    &-icon {
+        background-color: siimple-default-color("primary"); //Default icon background color
+    }
+    //Group add specific styles
+    //&-add {
+    //    transition: all 0.3s;
+    //    opacity: 0.6;
+    //    color: siimple-default-color("dark");
+    //    background-color: siimple-default-color("light", "light");
+    //}
+    ////Row hover --> change add group
+    //&-row:hover &-add {
+    //    //color: siimple-default-color("dark");
+    //    //background-color: #ffffff;
+    //    opacity: 1.0;
+    //}
     //Group action icon
     &-action {
         color: siimple-default-color("dark");
