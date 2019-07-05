@@ -27,6 +27,16 @@ Neutrine.ready(function () {
                 </Neutrine.GroupRow>
             );
         });
+        //Render all element
+        //let renderAddGroup = function () {
+        //    return (
+        //        <Neutrine.GroupRow border>
+        //            <Neutrine.GroupColumn primary align="center">
+        //                <Neutrine.GroupAdd />
+        //            </Neutrine.GroupColumn>
+        //        </Neutrine.GroupRow>
+        //    );
+        //};
         //Return the group container
         return (
             <Neutrine.Group style={{"margin":"40px"}}>
