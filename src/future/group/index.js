@@ -90,10 +90,22 @@ export function GroupText (props) {
 
 //Group icon
 export function GroupIcon (props) {
+    //Initialize group icon class-names
+    let classList = [baseClass + "-icon"];
+    //Check for custom background color
+    if (typeof props.color === "string") {
+        classList.push("siimple--bg-" + props.color);
+    }
+    //Return the icon
     return helpers.createMergedElement(Icon, props, {
-        "className": baseClass + "-icon"
+        "className": classList.join(" ")
     });
 }
+
+//Group icon color
+GroupIcon.defaultProps = {
+    "color": "primary"
+};
 
 //Group action
 export function GroupAction (props) {
