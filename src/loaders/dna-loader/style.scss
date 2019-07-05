@@ -1,6 +1,5 @@
 //Import dependencies
 @import "siimple/scss/_variables.scss";
-@import "siimple-colors/scss/colors.scss";
 
 //DNA Loader variables
 $neutrine-dna-loader-time: 2s;
@@ -31,7 +30,7 @@ $neutrine-dna-loader-size: 6px;
             position: absolute;
             width: 2px;
             height: 4 * $neutrine-dna-loader-size;
-            //background-color: #ffffff;
+            background-color: #ffffff;
             opacity: 0;
             left: 2px;
             top: -1.5 * $neutrine-dna-loader-size;
@@ -45,7 +44,7 @@ $neutrine-dna-loader-size: 6px;
             height: $neutrine-dna-loader-size;
             position: absolute;
             border-radius: 50%;
-            //background-color: #ffffff;
+            background-color: #ffffff;
             opacity: 0.8;
         }
         //For each nucleotide 
@@ -67,11 +66,11 @@ $neutrine-dna-loader-size: 6px;
         }
     }
     //Colored loader
-    @each $color,$list in $siimple-colors {
+    @each $color in $siimple-default-colors {
         &--#{$color} &-nucleotide::before,
         &--#{$color} &-nucleotide::after,
         &--#{$color} &-nucleotide div {
-            background-color: siimple-color($color, "base")
+            background-color: siimple-default-color($color, "base")
         }
     }
     //Display the stick
