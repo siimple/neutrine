@@ -135,3 +135,11 @@ GroupLabel.defaultProps = {
     "text": ""
 };
 
+//Group add icon
+//export function GroupAdd (props) {
+//    return helpers.createMergedElement(Icon, props, {
+//        "className": baseClass + "-add",
+//        "icon": "plus"
+//    });
+//}
+
