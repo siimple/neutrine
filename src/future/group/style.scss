@@ -14,11 +14,12 @@
         border-radius: $siimple-default-border-radius;
         //margin-bottom: 11px;
         position: relative;
+        cursor: pointer;
         transition: background-color 0.3s;
         //Group on hover
-        &:hover {
+        &--hover:hover {
             background-color: siimple-default-color("light", "light");
-            cursor: pointer;
+            //cursor: pointer;
         }
         //Not last child
         &:not(:last-child) {
