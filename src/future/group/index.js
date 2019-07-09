@@ -17,11 +17,14 @@ export function Group (props) {
 
 //Main group container
 export function GroupRow (props) {
-    let newProps = helpers.filterProps(props, ["border", "className"]);
+    let newProps = helpers.filterProps(props, ["border", "hover", "className"]);
     //Initialize the row class list
     let classList = [baseClass + "-row"];
     if (props.border === true) {
         classList.push(baseClass + "-row--border");
+    }
+    if (props.hover === true) {
+        classList.push(baseClass + "-row--hover");
     }
     //Build the new props class 
     newProps.className = helpers.classNames(classList, props.className);
@@ -34,6 +37,7 @@ export function GroupRow (props) {
 
 //Row default props
 GroupRow.defaultProps = {
+    "hover": true,
     "border": false
 };
 
