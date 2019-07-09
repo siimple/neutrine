@@ -4,6 +4,10 @@ import React from "react";
 export function If (props) {
     //Check if the condition is true
     if (typeof props.condition === "boolean" && props.condition === true) {
+        //Check for render function provided
+        if (typeof props.render === "function") {
+            return props.render();
+        }
         return React.createElement(React.Fragment, {}, props.children);
     }
     //Condition is not true
@@ -12,6 +16,7 @@ export function If (props) {
 
 //Default props
 If.defaultProps = {
-    "condition": true
+    "condition": true,
+    "render": null
 };
 
