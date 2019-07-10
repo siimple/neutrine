@@ -1,0 +1,90 @@
+@import "siimple/scss/_variables.scss";
+
+//Steps component
+.neutrine-steps {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: no-wrap;
+    align-items: flex-start;
+    justify-content: center;
+    //Steps item element
+    &-item {
+        flex-grow: 1;
+        position: relative;
+        padding-top: 25px;
+        //Step circle element
+        &::after {
+            content: "";
+            background-color: siimple-default-color("primary");
+            width: 22px;
+            height: 22px;
+            border-radius: 50px;
+            position: absolute;
+            left: calc(50% - 11px);
+            top: 0px;
+            z-index: 2;
+        }
+        &:not(:first-child)::before {
+            content: "";
+            background-color: siimple-default-color("primary");
+            width: 100%;
+            height: 6px;
+            position: absolute;
+            left: -50%;
+            top: 8px;
+            z-index: 1;
+        }
+        //Checked item
+        &--checked::after {
+            content: "L";
+            color: #ffffff;
+            vertical-align: top;
+            text-align: center;
+            font-size: 14px;
+            line-height: 20px;
+            font-family: arial;
+            font-weight: bold;
+            transform: scaleY(-1) rotate(135deg);
+        }
+    }
+    //Steps title
+    &-title {
+        display: block;
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 15px;
+        line-height: 23px;
+        font-weight: 700;
+        color: siimple-default-color("dark");
+        opacity: 0.4;
+        text-align: center;
+    }
+    //Steps description
+    &-description {
+        display: block;
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 13px;
+        line-height: 20px;
+        color: siimple-default-color("dark", "light");
+        opacity: 0.4;
+        text-align: center;
+    }
+    //Current item
+    &-item--current ~ &-item::after,
+    &-item--current ~ &-item::before {
+        background-color: siimple-default-color("light");
+    }
+    &-item--current .&-title, 
+    &-item--current &-description {
+        opacity: 1.0;
+    }
+    //Colored steps
+    @each $color in $siimple-default-colors {
+        &--#{$color} &-item::after,
+        &--#{$color} &-item::before {
+            background-color: siimple-default-color($color);
+        }
+    }
+}
+
