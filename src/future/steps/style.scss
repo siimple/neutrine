@@ -75,7 +75,7 @@
     &-item--current ~ &-item::before {
         background-color: siimple-default-color("light");
     }
-    &-item--current .&-title, 
+    &-item--current &-title, 
     &-item--current &-description {
         opacity: 1.0;
     }
