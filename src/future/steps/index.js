@@ -26,7 +26,7 @@ Steps.defaultProps = {
 
 //Steps item
 export function StepsItem (props) {
-    let newProps = helpers.filterProps(props, ["className", "current", "icon"]);
+    let newProps = helpers.filterProps(props, ["className", "current", "checked"]);
     //Initialize the class list
     let classList = ["neutrine-steps-item"];
     //Check the current property
@@ -34,7 +34,7 @@ export function StepsItem (props) {
         classList.push("neutrine-steps-item--current");
     }
     //Check if the step item is checked
-    if (typeof props.checked === true) {
+    if (props.checked === true) {
         classList.push("neutrine-steps-item--checked");
     }
     //Add the className prop
