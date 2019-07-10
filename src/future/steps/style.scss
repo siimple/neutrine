@@ -74,7 +74,7 @@
     //Current item
     &-item--current ~ &-item::after,
     &-item--current ~ &-item::before {
-        background-color: siimple-default-color("light");
+        background-color: siimple-default-color("light") !important;
     }
     &-item--current &-title, 
     &-item--current &-description {
