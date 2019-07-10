@@ -56,7 +56,7 @@ export {default as Small} from "./src/core/typography/small.js";
 //Core experiments
 export * from "./src/core/experiments/modal.js";
 export * from "./src/core/experiments/progress.js";
-export * from "./src/core/experiments/steps.js";
+//export * from "./src/core/experiments/steps.js";
 
 //Icons
 export * from "./src/icon/index.js";
@@ -71,6 +71,7 @@ export * from "./src/components/bottom-side/index.js";
 //Future components
 export * from "./src/future/group/index.js";
 export * from "./src/future/side/index.js";
+export * from "./src/future/steps/index.js";
 export * from "./src/future/panel/index.js";
 export * from "./src/future/range/index.js";
 
