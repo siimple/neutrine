@@ -7,7 +7,7 @@ export function Choose (props) {
     React.Children.forEach(props.children, function (child) {
         if (match === null) {
             //Check the case condition
-            if (children.props.condition === true) {
+            if (child.props.condition === true) {
                 match = child;
             }
         }
