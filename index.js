@@ -99,6 +99,7 @@ export * from "./src/utils/dom.js";
 export * from "./src/utils/for-each.js";
 export * from "./src/utils/if.js";
 export * from "./src/utils/renderer.js";
+export * from "./src/utils/switch.js";
 
 //TO_BE_DEPRECATED
 import * as cookiesUtils from "./src/utils/cookies.js";
