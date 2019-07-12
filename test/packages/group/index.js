@@ -4,6 +4,9 @@ Neutrine.ready(function () {
         let items = [1, 2, 3, 4].map(function (index) {
             return (
                 <Neutrine.GroupRow border key={index}>
+                    <Neutrine.GroupColumn>
+                        <Neutrine.Check checked={true} />
+                    </Neutrine.GroupColumn>
                     <Neutrine.GroupColumn align="left" style={{"width":"50px"}}>
                         <Neutrine.GroupIcon icon="rocket" />
                     </Neutrine.GroupColumn>
