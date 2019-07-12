@@ -96,6 +96,7 @@ export * from "./src/global.js";
 
 //Utils
 export * from "./src/utils/dom.js";
+export * from "./src/utils/for-each.js";
 export * from "./src/utils/if.js";
 export * from "./src/utils/renderer.js";
 
