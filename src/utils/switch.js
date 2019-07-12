@@ -18,9 +18,12 @@ export function Switch (props) {
 
 //Switch case component
 export function SwitchCase (props) {
+    //Check for render method
     if (typeof props.render === "function") {
         return props.render();
     }
+    //Default: return children
+    return props.children;
 }
 
 //Switch case default props
