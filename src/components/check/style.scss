@@ -25,11 +25,11 @@
         border-right: 0px;
         position: absolute;
     }
-    //Selected
-    &--selected {
+    //Checked
+    &--checked {
         background-color: siimple-default-color("primary");
     }
-    &--selected::after {
+    &--checked::after {
         opacity: 1.0;
         border-color: #ffffff;
     }
