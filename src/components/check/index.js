@@ -7,8 +7,8 @@ import "./style.scss";
 export function Check (props) {
     //Initialize the fake checkbox class list
     let classList = ["neutrine-check"];
-    if (props.selected === true) {
-        classList.push("neutrine-check--selected");
+    if (props.selected === true || props.checked === true) {
+        classList.push("neutrine-check--checked");
     }
     //Return the fake checkbox component
     return React.createElement("div", {
@@ -19,7 +19,8 @@ export function Check (props) {
 
 //Fake check default props
 Check.defaultProps = {
-    "selected": false,
+    "selected": false, //Deprecated: use checked instead
+    "checked": false,
     "onClick": null
 }
 
