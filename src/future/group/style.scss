@@ -14,6 +14,7 @@
         border-radius: $siimple-default-border-radius;
         //margin-bottom: 11px;
         position: relative;
+        border: 2px solid transparent;
         cursor: pointer;
         transition: background-color 0.3s;
         //Group on hover
@@ -27,7 +28,7 @@
         }
         //Bordered row
         &--border:not(:last-child) {
-            margin-bottom: 11px;
+            margin-bottom: 13px;
             //Bottom border
             &::after {
                 content: "";
@@ -36,9 +37,13 @@
                 height: 1px;
                 width: 100%;
                 background-color: siimple-default-color("light", "light");
-                bottom: -5px;
+                bottom: -8px;
                 left: 0px;
             }
+        }
+        //Daashed row
+        &--dashed {
+            border: 2px dashed siimple-default-color("light", "light");
         }
     }
     //Group column
@@ -105,18 +110,19 @@
         background-color: siimple-default-color("primary"); //Default icon background color
     }
     //Group add specific styles
-    //&-add {
-    //    transition: all 0.3s;
-    //    opacity: 0.6;
-    //    color: siimple-default-color("dark");
-    //    background-color: siimple-default-color("light", "light");
-    //}
-    ////Row hover --> change add group
-    //&-row:hover &-add {
-    //    //color: siimple-default-color("dark");
-    //    //background-color: #ffffff;
-    //    opacity: 1.0;
-    //}
+    &-add {
+        transition: all 0.3s;
+        opacity: 0.5;
+        color: siimple-default-color("dark");
+        font-size: 24px;
+        //background-color: siimple-default-color("light", "light");
+    }
+    //Row hover --> change add group
+    &-row:hover &-add {
+        //color: siimple-default-color("dark");
+        //background-color: #ffffff;
+        opacity: 1.0;
+    }
     //Group action icon
     &-action {
         color: siimple-default-color("dark");
