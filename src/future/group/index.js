@@ -26,6 +26,10 @@ export function GroupRow (props) {
     if (props.hover === true) {
         classList.push(baseClass + "-row--hover");
     }
+    //Check dashed row
+    if (props.dashed === true) {
+        classList.push(baseClass + "-row--dashed");
+    }
     //Build the new props class 
     newProps.className = helpers.classNames(classList, props.className);
     //Return the row component
@@ -38,6 +42,7 @@ export function GroupRow (props) {
 //Row default props
 GroupRow.defaultProps = {
     "hover": true,
+    "dashed": false,
     "border": false
 };
 
@@ -140,10 +145,10 @@ GroupLabel.defaultProps = {
 };
 
 //Group add icon
-//export function GroupAdd (props) {
-//    return helpers.createMergedElement(Icon, props, {
-//        "className": baseClass + "-add",
-//        "icon": "plus"
-//    });
-//}
+export function GroupAdd (props) {
+    return helpers.createMergedElement(Icon, props, {
+        "className": baseClass + "-add",
+        "icon": "plus"
+    });
+}
 
