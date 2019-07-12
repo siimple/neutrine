@@ -1,5 +1,8 @@
 import React from "react";
+
+//import {Check} from "../../components/check/index.js";
 import {Icon} from "../../icon/index.js";
+
 import * as helpers from "../../helpers.js";
 
 //Import styles
