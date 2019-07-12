@@ -1,7 +1,7 @@
 import React from "react";
 
 //Export Switch component
-export function Switch (props) {
+export function Choose (props) {
     let match = null;
     //Check all children elements
     React.Children.forEach(props.children, function (child) {
@@ -17,7 +17,7 @@ export function Switch (props) {
 }
 
 //Switch case component
-export function SwitchCase (props) {
+export function ChooseIf (props) {
     //Check for render method
     if (typeof props.render === "function") {
         return props.render();
@@ -27,7 +27,7 @@ export function SwitchCase (props) {
 }
 
 //Switch case default props
-SwitchCase.defaultProps = {
+ChooseIf.defaultProps = {
     "condition": false,
     "render": null
 };
