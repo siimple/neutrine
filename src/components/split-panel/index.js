@@ -1,11 +1,10 @@
 import React from "react";
-
-//Import panel styles
+import * as helpers from "../../helpers.js";
 import "./style.scss";
 
 //Global styles
 let baseClass = "neutrine-splitpanel";
-let separatorSize = 4;
+let separatorSize = 5;
 
 //Get children elements
 let getChildren = function (props) {
@@ -15,7 +14,7 @@ let getChildren = function (props) {
 //Get primary panel
 let getPrimaryPanel = function (props) {
     let children = getChildren(props);
-    return (children[0].props.isPrimary === true) ? children[0] : children[1];
+    return (children[0].props.primary === true) ? children[0] : children[1];
 };
 
 //Get initial panel size
@@ -40,8 +39,8 @@ export class SplitPanel extends React.Component {
         super(props);
         //Get children panels
         let children = getChildren(this.props);
-        let index = (children[0].props.isPrimary === true) ? 0 : 1;
-        //let primary = (children[0].props.isPrimary === true) ? children[0] : children[1];
+        let index = (children[0].props.primary === true) ? 0 : 1;
+        //let primary = (children[0].props.primary === true) ? children[0] : children[1];
         //Get the initial panel size
         let size = getInitialSize(children[index].props);
         //Initial state
@@ -77,7 +76,7 @@ export class SplitPanel extends React.Component {
     }
     //Handle mouse down
     handleMouseDown(event) {
-        if (this.props.allowResize === true) {
+        if (this.props.resize === true) {
             //Get the initial position
             let position = this.isVerticalSplit() ? event.clientX : event.clientY;
             //Initialize the resize
@@ -90,7 +89,7 @@ export class SplitPanel extends React.Component {
     //Handle mouse move
     handleMouseMove(event) {
         //Check if resize is not allowed or is not active
-        if (this.props.allowResize === false || this.state.active === false) {
+        if (this.props.resize === false || this.state.active === false) {
             return null;
         }
         //Get the primary panel node
@@ -195,8 +194,12 @@ export class SplitPanel extends React.Component {
     //Render the separator
     renderSeparator() {
         let self = this;
+        //Default separator class-list
+        let classList = [baseClass + "-separator", baseClass + "-separator--" + this.props.split];
+        //Return the separator element
         return React.createElement("div", {
-            "className": [baseClass + "-separator", baseClass + "-separator--" + this.props.split].join(" "),
+            "className": helpers.classNames(classList, self.props.resizeClassName),
+            "style": self.props.resizeStyle,
             "onMouseDown": self.handleMouseDown,
             "onMouseUp": self.handleMouseUp
         });
@@ -223,7 +226,9 @@ export class SplitPanel extends React.Component {
 SplitPanel.defaultProps = {
     "split": "vertical", //horizontal|vertical
     "step": null,
-    "allowResize": true
+    "resize": true,
+    "resizeClassName": null,
+    "resizeStyle": null
 };
 
 //Panel Item
@@ -233,7 +238,7 @@ export function SplitPanelItem (props) {
 
 //Default props
 SplitPanelItem.defaultProps = {
-    "isPrimary": false,
+    "primary": false,
     "defaultSize": null,
     "minSize": null,
     "maxSize": null
